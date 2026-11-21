@@ -1,370 +1,784 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correnteza — Outras formas de representar o Sertão</title>
 
-    <meta name="description" content="Correnteza — Outras formas de representar o Sertão.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap');
 
-    <title>Correnteza — Outras formas de representar o Sertão</title>
+:root {
+    --preto: #050505;
+    --branco: #f5f5f5;
+    --azul: #5966a8;
+    --cinza: #bdbdbd;
+}
 
-    <link rel="stylesheet" href="styles.css">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* MENU */
+
+header {
+    height: 48px;
+    width: 100%;
+    background: #fff;
+    color: #171717;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    letter-spacing: -1px;
+    text-decoration: none;
+    color: #111;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    color: #171717;
+    text-decoration: none;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    opacity: .55;
+}
+
+.menu-mobile {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* CAPA */
+
+.capa {
+    min-height: 560px;
+    height: 75vh;
+    max-height: 850px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #050505;
+}
+
+.capa-conteudo {
+    position: relative;
+    z-index: 3;
+    width: 90%;
+    text-align: center;
+}
+
+.capa h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(65px, 11vw, 155px);
+    line-height: .82;
+    text-transform: uppercase;
+    letter-spacing: -7px;
+    position: relative;
+    z-index: 3;
+}
+
+.capa h2 {
+    font-size: clamp(16px, 2.4vw, 29px);
+    font-weight: 500;
+    letter-spacing: 4px;
+    margin-top: 30px;
+}
+
+.assinatura {
+    margin-top: 15px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* ELEMENTO AZUL DA CAPA */
+
+.onda {
+    position: absolute;
+    width: 120%;
+    height: 210px;
+    left: -10%;
+    top: 48%;
+    background: var(--azul);
+    transform: rotate(-8deg);
+    border-radius: 48% 52% 35% 45%;
+    opacity: .9;
+    z-index: 1;
+}
+
+.onda::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #7c85b9;
+    border-radius: 50%;
+    top: -32px;
+    left: 0;
+    opacity: .55;
+}
+
+/* ILUSTRAÇÃO DA CAPA */
+
+.personagem {
+    position: absolute;
+    right: 7%;
+    bottom: 5%;
+    width: 190px;
+    height: 260px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.personagem .placeholder {
+    width: 100%;
+    height: 100%;
+    border: 1px dashed #777;
+    color: #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* ABERTURA */
+
+.abertura {
+    width: min(1100px, 86%);
+    margin: auto;
+    padding: 90px 0;
+}
+
+.titulo-abertura {
+    font-size: clamp(28px, 4vw, 50px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 40px;
+    max-width: 850px;
+}
+
+.texto {
+    max-width: 790px;
+    margin: 0 auto 35px;
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+    color: #ededed;
+}
+
+.texto p {
+    margin-bottom: 22px;
+}
+
+/* IMAGENS */
+
+.imagem-grande {
+    width: 100%;
+    margin: 55px auto;
+}
+
+.imagem-grande .placeholder {
+    width: 100%;
+    aspect-ratio: 16/7;
+}
+
+.placeholder {
+    background: #151515;
+    border: 1px dashed #555;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 55px 0;
+}
+
+.galeria figure {
+    width: 100%;
+}
+
+.galeria .placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+}
+
+figcaption {
+    font-size: 12px;
+    color: var(--cinza);
+    margin-top: 10px;
+}
+
+/* IMAGENS HORIZONTAIS */
+
+.faixa-imagens {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 50px 0;
+}
+
+.faixa-imagens .placeholder {
+    aspect-ratio: 16/9;
+}
+
+/* FRASE EM DESTAQUE */
+
+.frase-destaque {
+    width: 100%;
+    padding: 100px 5%;
+    margin: 80px 0;
+    text-align: center;
+}
+
+.frase-destaque p {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(25px, 5vw, 65px);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* SEÇÕES EDITORIAIS */
+
+.secao {
+    min-height: 100vh;
+    padding: 100px 7%;
+    border-top: 1px solid #252525;
+    scroll-margin-top: 48px;
+}
+
+.secao-titulo {
+    max-width: 1000px;
+    margin: 0 auto 70px;
+}
+
+.secao-titulo h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(40px, 8vw, 105px);
+    line-height: .95;
+    text-transform: uppercase;
+}
+
+.secao-titulo p {
+    margin-top: 20px;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.secao-conteudo {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* LINHA DO TEMPO */
+
+.linha-tempo {
+    max-width: 900px;
+    margin: auto;
+    border-left: 2px solid var(--azul);
+    padding-left: 35px;
+}
+
+.evento {
+    margin-bottom: 60px;
+}
+
+.evento h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.evento p {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* RODAPÉ */
+
+.rodape {
+    min-height: 300px;
+    padding: 70px 7%;
+    background: #080808;
+    border-top: 1px solid #333;
+}
+
+.rodape-conteudo {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.rodape h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(35px, 6vw, 75px);
+}
+
+.rodape p {
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.creditos {
+    text-align: right;
+}
+
+.rodape-final {
+    padding: 25px 15px;
+    background: #050505;
+    border-top: 1px solid #292929;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #bdbdbd;
+}
+
+.rodape-final strong {
+    color: white;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 0 18px;
+    }
+
+    .menu-mobile {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 48px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    nav.aberto {
+        display: flex;
+    }
+
+    .capa {
+        height: 600px;
+    }
+
+    .capa h1 {
+        letter-spacing: -3px;
+    }
+
+    .personagem {
+        width: 110px;
+        height: 160px;
+        right: 3%;
+        bottom: 3%;
+    }
+
+    .onda {
+        height: 150px;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .rodape-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .creditos {
+        text-align: left;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .capa {
+        min-height: 530px;
+        height: 80vh;
+    }
+
+    .capa h1 {
+        font-size: 59px;
+    }
+
+    .capa h2 {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .abertura {
+        width: 88%;
+        padding: 60px 0;
+    }
+
+    .texto {
+        font-size: 14px;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .faixa-imagens {
+        grid-template-columns: 1fr;
+    }
+
+    .secao {
+        padding: 75px 7%;
+    }
+
+    .rodape {
+        padding: 55px 7%;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- MENU DE NAVEGAÇÃO -->
-    <header class="header" id="topo">
+<header>
+    <a href="#inicio" class="logo">CORRENTEZA</a>
 
-        <a href="#inicio" class="logo">
-            <img src="assets/barquinho.png" alt="Correnteza">
-        </a>
+    <button class="menu-mobile" aria-label="Abrir menu"
+        aria-expanded="false">☰</button>
 
-        <button class="menu-toggle"
-                aria-label="Abrir menu"
-                aria-expanded="false">
-            ☰
-        </button>
+    <nav id="menu">
+        <a href="#inicio">Início</a>
+        <a href="#margem">À Margem do Palco</a>
+        <a href="#linha">Linha do Tempo</a>
+        <a href="#biruta">Núcleo Biruta</a>
+        <a href="#abdias">Coletivo Abdias</a>
+        <a href="#caatingayro">Caatingayro</a>
+        <a href="#artistas">Artistas</a>
+        <a href="#lugares">Lugares</a>
+    </nav>
+</header>
 
-        <nav class="menu">
+<main>
 
-            <a href="#inicio">Início</a>
-            <a href="#margem">À Margem do Palco</a>
-            <a href="#linha-do-tempo">Linha do Tempo</a>
-            <a href="#biruta">Núcleo Biruta</a>
-            <a href="#abdias">Coletivo Abdias</a>
-            <a href="#caatingayro">Caatingayro</a>
-            <a href="#artistas">Artistas</a>
-            <a href="#lugares">Lugares</a>
+    <!-- CAPA -->
 
-        </nav>
+    <section class="capa" id="inicio">
 
-    </header>
+        <div class="onda"></div>
 
+        <div class="capa-conteudo">
+            <h1>ENTRE DUAS<br>MARGENS</h1>
+            <h2>UMA SÓ CORRENTEZA</h2>
+            <p class="assinatura">Por Cibelle Vieira</p>
+        </div>
 
-    <main>
-
-        <!-- CAPA PRINCIPAL -->
-        <section class="capa" id="inicio">
-
-            <img
-                src="assets/IMAGEM DA CAPA.PNG"
-                class="faixa-azul"
-                alt=""
-            >
-
-            <div class="capa-titulo">
-
-                <h1>
-                    ENTRE DUAS
-                    <br>
-                    MARGENS
-                </h1>
-
-                <h2>UMA SÓ CORRENTEZA</h2>
-
-                <p>POR CIBELLE VIEIRA</p>
-
+        <div class="personagem">
+            <div class="placeholder">
+                Ilustração da personagem
             </div>
+        </div>
 
-            <img
-                src="assets/ILUSTRAÇÃO CIBS CRIANÇA.PNG"
-                class="personagem"
-                alt="Ilustração de uma criança"
-            >
+    </section>
 
-        </section>
 
+    <!-- ABERTURA -->
 
-        <!-- REPORTAGEM DE ABERTURA -->
-        <section class="abertura">
+    <section class="abertura">
 
-            <div class="texto-inicial">
+        <h2 class="titulo-abertura">
+            Entre duas margens,
+            uma só correnteza
+        </h2>
 
-                <h2>Entre duas margens, uma só correnteza</h2>
-
-                <p>
-                    Nasci em Juazeiro, na Bahia, mas vivi a vida inteira
-                    em Petrolina, Pernambuco. Certa vez, durante uma
-                    apresentação de trabalho em Salvador, mencionei
-                    esse fato. A reação foi de desconfiança: perguntaram
-                    se aquilo era uma piada. Respondi com outra
-                    pergunta: por que seria?
-                </p>
-
-                <p>
-                    Minha história entre essas duas margens não tem
-                    nada de extraordinário para quem cresceu por aqui.
-                    Meu nascimento, assim como o de tantas outras
-                    pessoas da minha geração, também atravessa um
-                    período de dificuldades na saúde pública de
-                    Petrolina, quando nascer em uma cidade e buscar
-                    atendimento na outra se tornou parte da realidade
-                    de muitas famílias.
-                </p>
-
-                <p>
-                    É assim que se vive entre Petrolina e Juazeiro:
-                    cidades separadas por uma divisa estadual, mas
-                    aproximadas pelo Rio Opará, também conhecido
-                    como São Francisco, e por uma vida cotidiana que
-                    não cabe nas fronteiras dos mapas.
-                </p>
-
-            </div>
-
-
-            <div class="imagem-abertura">
-
-                <img
-                    src="assets/ILUSTRAÇÃO CIBS CRIANÇA.PNG"
-                    alt="Ilustração da reportagem"
-                >
-
-            </div>
-
-
-            <div class="texto-completo">
-
-                <p>
-                    Quando falta de um lado, atravessa-se para o outro.
-                    Trabalha-se em uma cidade, estuda-se na outra,
-                    constroem-se afetos, histórias e pertencimentos
-                    que circulam entre as duas margens.
-                </p>
-
-                <p>
-                    Somos pernambaianos, PEBA's, como gostamos de
-                    dizer. E não há contradição nisso.
-                </p>
-
-                <p>
-                    A arte produzida neste território também atravessa
-                    pontes, margens e fronteiras. Ela acontece em rede,
-                    em encontros e movimentos de troca, como uma
-                    correnteza.
-                </p>
-
-            </div>
-
-
-            <!-- FOTOGRAFIAS HISTÓRICAS -->
-            <div class="galeria">
-
-                <figure>
-
-                    <img
-                        src="assets/Círculo Operário de Juazeiro.png"
-                        alt="Círculo Operário de Juazeiro"
-                    >
-
-                    <figcaption>
-                        Círculo Operário de Juazeiro
-                    </figcaption>
-
-                </figure>
-
-
-                <figure>
-
-                    <img
-                        src="assets/Coelhão.png"
-                        alt="Registro histórico de Coelhão"
-                    >
-
-                    <figcaption>
-                        Coelhão
-                    </figcaption>
-
-                </figure>
-
-
-                <figure>
-
-                    <img
-                        src="assets/Comissão Pastoral da Terra.png"
-                        alt="Comissão Pastoral da Terra"
-                    >
-
-                    <figcaption>
-                        Comissão Pastoral da Terra
-                    </figcaption>
-
-                </figure>
-
-
-                <figure>
-
-                    <img
-                        src="assets/construção da Barragem.png"
-                        alt="Construção da barragem"
-                    >
-
-                    <figcaption>
-                        Construção da barragem
-                    </figcaption>
-
-                </figure>
-
-            </div>
-
-
-            <div class="texto-completo">
-
-                <p>
-                    Entre Petrolina e Juazeiro, a produção artística
-                    não se limita aos equipamentos culturais, aos
-                    palcos ou às galerias. Ela também ocupa ruas,
-                    escolas, bairros, espaços comunitários e
-                    territórios onde a criação se torna possibilidade
-                    de encontro, reconhecimento e transformação.
-                </p>
-
-                <p>
-                    Olhar para essa produção é reconhecer que o
-                    Semiárido não se resume à paisagem da seca,
-                    à escassez ou às imagens historicamente
-                    associadas ao sertão.
-                </p>
-
-            </div>
-
-
-            <!-- ILHA DO FOGO -->
-            <div class="imagem-destaque">
-
-                <img
-                    src="assets/ILHA DO FOGO.PNG"
-                    alt="Ilha do Fogo"
-                >
-
-            </div>
-
-
-            <!-- FRASE DE ENCERRAMENTO DA ABERTURA -->
-            <div class="frase-destaque">
-
-                <p>
-                    ENTRE DUAS MARGENS, MUITAS HISTÓRIAS.
-                    UMA SÓ CORRENTEZA.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- À MARGEM DO PALCO -->
-        <section class="secao-reportagem" id="margem">
-
-            <div class="titulo-secao">
-
-                <h2>À margem dos equipamentos oficiais</h2>
-
-            </div>
-
-            <!-- Conteúdo da seção conforme o Canva -->
-
-        </section>
-
-
-        <!-- LINHA DO TEMPO -->
-        <section class="secao-reportagem" id="linha-do-tempo">
-
-            <div class="titulo-secao">
-                <h2>Linha do Tempo</h2>
-            </div>
-
-        </section>
-
-
-        <!-- NÚCLEO BIRUTA -->
-        <section class="secao-reportagem" id="biruta">
-
-            <div class="titulo-secao">
-                <h2>Núcleo Biruta</h2>
-            </div>
-
-        </section>
-
-
-        <!-- COLETIVO ABDIAS -->
-        <section class="secao-reportagem" id="abdias">
-
-            <div class="titulo-secao">
-                <h2>Coletivo Abdias</h2>
-            </div>
-
-        </section>
-
-
-        <!-- CAATINGAYRO -->
-        <section class="secao-reportagem" id="caatingayro">
-
-            <div class="titulo-secao">
-                <h2>Caatingayro</h2>
-            </div>
-
-        </section>
-
-
-        <!-- ARTISTAS -->
-        <section class="secao-reportagem" id="artistas">
-
-            <div class="titulo-secao">
-                <h2>Artistas</h2>
-            </div>
-
-        </section>
-
-
-        <!-- LUGARES -->
-        <section class="secao-reportagem" id="lugares">
-
-            <div class="titulo-secao">
-                <h2>Lugares</h2>
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- RODAPÉ -->
-    <footer class="rodape-final">
-
-        <img
-            src="assets/IMAGEM DO FINAL DO SITE.PNG"
-            alt=""
-            class="imagem-final"
-        >
-
-        <div class="creditos">
-
+        <div class="texto">
             <p>
-                <strong>CORRENTEZA — OUTRAS FORMAS DE REPRESENTAR O SERTÃO</strong>
+                Insira aqui o texto de abertura da reportagem,
+                respeitando os parágrafos e a organização do
+                projeto original.
             </p>
 
             <p>
-                Long-form jornalístico | Trabalho de Conclusão de Curso
-                — Graduação em Jornalismo, Universidade do Estado da Bahia (UNEB)
+                Este espaço foi pensado para manter a largura
+                estreita dos blocos de texto, o alinhamento e
+                o espaçamento observados no projeto visual.
             </p>
+        </div>
 
+        <div class="imagem-grande">
+            <div class="placeholder">
+                Fotografia ou ilustração principal
+            </div>
+        </div>
+
+        <div class="texto">
             <p>
-                Autoria: Cibelle Vieira |
-                Orientação: Raiane Sousa |
-                Design e desenvolvimento do site: Jenifer Silva © 2026
+                Continue aqui o texto da reportagem. As imagens
+                podem aparecer intercaladas aos parágrafos,
+                preservando o ritmo visual do long-form.
             </p>
+        </div>
+
+        <div class="galeria">
+
+            <figure>
+                <div class="placeholder">Fotografia 01</div>
+                <figcaption>Legenda da fotografia</figcaption>
+            </figure>
+
+            <figure>
+                <div class="placeholder">Fotografia 02</div>
+                <figcaption>Legenda da fotografia</figcaption>
+            </figure>
+
+            <figure>
+                <div class="placeholder">Fotografia 03</div>
+                <figcaption>Legenda da fotografia</figcaption>
+            </figure>
 
         </div>
 
-    </footer>
+        <div class="texto">
+            <p>
+                Espaço destinado à continuação do conteúdo
+                jornalístico, mantendo a leitura vertical e
+                a composição editorial.
+            </p>
+        </div>
+
+        <div class="faixa-imagens">
+            <div class="placeholder">Imagem histórica</div>
+            <div class="placeholder">Imagem histórica</div>
+        </div>
+
+        <div class="frase-destaque">
+            <p>
+                Entre duas margens,
+                muitas histórias.
+                Uma só correnteza.
+            </p>
+        </div>
+
+    </section>
 
 
-    <script src="script.js"></script>
+    <!-- À MARGEM DO PALCO -->
+
+    <section class="secao" id="margem">
+
+        <div class="secao-titulo">
+            <h2>À margem do palco</h2>
+            <p>OUTRAS FORMAS DE OCUPAR E PRODUZIR CULTURA</p>
+        </div>
+
+        <div class="secao-conteudo">
+            <div class="texto">
+                <p>
+                    Conteúdo da reportagem correspondente
+                    a esta seção.
+                </p>
+            </div>
+
+            <div class="imagem-grande">
+                <div class="placeholder">Imagem da seção</div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- LINHA DO TEMPO -->
+
+    <section class="secao" id="linha">
+
+        <div class="secao-titulo">
+            <h2>Linha do tempo</h2>
+        </div>
+
+        <div class="linha-tempo">
+
+            <div class="evento">
+                <h3>01</h3>
+                <p>Conteúdo histórico e memória cultural.</p>
+            </div>
+
+            <div class="evento">
+                <h3>02</h3>
+                <p>Continuação da trajetória cultural.</p>
+            </div>
+
+            <div class="evento">
+                <h3>03</h3>
+                <p>Outros acontecimentos e registros.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NÚCLEO BIRUTA -->
+
+    <section class="secao" id="biruta">
+        <div class="secao-titulo">
+            <h2>Núcleo Biruta</h2>
+        </div>
+        <div class="secao-conteudo">
+            <div class="placeholder">Imagem ou conteúdo da seção</div>
+        </div>
+    </section>
+
+
+    <!-- COLETIVO ABDIAS -->
+
+    <section class="secao" id="abdias">
+        <div class="secao-titulo">
+            <h2>Coletivo Abdias</h2>
+        </div>
+        <div class="secao-conteudo">
+            <div class="placeholder">Imagem ou conteúdo da seção</div>
+        </div>
+    </section>
+
+
+    <!-- CAATINGAYRO -->
+
+    <section class="secao" id="caatingayro">
+        <div class="secao-titulo">
+            <h2>Caatingayro</h2>
+        </div>
+        <div class="secao-conteudo">
+            <div class="placeholder">Imagem ou conteúdo da seção</div>
+        </div>
+    </section>
+
+
+    <!-- ARTISTAS -->
+
+    <section class="secao" id="artistas">
+        <div class="secao-titulo">
+            <h2>Artistas</h2>
+        </div>
+        <div class="secao-conteudo">
+            <div class="placeholder">Galeria de artistas</div>
+        </div>
+    </section>
+
+
+    <!-- LUGARES -->
+
+    <section class="secao" id="lugares">
+        <div class="secao-titulo">
+            <h2>Lugares</h2>
+        </div>
+        <div class="secao-conteudo">
+            <div class="placeholder">Galeria de lugares</div>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- ENCERRAMENTO -->
+
+<footer class="rodape">
+
+    <div class="rodape-conteudo">
+
+        <div>
+            <h2>CORRENTEZA</h2>
+            <p>OUTRAS FORMAS DE REPRESENTAR O SERTÃO</p>
+        </div>
+
+        <div class="creditos">
+            <p><strong>Autora:</strong> Cibelle Vieira</p>
+            <p><strong>Orientação:</strong> Raiane Sousa</p>
+            <p><strong>Design e desenvolvimento do site:</strong> Jenifer Silva</p>
+        </div>
+
+    </div>
+
+</footer>
+
+<div class="rodape-final">
+    <p><strong>Correnteza — Outras formas de representar o Sertão</strong></p>
+    <p>Long-form jornalístico | Trabalho de Conclusão de Curso — Graduação em Jornalismo, Universidade do Estado da Bahia (UNEB)</p>
+    <p>© 2026</p>
+</div>
+
+
+<script>
+const botao = document.querySelector('.menu-mobile');
+const menu = document.querySelector('#menu');
+
+botao.addEventListener('click', () => {
+    const aberto = menu.classList.toggle('aberto');
+    botao.setAttribute('aria-expanded', aberto);
+    botao.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+});
+
+menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        menu.classList.remove('aberto');
+        botao.setAttribute('aria-expanded', 'false');
+    });
+});
+</script>
 
 </body>
-
 </html>
