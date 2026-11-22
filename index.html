@@ -11,38 +11,54 @@
   <style>
 
     /* =========================================
-       FONTES
+       1. FONTES LOCAIS
     ========================================= */
 
     @font-face {
       font-family: "Cubao";
       src: url("./fontes/cubao-free/Cubao_Free_Regular.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
       font-display: swap;
     }
 
     @font-face {
       font-family: "Morisawa";
       src: url("./fontes/morisawa-otf-cufonfonts-webfont/MorisawaOtfRegular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
       font-display: swap;
     }
 
     @font-face {
       font-family: "Gordita";
       src: url("./fontes/gordita-regular-maisfontes.80be/gordita-regular.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Neue Montreal";
+      src: url("./fontes/neue-montreal-regular-maisfontes.525c/neue-montreal-regular.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
       font-display: swap;
     }
 
     /* =========================================
-       CONFIGURAÇÕES GERAIS
+       2. CONFIGURAÇÕES GERAIS
     ========================================= */
 
     :root {
-      --preto: #08090b;
+      --preto: #050505;
       --branco: #ffffff;
       --azul: #485b9d;
       --azul-claro: #a6b7ef;
-      --cinza: #b6b6b6;
-      --borda: rgba(255,255,255,0.15);
+      --cinza: #c5c5c5;
+
+      --largura-site: 1100px;
+      --largura-texto: 740px;
     }
 
     * {
@@ -56,54 +72,66 @@
     }
 
     body {
-      background: var(--preto);
+      background: #f1f1f3;
       color: var(--branco);
-      font-family: "Morisawa", sans-serif;
+      font-family: "Neue Montreal", Arial, sans-serif;
       overflow-x: hidden;
     }
 
     button {
-      font-family: inherit;
       cursor: pointer;
+      font-family: inherit;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
     }
 
     /* =========================================
-       CABEÇALHO
+       3. ESTRUTURA DO SITE
+    ========================================= */
+
+    .site {
+      width: min(100%, var(--largura-site));
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--preto);
+      box-shadow: 0 0 35px rgba(0,0,0,0.07);
+    }
+
+    /* =========================================
+       4. CABEÇALHO E MENU
     ========================================= */
 
     header {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
       width: 100%;
       z-index: 1000;
 
-      background: rgba(0,0,0,0.88);
+      background: rgba(0,0,0,0.94);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
       backdrop-filter: blur(12px);
-
-      border-bottom: 1px solid var(--borda);
     }
 
     .cabecalho {
-      max-width: 1600px;
-      margin: auto;
-      min-height: 78px;
-      padding: 15px 4%;
+      min-height: 75px;
+      padding: 15px 30px;
 
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 25px;
+      gap: 20px;
     }
 
     .logo {
       font-family: "Cubao", sans-serif;
-      font-size: 30px;
+      font-size: 27px;
       white-space: nowrap;
     }
 
@@ -113,21 +141,21 @@
 
     nav {
       display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
       justify-content: flex-end;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 13px;
     }
 
     nav button {
-      background: transparent;
       border: none;
-      color: #c4c4c4;
+      background: transparent;
+      color: #d5d5d5;
 
       font-family: "Gordita", sans-serif;
-      font-size: 11px;
+      font-size: 10px;
 
-      transition: color 0.3s;
+      transition: color 0.25s;
     }
 
     nav button:hover,
@@ -137,34 +165,35 @@
 
     nav button.ativo {
       text-decoration: underline;
-      text-underline-offset: 8px;
+      text-underline-offset: 6px;
     }
 
     .menu-mobile {
       display: none;
-      color: white;
+
       background: transparent;
-      border: 1px solid var(--borda);
-      padding: 8px 12px;
-      font-size: 20px;
+      border: 1px solid #555;
+      color: white;
+
+      padding: 7px 12px;
+      font-size: 22px;
     }
 
     /* =========================================
-       PÁGINAS
+       5. SISTEMA DE PÁGINAS
     ========================================= */
 
     .pagina {
       display: none;
-      padding-top: 78px;
-      min-height: 100vh;
-      animation: entrada 0.6s ease;
+      min-height: calc(100vh - 75px);
     }
 
     .pagina.ativa {
       display: block;
+      animation: aparecer 0.5s ease;
     }
 
-    @keyframes entrada {
+    @keyframes aparecer {
       from {
         opacity: 0;
       }
@@ -175,14 +204,16 @@
     }
 
     /* =========================================
-       CAPA — IMAGEM EM TELA INTEIRA
+       6. CAPA
     ========================================= */
 
     .capa {
       position: relative;
 
       width: 100%;
-      min-height: calc(100svh - 78px);
+      min-height: calc(100svh - 75px);
+
+      background: black;
 
       display: flex;
       align-items: center;
@@ -190,24 +221,15 @@
 
       overflow: hidden;
       isolation: isolate;
-
-      background: #08090b;
     }
 
-    /* IMAGEM GRANDE */
-
-    .capa-ilustracao {
+    .capa-imagem {
       position: absolute;
       inset: 0;
-
-      width: 100%;
-      height: 100%;
-
       z-index: -1;
-      pointer-events: none;
     }
 
-    .capa-ilustracao img {
+    .capa-imagem img {
       display: block;
 
       width: 100%;
@@ -215,109 +237,79 @@
 
       object-fit: cover;
       object-position: center;
-
-      filter: none;
-      animation: none;
     }
-
-    /* CONTEÚDO SOBRE A IMAGEM */
 
     .capa-conteudo {
       position: relative;
       z-index: 2;
 
       width: 100%;
-      min-height: calc(100svh - 78px);
-
-      padding: 8vh 4% 12vh;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding: 60px 35px 110px;
 
       text-align: center;
     }
 
-    /* TÍTULO */
+    /* TÍTULO CUBAO */
 
     .capa-titulo {
       font-family: "Cubao", sans-serif;
 
-      font-size: clamp(65px, 9.2vw, 150px);
-      font-weight: normal;
+      font-weight: 400;
+      font-size: clamp(65px, 9.5vw, 125px);
 
-      line-height: 0.94;
-      letter-spacing: 0;
-
+      line-height: 0.96;
       color: white;
-      width: 100%;
-      max-width: 1300px;
-
-      position: relative;
-      z-index: 3;
     }
 
     .capa-titulo span {
       display: block;
     }
 
-    /* SUBTÍTULO */
+    /* SUBTÍTULO MORISAWA */
 
     .capa-subtitulo {
-      font-family: "Morisawa", sans-serif;
+      font-family: "Morisawa", Georgia, serif;
 
-      font-size: clamp(20px, 2.7vw, 37px);
-      font-weight: normal;
+      font-weight: 400;
+      font-size: clamp(22px, 3vw, 35px);
 
-      letter-spacing: 0;
-      line-height: 1.3;
-
-      color: white;
+      line-height: 1.25;
       margin-top: 20px;
 
-      position: relative;
-      z-index: 3;
+      color: white;
     }
 
-    /* AUTORIA */
+    /* AUTORIA GORDITA */
 
     .capa-autoria {
-      font-family: "Gordita", sans-serif;
+      font-family: "Gordita", Arial, sans-serif;
 
-      font-size: clamp(11px, 1.1vw, 15px);
+      font-weight: 400;
+      font-size: 13px;
+
+      margin-top: 15px;
       color: white;
-
-      margin-top: 14px;
-
-      position: relative;
-      z-index: 3;
     }
-
-    /* BOTÃO DESCER */
 
     .capa-descer {
       position: absolute;
-      bottom: 25px;
       left: 50%;
+      bottom: 24px;
 
       transform: translateX(-50%);
 
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.5);
 
-      padding: 12px 18px;
       color: white;
+      padding: 13px 18px;
 
       font-family: "Gordita", sans-serif;
       font-size: 10px;
       letter-spacing: 1px;
 
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      transition: 0.3s;
+      white-space: nowrap;
+      transition: background 0.3s;
     }
 
     .capa-descer:hover {
@@ -325,31 +317,188 @@
     }
 
     /* =========================================
-       CONTEÚDO DAS PÁGINAS
+       7. REPORTAGEM INICIAL
+    ========================================= */
+
+    .reportagem {
+      position: relative;
+      padding-bottom: 100px;
+      background: #050505;
+    }
+
+    /* IMAGEM DA ILHA DO FOGO */
+
+    .imagem-ponte {
+      position: relative;
+      width: 100%;
+      height: 340px;
+
+      overflow: hidden;
+      background: #080808;
+    }
+
+    .imagem-ponte img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* ÁREA DO TEXTO */
+
+    .reportagem-conteudo {
+      position: relative;
+
+      max-width: 950px;
+      margin: 0 auto;
+
+      padding: 55px 35px 30px;
+    }
+
+    /* TÍTULO EM NEUE MONTREAL */
+
+    .reportagem-titulo {
+      font-family: "Neue Montreal", Arial, sans-serif;
+
+      font-weight: 400;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.12;
+
+      max-width: 790px;
+      margin-bottom: 45px;
+
+      text-align: left;
+    }
+
+    /* CRÉDITOS */
+
+    .reportagem-creditos {
+      font-family: "Gordita", Arial, sans-serif;
+
+      font-size: 11px;
+      color: #c5c5c5;
+
+      line-height: 1.9;
+      margin-bottom: 45px;
+    }
+
+    .reportagem-creditos strong {
+      color: white;
+      font-weight: 400;
+    }
+
+    /* TEXTO CENTRALIZADO NA ÁREA,
+       MAS ALINHADO À ESQUERDA */
+
+    .corpo-reportagem {
+      position: relative;
+      z-index: 2;
+
+      max-width: var(--largura-texto);
+      margin: 0 auto;
+
+      text-align: left;
+    }
+
+    .corpo-reportagem p {
+      font-family: "Neue Montreal", Arial, sans-serif;
+
+      font-size: clamp(17px, 1.8vw, 21px);
+      font-weight: 400;
+      line-height: 1.65;
+
+      color: #f3f3f3;
+      margin-bottom: 29px;
+    }
+
+    /* LETRA CAPITULAR */
+
+    .corpo-reportagem p.primeiro-paragrafo::first-letter {
+      float: left;
+
+      font-family: "Cubao", sans-serif;
+      font-size: 74px;
+
+      line-height: 0.8;
+      padding: 8px 12px 0 0;
+
+      color: white;
+    }
+
+    /* ILUSTRAÇÃO CIBS CRIANÇA */
+
+    .ilustracao-cibs {
+      position: relative;
+      z-index: 3;
+
+      width: min(290px, 38%);
+
+      float: right;
+      margin: 5px -80px 22px 28px;
+    }
+
+    .ilustracao-cibs img {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      object-fit: contain;
+    }
+
+    .limpar {
+      clear: both;
+    }
+
+    /* =========================================
+       8. DESTAQUE
+    ========================================= */
+
+    .destaque {
+      padding: 100px 65px;
+
+      background: #11162b;
+      text-align: center;
+    }
+
+    .destaque h2 {
+      font-family: "Cubao", sans-serif;
+
+      font-size: clamp(36px, 5vw, 70px);
+      font-weight: 400;
+
+      line-height: 1.1;
+    }
+
+    .destaque span {
+      color: var(--azul-claro);
+    }
+
+    /* =========================================
+       9. CONTEÚDO GERAL
     ========================================= */
 
     .conteudo {
-      max-width: 1200px;
-      margin: auto;
-      padding: 100px 7%;
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 100px 45px;
     }
 
     .pagina-abertura {
-      max-width: 1400px;
-      margin: auto;
-
-      padding: 110px 7% 80px;
-
-      border-bottom: 1px solid var(--borda);
+      padding: 110px 65px 75px;
+      border-bottom: 1px solid #292929;
     }
 
     .pagina-numero {
       display: block;
 
       font-family: "Gordita", sans-serif;
-      font-size: 12px;
-      letter-spacing: 4px;
+      font-size: 11px;
 
+      letter-spacing: 3px;
       color: var(--azul-claro);
 
       margin-bottom: 25px;
@@ -358,94 +507,67 @@
     .pagina-titulo {
       font-family: "Cubao", sans-serif;
 
-      font-size: clamp(65px, 10vw, 145px);
-      font-weight: normal;
-      line-height: 0.95;
+      font-size: clamp(60px, 9vw, 115px);
+      font-weight: 400;
 
+      line-height: 1;
       margin-bottom: 30px;
     }
 
     .pagina-descricao {
-      font-family: "Morisawa", sans-serif;
+      font-family: "Neue Montreal", Arial, sans-serif;
 
-      font-size: clamp(17px, 2vw, 23px);
-      line-height: 1.7;
+      font-size: 20px;
+      line-height: 1.6;
 
-      max-width: 750px;
-      color: var(--cinza);
+      max-width: 700px;
+      color: #c5c5c5;
     }
 
     .titulo-secao {
       font-family: "Cubao", sans-serif;
 
-      font-size: clamp(42px, 6vw, 85px);
-      font-weight: normal;
+      font-size: clamp(40px, 6vw, 75px);
+      font-weight: 400;
 
       line-height: 1;
       margin-bottom: 35px;
     }
 
     .texto {
-      max-width: 800px;
-
-      font-family: "Morisawa", sans-serif;
-      font-size: 18px;
-      line-height: 1.9;
-
-      color: #d0d0d0;
+      max-width: 740px;
+      margin: 0 auto;
+      text-align: left;
     }
 
-    .texto p + p {
-      margin-top: 25px;
-    }
+    .texto p {
+      font-family: "Neue Montreal", Arial, sans-serif;
 
-    /* =========================================
-       DESTAQUE
-    ========================================= */
+      font-size: 19px;
+      line-height: 1.8;
 
-    .destaque {
-      background: #101525;
-
-      padding: 110px 7%;
-      text-align: center;
-
-      border-top: 1px solid var(--borda);
-      border-bottom: 1px solid var(--borda);
-    }
-
-    .destaque-frase {
-      font-family: "Cubao", sans-serif;
-
-      font-size: clamp(38px, 6vw, 85px);
-      font-weight: normal;
-
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .destaque-frase span {
-      color: var(--azul-claro);
+      margin-bottom: 25px;
+      color: #dedede;
     }
 
     /* =========================================
-       CARDS
+       10. CARDS CLICÁVEIS
     ========================================= */
 
     .grade {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
 
       gap: 20px;
-      margin-top: 55px;
+      margin-top: 50px;
     }
 
     .card {
-      min-height: 240px;
+      min-height: 190px;
+      padding: 30px;
 
-      padding: 35px;
-
-      background: #101217;
-      border: 1px solid var(--borda);
+      background: #101010;
+      border: 1px solid #333;
 
       color: white;
       text-align: left;
@@ -454,144 +576,80 @@
       flex-direction: column;
       justify-content: space-between;
 
-      transition: 0.35s;
+      transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-7px);
-      background: #17213a;
-      border-color: var(--azul-claro);
+      background: #1a2341;
+      transform: translateY(-5px);
     }
 
     .card-numero {
       font-family: "Gordita", sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--azul-claro);
     }
 
     .card-titulo {
       font-family: "Cubao", sans-serif;
-      font-size: 38px;
-      line-height: 1;
+      font-size: 36px;
     }
 
     .card-seta {
       align-self: flex-end;
-      font-size: 27px;
       color: var(--azul-claro);
+      font-size: 25px;
     }
 
     /* =========================================
-       IMAGENS
+       11. GALERIA
     ========================================= */
-
-    .imagem-destaque {
-      width: 100%;
-      max-height: 650px;
-      object-fit: contain;
-
-      display: block;
-      margin: 60px auto;
-    }
 
     .galeria {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
 
-      gap: 25px;
-      margin-top: 55px;
+      gap: 20px;
+      margin-top: 50px;
     }
 
     .galeria-item {
-      background: #101217;
-      border: 1px solid var(--borda);
-      overflow: hidden;
+      background: #101010;
+      border: 1px solid #292929;
     }
 
     .galeria-item img {
-      width: 100%;
-      height: 350px;
-      object-fit: contain;
-
-      padding: 20px;
       display: block;
 
-      transition: transform 0.4s;
-    }
+      width: 100%;
+      height: 290px;
 
-    .galeria-item:hover img {
-      transform: scale(1.04);
+      object-fit: contain;
+      padding: 15px;
     }
 
     .galeria-legenda {
-      padding: 20px;
-
       font-family: "Gordita", sans-serif;
       font-size: 12px;
 
-      color: var(--cinza);
-      border-top: 1px solid var(--borda);
+      color: #c5c5c5;
+      padding: 18px;
+
+      border-top: 1px solid #292929;
     }
 
     /* =========================================
-       LINHA DO TEMPO
-    ========================================= */
-
-    .linha-tempo {
-      border-left: 1px solid var(--azul-claro);
-
-      padding-left: 40px;
-      margin-top: 65px;
-    }
-
-    .linha-tempo-item {
-      position: relative;
-      padding-bottom: 65px;
-    }
-
-    .linha-tempo-item::before {
-      content: "";
-
-      position: absolute;
-      left: -47px;
-      top: 10px;
-
-      width: 13px;
-      height: 13px;
-
-      border-radius: 50%;
-      background: var(--azul-claro);
-    }
-
-    .linha-tempo-data {
-      font-family: "Cubao", sans-serif;
-      font-size: 36px;
-      color: var(--azul-claro);
-
-      margin-bottom: 12px;
-    }
-
-    .linha-tempo-texto {
-      font-size: 17px;
-      line-height: 1.8;
-
-      color: var(--cinza);
-      max-width: 650px;
-    }
-
-    /* =========================================
-       BOTÕES
+       12. BOTÕES
     ========================================= */
 
     .botao-link {
-      display: inline-flex;
-      align-items: center;
+      display: inline-block;
 
-      margin-top: 40px;
       padding: 17px 25px;
+      margin-top: 35px;
 
-      background: transparent;
       border: 1px solid var(--azul-claro);
+      background: transparent;
 
       color: white;
 
@@ -606,101 +664,59 @@
     }
 
     /* =========================================
-       CONTROLE DE SOM
+       13. SOM DO RIO
     ========================================= */
 
     .controle-som {
       position: fixed;
-
       right: 25px;
       bottom: 25px;
 
-      z-index: 1100;
-
-      background: rgba(0,0,0,0.85);
-      border: 1px solid var(--azul-claro);
-
-      border-radius: 40px;
-
-      color: white;
-      padding: 14px 20px;
-
-      font-family: "Gordita", sans-serif;
-      font-size: 11px;
+      z-index: 2000;
 
       display: none;
       align-items: center;
       gap: 10px;
+
+      background: rgba(0,0,0,0.9);
+      border: 1px solid var(--azul-claro);
+      border-radius: 30px;
+
+      color: white;
+      padding: 14px 18px;
+
+      font-family: "Gordita", sans-serif;
+      font-size: 11px;
     }
 
     .controle-som.visivel {
       display: flex;
     }
 
-    .controle-som:hover {
-      background: var(--azul);
-    }
-
     /* =========================================
-       BARRA DE PROGRESSO
-    ========================================= */
-
-    .barra-progresso {
-      position: fixed;
-
-      top: 0;
-      left: 0;
-
-      width: 0;
-      height: 3px;
-
-      background: var(--azul-claro);
-
-      z-index: 2000;
-    }
-
-    /* =========================================
-       ANIMAÇÕES
-    ========================================= */
-
-    .revelar {
-      opacity: 0;
-      transform: translateY(30px);
-
-      transition:
-        opacity 0.8s,
-        transform 0.8s;
-    }
-
-    .revelar.visivel {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================================
-       RODAPÉ
+       14. RODAPÉ
     ========================================= */
 
     footer {
-      background: #08090b;
+      padding: 70px 45px 35px;
 
-      padding: 70px 7% 35px;
-      border-top: 1px solid var(--borda);
+      border-top: 1px solid #292929;
+      background: black;
     }
 
     .rodape-titulo {
       font-family: "Cubao", sans-serif;
 
-      font-size: clamp(50px, 8vw, 110px);
-      font-weight: normal;
+      font-size: clamp(55px, 8vw, 95px);
+      font-weight: 400;
 
       color: var(--azul-claro);
     }
 
     .rodape-info {
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
+      justify-content: space-between;
 
       gap: 20px;
       margin-top: 35px;
@@ -709,33 +725,35 @@
       font-size: 11px;
       line-height: 1.8;
 
-      color: var(--cinza);
+      color: #bdbdbd;
     }
 
     /* =========================================
-       RESPONSIVIDADE
+       15. ANIMAÇÕES
     ========================================= */
 
-    @media (max-width: 1100px) {
+    .revelar {
+      opacity: 0;
+      transform: translateY(25px);
+
+      transition:
+        opacity 0.7s,
+        transform 0.7s;
+    }
+
+    .revelar.visivel {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================
+       16. RESPONSIVIDADE
+    ========================================= */
+
+    @media (max-width: 900px) {
 
       .cabecalho {
         flex-wrap: wrap;
-      }
-
-      nav {
-        gap: 14px;
-      }
-
-      nav button {
-        font-size: 10px;
-      }
-
-    }
-
-    @media (max-width: 800px) {
-
-      .cabecalho {
-        min-height: 75px;
       }
 
       .menu-mobile {
@@ -749,7 +767,6 @@
         flex-direction: column;
         align-items: stretch;
 
-        gap: 0;
         padding: 15px 0;
       }
 
@@ -759,42 +776,68 @@
 
       nav button {
         text-align: left;
-        padding: 14px 5px;
+        padding: 12px;
 
-        border-bottom: 1px solid var(--borda);
+        border-bottom: 1px solid #292929;
       }
 
-      .pagina {
-        padding-top: 75px;
+      .reportagem-conteudo {
+        padding: 45px 35px;
       }
 
-      .capa,
-      .capa-conteudo {
+      .ilustracao-cibs {
+        width: 210px;
+        margin-right: -15px;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .site {
+        width: 100%;
+      }
+
+      .capa {
         min-height: calc(100svh - 75px);
       }
 
-      .capa-conteudo {
-        padding: 70px 5% 100px;
-      }
-
       .capa-titulo {
-        font-size: clamp(48px, 11vw, 85px);
+        font-size: clamp(45px, 12vw, 75px);
       }
 
       .capa-subtitulo {
-        font-size: clamp(17px, 4vw, 25px);
+        font-size: 20px;
       }
 
-      .capa-autoria {
-        font-size: 11px;
+      .imagem-ponte {
+        height: 200px;
       }
 
-      .conteudo {
-        padding: 75px 7%;
+      .reportagem-conteudo {
+        padding: 40px 25px;
+      }
+
+      .reportagem-titulo {
+        font-size: 30px;
+      }
+
+      .corpo-reportagem p {
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .ilustracao-cibs {
+        width: 155px;
+        margin: 5px 0 15px 18px;
       }
 
       .pagina-abertura {
-        padding: 80px 7% 55px;
+        padding: 75px 30px;
+      }
+
+      .conteudo {
+        padding: 70px 30px;
       }
 
       .grade,
@@ -802,8 +845,12 @@
         grid-template-columns: 1fr;
       }
 
-      .galeria-item img {
-        height: 300px;
+      .destaque {
+        padding: 75px 30px;
+      }
+
+      footer {
+        padding: 60px 30px 30px;
       }
 
     }
@@ -825,10 +872,10 @@
 
 <body>
 
-  <div class="barra-progresso" id="barraProgresso"></div>
+<div class="site">
 
   <!-- =====================================
-       MENU
+       MENU PRINCIPAL
   ===================================== -->
 
   <header>
@@ -897,20 +944,18 @@
 
     <section class="pagina ativa" id="inicio">
 
+      <!-- CAPA -->
+
       <div class="capa">
 
-        <!-- IMAGEM GRANDE DE FUNDO -->
-
-        <div class="capa-ilustracao">
+        <div class="capa-imagem">
 
           <img
             src="./imagens/IMAGEM DA CAPA.PNG.png"
-            alt="Ilustração principal da Correnteza"
+            alt="Ilustração de capa da Correnteza"
           >
 
         </div>
-
-        <!-- TEXTOS SOBRE A IMAGEM -->
 
         <div class="capa-conteudo">
 
@@ -929,125 +974,258 @@
             por CIBELLE VIEIRA
           </p>
 
-          <button
-            class="capa-descer"
-            type="button"
-            id="botaoDescer"
-          >
-            CONHEÇA A CORRENTEZA
-            <span>↓</span>
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- APRESENTAÇÃO -->
-
-      <div class="conteudo" id="apresentacao">
-
-        <span class="pagina-numero revelar">
-          01 / APRESENTAÇÃO
-        </span>
-
-        <h2 class="titulo-secao revelar">
-          O QUE É A CORRENTEZA?
-        </h2>
-
-        <div class="texto revelar">
-
-          <p>
-            Entre duas margens, existe um território de encontros,
-            memórias, movimentos e diferentes formas de produzir
-            cultura.
-          </p>
-
-          <p>
-            Correnteza é um espaço de travessia por narrativas,
-            artistas, coletivos e lugares que participam da
-            construção cultural do Sertão.
-          </p>
-
-          <p>
-            Aqui, a navegação é também um convite para conhecer
-            experiências e descobrir outras formas de representar
-            esse território.
-          </p>
-
         </div>
 
         <button
-          class="botao-link revelar"
+          class="capa-descer"
+          id="botaoDescer"
           type="button"
-          data-pagina="a-margem"
         >
-          INICIAR A TRAVESSIA →
+          CONTINUE A TRAVESSIA ↓
         </button>
 
       </div>
 
-      <!-- DESTAQUE -->
+      <!-- =====================================
+           REPORTAGEM
+      ===================================== -->
+
+      <article class="reportagem" id="reportagem">
+
+        <!-- IMAGEM DA ILHA DO FOGO -->
+
+        <div class="imagem-ponte">
+
+          <img
+            src="./imagens/ILHA DO FOGO.PNG.png"
+            alt="Ilustração da Ilha do Fogo entre Petrolina e Juazeiro"
+          >
+
+        </div>
+
+        <div class="reportagem-conteudo">
+
+          <h2 class="reportagem-titulo">
+            ENTRE DUAS MARGENS, UMA SÓ CORRENTEZA
+          </h2>
+
+          <div class="reportagem-creditos">
+
+            <p><strong>Autora:</strong> Cibelle Vieira</p>
+            <p><strong>Orientação:</strong> Raiane Sousa</p>
+            <p><strong>Design e desenvolvimento do site:</strong> Jenifer Silva</p>
+
+          </div>
+
+          <div class="corpo-reportagem">
+
+            <!-- ILUSTRAÇÃO DE CIBS CRIANÇA -->
+
+            <figure class="ilustracao-cibs">
+
+              <img
+                src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
+                alt="Ilustração de Cibelle criança"
+                loading="lazy"
+              >
+
+            </figure>
+
+            <p class="primeiro-paragrafo">
+              Nasci em Juazeiro, na Bahia, mas vivi a vida inteira
+              em Petrolina, Pernambuco. Certa vez, durante a
+              apresentação de um trabalho em Salvador, mencionei
+              esse fato. Com certa desconfiança, alguém me perguntou
+              se aquilo era uma piada. Respondi com outra pergunta:
+              por que seria?
+            </p>
+
+            <p>
+              Petrolina e Juazeiro ficaram imortalizadas nos versos
+              da canção Petrolina-Juazeiro, composta por Jorge de
+              Altinho: “Petrolina, Juazeiro; Juazeiro, Petrolina.
+              Todas as duas eu acho uma coisa linda”. A música
+              traduz, em poucas palavras, a proximidade entre duas
+              cidades que, embora pertençam a estados diferentes,
+              compartilham muito mais do que uma paisagem.
+              Ainda assim, para quem olha de fora, essa relação
+              nem sempre parece tão evidente. Talvez porque as
+              fronteiras políticas insistam em separar aquilo
+              que a vida cotidiana aproxima.
+            </p>
+
+            <p>
+              Minha história entre essas duas margens não tem nada
+              de extraordinário para quem cresceu por aqui.
+              Meu nascimento, assim como o de tantas outras
+              pessoas da minha geração, também atravessa um
+              período de dificuldades na saúde pública de Petrolina,
+              quando nascer em uma cidade e buscar atendimento
+              na outra se tornou parte da realidade de muitas
+              famílias.
+            </p>
+
+            <div class="limpar"></div>
+
+            <p>
+              É assim que se vive entre Petrolina e Juazeiro:
+              cidades separadas por uma divisa estadual,
+              mas aproximadas pelo Rio Opará, também conhecido
+              como São Francisco, e por uma vida cotidiana que
+              não cabe nas fronteiras dos mapas. Quando falta
+              algo de um lado, atravessa-se a ponte para buscar
+              do outro. Trabalha-se em uma cidade, estuda-se
+              na outra e constroem-se afetos, histórias e
+              pertencimentos que circulam entre as duas margens.
+              Somos pernambaianos, PEBA's, como gostamos de dizer.
+              E não há contradição nisso.
+            </p>
+
+            <p>
+              A arte produzida neste território também atravessa
+              pontes, margens e fronteiras. Artistas, coletivos,
+              grupos culturais e iniciativas independentes
+              constroem suas trajetórias em meio a essas trocas,
+              criando formas próprias de expressar o lugar onde
+              vivem. Entre Petrolina e Juazeiro, a produção
+              artística não se limita aos equipamentos culturais,
+              aos palcos ou às galerias: ela também ocupa ruas,
+              escolas, bairros periféricos, espaços comunitários
+              e territórios onde a criação se torna uma possibilidade
+              de encontro, reconhecimento e transformação.
+            </p>
+
+            <p>
+              Olhar para essa produção é também reconhecer que
+              o Semiárido não se resume à paisagem da seca,
+              à escassez ou às imagens historicamente associadas
+              ao sertão. Há outras narrativas sendo construídas
+              por quem vive aqui. Narrativas que passam pelo teatro,
+              pela música, pelas artes visuais, pela dança,
+              pelo audiovisual, pela literatura e por tantas
+              outras linguagens. São expressões que reivindicam
+              o direito de contar a própria história, questionar
+              representações estabelecidas e produzir imagens
+              diferentes sobre o Nordeste e sobre si mesmas.
+            </p>
+
+            <p>
+              Mas essas manifestações não surgiram de maneira
+              isolada, tampouco começaram a existir quando passaram
+              a receber reconhecimento institucional. Há uma
+              trajetória de artistas, mestres, grupos, movimentos
+              e espaços culturais que, em diferentes momentos,
+              abriram caminhos para que outras formas de criação
+              encontrassem lugar neste território.
+            </p>
+
+            <p>
+              Como nenhuma história começa exatamente onde a gente
+              decide contá-la, compreender as expressões artísticas
+              que existem hoje entre essas duas margens exige
+              reconhecer os caminhos que vieram antes, as memórias
+              que permanecem e as histórias que nem sempre
+              encontraram espaço para serem narradas. É também
+              uma oportunidade de questionar quem teve o direito
+              de representar o sertão, quais imagens foram
+              legitimadas e quais experiências permaneceram
+              à margem dessas narrativas.
+            </p>
+
+            <p>
+              Por isso, peço licença a quem veio antes de mim.
+              Esta reportagem nasce também da minha experiência
+              de viver entre essas duas cidades, de reconhecer
+              neste território parte da minha identidade e de
+              compreender a arte como uma das maneiras pelas
+              quais construímos nossas próprias formas de existir.
+              Não se trata de contar uma história definitiva
+              sobre a cultura de Petrolina e Juazeiro, mas de
+              percorrer algumas das muitas histórias que a
+              constituem, dando espaço a quem cria, resiste,
+              experimenta e transforma o lugar que chama de casa.
+            </p>
+
+            <p>
+              Esta é uma tentativa de acompanhar a correnteza
+              dessas narrativas: reconhecer suas origens,
+              encontrar seus percursos e escutar as vozes
+              que seguem movimentando a arte e a identidade
+              no Vale do São Francisco.
+            </p>
+
+          </div>
+
+        </div>
+
+      </article>
+
+      <!-- =====================================
+           DESTAQUE
+      ===================================== -->
 
       <div class="destaque">
 
-        <h2 class="destaque-frase revelar">
-          O SERTÃO NÃO CABE EM UMA
-          <span>ÚNICA NARRATIVA.</span>
+        <h2>
+          ENTRE DUAS MARGENS,
+          <span>OUTRAS HISTÓRIAS.</span>
         </h2>
 
       </div>
 
-      <!-- NAVEGAÇÃO POR CARDS -->
+      <!-- =====================================
+           NAVEGAÇÃO POR CARDS
+      ===================================== -->
 
       <div class="conteudo">
 
-        <span class="pagina-numero revelar">
-          02 / EXPLORE
+        <span class="pagina-numero">
+          EXPLORE A CORRENTEZA
         </span>
 
-        <h2 class="titulo-secao revelar">
-          ESCOLHA SUA TRAVESSIA
+        <h2 class="titulo-secao">
+          CONTINUE A TRAVESSIA
         </h2>
 
         <div class="grade">
 
-          <button class="card revelar" data-pagina="a-margem">
+          <button class="card" data-pagina="a-margem">
             <span class="card-numero">01</span>
             <span class="card-titulo">À MARGEM</span>
             <span class="card-seta">↗</span>
           </button>
 
-          <button class="card revelar" data-pagina="linha-do-tempo">
+          <button class="card" data-pagina="linha-do-tempo">
             <span class="card-numero">02</span>
             <span class="card-titulo">LINHA DO TEMPO</span>
             <span class="card-seta">↗</span>
           </button>
 
-          <button class="card revelar" data-pagina="nucleo-biruta">
+          <button class="card" data-pagina="nucleo-biruta">
             <span class="card-numero">03</span>
             <span class="card-titulo">NÚCLEO BIRUTA</span>
             <span class="card-seta">↗</span>
           </button>
 
-          <button class="card revelar" data-pagina="coletivo-abdias">
+          <button class="card" data-pagina="coletivo-abdias">
             <span class="card-numero">04</span>
             <span class="card-titulo">COLETIVO ABDIAS</span>
             <span class="card-seta">↗</span>
           </button>
 
-          <button class="card revelar" data-pagina="caatingayro">
+          <button class="card" data-pagina="caatingayro">
             <span class="card-numero">05</span>
             <span class="card-titulo">CAATINGAYRO</span>
             <span class="card-seta">↗</span>
           </button>
 
-          <button class="card revelar" data-pagina="artistas">
+          <button class="card" data-pagina="artistas">
             <span class="card-numero">06</span>
             <span class="card-titulo">ARTISTAS</span>
             <span class="card-seta">↗</span>
           </button>
 
-          <button class="card revelar" data-pagina="lugares">
+          <button class="card" data-pagina="lugares">
             <span class="card-numero">07</span>
             <span class="card-titulo">LUGARES</span>
             <span class="card-seta">↗</span>
@@ -1076,48 +1254,23 @@
         </h1>
 
         <p class="pagina-descricao">
-          Outras perspectivas sobre o território,
-          suas histórias e suas representações.
+          Narrativas, experiências e representações
+          que atravessam o território.
         </p>
 
       </div>
 
       <div class="conteudo">
 
-        <h2 class="titulo-secao revelar">
+        <h2 class="titulo-secao">
           ENTRE MARGENS
         </h2>
 
-        <div class="texto revelar">
-
+        <div class="texto">
           <p>
-            O território não é apenas aquilo que aparece nos mapas.
-            Ele também é construído por quem vive, circula,
-            cria e transforma os espaços.
+            Espaço reservado para o conteúdo da página À Margem.
           </p>
-
-          <p>
-            Esta página apresenta uma abertura para refletir
-            sobre as representações do Sertão e as narrativas
-            que emergem de seus próprios sujeitos.
-          </p>
-
         </div>
-
-        <img
-          class="imagem-destaque revelar"
-          src="./imagens/ILHA DO FOGO.PNG.png"
-          alt="Ilha do Fogo"
-          loading="lazy"
-        >
-
-        <button
-          class="botao-link"
-          type="button"
-          data-pagina="linha-do-tempo"
-        >
-          CONTINUAR A TRAVESSIA →
-        </button>
 
       </div>
 
@@ -1140,79 +1293,28 @@
         </h1>
 
         <p class="pagina-descricao">
-          Percursos, acontecimentos e transformações
-          que atravessam o território.
+          Percursos históricos, memórias e transformações
+          culturais entre Petrolina e Juazeiro.
         </p>
 
       </div>
 
       <div class="conteudo">
 
-        <h2 class="titulo-secao revelar">
-          O TEMPO TAMBÉM É TERRITÓRIO
+        <h2 class="titulo-secao">
+          MEMÓRIAS DO TERRITÓRIO
         </h2>
 
-        <div class="texto revelar">
-
+        <div class="texto">
           <p>
-            A história de um lugar pode ser contada por
-            acontecimentos, lembranças, imagens e experiências.
+            Espaço reservado para os acontecimentos
+            históricos e culturais da linha do tempo.
           </p>
-
-          <p>
-            Esta linha do tempo será construída a partir dos
-            marcos históricos e culturais selecionados para
-            o projeto.
-          </p>
-
-        </div>
-
-        <div class="linha-tempo">
-
-          <div class="linha-tempo-item revelar">
-
-            <h3 class="linha-tempo-data">
-              MEMÓRIAS
-            </h3>
-
-            <p class="linha-tempo-texto">
-              Narrativas que permanecem e ajudam a compreender
-              as transformações do território.
-            </p>
-
-          </div>
-
-          <div class="linha-tempo-item revelar">
-
-            <h3 class="linha-tempo-data">
-              MOVIMENTOS
-            </h3>
-
-            <p class="linha-tempo-texto">
-              Experiências coletivas, manifestações culturais
-              e formas de organização.
-            </p>
-
-          </div>
-
-          <div class="linha-tempo-item revelar">
-
-            <h3 class="linha-tempo-data">
-              PRESENTE
-            </h3>
-
-            <p class="linha-tempo-texto">
-              As produções e os sujeitos que continuam
-              construindo outras narrativas.
-            </p>
-
-          </div>
-
         </div>
 
         <div class="galeria">
 
-          <div class="galeria-item revelar">
+          <div class="galeria-item">
 
             <img
               src="./imagens/construção da Barragem.png.png"
@@ -1226,7 +1328,7 @@
 
           </div>
 
-          <div class="galeria-item revelar">
+          <div class="galeria-item">
 
             <img
               src="./imagens/Círculo Operário de Juazeiro.png.png"
@@ -1263,26 +1365,17 @@
         </h1>
 
         <p class="pagina-descricao">
-          Um espaço dedicado às experiências e produções
-          do Núcleo Biruta.
+          Trajetórias e produções culturais.
         </p>
 
       </div>
 
       <div class="conteudo">
 
-        <h2 class="titulo-secao revelar">
-          CULTURA EM MOVIMENTO
-        </h2>
-
-        <div class="texto revelar">
-
+        <div class="texto">
           <p>
-            Esta página reunirá a apresentação do Núcleo Biruta,
-            sua trajetória e as produções selecionadas
-            para integrar a Correnteza.
+            Espaço reservado para o conteúdo do Núcleo Biruta.
           </p>
-
         </div>
 
       </div>
@@ -1306,25 +1399,17 @@
         </h1>
 
         <p class="pagina-descricao">
-          Narrativas, produções e experiências coletivas.
+          Arte, memória e experiências coletivas.
         </p>
 
       </div>
 
       <div class="conteudo">
 
-        <h2 class="titulo-secao revelar">
-          OUTRAS VOZES
-        </h2>
-
-        <div class="texto revelar">
-
+        <div class="texto">
           <p>
-            Este espaço será dedicado à trajetória,
-            às ações e às produções do Coletivo Abdias
-            selecionadas para o projeto.
+            Espaço reservado para o conteúdo do Coletivo Abdias.
           </p>
-
         </div>
 
       </div>
@@ -1348,26 +1433,17 @@
         </h1>
 
         <p class="pagina-descricao">
-          Arte, identidade e formas de expressão
-          construídas no território.
+          Arte e outras formas de expressão do território.
         </p>
 
       </div>
 
       <div class="conteudo">
 
-        <h2 class="titulo-secao revelar">
-          EXPRESSAR O SERTÃO
-        </h2>
-
-        <div class="texto revelar">
-
+        <div class="texto">
           <p>
-            Esta página receberá as narrativas,
-            os registros e as produções do Caatingayro
-            que compõem a proposta da Correnteza.
+            Espaço reservado para o conteúdo do Caatingayro.
           </p>
-
         </div>
 
       </div>
@@ -1391,57 +1467,19 @@
         </h1>
 
         <p class="pagina-descricao">
-          Pessoas que criam, interpretam e transformam
-          as formas de representar o Sertão.
+          Pessoas que criam e transformam as formas
+          de representar o Sertão.
         </p>
 
       </div>
 
       <div class="conteudo">
 
-        <h2 class="titulo-secao revelar">
-          QUEM CRIA TAMBÉM CONTA
-        </h2>
-
-        <div class="texto revelar">
-
+        <div class="texto">
           <p>
-            Aqui serão apresentados os artistas participantes
-            do projeto, suas trajetórias e produções.
+            Espaço reservado para as trajetórias
+            e produções dos artistas.
           </p>
-
-        </div>
-
-        <div class="galeria">
-
-          <div class="galeria-item revelar">
-
-            <img
-              src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
-              alt="Ilustração de Cibs criança"
-              loading="lazy"
-            >
-
-            <p class="galeria-legenda">
-              Ilustração
-            </p>
-
-          </div>
-
-          <div class="galeria-item revelar">
-
-            <img
-              src="./imagens/Coelhão.png.png"
-              alt="Ilustração Coelhão"
-              loading="lazy"
-            >
-
-            <p class="galeria-legenda">
-              Coelhão
-            </p>
-
-          </div>
-
         </div>
 
       </div>
@@ -1465,37 +1503,23 @@
         </h1>
 
         <p class="pagina-descricao">
-          Espaços de memória, encontros,
-          pertencimentos e transformações.
+          Espaços de memória, pertencimento e encontros.
         </p>
 
       </div>
 
       <div class="conteudo">
 
-        <h2 class="titulo-secao revelar">
-          GEOGRAFIAS DO COTIDIANO
-        </h2>
-
-        <div class="texto revelar">
-
+        <div class="texto">
           <p>
-            Os lugares guardam histórias que nem sempre
-            aparecem nas representações mais conhecidas
-            de um território.
+            Espaço reservado para as narrativas
+            dos lugares que integram a Correnteza.
           </p>
-
-          <p>
-            Nesta página, imagens e narrativas ajudarão
-            a construir outros olhares sobre os espaços
-            que integram a Correnteza.
-          </p>
-
         </div>
 
         <div class="galeria">
 
-          <div class="galeria-item revelar">
+          <div class="galeria-item">
 
             <img
               src="./imagens/ILHA DO FOGO.PNG.png"
@@ -1509,7 +1533,7 @@
 
           </div>
 
-          <div class="galeria-item revelar">
+          <div class="galeria-item">
 
             <img
               src="./imagens/Comissão Pastoral da Terra.png.png"
@@ -1552,392 +1576,359 @@
       </p>
 
       <p>
-        Outras formas de representar o Sertão
+        Design e desenvolvimento: Jenifer Silva
       </p>
 
     </div>
 
   </footer>
 
-  <!-- =====================================
-       SOM DO RIO
-  ===================================== -->
+</div>
 
-  <audio id="somRio" loop preload="none">
+<!-- =====================================
+     ÁUDIO
+===================================== -->
 
-    <source
-      src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
-      type="audio/mpeg"
-    >
+<audio id="somRio" loop preload="none">
 
-  </audio>
-
-  <button
-    class="controle-som visivel"
-    id="controleSom"
-    type="button"
-    aria-label="Ativar som do rio"
-    aria-pressed="false"
+  <source
+    src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
+    type="audio/mpeg"
   >
 
-    <span id="iconeSom">♪</span>
-    <span id="textoSom">ATIVAR SOM DO RIO</span>
+</audio>
 
-  </button>
+<button
+  class="controle-som visivel"
+  id="controleSom"
+  type="button"
+  aria-label="Ativar som do rio"
+  aria-pressed="false"
+>
 
-  <!-- =====================================
-       JAVASCRIPT
-  ===================================== -->
+  <span id="iconeSom">♪</span>
+  <span id="textoSom">ATIVAR SOM DO RIO</span>
 
-  <script>
+</button>
 
-    /* ELEMENTOS */
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
 
-    const paginas =
-      document.querySelectorAll(".pagina");
+<script>
 
-    const botoesNavegacao =
-      document.querySelectorAll("[data-pagina]");
+  /* =====================================
+     ELEMENTOS
+  ===================================== */
 
-    const botoesMenu =
-      document.querySelectorAll("nav [data-pagina]");
+  const paginas =
+    document.querySelectorAll(".pagina");
 
-    const menuPrincipal =
-      document.getElementById("menuPrincipal");
+  const botoes =
+    document.querySelectorAll("[data-pagina]");
 
-    const botaoMenu =
-      document.getElementById("botaoMenu");
+  const botoesMenu =
+    document.querySelectorAll("nav [data-pagina]");
 
-    const audio =
-      document.getElementById("somRio");
+  const menuPrincipal =
+    document.getElementById("menuPrincipal");
 
-    const controleSom =
-      document.getElementById("controleSom");
+  const botaoMenu =
+    document.getElementById("botaoMenu");
 
-    const textoSom =
-      document.getElementById("textoSom");
+  const audio =
+    document.getElementById("somRio");
 
-    const iconeSom =
-      document.getElementById("iconeSom");
+  const controleSom =
+    document.getElementById("controleSom");
 
-    const barraProgresso =
-      document.getElementById("barraProgresso");
+  const textoSom =
+    document.getElementById("textoSom");
 
-    let paginaAtual = "inicio";
+  const iconeSom =
+    document.getElementById("iconeSom");
 
-    /* =====================================
-       SOM
-    ===================================== */
+  let paginaAtual = "inicio";
 
-    function atualizarBotaoSom() {
+  /* =====================================
+     SOM
+  ===================================== */
 
-      const tocando = !audio.paused;
+  function atualizarSom() {
 
-      textoSom.textContent = tocando
-        ? "DESATIVAR SOM DO RIO"
-        : "ATIVAR SOM DO RIO";
+    const tocando = !audio.paused;
 
-      iconeSom.textContent = tocando ? "♫" : "♪";
+    textoSom.textContent = tocando
+      ? "DESATIVAR SOM DO RIO"
+      : "ATIVAR SOM DO RIO";
 
-      controleSom.setAttribute(
-        "aria-pressed",
-        String(tocando)
-      );
+    iconeSom.textContent =
+      tocando ? "♫" : "♪";
 
-      controleSom.setAttribute(
-        "aria-label",
-        tocando
-          ? "Desativar som do rio"
-          : "Ativar som do rio"
-      );
+    controleSom.setAttribute(
+      "aria-pressed",
+      String(tocando)
+    );
 
+    controleSom.setAttribute(
+      "aria-label",
+      tocando
+        ? "Desativar som do rio"
+        : "Ativar som do rio"
+    );
+
+  }
+
+  function pararSom() {
+
+    audio.pause();
+    audio.currentTime = 0;
+
+    atualizarSom();
+
+  }
+
+  controleSom.addEventListener("click", async () => {
+
+    if (paginaAtual !== "inicio") {
+      return;
     }
 
-    function pararSom() {
+    if (audio.paused) {
 
-      audio.pause();
-      audio.currentTime = 0;
-
-      atualizarBotaoSom();
-
-    }
-
-    controleSom.addEventListener("click", async () => {
-
-      if (paginaAtual !== "inicio") {
-        return;
+      try {
+        await audio.play();
+      } catch (erro) {
+        console.error(
+          "Erro ao reproduzir o áudio:",
+          erro
+        );
       }
 
-      if (audio.paused) {
+    } else {
 
-        try {
-          await audio.play();
-        } catch (erro) {
-          console.error(
-            "Erro ao reproduzir áudio:",
-            erro
-          );
-        }
+      audio.pause();
+
+    }
+
+    atualizarSom();
+
+  });
+
+  audio.addEventListener("play", atualizarSom);
+  audio.addEventListener("pause", atualizarSom);
+
+  /* =====================================
+     NAVEGAÇÃO ENTRE PÁGINAS
+  ===================================== */
+
+  function abrirPagina(id, atualizarHistorico = true) {
+
+    const destino =
+      document.getElementById(id);
+
+    if (
+      !destino ||
+      !destino.classList.contains("pagina")
+    ) {
+      return;
+    }
+
+    if (id !== "inicio") {
+      pararSom();
+    }
+
+    paginaAtual = id;
+
+    paginas.forEach(pagina => {
+
+      pagina.classList.toggle(
+        "ativa",
+        pagina.id === id
+      );
+
+    });
+
+    botoesMenu.forEach(botao => {
+
+      const ativo =
+        botao.dataset.pagina === id;
+
+      botao.classList.toggle("ativo", ativo);
+
+      if (ativo) {
+
+        botao.setAttribute(
+          "aria-current",
+          "page"
+        );
 
       } else {
 
-        audio.pause();
+        botao.removeAttribute("aria-current");
 
       }
-
-      atualizarBotaoSom();
 
     });
 
-    audio.addEventListener("play", atualizarBotaoSom);
-    audio.addEventListener("pause", atualizarBotaoSom);
+    controleSom.classList.toggle(
+      "visivel",
+      id === "inicio"
+    );
 
-    /* =====================================
-       NAVEGAÇÃO
-    ===================================== */
+    menuPrincipal.classList.remove("aberto");
 
-    function abrirPagina(id, atualizarHistorico = true) {
+    botaoMenu.setAttribute(
+      "aria-expanded",
+      "false"
+    );
 
-      const destino =
-        document.getElementById(id);
+    botaoMenu.textContent = "☰";
 
-      if (
-        !destino ||
-        !destino.classList.contains("pagina")
-      ) {
-        return;
-      }
+    if (atualizarHistorico) {
 
-      if (id !== "inicio") {
-        pararSom();
-      }
+      history.pushState(
+        { pagina: id },
+        "",
+        "#" + id
+      );
 
-      paginaAtual = id;
+    }
 
-      paginas.forEach(pagina => {
+    window.scrollTo(0, 0);
 
-        pagina.classList.toggle(
-          "ativa",
-          pagina.id === id
-        );
+    observarElementos();
 
-      });
+  }
 
-      botoesMenu.forEach(botao => {
+  botoes.forEach(botao => {
 
-        const ativo =
-          botao.dataset.pagina === id;
+    botao.addEventListener("click", evento => {
 
-        botao.classList.toggle("ativo", ativo);
+      evento.preventDefault();
 
-        if (ativo) {
-          botao.setAttribute(
-            "aria-current",
-            "page"
-          );
-        } else {
-          botao.removeAttribute("aria-current");
+      abrirPagina(
+        botao.dataset.pagina
+      );
+
+    });
+
+  });
+
+  /* =====================================
+     MENU MOBILE
+  ===================================== */
+
+  botaoMenu.addEventListener("click", () => {
+
+    const aberto =
+      menuPrincipal.classList.toggle("aberto");
+
+    botaoMenu.setAttribute(
+      "aria-expanded",
+      String(aberto)
+    );
+
+    botaoMenu.textContent =
+      aberto ? "✕" : "☰";
+
+  });
+
+  /* =====================================
+     BOTÃO DESCER DA CAPA
+  ===================================== */
+
+  document
+    .getElementById("botaoDescer")
+    .addEventListener("click", () => {
+
+      document
+        .getElementById("reportagem")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    });
+
+  /* =====================================
+     ANIMAÇÕES
+  ===================================== */
+
+  const observador = new IntersectionObserver(
+    entradas => {
+
+      entradas.forEach(entrada => {
+
+        if (entrada.isIntersecting) {
+
+          entrada.target.classList.add("visivel");
+
+          observador.unobserve(entrada.target);
+
         }
 
       });
 
-      controleSom.classList.toggle(
-        "visivel",
-        id === "inicio"
-      );
-
-      menuPrincipal.classList.remove("aberto");
-
-      botaoMenu.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      botaoMenu.textContent = "☰";
-
-      if (atualizarHistorico) {
-
-        history.pushState(
-          { pagina: id },
-          "",
-          "#" + id
-        );
-
-      }
-
-      window.scrollTo({
-        top: 0,
-        behavior: "instant"
-      });
-
-      atualizarBarraProgresso();
-      observarElementos();
-
+    },
+    {
+      threshold: 0.08
     }
+  );
 
-    botoesNavegacao.forEach(botao => {
-
-      botao.addEventListener("click", evento => {
-
-        evento.preventDefault();
-
-        abrirPagina(
-          botao.dataset.pagina
-        );
-
-      });
-
-    });
-
-    /* =====================================
-       MENU MOBILE
-    ===================================== */
-
-    botaoMenu.addEventListener("click", () => {
-
-      const aberto =
-        menuPrincipal.classList.toggle("aberto");
-
-      botaoMenu.setAttribute(
-        "aria-expanded",
-        String(aberto)
-      );
-
-      botaoMenu.textContent =
-        aberto ? "✕" : "☰";
-
-    });
-
-    /* =====================================
-       DESCER NA CAPA
-    ===================================== */
+  function observarElementos() {
 
     document
-      .getElementById("botaoDescer")
-      .addEventListener("click", () => {
-
-        document
-          .getElementById("apresentacao")
-          .scrollIntoView({
-            behavior: "smooth"
-          });
-
-      });
-
-    /* =====================================
-       PROGRESSO
-    ===================================== */
-
-    function atualizarBarraProgresso() {
-
-      const alturaDocumento =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-      const progresso = alturaDocumento > 0
-        ? (window.scrollY / alturaDocumento) * 100
-        : 0;
-
-      barraProgresso.style.width =
-        Math.min(100, Math.max(0, progresso)) + "%";
-
-    }
-
-    window.addEventListener(
-      "scroll",
-      atualizarBarraProgresso,
-      { passive: true }
-    );
-
-    window.addEventListener(
-      "resize",
-      atualizarBarraProgresso
-    );
-
-    /* =====================================
-       ANIMAÇÕES
-    ===================================== */
-
-    const observador = new IntersectionObserver(
-      entradas => {
-
-        entradas.forEach(entrada => {
-
-          if (entrada.isIntersecting) {
-
-            entrada.target.classList.add("visivel");
-
-            observador.unobserve(entrada.target);
-
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.08,
-        rootMargin: "0px 0px -25px 0px"
-      }
-    );
-
-    function observarElementos() {
-
-      const elementos =
-        document.querySelectorAll(
-          ".pagina.ativa .revelar:not(.visivel)"
-        );
-
-      elementos.forEach(elemento => {
+      .querySelectorAll(
+        ".pagina.ativa .revelar:not(.visivel)"
+      )
+      .forEach(elemento => {
         observador.observe(elemento);
       });
 
-    }
+  }
 
-    /* =====================================
-       HISTÓRICO DO NAVEGADOR
-    ===================================== */
+  /* =====================================
+     HISTÓRICO DO NAVEGADOR
+  ===================================== */
 
-    function verificarEndereco() {
+  function verificarEndereco() {
 
-      const id = decodeURIComponent(
-        window.location.hash.replace("#", "")
-      );
-
-      const elemento =
-        document.getElementById(id);
-
-      const paginaValida =
-        elemento &&
-        elemento.classList.contains("pagina");
-
-      abrirPagina(
-        paginaValida ? id : "inicio",
-        false
-      );
-
-    }
-
-    window.addEventListener(
-      "popstate",
-      verificarEndereco
+    const id = decodeURIComponent(
+      window.location.hash.replace("#", "")
     );
 
-    window.addEventListener(
-      "hashchange",
-      verificarEndereco
+    const elemento =
+      document.getElementById(id);
+
+    const paginaValida =
+      elemento &&
+      elemento.classList.contains("pagina");
+
+    abrirPagina(
+      paginaValida ? id : "inicio",
+      false
     );
 
-    /* =====================================
-       INICIAR SITE
-    ===================================== */
+  }
 
-    verificarEndereco();
+  window.addEventListener(
+    "popstate",
+    verificarEndereco
+  );
 
-    atualizarBotaoSom();
+  window.addEventListener(
+    "hashchange",
+    verificarEndereco
+  );
 
-    atualizarBarraProgresso();
+  /* =====================================
+     INICIALIZAÇÃO
+  ===================================== */
 
-  </script>
+  verificarEndereco();
+  atualizarSom();
+
+</script>
 
 </body>
 </html>
