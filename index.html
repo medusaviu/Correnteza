@@ -5,10 +5,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#050505">
+
 <title>Entre Duas Margens, Uma Só Correnteza</title>
 
 <style>
-/* ===================== FONTES ===================== */
+
+/* ==================================================
+   FONTES
+================================================== */
 
 @font-face {
   font-family: "Cubao";
@@ -42,14 +46,16 @@
   font-display: swap;
 }
 
-/* ===================== GERAL ===================== */
+/* ==================================================
+   CONFIGURAÇÕES GERAIS
+================================================== */
 
 :root {
   --preto: #050505;
-  --azul: #a6b7ef;
   --branco: #f5f5f5;
-  --altura-menu: 72px;
+  --azul: #a6b7ef;
   --largura-texto: 740px;
+  --altura-menu: 72px;
 }
 
 * {
@@ -71,12 +77,9 @@ body {
   overflow-x: hidden;
 }
 
-button, input, textarea {
-  font-family: inherit;
-}
-
 button {
   cursor: pointer;
+  font-family: inherit;
 }
 
 a {
@@ -92,16 +95,19 @@ img {
 .site {
   width: 100%;
   min-height: 100vh;
+  overflow: clip;
   background: var(--preto);
 }
 
-/* ===================== MENU ===================== */
+/* ==================================================
+   MENU
+================================================== */
 
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(0,0,0,.97);
+  background: rgba(0, 0, 0, .97);
   backdrop-filter: blur(12px);
 }
 
@@ -122,14 +128,13 @@ nav {
 }
 
 nav button {
+  position: relative;
+  border: none;
   background: transparent;
-  border: 0;
-  color: #eee;
+  color: #eeeeee;
   padding: 9px 0;
   font-family: "Gordita", Arial, sans-serif;
   font-size: clamp(10px, .9vw, 13px);
-  font-weight: 400;
-  position: relative;
 }
 
 nav button::after {
@@ -155,14 +160,16 @@ nav button.ativo::after {
 
 .menu-mobile {
   display: none;
-  background: none;
+  background: transparent;
   border: 1px solid #555;
   color: white;
   padding: 8px 13px;
   font-size: 22px;
 }
 
-/* ===================== PÁGINAS ===================== */
+/* ==================================================
+   PÁGINAS
+================================================== */
 
 .pagina {
   display: none;
@@ -179,14 +186,16 @@ nav button.ativo::after {
   to { opacity: 1; }
 }
 
-/* ===================== CAPA ===================== */
+/* ==================================================
+   CAPA
+================================================== */
 
 .capa {
   position: relative;
   isolation: isolate;
   min-height: min(780px, calc(100svh - var(--altura-menu)));
-  background: black;
   overflow: hidden;
+  background: #000;
 }
 
 .capa-imagem {
@@ -215,8 +224,8 @@ nav button.ativo::after {
 .capa-titulo {
   font-family: "Cubao", Impact, sans-serif;
   font-size: clamp(56px, 8vw, 125px);
-  line-height: .98;
   font-weight: 400;
+  line-height: .98;
 }
 
 .capa-titulo span {
@@ -254,7 +263,9 @@ nav button.ativo::after {
   background: #34437e;
 }
 
-/* ===================== CONTINUAÇÃO DA CAPA ===================== */
+/* ==================================================
+   CONTINUAÇÃO DA CAPA
+================================================== */
 
 .continuacao-capa {
   position: relative;
@@ -298,7 +309,9 @@ nav button.ativo::after {
   transform: scale(1.08);
 }
 
-/* ===================== TEXTOS DAS REPORTAGENS ===================== */
+/* ==================================================
+   REPORTAGEM INICIAL
+================================================== */
 
 .reportagem {
   position: relative;
@@ -327,11 +340,6 @@ nav button.ativo::after {
   text-align: left;
 }
 
-/*
-  LETRA INICIAL AMPLIADA:
-  Aplicada à primeira reportagem e a À Margem.
-*/
-
 .primeiro-paragrafo::first-letter {
   float: left;
   font-family: "Neue Montreal", Arial, sans-serif;
@@ -340,8 +348,6 @@ nav button.ativo::after {
   line-height: .79;
   padding: 7px 3px 0 0;
 }
-
-/* ===================== CIBELLE CRIANÇA ===================== */
 
 .ilustracao-cibs {
   position: relative;
@@ -361,8 +367,6 @@ nav button.ativo::after {
   clear: both;
 }
 
-/* Destaque apenas na primeira reportagem */
-
 .corpo-reportagem .paragrafo-final {
   clear: both;
   max-width: 850px;
@@ -376,45 +380,80 @@ nav button.ativo::after {
   text-align: center;
 }
 
-/* ===================== BARQUINHOS PEQUENOS ===================== */
+/* ==================================================
+   BARQUINHOS — ALTERAÇÃO PRINCIPAL
 
-/*
-  A imagem é repetida lado a lado.
-  Não estica a imagem para preencher a tela.
-*/
+   A imagem será repetida horizontalmente
+   até ocupar toda a largura do site.
 
+   Isso vale para:
+   1. Separadores de À Margem
+   2. Faixa antes do rodapé
+
+   Os barquinhos continuam pequenos.
+================================================== */
+
+.margem-separador,
 .barquinhos-final {
-  width: 100%;
-  height: 100px;
-  margin: 30px 0 0;
   background-image: url("./imagens/barquinho.png.png");
   background-repeat: repeat-x;
   background-position: center center;
   background-size: auto 100px;
+  height: 100px;
   overflow: hidden;
 }
 
+/*
+   Separadores que estão dentro da coluna
+   de texto precisam sair visualmente das
+   margens para ocupar a largura da tela.
+*/
+
 .margem-separador {
   clear: both;
-  width: 100%;
+
+  width: 100vw;
+  max-width: none;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
   margin: 65px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
+/*
+   Esconde a imagem única que existia
+   anteriormente dentro dos separadores.
+   Agora a imagem é repetida no fundo.
+*/
+
 .margem-separador img {
-  width: min(100%, 520px);
-  max-height: 140px;
-  object-fit: contain;
+  display: none;
 }
+
+/*
+   Faixa final:
+   ocupa de uma ponta à outra.
+*/
+
+.barquinhos-final {
+  width: 100%;
+  margin: 30px 0 0;
+}
+
+/*
+   Respiro entre a faixa e o rodapé.
+*/
 
 .respiro-rodape {
   height: 110px;
   background: var(--preto);
 }
 
-/* ===================== À MARGEM ===================== */
+/* ==================================================
+   À MARGEM
+================================================== */
 
 .margem-cabecalho {
   max-width: 1120px;
@@ -446,8 +485,6 @@ nav button.ativo::after {
   max-width: 800px;
 }
 
-/* Capa 123.png */
-
 .margem-capa {
   width: 100%;
   margin: 25px 0 75px;
@@ -460,8 +497,6 @@ nav button.ativo::after {
   height: auto;
   max-width: none;
 }
-
-/* Imagens da reportagem */
 
 .margem-foto-direita {
   float: right;
@@ -516,8 +551,6 @@ nav button.ativo::after {
   font-size: 13px;
 }
 
-/* Final de À Margem: texto normal */
-
 .texto-margem p.margem-final {
   clear: both;
   font-family: "Neue Montreal", Arial, sans-serif;
@@ -529,7 +562,9 @@ nav button.ativo::after {
   margin-bottom: 28px;
 }
 
-/* ===================== VÍDEOS ===================== */
+/* ==================================================
+   VÍDEOS
+================================================== */
 
 .video-reportagem {
   clear: both;
@@ -566,7 +601,9 @@ nav button.ativo::after {
   margin: 70px auto 90px;
 }
 
-/* ===================== OUTRAS PÁGINAS ===================== */
+/* ==================================================
+   OUTRAS PÁGINAS
+================================================== */
 
 .pagina-abertura {
   padding: 110px max(40px, calc((100vw - 1100px)/2)) 75px;
@@ -638,7 +675,9 @@ nav button.ativo::after {
   color: #ccc;
 }
 
-/* ===================== RODAPÉ ===================== */
+/* ==================================================
+   RODAPÉ
+================================================== */
 
 .rodape {
   position: relative;
@@ -753,7 +792,9 @@ nav button.ativo::after {
   color: #bbb;
 }
 
-/* ===================== ÁUDIO ===================== */
+/* ==================================================
+   CONTROLE DO SOM
+================================================== */
 
 .controle-som {
   position: fixed;
@@ -776,7 +817,9 @@ nav button.ativo::after {
   display: flex;
 }
 
-/* ===================== ROLAGEM ===================== */
+/* ==================================================
+   ANIMAÇÃO DE ROLAGEM
+================================================== */
 
 .revelar {
   opacity: 0;
@@ -789,9 +832,12 @@ nav button.ativo::after {
   transform: translateY(0);
 }
 
-/* ===================== RESPONSIVIDADE ===================== */
+/* ==================================================
+   RESPONSIVIDADE
+================================================== */
 
 @media (max-width: 1100px) {
+
   .ilustracao-cibs {
     width: 390px;
     margin-right: -125px;
@@ -804,9 +850,11 @@ nav button.ativo::after {
   .margem-foto-esquerda {
     margin-left: -60px;
   }
+
 }
 
 @media (max-width: 900px) {
+
   .cabecalho {
     justify-content: flex-end;
     flex-wrap: wrap;
@@ -843,9 +891,11 @@ nav button.ativo::after {
     padding-left: 5%;
     padding-right: 5%;
   }
+
 }
 
 @media (max-width: 700px) {
+
   .capa {
     min-height: 75svh;
   }
@@ -921,17 +971,20 @@ nav button.ativo::after {
     margin-right: 12px;
   }
 
-  .margem-separador {
-    margin: 45px 0;
-  }
+  /*
+     BARQUINHOS NO CELULAR:
+     menores, mas continuam repetidos
+     até as extremidades.
+  */
 
-  .margem-separador img {
-    max-height: 95px;
-  }
-
+  .margem-separador,
   .barquinhos-final {
     height: 72px;
     background-size: auto 72px;
+  }
+
+  .margem-separador {
+    margin: 45px 0;
   }
 
   .respiro-rodape {
@@ -990,10 +1043,14 @@ nav button.ativo::after {
   .credito-perfis {
     font-size: 11px;
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     scroll-behavior: auto !important;
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
@@ -1003,7 +1060,9 @@ nav button.ativo::after {
     opacity: 1;
     transform: none;
   }
+
 }
+
 </style>
 </head>
 
@@ -1013,8 +1072,13 @@ nav button.ativo::after {
 
 <header>
   <div class="cabecalho">
-    <button class="menu-mobile" id="botaoMenu" type="button"
-      aria-expanded="false" aria-label="Abrir menu">☰</button>
+
+    <button
+      class="menu-mobile"
+      id="botaoMenu"
+      type="button"
+      aria-expanded="false"
+      aria-label="Abrir menu">☰</button>
 
     <nav id="menuPrincipal" aria-label="Menu principal">
       <button type="button" data-pagina="inicio" class="ativo">Início</button>
@@ -1026,49 +1090,77 @@ nav button.ativo::after {
       <button type="button" data-pagina="artistas">Artistas</button>
       <button type="button" data-pagina="lugares">Lugares</button>
     </nav>
+
   </div>
 </header>
 
 <main>
 
-<!-- ===================== INÍCIO ===================== -->
+<!-- ==================================================
+     INÍCIO
+================================================== -->
 
 <section class="pagina ativa" id="inicio">
 
   <div class="capa">
+
     <div class="capa-imagem">
-      <img src="./imagens/IMAGEM DA CAPA.PNG.png"
+      <img
+        src="./imagens/IMAGEM DA CAPA.PNG.png"
         alt="Ilustração da capa Correnteza">
     </div>
 
     <div class="capa-conteudo">
+
       <h1 class="capa-titulo">
         <span>ENTRE DUAS</span>
         <span>MARGENS</span>
       </h1>
-      <h2 class="capa-subtitulo">UMA SÓ CORRENTEZA</h2>
-      <p class="capa-autoria">por CIBELLE VIEIRA</p>
+
+      <h2 class="capa-subtitulo">
+        UMA SÓ CORRENTEZA
+      </h2>
+
+      <p class="capa-autoria">
+        por CIBELLE VIEIRA
+      </p>
+
     </div>
 
-    <button class="capa-descer" id="botaoDescer" type="button">
+    <button
+      class="capa-descer"
+      id="botaoDescer"
+      type="button">
       CONTINUE A TRAVESSIA ↓
     </button>
+
   </div>
 
+  <!-- CONTINUAÇÃO DA CAPA -->
+
   <div class="continuacao-capa">
+
     <div class="continuacao-arte">
-      <img src="./imagens/continuação da capa.png" alt="" aria-hidden="true">
+      <img
+        src="./imagens/continuação da capa.png"
+        alt=""
+        aria-hidden="true">
     </div>
 
     <div class="ilha-sobreposta">
-      <img src="./imagens/ILHA DO FOGO.PNG.png" alt="" aria-hidden="true">
+      <img
+        src="./imagens/ILHA DO FOGO.PNG.png"
+        alt=""
+        aria-hidden="true">
     </div>
 
     <article class="reportagem" id="reportagem">
+
       <div class="corpo-reportagem">
 
         <figure class="ilustracao-cibs">
-          <img src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
+          <img
+            src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
             alt="Ilustração de Cibelle criança">
         </figure>
 
@@ -1095,29 +1187,48 @@ nav button.ativo::after {
         <p class="paragrafo-final revelar">Esta é uma tentativa de acompanhar a correnteza dessas narrativas: reconhecer suas origens, encontrar seus percursos e escutar as vozes que seguem movimentando a arte e a identidade no Vale do São Francisco.</p>
 
       </div>
+
     </article>
+
   </div>
 
-  <div class="barquinhos-final" role="img"
-    aria-label="Faixa de ilustrações de barquinhos"></div>
+  <!-- BARQUINHOS DE UMA PONTA À OUTRA -->
+
+  <div
+    class="barquinhos-final"
+    role="img"
+    aria-label="Faixa de ilustrações de barquinhos">
+  </div>
+
   <div class="respiro-rodape"></div>
 
 </section>
 
-<!-- ===================== À MARGEM ===================== -->
+<!-- ==================================================
+     À MARGEM
+================================================== -->
 
 <section class="pagina" id="a-margem">
 
   <div class="margem-cabecalho">
-    <p class="margem-numero">02 / HISTÓRIAS E MEMÓRIAS</p>
-    <h1 class="margem-titulo">À MARGEM</h1>
+
+    <p class="margem-numero">
+      02 / HISTÓRIAS E MEMÓRIAS
+    </p>
+
+    <h1 class="margem-titulo">
+      À MARGEM
+    </h1>
+
     <h2 class="margem-subtitulo">
       À margem dos equipamentos oficiais: as histórias que nem sempre encontraram espaço para serem narradas
     </h2>
+
   </div>
 
   <figure class="margem-capa revelar">
-    <img src="./imagens/123.png"
+    <img
+      src="./imagens/123.png"
       alt="Composição fotográfica sobre a produção artística e cultural no Vale do São Francisco">
   </figure>
 
@@ -1129,11 +1240,12 @@ nav button.ativo::after {
 
     <p class="revelar">Reconstruir essa trajetória exige olhar para além das instituições. É preciso compreender também as transformações de um território atravessado por disputas econômicas, mudanças políticas e diferentes formas de organização social. Afinal, enquanto o Vale do São Francisco era apresentado como uma região de potencial desenvolvimento, seus habitantes também construíam outras maneiras de interpretar, ocupar e representar o lugar onde viviam.</p>
 
-    <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="">
-    </div>
+    <!-- BARQUINHOS DE PONTA A PONTA -->
+    <div class="margem-separador revelar"></div>
 
-    <h3 class="margem-intertitulo revelar">O TERRITÓRIO EM TRANSFORMAÇÃO</h3>
+    <h3 class="margem-intertitulo revelar">
+      O TERRITÓRIO EM TRANSFORMAÇÃO
+    </h3>
 
     <p class="revelar">Nos anos 1970, Petrolina, em Pernambuco, e Juazeiro, na Bahia, passaram por transformações importantes. Durante a Ditadura Militar (1964–1985), o governo brasileiro intensificou projetos de modernização econômica, e o Vale do São Francisco passou a ocupar posição estratégica nas políticas de desenvolvimento nacional.</p>
 
@@ -1142,9 +1254,12 @@ nav button.ativo::after {
     <p class="revelar">O rio, que há gerações sustentava atividades como pesca, navegação e agricultura, também passou a ser compreendido como infraestrutura estratégica para a expansão econômica. Essa transformação, entretanto, não aconteceu sem conflitos.</p>
 
     <figure class="margem-foto-direita revelar">
-      <img src="./imagens/construção da Barragem.png.png"
+      <img
+        src="./imagens/construção da Barragem.png.png"
         alt="Construção da Barragem">
-      <figcaption>Construção da Barragem de Sobradinho.</figcaption>
+      <figcaption>
+        Construção da Barragem de Sobradinho.
+      </figcaption>
     </figure>
 
     <p class="revelar">A construção da Barragem de Sobradinho, iniciada em 1971 e concluída em 1978, provocou o deslocamento compulsório de mais de 72 mil pessoas e a desapropriação de aproximadamente 26 mil propriedades. As antigas sedes de Casa Nova, Sento Sé, Remanso e Pilão Arcado foram atingidas pela formação do lago.</p>
@@ -1156,9 +1271,12 @@ nav button.ativo::after {
     <div class="limpar"></div>
 
     <figure class="margem-foto-esquerda revelar">
-      <img src="./imagens/Comissão Pastoral da Terra.png.png"
+      <img
+        src="./imagens/Comissão Pastoral da Terra.png.png"
         alt="Comissão Pastoral da Terra">
-      <figcaption>Memórias das mobilizações sociais na região.</figcaption>
+      <figcaption>
+        Memórias das mobilizações sociais na região.
+      </figcaption>
     </figure>
 
     <p class="revelar">A atuação de Dom José Rodrigues à frente da Diocese de Juazeiro e a organização de trabalhadores rurais, com a participação da Comissão Pastoral da Terra, criada em 1975 em âmbito nacional, integraram esse processo de mobilização social. As lutas pelo território, pela terra e pelos direitos das comunidades atravessavam a vida regional.</p>
@@ -1167,17 +1285,22 @@ nav button.ativo::after {
 
     <div class="limpar"></div>
 
-    <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="">
-    </div>
+    <!-- BARQUINHOS DE PONTA A PONTA -->
+    <div class="margem-separador revelar"></div>
 
-    <h3 class="margem-intertitulo revelar">A ARTE ANTES DOS EQUIPAMENTOS</h3>
+    <h3 class="margem-intertitulo revelar">
+      A ARTE ANTES DOS EQUIPAMENTOS
+    </h3>
 
     <p class="revelar">Em Juazeiro, parte dessa movimentação pode ser recuperada por meio das memórias de Antônio Carlos Coêlho de Assis, conhecido como Coelhão, reunidas no livro <em>Juazeiro de perto: uma mistura de arte, cultura e política</em>, publicado em 2021.</p>
 
     <figure class="margem-foto-direita revelar">
-      <img src="./imagens/Coelhão.png.png" alt="Coelhão">
-      <figcaption>Antônio Carlos Coêlho de Assis, conhecido como Coelhão.</figcaption>
+      <img
+        src="./imagens/Coelhão.png.png"
+        alt="Coelhão">
+      <figcaption>
+        Antônio Carlos Coêlho de Assis, conhecido como Coelhão.
+      </figcaption>
     </figure>
 
     <p class="revelar">Segundo Coelhão, a cultura em Juazeiro foi construída através das experiências de grupos, associações e movimentos que atuaram a partir da década de 1970. Entre eles está a Associação dos Universitários de Juazeiro (AUJ), cuja primeira formação surgiu em 1970.</p>
@@ -1193,9 +1316,12 @@ nav button.ativo::after {
     <div class="limpar"></div>
 
     <figure class="margem-foto-esquerda revelar">
-      <img src="./imagens/Círculo Operário de Juazeiro.png.png"
+      <img
+        src="./imagens/Círculo Operário de Juazeiro.png.png"
         alt="Círculo Operário de Juazeiro">
-      <figcaption>Círculo Operário de Juazeiro.</figcaption>
+      <figcaption>
+        Círculo Operário de Juazeiro.
+      </figcaption>
     </figure>
 
     <p class="revelar">Em março de 1980, o Círculo de Convivência Cultural lançou um manifesto que defendia a pesquisa, a experimentação, a troca de informações e o incentivo à produção literária. A iniciativa procurava aproximar diferentes áreas do conhecimento e criar um ambiente de convivência entre artistas e intelectuais.</p>
@@ -1212,17 +1338,22 @@ nav button.ativo::after {
 
     <p class="revelar">A cultura não estava isolada das questões que atravessavam a população. O teatro, a música, a literatura e o cinema também são formas de discutir a cidade, defender o território e construir espaços de participação.</p>
 
-    <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="">
-    </div>
+    <!-- BARQUINHOS DE PONTA A PONTA -->
+    <div class="margem-separador revelar"></div>
 
-    <h3 class="margem-intertitulo revelar">MEMÓRIAS DO VALE EM CENA</h3>
+    <h3 class="margem-intertitulo revelar">
+      MEMÓRIAS DO VALE EM CENA
+    </h3>
 
     <p class="revelar">A história das artes cênicas de Petrolina e Juazeiro possui uma característica particular: ela não respeita os limites administrativos que separam Pernambuco e Bahia. Artistas, grupos, professores e espectadores circulam entre as duas cidades, construindo uma cena que tem o rio como elemento de aproximação.</p>
 
     <figure class="margem-foto-direita revelar">
-      <img src="./imagens/Thom Galeano.png" alt="Thom Galiano">
-      <figcaption>Thom Galiano.</figcaption>
+      <img
+        src="./imagens/Thom Galeano.png"
+        alt="Thom Galiano">
+      <figcaption>
+        Thom Galiano.
+      </figcaption>
     </figure>
 
     <p class="revelar">Uma das pessoas que se dedica a investigar e preservar essa trajetória é Thom Galiano, diretor teatral, professor e integrante da Trup Errante. Sua atuação está ligada à formação de artistas e à pesquisa das artes cênicas no Vale do São Francisco.</p>
@@ -1244,11 +1375,12 @@ nav button.ativo::after {
 
     <div class="limpar"></div>
 
-    <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="">
-    </div>
+    <!-- BARQUINHOS DE PONTA A PONTA -->
+    <div class="margem-separador revelar"></div>
 
-    <h3 class="margem-intertitulo revelar">QUEM PODE OCUPAR OS ESPAÇOS CULTURAIS?</h3>
+    <h3 class="margem-intertitulo revelar">
+      QUEM PODE OCUPAR OS ESPAÇOS CULTURAIS?
+    </h3>
 
     <p class="revelar">Em novembro de 1986, Juazeiro ganhou um equipamento que se tornaria uma referência para a produção artística regional: o Centro de Cultura João Gilberto, inaugurado pelo Governo da Bahia.</p>
 
@@ -1284,11 +1416,12 @@ nav button.ativo::after {
 
     <p class="revelar">A reivindicação por espaços culturais nas periferias também passa pela possibilidade de criar, manter e financiar iniciativas que nascem nesses territórios. Afinal, não basta que os artistas consigam chegar aos espaços existentes: é preciso que tenham condições de produzir, circular e dar continuidade ao próprio trabalho.</p>
 
-    <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="">
-    </div>
+    <!-- BARQUINHOS DE PONTA A PONTA -->
+    <div class="margem-separador revelar"></div>
 
-    <h3 class="margem-intertitulo revelar">FINANCIAR A CULTURA, GARANTIR O ACESSO</h3>
+    <h3 class="margem-intertitulo revelar">
+      FINANCIAR A CULTURA, GARANTIR O ACESSO
+    </h3>
 
     <p class="revelar">A partir dos anos 1990, os mecanismos de financiamento cultural passaram por mudanças importantes no Brasil. A criação de programas estaduais de incentivo e fundos específicos ampliou as possibilidades de apoio a projetos artísticos, embora o acesso aos recursos continuasse condicionado a exigências administrativas e técnicas.</p>
 
@@ -1306,18 +1439,21 @@ nav button.ativo::after {
 
     <p class="revelar">Em Juazeiro, essa disputa também acontece no campo das políticas públicas. Se, de um lado, os coletivos reivindicam espaços onde possam desenvolver suas atividades, de outro, enfrentam entraves para acessar os recursos que deveriam fortalecer a produção cultural do município.</p>
 
-    <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="">
-    </div>
+    <!-- BARQUINHOS DE PONTA A PONTA -->
+    <div class="margem-separador revelar"></div>
 
-    <h3 class="margem-intertitulo revelar">A MOBILIZAÇÃO DE NOVEMBRO DE 2026</h3>
+    <h3 class="margem-intertitulo revelar">
+      A MOBILIZAÇÃO DE NOVEMBRO DE 2026
+    </h3>
 
     <p class="revelar">Na manhã de 12 de novembro de 2026, artistas, produtores culturais e conselheiros ocuparam a Praça da Bandeira, no centro de Juazeiro (BA), e seguiram em cortejo até a sede da Secretaria de Cultura, Esporte e Lazer (Seculte), no Paço Municipal. O protesto ocorreu um dia depois de integrantes do Fórum Permanente de Cultura de Juazeiro e conselheiros da sociedade civil denunciarem, por meio de notas públicas e vídeos nas redes sociais, a paralisia administrativa na execução das políticas culturais do município.</p>
 
     <figure class="video-reportagem revelar">
+
       <div class="video-reportagem-titulo">
         REGISTRO DO CORTEJO / 12 DE NOVEMBRO DE 2026
       </div>
+
       <div class="video-reportagem-player">
         <iframe
           src="https://drive.google.com/file/d/1FgzavNdO0LM0KQ08PAKqvCw5Lak3FL2M/preview"
@@ -1326,6 +1462,7 @@ nav button.ativo::after {
           allowfullscreen
           loading="lazy"></iframe>
       </div>
+
     </figure>
 
     <p class="revelar">A mobilização expôs um paradoxo enfrentado por quem produz arte no Vale do São Francisco: os recursos federais de fomento existem, mas podem encontrar obstáculos nos trâmites burocráticos locais antes de chegar aos coletivos. Se, nos anos 1970, o desafio era criar circuitos próprios diante da inexistência de estruturas municipais, em 2026 a disputa dos trabalhadores da cultura também passa por destravar a máquina pública, garantir a execução dos editais e fortalecer os espaços de participação social.</p>
@@ -1340,7 +1477,11 @@ nav button.ativo::after {
     <p class="revelar">Além do ato público no Paço Municipal, os coletivos lançaram um abaixo-assinado digital para reunir apoio da comunidade regional às reivindicações.</p>
 
     <figure class="video-reportagem revelar">
-      <div class="video-reportagem-titulo">FALAS DOS MANIFESTANTES</div>
+
+      <div class="video-reportagem-titulo">
+        FALAS DOS MANIFESTANTES
+      </div>
+
       <div class="video-reportagem-player">
         <iframe
           src="https://drive.google.com/file/d/17177brpXBfht9FcSVJqTRFJsGtGtjnk4/preview"
@@ -1349,25 +1490,28 @@ nav button.ativo::after {
           allowfullscreen
           loading="lazy"></iframe>
       </div>
+
     </figure>
 
     <p class="revelar">Sem um Conselho com autonomia deliberativa e capacidade de fiscalização, o controle social sobre os recursos da cultura fica comprometido. A instância, prevista no Sistema Nacional de Cultura, deveria garantir a participação da sociedade civil nas decisões e no acompanhamento das políticas públicas. Quando esses mecanismos não funcionam plenamente, as decisões correm o risco de voltar a ser tomadas de cima para baixo, distantes das necessidades de quem produz cultura nos bairros.</p>
 
-    <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="">
-    </div>
+    <!-- BARQUINHOS DE PONTA A PONTA -->
+    <div class="margem-separador revelar"></div>
 
-    <h3 class="margem-intertitulo revelar">A RESPOSTA DA PREFEITURA</h3>
+    <h3 class="margem-intertitulo revelar">
+      A RESPOSTA DA PREFEITURA
+    </h3>
 
     <p class="revelar">Em nota oficial divulgada à imprensa na tarde de 12 de novembro de 2026 — mesmo dia do cortejo —, a Prefeitura de Juazeiro afirmou que está adotando providências administrativas para "garantir que o município não perderá recursos destinados ao setor". A reportagem confirmou que, naquela mesma quinta-feira (12), a Casa dos Conselhos publicou no Diário Oficial do Município o edital para a eleição complementar destinada a preencher as cadeiras vagas do Conselho Municipal de Política Cultural (CMPC) no biênio 2026/2028.</p>
 
     <p class="revelar">Por outro lado, duas reivindicações estruturais dos coletivos permaneceram sem solução imediata: segundo a administração, o pedido de alteração da Lei Municipal nº 3.240/2024 para assegurar o caráter deliberativo do colegiado ainda estava em análise na Procuradoria do Município. A nota também não apresentou prazos para a abertura do CNPJ próprio do Fundo Municipal de Cultura. No comunicado, a gestão citou eventos como o Festival Edésio Santos da Canção e a retomada do Festival Nacional de Teatro Wellington Monteclaro como demonstrações de investimento no setor.</p>
 
-    <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="">
-    </div>
+    <!-- BARQUINHOS DE PONTA A PONTA -->
+    <div class="margem-separador revelar"></div>
 
-    <h3 class="margem-intertitulo revelar">OUTRAS FORMAS DE OCUPAR O TERRITÓRIO</h3>
+    <h3 class="margem-intertitulo revelar">
+      OUTRAS FORMAS DE OCUPAR O TERRITÓRIO
+    </h3>
 
     <p class="revelar">Em Juazeiro, o Coletivo Abdias integra uma geração de iniciativas que colocam no centro da criação questões relacionadas à raça, à identidade e à presença negra nas artes cênicas.</p>
 
@@ -1383,11 +1527,12 @@ nav button.ativo::after {
 
     <p class="revelar">Uma cartografia cultural do Vale do São Francisco precisa, portanto, ultrapassar os limites dos teatros, museus e centros culturais. Precisa localizar também os espaços independentes, as sedes improvisadas, os bairros onde acontecem as oficinas e os lugares que se transformam em palco por iniciativa de seus moradores.</p>
 
-    <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="">
-    </div>
+    <!-- BARQUINHOS DE PONTA A PONTA -->
+    <div class="margem-separador revelar"></div>
 
-    <h3 class="margem-intertitulo revelar">UMA HISTÓRIA FEITA DE MUITAS VOZES</h3>
+    <h3 class="margem-intertitulo revelar">
+      UMA HISTÓRIA FEITA DE MUITAS VOZES
+    </h3>
 
     <p class="revelar">Olhar para a trajetória cultural de Petrolina e Juazeiro permite perceber que ela não se desenvolveu em uma linha contínua de conquistas institucionais. Sua história é feita de avanços, interrupções, disputas e reinvenções.</p>
 
@@ -1403,6 +1548,8 @@ nav button.ativo::after {
 
   </article>
 
+  <!-- VÍDEO FINAL DE À MARGEM -->
+
   <figure class="video-reportagem video-final-margem revelar">
     <div class="video-reportagem-player">
       <iframe
@@ -1415,97 +1562,152 @@ nav button.ativo::after {
     </div>
   </figure>
 
-  <div class="barquinhos-final" role="img"
-    aria-label="Faixa de ilustrações de barquinhos"></div>
+  <!-- BARQUINHOS DE UMA PONTA À OUTRA -->
+
+  <div
+    class="barquinhos-final"
+    role="img"
+    aria-label="Faixa de ilustrações de barquinhos">
+  </div>
+
   <div class="respiro-rodape"></div>
 
 </section>
 
-<!-- ===================== LINHA DO TEMPO ===================== -->
+<!-- ==================================================
+     LINHA DO TEMPO
+================================================== -->
 
 <section class="pagina" id="linha-do-tempo">
+
   <div class="pagina-abertura">
-    <span class="pagina-numero">03 / MEMÓRIAS</span>
-    <h1 class="pagina-titulo">LINHA DO TEMPO</h1>
+
+    <span class="pagina-numero">
+      03 / MEMÓRIAS
+    </span>
+
+    <h1 class="pagina-titulo">
+      LINHA DO TEMPO
+    </h1>
+
     <p class="pagina-descricao">
       Percursos históricos, memórias e transformações culturais entre Petrolina e Juazeiro.
     </p>
+
   </div>
 
   <div class="conteudo">
+
     <div class="texto">
       <p>Espaço reservado para os acontecimentos históricos e culturais da linha do tempo.</p>
     </div>
 
     <div class="galeria">
+
       <figure class="galeria-item">
-        <img src="./imagens/construção da Barragem.png.png"
+        <img
+          src="./imagens/construção da Barragem.png.png"
           alt="Construção da Barragem">
-        <figcaption class="galeria-legenda">Construção da Barragem</figcaption>
+        <figcaption class="galeria-legenda">
+          Construção da Barragem
+        </figcaption>
       </figure>
 
       <figure class="galeria-item">
-        <img src="./imagens/Círculo Operário de Juazeiro.png.png"
+        <img
+          src="./imagens/Círculo Operário de Juazeiro.png.png"
           alt="Círculo Operário de Juazeiro">
-        <figcaption class="galeria-legenda">Círculo Operário de Juazeiro</figcaption>
+        <figcaption class="galeria-legenda">
+          Círculo Operário de Juazeiro
+        </figcaption>
       </figure>
+
     </div>
+
   </div>
 
   <div class="respiro-rodape"></div>
+
 </section>
 
-<!-- ===================== NÚCLEO BIRUTA ===================== -->
+<!-- ==================================================
+     NÚCLEO BIRUTA
+================================================== -->
 
 <section class="pagina" id="nucleo-biruta">
+
   <div class="pagina-abertura">
     <span class="pagina-numero">04 / COLETIVOS</span>
     <h1 class="pagina-titulo">NÚCLEO BIRUTA</h1>
-    <p class="pagina-descricao">Trajetórias e produções culturais.</p>
+    <p class="pagina-descricao">
+      Trajetórias e produções culturais.
+    </p>
   </div>
+
   <div class="conteudo">
     <div class="texto">
       <p>Espaço reservado para o conteúdo do Núcleo Biruta.</p>
     </div>
   </div>
+
   <div class="respiro-rodape"></div>
+
 </section>
 
-<!-- ===================== COLETIVO ABDIAS ===================== -->
+<!-- ==================================================
+     COLETIVO ABDIAS
+================================================== -->
 
 <section class="pagina" id="coletivo-abdias">
+
   <div class="pagina-abertura">
     <span class="pagina-numero">05 / COLETIVOS</span>
     <h1 class="pagina-titulo">COLETIVO ABDIAS</h1>
-    <p class="pagina-descricao">Arte, memória e experiências coletivas.</p>
+    <p class="pagina-descricao">
+      Arte, memória e experiências coletivas.
+    </p>
   </div>
+
   <div class="conteudo">
     <div class="texto">
       <p>Espaço reservado para o conteúdo do Coletivo Abdias.</p>
     </div>
   </div>
+
   <div class="respiro-rodape"></div>
+
 </section>
 
-<!-- ===================== CAATINGAYRO ===================== -->
+<!-- ==================================================
+     CAATINGAYRO
+================================================== -->
 
 <section class="pagina" id="caatingayro">
+
   <div class="pagina-abertura">
     <span class="pagina-numero">06 / EXPRESSÕES CULTURAIS</span>
     <h1 class="pagina-titulo">CAATINGAYRO</h1>
-    <p class="pagina-descricao">Arte e outras formas de expressão do território.</p>
+    <p class="pagina-descricao">
+      Arte e outras formas de expressão do território.
+    </p>
   </div>
+
   <div class="conteudo">
     <div class="texto">
       <p>Espaço reservado para o conteúdo do Caatingayro.</p>
     </div>
   </div>
+
   <div class="respiro-rodape"></div>
+
 </section>
 
-<!-- ===================== ARTISTAS ===================== -->
+<!-- ==================================================
+     ARTISTAS
+================================================== -->
 
 <section class="pagina" id="artistas">
+
   <div class="pagina-abertura">
     <span class="pagina-numero">07 / CRIAÇÕES</span>
     <h1 class="pagina-titulo">ARTISTAS</h1>
@@ -1513,138 +1715,236 @@ nav button.ativo::after {
       Pessoas que criam e transformam as formas de representar o Sertão.
     </p>
   </div>
+
   <div class="conteudo">
     <div class="texto">
       <p>Espaço reservado para as trajetórias e produções dos artistas.</p>
     </div>
   </div>
+
   <div class="respiro-rodape"></div>
+
 </section>
 
-<!-- ===================== LUGARES ===================== -->
+<!-- ==================================================
+     LUGARES
+================================================== -->
 
 <section class="pagina" id="lugares">
+
   <div class="pagina-abertura">
     <span class="pagina-numero">08 / TERRITÓRIOS</span>
     <h1 class="pagina-titulo">LUGARES</h1>
-    <p class="pagina-descricao">Espaços de memória, pertencimento e encontros.</p>
+    <p class="pagina-descricao">
+      Espaços de memória, pertencimento e encontros.
+    </p>
   </div>
 
   <div class="conteudo">
+
     <div class="texto">
       <p>Espaço reservado para as narrativas dos lugares que integram a Correnteza.</p>
     </div>
 
     <div class="galeria">
+
       <figure class="galeria-item">
-        <img src="./imagens/ILHA DO FOGO.PNG.png" alt="Ilha do Fogo">
-        <figcaption class="galeria-legenda">Ilha do Fogo</figcaption>
+        <img
+          src="./imagens/ILHA DO FOGO.PNG.png"
+          alt="Ilha do Fogo">
+        <figcaption class="galeria-legenda">
+          Ilha do Fogo
+        </figcaption>
       </figure>
 
       <figure class="galeria-item">
-        <img src="./imagens/Comissão Pastoral da Terra.png.png"
+        <img
+          src="./imagens/Comissão Pastoral da Terra.png.png"
           alt="Comissão Pastoral da Terra">
-        <figcaption class="galeria-legenda">Comissão Pastoral da Terra</figcaption>
+        <figcaption class="galeria-legenda">
+          Comissão Pastoral da Terra
+        </figcaption>
       </figure>
+
     </div>
+
   </div>
 
   <div class="respiro-rodape"></div>
+
 </section>
 
 </main>
 
-<!-- ===================== RODAPÉ ===================== -->
+<!-- ==================================================
+     RODAPÉ — TODAS AS PÁGINAS
+================================================== -->
 
 <footer class="rodape">
 
   <div class="rodape-fundo">
-    <img src="./imagens/IMAGEM DO FINAL DO SITE.PNG.png"
-      alt="" aria-hidden="true">
+    <img
+      src="./imagens/IMAGEM DO FINAL DO SITE.PNG.png"
+      alt=""
+      aria-hidden="true">
   </div>
 
   <div class="rodape-barquinho">
-    <img src="./imagens/barquinho do final. PNG.png"
+    <img
+      src="./imagens/barquinho do final. PNG.png"
       alt="Ilustração de barco">
   </div>
 
   <div class="rodape-conteudo">
 
     <div class="rodape-identidade">
-      <h2 class="rodape-titulo">ENTRE DUAS MARGENS</h2>
-      <p class="rodape-subtitulo">UMA SÓ CORRENTEZA</p>
+
+      <h2 class="rodape-titulo">
+        ENTRE DUAS MARGENS
+      </h2>
+
+      <p class="rodape-subtitulo">
+        UMA SÓ CORRENTEZA
+      </p>
+
     </div>
 
     <div class="rodape-creditos">
 
       <div class="credito-grupo">
-        <span class="credito-label">REPORTAGEM</span>
-        <span class="credito-nome">
-          <a href="https://www.linkedin.com/in/cibelle-vieira-42a801272/"
-            target="_blank" rel="noopener noreferrer">Cibelle Vieira</a>
-        </span>
-      </div>
 
-      <div class="credito-grupo">
-        <span class="credito-label">ORIENTAÇÃO</span>
-        <span class="credito-nome">Raiane Sousa</span>
-      </div>
-
-      <div class="credito-grupo">
         <span class="credito-label">
-          DESIGN E<br>DESENVOLVIMENTO DO SITE
+          REPORTAGEM
         </span>
-        <span class="credito-nome">Jenifer Silva</span>
+
+        <span class="credito-nome">
+          <a
+            href="https://www.linkedin.com/in/cibelle-vieira-42a801272/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Cibelle Vieira
+          </a>
+        </span>
+
+      </div>
+
+      <div class="credito-grupo">
+
+        <span class="credito-label">
+          ORIENTAÇÃO
+        </span>
+
+        <span class="credito-nome">
+          Raiane Sousa
+        </span>
+
+      </div>
+
+      <div class="credito-grupo">
+
+        <span class="credito-label">
+          DESIGN E<br>
+          DESENVOLVIMENTO DO SITE
+        </span>
+
+        <span class="credito-nome">
+          Jenifer Silva
+        </span>
+
         <div class="credito-perfis">
+
           <span class="separador-perfil">|</span>
-          <a href="https://www.instagram.com/jeniilustra/"
-            target="_blank" rel="noopener noreferrer">@jeniilustra</a>
+
+          <a
+            href="https://www.instagram.com/jeniilustra/"
+            target="_blank"
+            rel="noopener noreferrer">
+            @jeniilustra
+          </a>
+
           <span class="separador-perfil">|</span>
+
           <span>@labmap.s</span>
+
         </div>
+
       </div>
 
     </div>
+
   </div>
+
 </footer>
 
 </div>
 
-<!-- ===================== SOM DO RIO ===================== -->
+<!-- ==================================================
+     SOM DO RIO
+================================================== -->
 
 <audio id="somRio" autoplay loop preload="auto">
-  <source src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
+  <source
+    src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
     type="audio/mpeg">
 </audio>
 
-<button class="controle-som visivel" id="controleSom"
-  type="button" aria-pressed="false">
+<button
+  class="controle-som visivel"
+  id="controleSom"
+  type="button"
+  aria-pressed="false">
+
   <span id="iconeSom">♪</span>
   <span id="textoSom">ATIVAR SOM DO RIO</span>
+
 </button>
 
 <script>
-/* ===================== ELEMENTOS ===================== */
+
+/* ==================================================
+   ELEMENTOS
+================================================== */
 
 const paginas = document.querySelectorAll(".pagina");
-const botoesMenu = document.querySelectorAll("nav [data-pagina]");
-const menuPrincipal = document.getElementById("menuPrincipal");
-const botaoMenu = document.getElementById("botaoMenu");
+
+const botoesMenu = document.querySelectorAll(
+  "nav [data-pagina]"
+);
+
+const menuPrincipal = document.getElementById(
+  "menuPrincipal"
+);
+
+const botaoMenu = document.getElementById(
+  "botaoMenu"
+);
 
 const audio = document.getElementById("somRio");
-const controleSom = document.getElementById("controleSom");
-const textoSom = document.getElementById("textoSom");
-const iconeSom = document.getElementById("iconeSom");
+
+const controleSom = document.getElementById(
+  "controleSom"
+);
+
+const textoSom = document.getElementById(
+  "textoSom"
+);
+
+const iconeSom = document.getElementById(
+  "iconeSom"
+);
 
 let paginaAtual = "inicio";
-let audioAutorizado = false;
+
 let usuarioDesativouSom = false;
 
-/* ===================== ÁUDIO ===================== */
+/* ==================================================
+   ÁUDIO
+================================================== */
 
 audio.volume = 0.45;
 
 function atualizarSom() {
+
   const tocando = !audio.paused;
 
   textoSom.textContent = tocando
@@ -1652,202 +1952,368 @@ function atualizarSom() {
     : "ATIVAR SOM DO RIO";
 
   iconeSom.textContent = tocando ? "♫" : "♪";
-  controleSom.setAttribute("aria-pressed", String(tocando));
+
+  controleSom.setAttribute(
+    "aria-pressed",
+    String(tocando)
+  );
+
 }
 
 async function iniciarSom() {
-  if (paginaAtual !== "inicio" || usuarioDesativouSom) return;
+
+  if (
+    paginaAtual !== "inicio" ||
+    usuarioDesativouSom
+  ) {
+    return;
+  }
 
   try {
+
     await audio.play();
-    audioAutorizado = true;
+
   } catch (erro) {
-    // O navegador pode bloquear autoplay até o primeiro clique.
-    audioAutorizado = false;
+
+    /*
+      Alguns navegadores bloqueiam
+      reprodução automática com som.
+    */
+
   }
 
   atualizarSom();
+
 }
 
 function pararSom() {
+
   audio.pause();
   audio.currentTime = 0;
+
   atualizarSom();
+
 }
 
 controleSom.addEventListener("click", async () => {
-  if (paginaAtual !== "inicio") return;
+
+  if (paginaAtual !== "inicio") {
+    return;
+  }
 
   if (audio.paused) {
+
     usuarioDesativouSom = false;
     await iniciarSom();
+
   } else {
+
     usuarioDesativouSom = true;
     audio.pause();
+
   }
 
   atualizarSom();
+
 });
 
 audio.addEventListener("play", atualizarSom);
 audio.addEventListener("pause", atualizarSom);
 
-/*
-  Primeira tentativa: imediatamente na abertura.
-*/
+window.addEventListener(
+  "DOMContentLoaded",
+  iniciarSom
+);
 
-window.addEventListener("DOMContentLoaded", iniciarSom);
-
-/*
-  Segunda tentativa: após o carregamento completo.
-*/
-
-window.addEventListener("load", iniciarSom);
+window.addEventListener(
+  "load",
+  iniciarSom
+);
 
 /*
-  Caso o navegador bloqueie o som, inicia no primeiro
-  clique ou toque do visitante dentro da página inicial.
+  Se o navegador bloquear o autoplay,
+  o áudio poderá começar na primeira
+  interação do visitante.
 */
 
 function iniciarNaPrimeiraInteracao() {
+
   if (
     paginaAtual === "inicio" &&
     audio.paused &&
     !usuarioDesativouSom
   ) {
+
     iniciarSom();
+
   }
+
 }
 
-document.addEventListener("pointerdown", iniciarNaPrimeiraInteracao, {
-  passive: true
-});
+document.addEventListener(
+  "pointerdown",
+  iniciarNaPrimeiraInteracao,
+  { passive: true }
+);
 
-document.addEventListener("keydown", iniciarNaPrimeiraInteracao);
+document.addEventListener(
+  "keydown",
+  iniciarNaPrimeiraInteracao
+);
 
-/* ===================== ANIMAÇÕES ===================== */
+/* ==================================================
+   ANIMAÇÕES DE ROLAGEM
+================================================== */
 
-const observador = new IntersectionObserver(entradas => {
-  entradas.forEach(entrada => {
-    if (entrada.isIntersecting) {
-      entrada.target.classList.add("visivel");
-      observador.unobserve(entrada.target);
-    }
-  });
-}, {
-  threshold: 0.05,
-  rootMargin: "0px 0px 100px 0px"
-});
+const observador = new IntersectionObserver(
+  entradas => {
 
-document.querySelectorAll(".revelar").forEach(elemento => {
-  observador.observe(elemento);
-});
+    entradas.forEach(entrada => {
 
-/* ===================== PARAR VÍDEOS ===================== */
+      if (entrada.isIntersecting) {
+
+        entrada.target.classList.add("visivel");
+
+        observador.unobserve(entrada.target);
+
+      }
+
+    });
+
+  },
+  {
+    threshold: 0.05,
+    rootMargin: "0px 0px 100px 0px"
+  }
+);
+
+document.querySelectorAll(".revelar").forEach(
+  elemento => {
+
+    observador.observe(elemento);
+
+  }
+);
+
+/* ==================================================
+   PARAR VÍDEOS AO MUDAR DE PÁGINA
+================================================== */
 
 function pararVideos(pagina) {
-  pagina.querySelectorAll("iframe").forEach(iframe => {
-    const endereco = iframe.getAttribute("src");
-    if (endereco) {
-      iframe.setAttribute("src", endereco);
+
+  pagina.querySelectorAll("iframe").forEach(
+    iframe => {
+
+      const endereco = iframe.getAttribute("src");
+
+      if (endereco) {
+
+        iframe.setAttribute("src", endereco);
+
+      }
+
     }
-  });
+  );
+
 }
 
-/* ===================== NAVEGAÇÃO ===================== */
+/* ==================================================
+   NAVEGAÇÃO
+================================================== */
 
-function abrirPagina(id, atualizarHistorico = true) {
+function abrirPagina(
+  id,
+  atualizarHistorico = true
+) {
+
   const destino = document.getElementById(id);
 
-  if (!destino || !destino.classList.contains("pagina")) {
+  if (
+    !destino ||
+    !destino.classList.contains("pagina")
+  ) {
     return;
   }
 
   if (id !== "inicio") {
+
     pararSom();
+
   }
 
   if (paginaAtual !== id) {
-    const anterior = document.getElementById(paginaAtual);
-    if (anterior) pararVideos(anterior);
+
+    const anterior = document.getElementById(
+      paginaAtual
+    );
+
+    if (anterior) {
+
+      pararVideos(anterior);
+
+    }
+
   }
 
   paginaAtual = id;
 
   paginas.forEach(pagina => {
-    pagina.classList.toggle("ativa", pagina.id === id);
+
+    pagina.classList.toggle(
+      "ativa",
+      pagina.id === id
+    );
+
   });
 
   botoesMenu.forEach(botao => {
+
     const ativo = botao.dataset.pagina === id;
+
     botao.classList.toggle("ativo", ativo);
 
     if (ativo) {
-      botao.setAttribute("aria-current", "page");
+
+      botao.setAttribute(
+        "aria-current",
+        "page"
+      );
+
     } else {
+
       botao.removeAttribute("aria-current");
+
     }
+
   });
 
-  controleSom.classList.toggle("visivel", id === "inicio");
+  controleSom.classList.toggle(
+    "visivel",
+    id === "inicio"
+  );
 
   menuPrincipal.classList.remove("aberto");
-  botaoMenu.setAttribute("aria-expanded", "false");
+
+  botaoMenu.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
   botaoMenu.textContent = "☰";
 
   if (atualizarHistorico) {
-    history.pushState({ pagina: id }, "", "#" + id);
+
+    history.pushState(
+      { pagina: id },
+      "",
+      "#" + id
+    );
+
   }
 
-  window.scrollTo({ top: 0, behavior: "instant" });
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
 
-  if (id === "inicio" && !usuarioDesativouSom) {
+  if (
+    id === "inicio" &&
+    !usuarioDesativouSom
+  ) {
+
     iniciarSom();
+
   }
+
 }
 
 botoesMenu.forEach(botao => {
+
   botao.addEventListener("click", () => {
+
     abrirPagina(botao.dataset.pagina);
+
   });
+
 });
 
-/* ===================== MENU MOBILE ===================== */
+/* ==================================================
+   MENU MOBILE
+================================================== */
 
 botaoMenu.addEventListener("click", () => {
-  const aberto = menuPrincipal.classList.toggle("aberto");
-  botaoMenu.setAttribute("aria-expanded", String(aberto));
+
+  const aberto = menuPrincipal.classList.toggle(
+    "aberto"
+  );
+
+  botaoMenu.setAttribute(
+    "aria-expanded",
+    String(aberto)
+  );
+
   botaoMenu.textContent = aberto ? "✕" : "☰";
+
 });
 
-/* ===================== BOTÃO DA CAPA ===================== */
+/* ==================================================
+   BOTÃO CONTINUE A TRAVESSIA
+================================================== */
 
-document.getElementById("botaoDescer").addEventListener("click", () => {
-  document.getElementById("reportagem").scrollIntoView({
+document.getElementById(
+  "botaoDescer"
+).addEventListener("click", () => {
+
+  document.getElementById(
+    "reportagem"
+  ).scrollIntoView({
+
     behavior: "smooth",
     block: "start"
+
   });
+
 });
 
-/* ===================== HISTÓRICO ===================== */
+/* ==================================================
+   HISTÓRICO DO NAVEGADOR
+================================================== */
 
 function verificarEndereco() {
-  const id = decodeURIComponent(location.hash.replace("#", ""));
+
+  const id = decodeURIComponent(
+    location.hash.replace("#", "")
+  );
+
   const elemento = document.getElementById(id);
 
   abrirPagina(
-    elemento && elemento.classList.contains("pagina")
+
+    elemento &&
+    elemento.classList.contains("pagina")
       ? id
       : "inicio",
+
     false
+
   );
+
 }
 
-window.addEventListener("popstate", verificarEndereco);
-window.addEventListener("hashchange", verificarEndereco);
+window.addEventListener(
+  "popstate",
+  verificarEndereco
+);
+
+window.addEventListener(
+  "hashchange",
+  verificarEndereco
+);
 
 verificarEndereco();
+
 atualizarSom();
+
 </script>
 
 </body>
