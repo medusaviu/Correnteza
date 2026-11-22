@@ -38,8 +38,13 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 72px; background: var(--preto); }
-body { background: var(--preto); color: #fff; font-family: "Neue Montreal", Arial, sans-serif; overflow-x: hidden; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  background: var(--preto);
+  color: #fff;
+  font-family: "Neue Montreal", Arial, sans-serif;
+  overflow-x: hidden;
+}
 button { font-family: inherit; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
@@ -60,7 +65,13 @@ header {
   justify-content: center;
   align-items: center;
 }
-nav { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: clamp(12px,1.8vw,30px); }
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(12px,1.8vw,30px);
+}
 nav button {
   background: transparent;
   border: 0;
@@ -80,16 +91,34 @@ nav button::after {
   background: var(--azul);
   transition: width .3s;
 }
-nav button:hover, nav button.ativo { color: var(--azul); }
-nav button:hover::after, nav button.ativo::after { width: 100%; }
-.menu-mobile { display: none; background: transparent; border: 1px solid #555; color: white; font-size: 22px; padding: 8px 13px; }
+nav button:hover,
+nav button.ativo { color: var(--azul); }
+nav button:hover::after,
+nav button.ativo::after { width: 100%; }
+.menu-mobile {
+  display: none;
+  background: transparent;
+  border: 1px solid #555;
+  color: white;
+  font-size: 22px;
+  padding: 8px 13px;
+}
 
 /* PÁGINAS */
-.pagina { display: none; min-height: calc(100vh - var(--altura-menu)); }
-.pagina.ativa { display: block; animation: entrada .5s ease; }
-@keyframes entrada { from { opacity: 0; } to { opacity: 1; } }
+.pagina {
+  display: none;
+  min-height: calc(100vh - var(--altura-menu));
+}
+.pagina.ativa {
+  display: block;
+  animation: entrada .5s ease;
+}
+@keyframes entrada {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-/* CAPA ORIGINAL */
+/* CAPA */
 .capa {
   position: relative;
   width: 100%;
@@ -98,8 +127,18 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   background: #000;
   isolation: isolate;
 }
-.capa-imagem { position: absolute; inset: 0; z-index: -1; }
-.capa-imagem img { width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.025); }
+.capa-imagem {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.capa-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.025);
+}
 .capa-conteudo {
   min-height: inherit;
   display: flex;
@@ -108,10 +147,24 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   text-align: center;
   padding: clamp(155px,22vh,230px) 22px 130px;
 }
-.capa-titulo { font-family: "Cubao", Impact, sans-serif; font-size: clamp(56px,8vw,125px); font-weight: normal; line-height: .98; }
+.capa-titulo {
+  font-family: "Cubao", Impact, sans-serif;
+  font-size: clamp(56px,8vw,125px);
+  font-weight: normal;
+  line-height: .98;
+}
 .capa-titulo span { display: block; }
-.capa-subtitulo { font-family: "Morisawa", Georgia, serif; font-size: clamp(22px,2.8vw,36px); font-weight: normal; margin-top: 25px; }
-.capa-autoria { font-family: "Gordita", Arial, sans-serif; font-size: 13px; margin-top: 18px; }
+.capa-subtitulo {
+  font-family: "Morisawa", Georgia, serif;
+  font-size: clamp(22px,2.8vw,36px);
+  font-weight: normal;
+  margin-top: 25px;
+}
+.capa-autoria {
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: 13px;
+  margin-top: 18px;
+}
 .capa-descer {
   position: absolute;
   bottom: 24px;
@@ -128,12 +181,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
 }
 .capa-descer:hover { background: #34437e; }
 
-/*
-  CONTINUAÇÃO:
-  A faixa de 260px é o trecho visível antes do texto.
-  A ilustração segue por trás dos primeiros parágrafos,
-  sem criar uma segunda capa inteira.
-*/
+/* CONTINUAÇÃO DA CAPA */
 .continuacao-capa {
   position: relative;
   width: 100%;
@@ -174,7 +222,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   transform: scale(1.08);
 }
 
-/* TEXTO DA CAPA */
+/* REPORTAGEM INICIAL */
 .reportagem {
   position: relative;
   z-index: 2;
@@ -186,7 +234,8 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   margin: 0 auto;
   display: flow-root;
 }
-.corpo-reportagem p, .texto-margem p {
+.corpo-reportagem p,
+.texto-margem p {
   font-family: "Neue Montreal", Arial, sans-serif;
   font-size: clamp(18px,1.65vw,21px);
   line-height: 1.48;
@@ -207,7 +256,11 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   width: clamp(290px,33vw,460px);
   margin: 35px -205px 10px 15px;
 }
-.ilustracao-cibs img { width: 100%; height: auto; object-fit: contain; }
+.ilustracao-cibs img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 .limpar { clear: both; }
 .corpo-reportagem .paragrafo-final {
   clear: both;
@@ -220,15 +273,50 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   line-height: 1.3;
 }
 
-/* BARQUINHOS E RESPIRO */
+/*
+  BARQUINHOS:
+  A imagem ocupa toda a largura do site.
+  A altura máxima evita barcos gigantes.
+  object-fit: contain evita cortar a ilustração.
+*/
 .barquinhos-final {
   width: 100%;
-  overflow: hidden;
   background: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
-.barquinhos-final img { width: 100%; height: auto; }
+.barquinhos-final img {
+  display: block;
+  width: 100%;
+  max-height: 240px;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* BARQUINHOS ENTRE OS TEXTOS */
+.margem-separador {
+  clear: both;
+  width: 100%;
+  margin: 65px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.margem-separador img {
+  display: block;
+  width: min(100%, 520px);
+  max-height: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* RESPIRO ENTRE BARQUINHOS E RODAPÉ */
 .respiro-rodape {
-  height: 100px;
+  height: 110px;
   width: 100%;
   background: #050505;
 }
@@ -277,13 +365,6 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   align-items: center;
   justify-content: center;
 }
-.margem-colagem img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  transition: transform .7s ease;
-}
-.margem-colagem img:hover { transform: scale(1.05); }
 .colagem-reserva {
   color: #888;
   font-family: "Gordita", Arial, sans-serif;
@@ -296,19 +377,6 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   max-width: var(--largura-texto);
   margin: 0 auto;
   display: flow-root;
-}
-.margem-separador {
-  clear: both;
-  width: 100%;
-  margin: 65px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.margem-separador img {
-  width: clamp(150px,28vw,300px);
-  height: auto;
-  object-fit: contain;
 }
 .margem-foto-direita {
   float: right;
@@ -356,6 +424,49 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   color: #bcbcbc;
   font-size: 13px;
 }
+
+/* VÍDEO DO CORTEJO */
+.video-reportagem {
+  clear: both;
+  width: 100%;
+  margin: 55px auto;
+}
+.video-reportagem-titulo {
+  color: var(--azul);
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+.video-reportagem-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #101010;
+  overflow: hidden;
+}
+.video-reportagem-player iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.video-reportagem figcaption {
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.6;
+  margin-top: 14px;
+}
+.video-reportagem-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--azul);
+  text-decoration: underline;
+}
 .video-pendente {
   clear: both;
   background: #101010;
@@ -375,20 +486,57 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   margin: 85px 0 70px !important;
 }
 
-/* OUTRAS PÁGINAS */
+/* DEMAIS PÁGINAS */
 .pagina-abertura {
   padding: 110px max(40px,calc((100vw - 1100px)/2)) 75px;
 }
-.pagina-numero { display: block; margin-bottom: 25px; font-family: "Gordita",Arial,sans-serif; font-size: 11px; letter-spacing: 3px; color: var(--azul); }
-.pagina-titulo { font-family: "Cubao",Impact,sans-serif; font-size: clamp(60px,9vw,115px); font-weight: normal; line-height: 1; margin-bottom: 30px; }
-.pagina-descricao { max-width: 700px; font-size: 20px; line-height: 1.6; color: #c5c5c5; }
-.conteudo { max-width: 1100px; margin: 0 auto; padding: 90px 45px; }
+.pagina-numero {
+  display: block;
+  margin-bottom: 25px;
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--azul);
+}
+.pagina-titulo {
+  font-family: "Cubao", Impact, sans-serif;
+  font-size: clamp(60px,9vw,115px);
+  font-weight: normal;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+.pagina-descricao {
+  max-width: 700px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #c5c5c5;
+}
+.conteudo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 45px;
+}
 .texto { max-width: var(--largura-texto); margin: 0 auto; }
 .texto p { font-size: 19px; line-height: 1.7; margin-bottom: 25px; }
-.galeria { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 45px; }
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+  margin-top: 45px;
+}
 .galeria-item { background: #111; }
-.galeria-item img { width: 100%; height: 290px; object-fit: contain; padding: 15px; }
-.galeria-legenda { padding: 18px; font-family: "Gordita",Arial,sans-serif; font-size: 12px; color: #ccc; }
+.galeria-item img {
+  width: 100%;
+  height: 290px;
+  object-fit: contain;
+  padding: 15px;
+}
+.galeria-legenda {
+  padding: 18px;
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: 12px;
+  color: #ccc;
+}
 
 /* RODAPÉ COMPACTO */
 .rodape {
@@ -399,7 +547,12 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   overflow: hidden;
   background: #000;
 }
-.rodape-fundo { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.rodape-fundo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
 .rodape-fundo img {
   width: 100%;
   height: 100%;
@@ -415,7 +568,10 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   width: clamp(150px,18vw,270px);
   transform: rotate(-8deg);
 }
-.rodape-barquinho img { width: 100%; height: auto; }
+.rodape-barquinho img {
+  width: 100%;
+  height: auto;
+}
 .rodape-conteudo {
   position: relative;
   z-index: 2;
@@ -426,18 +582,60 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   gap: 40px;
   padding: 45px 8% 30px;
 }
-.rodape-identidade { text-align: center; padding-top: 65px; }
-.rodape-titulo { font-family: "Cubao",Impact,sans-serif; font-size: clamp(32px,4.4vw,75px); font-weight: normal; line-height: 1; white-space: nowrap; }
-.rodape-subtitulo { font-family: "Morisawa",Georgia,serif; font-size: clamp(18px,2.1vw,31px); margin-top: 10px; }
-.rodape-creditos { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; }
-.credito-grupo { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-.credito-label { font-size: clamp(15px,1.6vw,22px); line-height: 1.08; text-transform: uppercase; }
-.credito-nome { font-family: "Morisawa",Georgia,serif; font-size: clamp(16px,1.5vw,22px); }
-.credito-perfis { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; font-family: "Gordita",Arial,sans-serif; font-size: clamp(10px,1vw,13px); }
-.rodape-creditos a:hover { color: var(--azul); text-decoration: underline; }
+.rodape-identidade {
+  text-align: center;
+  padding-top: 65px;
+}
+.rodape-titulo {
+  font-family: "Cubao", Impact, sans-serif;
+  font-size: clamp(32px,4.4vw,75px);
+  font-weight: normal;
+  line-height: 1;
+  white-space: nowrap;
+}
+.rodape-subtitulo {
+  font-family: "Morisawa", Georgia, serif;
+  font-size: clamp(18px,2.1vw,31px);
+  margin-top: 10px;
+}
+.rodape-creditos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+}
+.credito-grupo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.credito-label {
+  font-size: clamp(15px,1.6vw,22px);
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+.credito-nome {
+  font-family: "Morisawa", Georgia, serif;
+  font-size: clamp(16px,1.5vw,22px);
+}
+.credito-perfis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: clamp(10px,1vw,13px);
+}
+.rodape-creditos a:hover {
+  color: var(--azul);
+  text-decoration: underline;
+}
 .separador-perfil { color: #bbb; }
 
-/* SOM */
+/* ÁUDIO */
 .controle-som {
   position: fixed;
   z-index: 2000;
@@ -451,29 +649,58 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   border-radius: 30px;
   background: rgba(0,0,0,.9);
   color: #fff;
-  font-family: "Gordita",Arial,sans-serif;
+  font-family: "Gordita", Arial, sans-serif;
   font-size: 11px;
 }
 .controle-som.visivel { display: flex; }
 
-/* REVELAÇÃO DINÂMICA */
-.revelar { opacity: 0; transform: translateY(32px); transition: opacity .85s ease, transform .85s ease; }
-.revelar.visivel { opacity: 1; transform: translateY(0); }
+/* ROLAGEM DINÂMICA */
+.revelar {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .85s ease, transform .85s ease;
+}
+.revelar.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* RESPONSIVO */
+/* RESPONSIVIDADE */
 @media(max-width:1100px) {
-  .ilustracao-cibs { width: 390px; margin-right: -125px; }
+  .ilustracao-cibs {
+    width: 390px;
+    margin-right: -125px;
+  }
   .margem-foto-direita { margin-right: -60px; }
   .margem-foto-esquerda { margin-left: -60px; }
 }
 @media(max-width:900px) {
-  .cabecalho { justify-content: flex-end; flex-wrap: wrap; }
+  .cabecalho {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
   .menu-mobile { display: block; }
-  nav { display: none; width: 100%; flex-direction: column; align-items: stretch; padding: 15px 0; }
+  nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px 0;
+  }
   nav.aberto { display: flex; }
-  nav button { padding: 12px; text-align: left; }
-  .ilustracao-cibs { width: 310px; margin-right: -45px; }
-  .rodape-conteudo { gap: 20px; padding-left: 5%; padding-right: 5%; }
+  nav button {
+    padding: 12px;
+    text-align: left;
+  }
+  .ilustracao-cibs {
+    width: 310px;
+    margin-right: -45px;
+  }
+  .rodape-conteudo {
+    gap: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
 }
 @media(max-width:700px) {
   .capa { min-height: 75svh; }
@@ -483,24 +710,57 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   .continuacao-arte { height: 410px; }
   .ilha-sobreposta { height: 300px; }
   .reportagem { padding-top: 175px; }
-  .corpo-reportagem, .texto-margem { width: calc(100% - 40px); }
-  .corpo-reportagem p, .texto-margem p { font-size: 17px; line-height: 1.55; }
-  .ilustracao-cibs { width: 235px; margin: 15px -15px 10px 8px; }
-  .corpo-reportagem .paragrafo-final { font-size: 21px; margin-top: 55px; }
+  .corpo-reportagem,
+  .texto-margem { width: calc(100% - 40px); }
+  .corpo-reportagem p,
+  .texto-margem p {
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .ilustracao-cibs {
+    width: 235px;
+    margin: 15px -15px 10px 8px;
+  }
+  .corpo-reportagem .paragrafo-final {
+    font-size: 21px;
+    margin-top: 55px;
+  }
   .margem-cabecalho { padding: 70px 22px 25px; }
-  .margem-colagem { padding: 0 15px; gap: 4px; margin-bottom: 45px; }
+  .margem-colagem {
+    padding: 0 15px;
+    gap: 4px;
+    margin-bottom: 45px;
+  }
   .margem-colagem .colagem-quadro { min-height: 125px; }
-  .margem-colagem img { height: 170px; }
-  .margem-foto-direita, .margem-foto-esquerda { width: 45%; margin-left: 12px; margin-right: 0; }
-  .margem-foto-esquerda { margin-left: 0; margin-right: 12px; }
+  .margem-foto-direita,
+  .margem-foto-esquerda {
+    width: 45%;
+    margin-left: 12px;
+    margin-right: 0;
+  }
+  .margem-foto-esquerda {
+    margin-left: 0;
+    margin-right: 12px;
+  }
   .margem-separador { margin: 45px 0; }
+  .margem-separador img { max-height: 95px; }
+  .barquinhos-final img { max-height: 140px; }
   .respiro-rodape { height: 75px; }
   .pagina-abertura { padding: 75px 30px; }
   .conteudo { padding: 70px 30px; }
   .galeria { grid-template-columns: 1fr; }
   .rodape { height: 530px; }
-  .rodape-barquinho { width: 145px; left: 4%; top: -10px; }
-  .rodape-conteudo { grid-template-columns: 1fr; align-content: center; gap: 28px; padding: 100px 20px 25px; }
+  .rodape-barquinho {
+    width: 145px;
+    left: 4%;
+    top: -10px;
+  }
+  .rodape-conteudo {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 28px;
+    padding: 100px 20px 25px;
+  }
   .rodape-identidade { padding-top: 0; }
   .rodape-titulo { font-size: clamp(30px,7vw,52px); }
   .rodape-subtitulo { font-size: 21px; }
@@ -509,8 +769,15 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   .credito-perfis { font-size: 11px; }
 }
 @media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
-  .revelar { opacity: 1; transform: none; }
+  *,*::before,*::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .revelar {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>
 </head>
@@ -520,7 +787,9 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
 
 <header>
   <div class="cabecalho">
-    <button class="menu-mobile" id="botaoMenu" type="button" aria-expanded="false" aria-label="Abrir menu">☰</button>
+    <button class="menu-mobile" id="botaoMenu" type="button"
+      aria-expanded="false" aria-label="Abrir menu">☰</button>
+
     <nav id="menuPrincipal" aria-label="Menu principal">
       <button type="button" data-pagina="inicio" class="ativo">Início</button>
       <button type="button" data-pagina="a-margem">À Margem</button>
@@ -536,12 +805,13 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
 
 <main>
 
-<!-- INÍCIO -->
+<!-- ========================= INÍCIO ========================= -->
 <section class="pagina ativa" id="inicio">
 
   <div class="capa">
     <div class="capa-imagem">
-      <img src="./imagens/IMAGEM DA CAPA.PNG.png" alt="Ilustração de capa da Correnteza">
+      <img src="./imagens/IMAGEM DA CAPA.PNG.png"
+           alt="Ilustração de capa da Correnteza">
     </div>
 
     <div class="capa-conteudo">
@@ -553,24 +823,28 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
       <p class="capa-autoria">por CIBELLE VIEIRA</p>
     </div>
 
-    <button class="capa-descer" id="botaoDescer" type="button">CONTINUE A TRAVESSIA ↓</button>
+    <button class="capa-descer" id="botaoDescer" type="button">
+      CONTINUE A TRAVESSIA ↓
+    </button>
   </div>
 
   <div class="continuacao-capa">
-
     <div class="continuacao-arte">
-      <img src="./imagens/continuação da capa.png" alt="" aria-hidden="true">
+      <img src="./imagens/continuação da capa.png"
+           alt="" aria-hidden="true">
     </div>
 
     <div class="ilha-sobreposta">
-      <img src="./imagens/ILHA DO FOGO.PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/ILHA DO FOGO.PNG.png"
+           alt="" aria-hidden="true">
     </div>
 
     <article class="reportagem" id="reportagem">
       <div class="corpo-reportagem">
 
         <figure class="ilustracao-cibs">
-          <img src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png" alt="Ilustração de Cibelle criança">
+          <img src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
+               alt="Ilustração de Cibelle criança">
         </figure>
 
         <p class="primeiro-paragrafo revelar">Nasci em Juazeiro, na Bahia, mas vivi a vida inteira em Petrolina, Pernambuco. Certa vez, durante a apresentação de um trabalho em Salvador, mencionei esse fato. Com certa desconfiança, alguém me perguntou se aquilo era uma piada. Respondi com outra pergunta: por que seria?</p>
@@ -602,11 +876,10 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   <figure class="barquinhos-final">
     <img src="./imagens/barquinho.png.png" alt="Ilustração de barquinhos">
   </figure>
-
   <div class="respiro-rodape"></div>
 </section>
 
-<!-- À MARGEM -->
+<!-- ========================= À MARGEM ========================= -->
 <section class="pagina" id="a-margem">
 
   <div class="margem-cabecalho">
@@ -615,7 +888,6 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <h2 class="margem-subtitulo">À margem dos equipamentos oficiais: as histórias que nem sempre encontraram espaço para serem narradas</h2>
   </div>
 
-  <!-- Colagem inicial: espaços para fotografias de abertura -->
   <div class="margem-colagem revelar">
     <div class="colagem-quadro">
       <div class="colagem-reserva">Fotografia de apresentação artística</div>
@@ -637,7 +909,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <p class="revelar">Reconstruir essa trajetória exige olhar para além das instituições. É preciso compreender também as transformações de um território atravessado por disputas econômicas, mudanças políticas e diferentes formas de organização social. Afinal, enquanto o Vale do São Francisco era apresentado como uma região de potencial desenvolvimento, seus habitantes também construíam outras maneiras de interpretar, ocupar e representar o lugar onde viviam.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho do final. PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
     </div>
 
     <h3 class="margem-intertitulo revelar">O TERRITÓRIO EM TRANSFORMAÇÃO</h3>
@@ -649,7 +921,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <p class="revelar">O rio, que há gerações sustentava atividades como pesca, navegação e agricultura, também passou a ser compreendido como infraestrutura estratégica para a expansão econômica. Essa transformação, entretanto, não aconteceu sem conflitos.</p>
 
     <figure class="margem-foto-direita revelar">
-      <img src="./imagens/construção da Barragem.png.png" alt="Registro da construção da Barragem">
+      <img src="./imagens/construção da Barragem.png.png" alt="Construção da Barragem">
       <figcaption>Construção da Barragem de Sobradinho.</figcaption>
     </figure>
 
@@ -662,8 +934,8 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <div class="limpar"></div>
 
     <figure class="margem-foto-esquerda revelar">
-      <img src="./imagens/Comissão Pastoral da Terra.png.png" alt="Imagem relacionada à Comissão Pastoral da Terra">
-      <figcaption>Memória das mobilizações sociais na região.</figcaption>
+      <img src="./imagens/Comissão Pastoral da Terra.png.png" alt="Registro relacionado à Comissão Pastoral da Terra">
+      <figcaption>Memórias das mobilizações sociais na região.</figcaption>
     </figure>
 
     <p class="revelar">A atuação de Dom José Rodrigues à frente da Diocese de Juazeiro e a organização de trabalhadores rurais, com a participação da Comissão Pastoral da Terra, criada em 1975 em âmbito nacional, integraram esse processo de mobilização social. As lutas pelo território, pela terra e pelos direitos das comunidades atravessavam a vida regional.</p>
@@ -671,7 +943,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <p class="revelar">A cultura também estava inserida nesse cenário de disputas. Em um país submetido à censura e à vigilância política, artistas, estudantes e intelectuais precisavam encontrar caminhos para produzir, circular e compartilhar suas ideias.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho do final. PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
     </div>
 
     <h3 class="margem-intertitulo revelar">A ARTE ANTES DOS EQUIPAMENTOS</h3>
@@ -715,7 +987,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <p class="revelar">A cultura, não estava isolada das questões que atravessavam a população. O teatro, a música, a literatura e o cinema também são formas de discutir a cidade, defender o território e construir espaços de participação.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho do final. PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
     </div>
 
     <h3 class="margem-intertitulo revelar">MEMÓRIAS DO VALE EM CENA</h3>
@@ -740,7 +1012,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <p class="revelar">A observação ajuda a compreender por que recuperar a história cultural de uma região é também uma forma de intervenção no presente. Aquilo que se escolhe registrar, preservar ou deixar de fora interfere diretamente na maneira como uma sociedade reconhece sua própria trajetória.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho do final. PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
     </div>
 
     <h3 class="margem-intertitulo revelar">QUEM PODE OCUPAR OS ESPAÇOS CULTURAIS?</h3>
@@ -780,7 +1052,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <p class="revelar">A reivindicação por espaços culturais nas periferias, também passa pela possibilidade de criar, manter e financiar iniciativas que nascem nesses territórios. Afinal, não basta que os artistas consigam chegar aos espaços existentes: é preciso que tenham condições de produzir, circular e dar continuidade ao próprio trabalho.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho do final. PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
     </div>
 
     <h3 class="margem-intertitulo revelar">FINANCIAR A CULTURA, GARANTIR O ACESSO</h3>
@@ -802,17 +1074,39 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <p class="revelar">Em Juazeiro, essa disputa também acontece no campo das políticas públicas. Se, de um lado, os coletivos reivindicam espaços onde possam desenvolver suas atividades, de outro, enfrentam entraves para acessar os recursos que deveriam fortalecer a produção cultural do município.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho do final. PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
     </div>
 
     <h3 class="margem-intertitulo revelar">A MOBILIZAÇÃO DE NOVEMBRO DE 2026</h3>
 
     <p class="revelar">Na manhã de 12 de novembro de 2026, artistas, produtores culturais e conselheiros ocuparam a Praça da Bandeira, no centro de Juazeiro (BA), e seguiram em cortejo até a sede da Secretaria de Cultura, Esporte e Lazer (Seculte), no Paço Municipal. O protesto ocorreu um dia depois de integrantes do Fórum Permanente de Cultura de Juazeiro e conselheiros da sociedade civil denunciarem, por meio de notas públicas e vídeos nas redes sociais, a paralisia administrativa na execução das políticas culturais do município.</p>
 
-    <div class="video-pendente revelar">
-      VÍDEO DO CORTEJO<br>
-      Espaço reservado para o registro da mobilização de 12 de novembro de 2026.
-    </div>
+    <!-- VÍDEO DO CORTEJO INCORPORADO DO GOOGLE DRIVE -->
+    <figure class="video-reportagem revelar">
+      <div class="video-reportagem-titulo">REGISTRO AUDIOVISUAL / 12 DE NOVEMBRO DE 2026</div>
+
+      <div class="video-reportagem-player">
+        <iframe
+          src="https://drive.google.com/file/d/1FgzavNdO0LM0KQ08PAKqvCw5Lak3FL2M/preview"
+          title="Vídeo do cortejo de artistas em Juazeiro em 12 de novembro de 2026"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+
+      <figcaption>
+        Registro da mobilização de artistas, produtores culturais e conselheiros em Juazeiro (BA), em 12 de novembro de 2026.
+      </figcaption>
+
+      <a class="video-reportagem-link"
+         href="https://drive.google.com/file/d/1FgzavNdO0LM0KQ08PAKqvCw5Lak3FL2M/view?usp=drive_link"
+         target="_blank"
+         rel="noopener noreferrer">
+         Abrir vídeo no Google Drive
+      </a>
+    </figure>
 
     <p class="revelar">A mobilização expôs um paradoxo enfrentado por quem produz arte no Vale do São Francisco: os recursos federais de fomento existem, mas podem encontrar obstáculos nos trâmites burocráticos locais antes de chegar aos coletivos. Se, nos anos 1970, o desafio era criar circuitos próprios diante da inexistência de estruturas municipais, em 2026 a disputa dos trabalhadores da cultura também passa por destravar a máquina pública, garantir a execução dos editais e fortalecer os espaços de participação social.</p>
 
@@ -825,15 +1119,10 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
 
     <p class="revelar">Além do ato público no Paço Municipal, os coletivos lançaram um abaixo-assinado digital para reunir apoio da comunidade regional às reivindicações.</p>
 
-    <div class="video-pendente revelar">
-      VÍDEO COM LEGENDAS E TRANSCRIÇÃO<br>
-      Espaço reservado para o registro das falas dos manifestantes.
-    </div>
-
     <p class="revelar">Sem um Conselho com autonomia deliberativa e capacidade de fiscalização, o controle social sobre os recursos da cultura fica comprometido. A instância, prevista no Sistema Nacional de Cultura, deveria garantir a participação da sociedade civil nas decisões e no acompanhamento das políticas públicas. Quando esses mecanismos não funcionam plenamente, as decisões correm o risco de voltar a ser tomadas de cima para baixo, distantes das necessidades de quem produz cultura nos bairros.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho do final. PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
     </div>
 
     <h3 class="margem-intertitulo revelar">A RESPOSTA DA PREFEITURA</h3>
@@ -843,7 +1132,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <p class="revelar">Por outro lado, duas reivindicações estruturais dos coletivos permaneceram sem solução imediata: segundo a administração, o pedido de alteração da Lei Municipal nº 3.240/2024 para assegurar o caráter deliberativo do colegiado ainda estava em análise na Procuradoria do Município. A nota também não apresentou prazos para a abertura do CNPJ próprio do Fundo Municipal de Cultura. No comunicado, a gestão citou eventos como o Festival Edésio Santos da Canção e a retomada do Festival Nacional de Teatro Wellington Monteclaro como demonstrações de investimento no setor.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho do final. PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
     </div>
 
     <h3 class="margem-intertitulo revelar">OUTRAS FORMAS DE OCUPAR O TERRITÓRIO</h3>
@@ -863,7 +1152,7 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     <p class="revelar">Uma cartografia cultural do Vale do São Francisco precisa, portanto, ultrapassar os limites dos teatros, museus e centros culturais. Precisa localizar também os espaços independentes, as sedes improvisadas, os bairros onde acontecem as oficinas e os lugares que se transformam em palco por iniciativa de seus moradores.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho do final. PNG.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
     </div>
 
     <h3 class="margem-intertitulo revelar">UMA HISTÓRIA FEITA DE MUITAS VOZES</h3>
@@ -885,19 +1174,22 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
   <figure class="barquinhos-final">
     <img src="./imagens/barquinho.png.png" alt="Ilustração de barquinhos">
   </figure>
-
   <div class="respiro-rodape"></div>
 </section>
 
-<!-- LINHA DO TEMPO -->
+<!-- ========================= LINHA DO TEMPO ========================= -->
 <section class="pagina" id="linha-do-tempo">
   <div class="pagina-abertura">
     <span class="pagina-numero">03 / MEMÓRIAS</span>
     <h1 class="pagina-titulo">LINHA DO TEMPO</h1>
     <p class="pagina-descricao">Percursos históricos, memórias e transformações culturais entre Petrolina e Juazeiro.</p>
   </div>
+
   <div class="conteudo">
-    <div class="texto"><p>Espaço reservado para os acontecimentos históricos e culturais da linha do tempo.</p></div>
+    <div class="texto">
+      <p>Espaço reservado para os acontecimentos históricos e culturais da linha do tempo.</p>
+    </div>
+
     <div class="galeria">
       <figure class="galeria-item">
         <img src="./imagens/construção da Barragem.png.png" alt="Construção da Barragem">
@@ -909,62 +1201,83 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
       </figure>
     </div>
   </div>
+
   <div class="respiro-rodape"></div>
 </section>
 
-<!-- NÚCLEO BIRUTA -->
+<!-- ========================= NÚCLEO BIRUTA ========================= -->
 <section class="pagina" id="nucleo-biruta">
   <div class="pagina-abertura">
     <span class="pagina-numero">04 / COLETIVOS</span>
     <h1 class="pagina-titulo">NÚCLEO BIRUTA</h1>
     <p class="pagina-descricao">Trajetórias e produções culturais.</p>
   </div>
-  <div class="conteudo"><div class="texto"><p>Espaço reservado para o conteúdo do Núcleo Biruta.</p></div></div>
+  <div class="conteudo">
+    <div class="texto">
+      <p>Espaço reservado para o conteúdo do Núcleo Biruta.</p>
+    </div>
+  </div>
   <div class="respiro-rodape"></div>
 </section>
 
-<!-- COLETIVO ABDIAS -->
+<!-- ========================= COLETIVO ABDIAS ========================= -->
 <section class="pagina" id="coletivo-abdias">
   <div class="pagina-abertura">
     <span class="pagina-numero">05 / COLETIVOS</span>
     <h1 class="pagina-titulo">COLETIVO ABDIAS</h1>
     <p class="pagina-descricao">Arte, memória e experiências coletivas.</p>
   </div>
-  <div class="conteudo"><div class="texto"><p>Espaço reservado para o conteúdo do Coletivo Abdias.</p></div></div>
+  <div class="conteudo">
+    <div class="texto">
+      <p>Espaço reservado para o conteúdo do Coletivo Abdias.</p>
+    </div>
+  </div>
   <div class="respiro-rodape"></div>
 </section>
 
-<!-- CAATINGAYRO -->
+<!-- ========================= CAATINGAYRO ========================= -->
 <section class="pagina" id="caatingayro">
   <div class="pagina-abertura">
     <span class="pagina-numero">06 / EXPRESSÕES CULTURAIS</span>
     <h1 class="pagina-titulo">CAATINGAYRO</h1>
     <p class="pagina-descricao">Arte e outras formas de expressão do território.</p>
   </div>
-  <div class="conteudo"><div class="texto"><p>Espaço reservado para o conteúdo do Caatingayro.</p></div></div>
+  <div class="conteudo">
+    <div class="texto">
+      <p>Espaço reservado para o conteúdo do Caatingayro.</p>
+    </div>
+  </div>
   <div class="respiro-rodape"></div>
 </section>
 
-<!-- ARTISTAS -->
+<!-- ========================= ARTISTAS ========================= -->
 <section class="pagina" id="artistas">
   <div class="pagina-abertura">
     <span class="pagina-numero">07 / CRIAÇÕES</span>
     <h1 class="pagina-titulo">ARTISTAS</h1>
     <p class="pagina-descricao">Pessoas que criam e transformam as formas de representar o Sertão.</p>
   </div>
-  <div class="conteudo"><div class="texto"><p>Espaço reservado para as trajetórias e produções dos artistas.</p></div></div>
+  <div class="conteudo">
+    <div class="texto">
+      <p>Espaço reservado para as trajetórias e produções dos artistas.</p>
+    </div>
+  </div>
   <div class="respiro-rodape"></div>
 </section>
 
-<!-- LUGARES -->
+<!-- ========================= LUGARES ========================= -->
 <section class="pagina" id="lugares">
   <div class="pagina-abertura">
     <span class="pagina-numero">08 / TERRITÓRIOS</span>
     <h1 class="pagina-titulo">LUGARES</h1>
     <p class="pagina-descricao">Espaços de memória, pertencimento e encontros.</p>
   </div>
+
   <div class="conteudo">
-    <div class="texto"><p>Espaço reservado para as narrativas dos lugares que integram a Correnteza.</p></div>
+    <div class="texto">
+      <p>Espaço reservado para as narrativas dos lugares que integram a Correnteza.</p>
+    </div>
+
     <div class="galeria">
       <figure class="galeria-item">
         <img src="./imagens/ILHA DO FOGO.PNG.png" alt="Ilha do Fogo">
@@ -976,19 +1289,23 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
       </figure>
     </div>
   </div>
+
   <div class="respiro-rodape"></div>
 </section>
 
 </main>
 
-<!-- RODAPÉ EM TODAS AS PÁGINAS -->
+<!-- ========================= RODAPÉ ========================= -->
 <footer class="rodape">
+
   <div class="rodape-fundo">
-    <img src="./imagens/IMAGEM DO FINAL DO SITE.PNG.png" alt="" aria-hidden="true">
+    <img src="./imagens/IMAGEM DO FINAL DO SITE.PNG.png"
+         alt="" aria-hidden="true">
   </div>
 
   <div class="rodape-barquinho">
-    <img src="./imagens/barquinho do final. PNG.png" alt="Ilustração de barco">
+    <img src="./imagens/barquinho do final. PNG.png"
+         alt="Ilustração de barco">
   </div>
 
   <div class="rodape-conteudo">
@@ -998,10 +1315,14 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
     </div>
 
     <div class="rodape-creditos">
+
       <div class="credito-grupo">
         <span class="credito-label">REPORTAGEM</span>
         <span class="credito-nome">
-          <a href="https://www.linkedin.com/in/cibelle-vieira-42a801272/" target="_blank" rel="noopener noreferrer">Cibelle Vieira</a>
+          <a href="https://www.linkedin.com/in/cibelle-vieira-42a801272/"
+             target="_blank" rel="noopener noreferrer">
+            Cibelle Vieira
+          </a>
         </span>
       </div>
 
@@ -1011,26 +1332,35 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
       </div>
 
       <div class="credito-grupo">
-        <span class="credito-label">DESIGN E<br>DESENVOLVIMENTO DO SITE</span>
+        <span class="credito-label">
+          DESIGN E<br>DESENVOLVIMENTO DO SITE
+        </span>
         <span class="credito-nome">Jenifer Silva</span>
         <div class="credito-perfis">
           <span class="separador-perfil">|</span>
-          <a href="https://www.instagram.com/jeniilustra/" target="_blank" rel="noopener noreferrer">@jeniilustra</a>
+          <a href="https://www.instagram.com/jeniilustra/"
+             target="_blank" rel="noopener noreferrer">
+            @jeniilustra
+          </a>
           <span class="separador-perfil">|</span>
           <span>@labmap.s</span>
         </div>
       </div>
+
     </div>
   </div>
 </footer>
 
 </div>
 
+<!-- ÁUDIO -->
 <audio id="somRio" loop preload="none">
-  <source src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3" type="audio/mpeg">
+  <source src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
+          type="audio/mpeg">
 </audio>
 
-<button class="controle-som visivel" id="controleSom" type="button" aria-pressed="false">
+<button class="controle-som visivel" id="controleSom"
+        type="button" aria-pressed="false">
   <span id="iconeSom">♪</span>
   <span id="textoSom">ATIVAR SOM DO RIO</span>
 </button>
@@ -1039,8 +1369,10 @@ nav button:hover::after, nav button.ativo::after { width: 100%; }
 const paginas = document.querySelectorAll(".pagina");
 const botoes = document.querySelectorAll("[data-pagina]");
 const botoesMenu = document.querySelectorAll("nav [data-pagina]");
+
 const menuPrincipal = document.getElementById("menuPrincipal");
 const botaoMenu = document.getElementById("botaoMenu");
+
 const audio = document.getElementById("somRio");
 const controleSom = document.getElementById("controleSom");
 const textoSom = document.getElementById("textoSom");
@@ -1050,8 +1382,13 @@ let paginaAtual = "inicio";
 
 function atualizarSom() {
   const tocando = !audio.paused;
-  textoSom.textContent = tocando ? "DESATIVAR SOM DO RIO" : "ATIVAR SOM DO RIO";
+
+  textoSom.textContent = tocando
+    ? "DESATIVAR SOM DO RIO"
+    : "ATIVAR SOM DO RIO";
+
   iconeSom.textContent = tocando ? "♫" : "♪";
+
   controleSom.setAttribute("aria-pressed", String(tocando));
 }
 
@@ -1063,6 +1400,7 @@ function pararSom() {
 
 controleSom.addEventListener("click", async () => {
   if (paginaAtual !== "inicio") return;
+
   if (audio.paused) {
     try {
       await audio.play();
@@ -1072,13 +1410,14 @@ controleSom.addEventListener("click", async () => {
   } else {
     audio.pause();
   }
+
   atualizarSom();
 });
 
 audio.addEventListener("play", atualizarSom);
 audio.addEventListener("pause", atualizarSom);
 
-/* OBSERVADOR DE ROLAGEM DINÂMICA */
+/* ANIMAÇÃO NA ROLAGEM */
 const observador = new IntersectionObserver(entradas => {
   entradas.forEach(entrada => {
     if (entrada.isIntersecting) {
@@ -1095,12 +1434,18 @@ document.querySelectorAll(".revelar").forEach(elemento => {
   observador.observe(elemento);
 });
 
-/* NAVEGAÇÃO ENTRE PÁGINAS */
+/* NAVEGAÇÃO */
 function abrirPagina(id, atualizarHistorico = true) {
   const destino = document.getElementById(id);
-  if (!destino || !destino.classList.contains("pagina")) return;
 
-  if (id !== "inicio") pararSom();
+  if (!destino || !destino.classList.contains("pagina")) {
+    return;
+  }
+
+  if (id !== "inicio") {
+    pararSom();
+  }
+
   paginaAtual = id;
 
   paginas.forEach(pagina => {
@@ -1109,7 +1454,9 @@ function abrirPagina(id, atualizarHistorico = true) {
 
   botoesMenu.forEach(botao => {
     const ativo = botao.dataset.pagina === id;
+
     botao.classList.toggle("ativo", ativo);
+
     if (ativo) {
       botao.setAttribute("aria-current", "page");
     } else {
@@ -1118,6 +1465,7 @@ function abrirPagina(id, atualizarHistorico = true) {
   });
 
   controleSom.classList.toggle("visivel", id === "inicio");
+
   menuPrincipal.classList.remove("aberto");
   botaoMenu.setAttribute("aria-expanded", "false");
   botaoMenu.textContent = "☰";
@@ -1126,7 +1474,10 @@ function abrirPagina(id, atualizarHistorico = true) {
     history.pushState({ pagina: id }, "", "#" + id);
   }
 
-  window.scrollTo({ top: 0, behavior: "instant" });
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
 }
 
 botoes.forEach(botao => {
@@ -1137,6 +1488,7 @@ botoes.forEach(botao => {
 
 botaoMenu.addEventListener("click", () => {
   const aberto = menuPrincipal.classList.toggle("aberto");
+
   botaoMenu.setAttribute("aria-expanded", String(aberto));
   botaoMenu.textContent = aberto ? "✕" : "☰";
 });
@@ -1151,7 +1503,13 @@ document.getElementById("botaoDescer").addEventListener("click", () => {
 function verificarEndereco() {
   const id = decodeURIComponent(location.hash.replace("#", ""));
   const elemento = document.getElementById(id);
-  abrirPagina(elemento && elemento.classList.contains("pagina") ? id : "inicio", false);
+
+  abrirPagina(
+    elemento && elemento.classList.contains("pagina")
+      ? id
+      : "inicio",
+    false
+  );
 }
 
 window.addEventListener("popstate", verificarEndereco);
@@ -1160,5 +1518,6 @@ window.addEventListener("hashchange", verificarEndereco);
 verificarEndereco();
 atualizarSom();
 </script>
+
 </body>
 </html>
