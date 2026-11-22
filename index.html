@@ -39,13 +39,15 @@
 }
 
 /* ==================================================
-   GERAL
+   CORES E CONFIGURAÇÕES GERAIS
 ================================================== */
 
 :root {
   --preto: #050505;
   --branco: #f5f5f5;
   --azul: #a6b7ef;
+  --azul-suave: #c0cbef;
+  --azul-escuro: #222b50;
   --largura-texto: 740px;
   --altura-menu: 72px;
 }
@@ -251,7 +253,7 @@ nav button.ativo::after {
 }
 
 .capa-descer:hover {
-  background: #34437e;
+  background: var(--azul-escuro);
 }
 
 /* ==================================================
@@ -317,11 +319,19 @@ nav button.ativo::after {
   padding: 7px 3px 0 0;
 }
 
+/*
+  ILUSTRAÇÃO CIBS CRIANÇA
+
+  Mantida com 460px no computador,
+  flutuando à direita do texto.
+*/
+
 .ilustracao-cibs {
   position: relative;
   z-index: 4;
   float: right;
-  width: clamp(290px,33vw,460px);
+  width: 460px;
+  max-width: none;
   margin: 35px -205px 10px 15px;
 }
 
@@ -531,24 +541,17 @@ nav button.ativo::after {
 }
 
 /* ==================================================
-   NOVA LINHA DO TEMPO
+   LINHA DO TEMPO
 
-   CONCEITO VISUAL:
-   O CURSO DO RIO SÃO FRANCISCO.
-
-   - CORRENTEZA SINUOSA
-   - DUAS MARGENS
-   - COLAGENS FOTOGRÁFICAS
-   - DATAS DESTACADAS
-   - MARCOS INTERATIVOS
+   FUNDO PRETO
+   AZUIS DA IDENTIDADE VISUAL
+   CORRENTEZA SINUOSA
 ================================================== */
 
 #linha-do-tempo {
-  background: #f0ede5;
-  color: #191919;
+  background: var(--preto);
+  color: var(--branco);
 }
-
-/* ABERTURA DA LINHA DO TEMPO */
 
 .tempo-abertura {
   position: relative;
@@ -562,7 +565,7 @@ nav button.ativo::after {
   position: absolute;
   width: 420px;
   height: 420px;
-  border: 1px solid rgba(24,83,137,.18);
+  border: 1px solid rgba(166,183,239,.18);
   border-radius: 50%;
   top: -250px;
   left: -170px;
@@ -573,7 +576,7 @@ nav button.ativo::after {
   position: absolute;
   width: 250px;
   height: 250px;
-  border: 1px solid rgba(24,83,137,.15);
+  border: 1px solid rgba(166,183,239,.15);
   border-radius: 50%;
   right: -130px;
   bottom: -130px;
@@ -583,7 +586,7 @@ nav button.ativo::after {
   font-family: "Gordita", Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 4px;
-  color: #33658e;
+  color: var(--azul);
   margin-bottom: 22px;
 }
 
@@ -605,7 +608,7 @@ nav button.ativo::after {
   font-family: "Morisawa", Georgia, serif;
   font-size: clamp(23px,3vw,38px);
   line-height: 1.22;
-  color: #245e8e;
+  color: var(--azul);
 }
 
 .tempo-introducao {
@@ -613,7 +616,7 @@ nav button.ativo::after {
   margin: 28px auto 0;
   font-size: 17px;
   line-height: 1.65;
-  color: #444;
+  color: #ddd;
 }
 
 .tempo-instrucao {
@@ -625,7 +628,7 @@ nav button.ativo::after {
   font-size: 11px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #225c8a;
+  color: var(--azul);
 }
 
 .tempo-instrucao span {
@@ -638,7 +641,7 @@ nav button.ativo::after {
   50% { transform: translateY(8px); }
 }
 
-/* ÁREA DA CORRENTEZA */
+/* CORRENTEZA */
 
 .tempo-percurso {
   position: relative;
@@ -662,7 +665,7 @@ nav button.ativo::after {
 
 .rio-margem {
   fill: none;
-  stroke: rgba(18,86,134,.13);
+  stroke: rgba(166,183,239,.12);
   stroke-width: 30;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -670,7 +673,7 @@ nav button.ativo::after {
 
 .rio-agua {
   fill: none;
-  stroke: #4ba9c7;
+  stroke: #7389c7;
   stroke-width: 18;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -678,7 +681,7 @@ nav button.ativo::after {
 
 .rio-agua-interna {
   fill: none;
-  stroke: #c3e6e8;
+  stroke: #c0cbef;
   stroke-width: 5;
   stroke-linecap: round;
   stroke-dasharray: 20 22;
@@ -686,7 +689,7 @@ nav button.ativo::after {
 
 .rio-onda {
   fill: none;
-  stroke: rgba(19,88,136,.28);
+  stroke: rgba(166,183,239,.3);
   stroke-width: 1.5;
 }
 
@@ -716,16 +719,16 @@ nav button.ativo::after {
   z-index: 3;
   max-width: 440px;
   padding: 26px 26px 24px;
-  border: 1px solid rgba(34,86,113,.18);
+  border: 1px solid rgba(166,183,239,.35);
   border-radius: 3px 24px 3px 24px;
-  background: rgba(250,249,244,.94);
-  box-shadow: 0 15px 45px rgba(25,53,62,.07);
+  background: rgba(15,17,27,.96);
+  box-shadow: 0 15px 45px rgba(0,0,0,.25);
   transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .tempo-cartao:hover {
   transform: translateY(-5px);
-  box-shadow: 0 22px 50px rgba(25,53,62,.14);
+  box-shadow: 0 22px 50px rgba(0,0,0,.5);
 }
 
 .tempo-ano {
@@ -733,7 +736,7 @@ nav button.ativo::after {
   font-family: "Cubao", Impact, sans-serif;
   font-size: clamp(49px,6vw,80px);
   line-height: .95;
-  color: #1c648d;
+  color: var(--azul);
   margin-bottom: 13px;
 }
 
@@ -743,7 +746,7 @@ nav button.ativo::after {
   font-size: 9px;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: #9a4c2c;
+  color: #c0cbef;
   margin-bottom: 11px;
 }
 
@@ -753,13 +756,14 @@ nav button.ativo::after {
   line-height: 1.15;
   font-weight: 400;
   margin-bottom: 14px;
+  color: white;
 }
 
 .tempo-evento-resumo {
   font-family: "Neue Montreal", Arial, sans-serif;
   font-size: 15px;
   line-height: 1.55;
-  color: #434343;
+  color: #dedede;
 }
 
 .tempo-botao {
@@ -769,9 +773,9 @@ nav button.ativo::after {
   margin-top: 20px;
   padding: 0 0 5px;
   border: none;
-  border-bottom: 1px solid #25688c;
+  border-bottom: 1px solid var(--azul);
   background: transparent;
-  color: #205c81;
+  color: var(--azul);
   font-family: "Gordita", Arial, sans-serif;
   font-size: 11px;
   text-transform: uppercase;
@@ -791,7 +795,7 @@ nav button.ativo::after {
   display: none;
   padding-top: 20px;
   margin-top: 20px;
-  border-top: 1px solid #cbd3d2;
+  border-top: 1px solid #3c4464;
 }
 
 .tempo-detalhe.aberto {
@@ -802,7 +806,7 @@ nav button.ativo::after {
 .tempo-detalhe p {
   font-size: 15px;
   line-height: 1.65;
-  color: #303030;
+  color: #e2e2e2;
   margin-bottom: 12px;
 }
 
@@ -810,7 +814,7 @@ nav button.ativo::after {
   margin-bottom: 0;
 }
 
-/* FOTOGRAFIAS E COLAGENS */
+/* IMAGENS E COLAGENS */
 
 .tempo-visual {
   position: absolute;
@@ -839,7 +843,7 @@ nav button.ativo::after {
   object-fit: cover;
   border-radius: 45% 45% 42% 42%;
   filter: saturate(.85);
-  box-shadow: 0 12px 35px rgba(0,0,0,.12);
+  box-shadow: 0 12px 35px rgba(0,0,0,.35);
 }
 
 .tempo-visual .imagem-secundaria {
@@ -849,7 +853,7 @@ nav button.ativo::after {
   object-fit: cover;
   right: -18%;
   bottom: -15%;
-  border: 5px solid #f0ede5;
+  border: 5px solid var(--preto);
   border-radius: 50%;
   transform: rotate(10deg);
 }
@@ -858,7 +862,7 @@ nav button.ativo::after {
   font-family: "Gordita", Arial, sans-serif;
   font-size: 10px;
   line-height: 1.4;
-  color: #5d5d5d;
+  color: #aaa;
   margin-top: 12px;
   text-align: center;
 }
@@ -871,12 +875,12 @@ nav button.ativo::after {
   transform: rotate(5deg);
 }
 
-/* ELEMENTOS GRÁFICOS DE COLAGEM */
+/* ELEMENTOS GRÁFICOS */
 
 .tempo-estrela {
   position: absolute;
   z-index: 1;
-  color: #e9a443;
+  color: #a6b7ef;
   font-family: Arial, sans-serif;
   font-size: 72px;
   line-height: 1;
@@ -894,11 +898,11 @@ nav button.ativo::after {
 }
 
 .tempo-evento:nth-of-type(3n) .tempo-estrela {
-  color: #d46a4c;
+  color: #7389c7;
 }
 
 .tempo-evento:nth-of-type(4n) .tempo-estrela {
-  color: #2b91a7;
+  color: #c0cbef;
 }
 
 .tempo-selo {
@@ -912,8 +916,8 @@ nav button.ativo::after {
   align-items: center;
   text-align: center;
   padding: 8px;
-  background: #e5a849;
-  color: #222;
+  background: #a6b7ef;
+  color: #101321;
   font-family: "Gordita", Arial, sans-serif;
   font-size: 10px;
   line-height: 1.3;
@@ -930,47 +934,28 @@ nav button.ativo::after {
   bottom: 12%;
 }
 
-/* EVENTO FINAL */
-
-.tempo-desfecho {
-  max-width: 750px;
-  margin: 65px auto 0;
-  padding: 55px 35px;
-  text-align: center;
-  border-top: 1px solid rgba(30,93,125,.4);
-}
-
-.tempo-desfecho h3 {
-  font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(45px,6vw,75px);
-  font-weight: 400;
-  line-height: 1;
-  margin-bottom: 20px;
-}
-
-.tempo-desfecho p {
-  font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(21px,2.7vw,31px);
-  line-height: 1.4;
-  color: #245e83;
-}
+/* FONTES NO FINAL DA LINHA DO TEMPO */
 
 .tempo-fontes {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px 25px 100px;
+  padding: 30px 25px 100px;
   text-align: center;
 }
 
 .tempo-fontes p {
   font-size: 13px;
   line-height: 1.7;
-  color: #555;
+  color: #aaa;
 }
 
 .tempo-fontes a {
   text-decoration: underline;
-  color: #205e88;
+  color: var(--azul);
+}
+
+.tempo-fontes a:hover {
+  color: white;
 }
 
 /* ==================================================
@@ -1181,7 +1166,7 @@ nav button.ativo::after {
 }
 
 /* ==================================================
-   REVELAÇÃO
+   ANIMAÇÕES
 ================================================== */
 
 .revelar {
@@ -1474,18 +1459,6 @@ nav button.ativo::after {
     font-size: 45px;
   }
 
-  .tempo-desfecho {
-    padding: 45px 20px;
-  }
-
-  .tempo-desfecho h3 {
-    font-size: 45px;
-  }
-
-  .tempo-desfecho p {
-    font-size: 22px;
-  }
-
   .pagina-abertura {
     padding: 75px 30px;
   }
@@ -1578,19 +1551,12 @@ nav button.ativo::after {
     <nav id="menuPrincipal" aria-label="Menu principal">
 
       <button type="button" data-pagina="inicio" class="ativo">Início</button>
-
       <button type="button" data-pagina="a-margem">À Margem</button>
-
       <button type="button" data-pagina="linha-do-tempo">Linha do Tempo</button>
-
       <button type="button" data-pagina="nucleo-biruta">Núcleo Biruta</button>
-
       <button type="button" data-pagina="coletivo-abdias">Coletivo Abdias</button>
-
       <button type="button" data-pagina="caatingayro">Caatingayro</button>
-
       <button type="button" data-pagina="artistas">Artistas</button>
-
       <button type="button" data-pagina="lugares">Lugares</button>
 
     </nav>
@@ -2023,7 +1989,7 @@ nav button.ativo::after {
 </section>
 
 <!-- ==================================================
-     NOVA PÁGINA: LINHA DO TEMPO
+     LINHA DO TEMPO
 ================================================== -->
 
 <section class="pagina" id="linha-do-tempo">
@@ -2058,13 +2024,6 @@ nav button.ativo::after {
 
   </div>
 
-  <!--
-    O SVG É DESENHADO PELO JAVASCRIPT.
-
-    ELE ACOMPANHA OS MARCOS HISTÓRICOS
-    E FORMA UM RIO SINUOSO.
-  -->
-
   <div class="tempo-percurso" id="tempoPercurso">
 
     <svg
@@ -2074,11 +2033,8 @@ nav button.ativo::after {
       preserveAspectRatio="none">
 
       <path class="rio-margem" id="rioMargem"></path>
-
       <path class="rio-agua" id="rioAgua"></path>
-
       <path class="rio-agua-interna" id="rioInterno"></path>
-
       <path class="rio-onda" id="rioOnda"></path>
 
     </svg>
@@ -2796,23 +2752,9 @@ nav button.ativo::after {
 
     </div>
 
-    <!-- ENCERRAMENTO -->
-
-    <div class="tempo-desfecho revelar">
-
-      <h3>
-        A CORRENTEZA CONTINUA
-      </h3>
-
-      <p>
-        As políticas culturais mudam, os espaços
-        se transformam, mas a arte segue encontrando
-        caminhos entre as duas margens.
-      </p>
-
-    </div>
-
   </div>
+
+  <!-- FONTES MANTIDAS; ENCERRAMENTO RETIRADO -->
 
   <div class="tempo-fontes">
 
@@ -3154,7 +3096,6 @@ const iconeSom = document.getElementById(
 );
 
 let paginaAtual = "inicio";
-
 let usuarioDesativouSom = false;
 
 /* ==================================================
@@ -3190,13 +3131,9 @@ async function iniciarSom() {
   }
 
   try {
-
     await audio.play();
-
   } catch (erro) {
-
     // O navegador pode bloquear autoplay.
-
   }
 
   atualizarSom();
@@ -3282,7 +3219,6 @@ const observador = new IntersectionObserver(
       if (entrada.isIntersecting) {
 
         entrada.target.classList.add("visivel");
-
         observador.unobserve(entrada.target);
 
       }
@@ -3304,8 +3240,6 @@ document.querySelectorAll(".revelar").forEach(
 
 /* ==================================================
    LINHA DO TEMPO INTERATIVA
-
-   OS BOTÕES ABREM E FECHAM OS TEXTOS.
 ================================================== */
 
 document.querySelectorAll(".tempo-botao").forEach(
@@ -3341,12 +3275,6 @@ document.querySelectorAll(".tempo-botao").forEach(
 
 /* ==================================================
    DESENHO DA CORRENTEZA
-
-   O CAMINHO É REFEITO AUTOMATICAMENTE
-   CONFORME A ALTURA DOS ACONTECIMENTOS.
-
-   ASSIM, QUANDO UM TEXTO É ABERTO,
-   O RIO CONTINUA ACOMPANHANDO A PÁGINA.
 ================================================== */
 
 const tempoPercurso = document.getElementById(
@@ -3475,13 +3403,6 @@ function desenharRio() {
   rioMargem.setAttribute("d", caminho);
   rioAgua.setAttribute("d", caminho);
   rioInterno.setAttribute("d", caminho);
-
-  /*
-    Segunda linha fina acompanhando
-    a correnteza, para dar aparência
-    de movimento da água.
-  */
-
   rioOnda.setAttribute("d", caminho);
 
   rioOnda.setAttribute(
@@ -3490,11 +3411,6 @@ function desenharRio() {
   );
 
 }
-
-/*
-  REDESENHA QUANDO A TELA MUDA
-  OU QUANDO OS CARTÕES AUMENTAM.
-*/
 
 window.addEventListener(
   "resize",
@@ -3637,14 +3553,6 @@ function abrirPagina(
   ) {
     iniciarSom();
   }
-
-  /*
-    IMPORTANTE:
-
-    O SVG SÓ CONSEGUE CALCULAR A
-    ALTURA CORRETAMENTE QUANDO A
-    PÁGINA ESTÁ VISÍVEL.
-  */
 
   if (id === "linha-do-tempo") {
 
