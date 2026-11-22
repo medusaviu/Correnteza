@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,10 @@
   <title>Entre Duas Margens, Uma Só Correnteza</title>
 
   <style>
-    /* ========================================
-       FONTES
-    ======================================== */
+
+    /* ==========================================
+       1. FONTES
+    ========================================== */
 
     @font-face {
       font-family: "Cubao";
@@ -41,9 +43,9 @@
       font-display: swap;
     }
 
-    /* ========================================
-       CONFIGURAÇÕES GERAIS
-    ======================================== */
+    /* ==========================================
+       2. CONFIGURAÇÕES GERAIS
+    ========================================== */
 
     :root {
       --preto: #050505;
@@ -53,23 +55,9 @@
       --largura-texto: 740px;
       --altura-menu: 72px;
 
-      /*
-        CONTROLES VISUAIS
-
-        Aumente os valores de zoom se quiser
-        aproximar ainda mais as ilustrações.
-      */
-
       --zoom-capa: 1.12;
       --zoom-rodape: 1.16;
-
-      /*
-        Altura total da imagem da Ilha do Fogo
-        dividida entre capa e reportagem.
-      */
-
       --ilha-altura: clamp(300px, 34vw, 500px);
-      --ilha-parte-capa: 46%;
     }
 
     * {
@@ -102,15 +90,20 @@
       max-width: 100%;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .site {
       width: 100%;
       min-height: 100vh;
       background: var(--preto);
     }
 
-    /* ========================================
-       MENU CENTRALIZADO
-    ======================================== */
+    /* ==========================================
+       3. MENU CENTRALIZADO
+    ========================================== */
 
     header {
       position: sticky;
@@ -179,9 +172,9 @@
       font-size: 22px;
     }
 
-    /* ========================================
-       PÁGINAS
-    ======================================== */
+    /* ==========================================
+       4. PÁGINAS
+    ========================================== */
 
     .pagina {
       display: none;
@@ -198,9 +191,9 @@
       to { opacity: 1; }
     }
 
-    /* ========================================
-       CAPA COM ZOOM
-    ======================================== */
+    /* ==========================================
+       5. CAPA
+    ========================================== */
 
     .capa {
       position: relative;
@@ -208,7 +201,7 @@
       width: 100%;
       min-height: calc(100svh - var(--altura-menu));
       overflow: hidden;
-      background: #000;
+      background: black;
     }
 
     .capa-imagem {
@@ -222,7 +215,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: center;
       transform: scale(var(--zoom-capa));
       transform-origin: center;
     }
@@ -243,7 +236,6 @@
       font-weight: 400;
       font-size: clamp(64px, 10vw, 160px);
       line-height: 0.93;
-      color: white;
     }
 
     .capa-titulo span {
@@ -263,42 +255,6 @@
       font-family: "Gordita", Arial, sans-serif;
       font-size: 14px;
     }
-
-    /* ========================================
-       ILHA DO FOGO: IMAGEM CONTÍNUA
-
-       A imagem é exibida em um único elemento,
-       que atravessa o limite da capa.
-
-       Isso evita cortes ou desalinhamentos
-       entre duas cópias diferentes.
-    ======================================== */
-
-    .transicao-ilha {
-      position: relative;
-      width: 100%;
-      height: var(--ilha-altura);
-      margin-top: calc(var(--ilha-altura) * -0.46);
-      z-index: 3;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .transicao-ilha img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /*
-      A parte superior da transição aparece
-      sobre a capa. A parte inferior continua
-      imediatamente antes do texto.
-
-      Como é uma única imagem, não existe
-      emenda entre os dois trechos.
-    */
 
     .capa-descer {
       position: absolute;
@@ -320,9 +276,30 @@
       background: var(--azul);
     }
 
-    /* ========================================
-       REPORTAGEM
-    ======================================== */
+    /* ==========================================
+       6. ILHA DO FOGO
+    ========================================== */
+
+    .transicao-ilha {
+      position: relative;
+      width: 100%;
+      height: var(--ilha-altura);
+      margin-top: calc(var(--ilha-altura) * -0.46);
+      z-index: 3;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .transicao-ilha img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* ==========================================
+       7. REPORTAGEM
+    ========================================== */
 
     .reportagem {
       position: relative;
@@ -346,10 +323,6 @@
       line-height: 1.12;
       text-align: left;
     }
-
-    /* ========================================
-       TEXTO CORRIDO CENTRALIZADO
-    ======================================== */
 
     .corpo-reportagem {
       position: relative;
@@ -378,23 +351,15 @@
       padding: 4px 4px 0 0;
     }
 
-    /* ========================================
-       CIBS CRIANÇA MAIOR E MAIS PRÓXIMA
-    ======================================== */
+    /* ==========================================
+       8. CIBS CRIANÇA
+    ========================================== */
 
     .ilustracao-cibs {
       float: right;
       position: relative;
       z-index: 5;
-
       width: clamp(330px, 38vw, 560px);
-
-      /*
-        Margem negativa coloca a ilustração
-        para fora da coluna sem empurrar
-        o texto para longe.
-      */
-
       margin: 5px -230px 12px 12px;
     }
 
@@ -408,9 +373,9 @@
       clear: both;
     }
 
-    /* ========================================
-       ÚLTIMO PARÁGRAFO
-    ======================================== */
+    /* ==========================================
+       9. PARÁGRAFO FINAL
+    ========================================== */
 
     .corpo-reportagem .paragrafo-final {
       clear: both;
@@ -422,12 +387,11 @@
       line-height: 1.3;
       text-align: center;
       text-transform: uppercase;
-      color: white;
     }
 
-    /* ========================================
-       OUTRAS PÁGINAS
-    ======================================== */
+    /* ==========================================
+       10. OUTRAS PÁGINAS
+    ========================================== */
 
     .pagina-abertura {
       padding: 110px max(40px, calc((100vw - 1100px) / 2)) 75px;
@@ -486,9 +450,9 @@
       margin-bottom: 25px;
     }
 
-    /* ========================================
-       CARDS
-    ======================================== */
+    /* ==========================================
+       11. CARDS
+    ========================================== */
 
     .grade {
       display: grid;
@@ -532,9 +496,9 @@
       font-size: 25px;
     }
 
-    /* ========================================
-       GALERIA
-    ======================================== */
+    /* ==========================================
+       12. GALERIA
+    ========================================== */
 
     .galeria {
       display: grid;
@@ -563,15 +527,15 @@
       color: #c5c5c5;
     }
 
-    /* ========================================
-       RODAPÉ COM ZOOM
-    ======================================== */
+    /* ==========================================
+       13. RODAPÉ — NOVO POSICIONAMENTO
+    ========================================== */
 
     .rodape {
       position: relative;
       isolation: isolate;
       width: 100%;
-      min-height: 440px;
+      min-height: 460px;
       overflow: hidden;
       background: black;
     }
@@ -608,9 +572,16 @@
       mix-blend-mode: screen;
     }
 
+    /*
+      BARQUINHO MAIS ALTO
+
+      Antes: top: 0
+      Agora: top: -55px
+    */
+
     .rodape-barco {
       position: absolute;
-      top: 0;
+      top: -55px;
       left: 7%;
       z-index: 3;
       width: clamp(160px, 20vw, 320px);
@@ -623,20 +594,30 @@
       object-fit: contain;
     }
 
+    /*
+      CONTEÚDO CENTRALIZADO VERTICALMENTE
+
+      Antes: align-items: end
+      Agora: align-items: center
+    */
+
     .rodape-conteudo {
       position: relative;
       z-index: 2;
       width: 100%;
-      min-height: 440px;
+      min-height: 460px;
+
       display: grid;
       grid-template-columns: 1.3fr 1fr;
-      align-items: end;
+      align-items: center;
+
       gap: 50px;
-      padding: 130px 8% 65px;
+      padding: 75px 8% 55px;
     }
 
     .rodape-identidade {
       text-align: center;
+      padding-top: 40px;
     }
 
     .rodape-titulo {
@@ -654,10 +635,14 @@
       line-height: 1.3;
     }
 
+    /* CRÉDITOS MAIS CENTRALIZADOS */
+
     .rodape-creditos {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
+
       gap: 20px;
       text-align: center;
     }
@@ -665,24 +650,60 @@
     .credito-grupo {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 6px;
     }
 
     .credito-label {
       font-family: "Neue Montreal", Arial, sans-serif;
       font-size: clamp(15px, 1.8vw, 24px);
-      line-height: 1.05;
+      font-weight: 400;
+      line-height: 1.1;
       text-transform: uppercase;
     }
 
     .credito-nome {
       font-family: "Morisawa", Georgia, serif;
       font-size: clamp(16px, 1.7vw, 24px);
+      line-height: 1.35;
     }
 
-    /* ========================================
-       CONTROLE DO SOM
-    ======================================== */
+    .credito-perfis {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      font-family: "Gordita", Arial, sans-serif;
+      font-size: clamp(10px, 1vw, 13px);
+      line-height: 1.5;
+    }
+
+    .rodape-creditos a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .rodape-creditos a:hover {
+      color: var(--azul-claro);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .rodape-creditos a:focus-visible {
+      outline: 2px solid var(--azul-claro);
+      outline-offset: 4px;
+    }
+
+    .separador-perfil {
+      color: #b5b5b5;
+    }
+
+    /* ==========================================
+       14. CONTROLE DO SOM
+    ========================================== */
 
     .controle-som {
       position: fixed;
@@ -705,9 +726,9 @@
       display: flex;
     }
 
-    /* ========================================
-       RESPONSIVIDADE
-    ======================================== */
+    /* ==========================================
+       15. RESPONSIVIDADE
+    ========================================== */
 
     @media (max-width: 1100px) {
       .ilustracao-cibs {
@@ -747,6 +768,12 @@
       .ilustracao-cibs {
         width: 310px;
         margin-right: -45px;
+      }
+
+      .rodape-conteudo {
+        gap: 25px;
+        padding-left: 5%;
+        padding-right: 5%;
       }
     }
 
@@ -814,22 +841,29 @@
         grid-template-columns: 1fr;
       }
 
+      /* RODAPÉ NO CELULAR */
+
       .rodape {
-        min-height: 620px;
+        min-height: 650px;
       }
 
       .rodape-conteudo {
-        min-height: 620px;
+        min-height: 650px;
         grid-template-columns: 1fr;
+        align-content: center;
         align-items: center;
-        gap: 35px;
-        padding: 150px 25px 45px;
+        gap: 45px;
+        padding: 125px 25px 45px;
       }
 
       .rodape-barco {
         width: 160px;
-        top: 10px;
+        top: -35px;
         left: 5%;
+      }
+
+      .rodape-identidade {
+        padding-top: 0;
       }
 
       .rodape-titulo {
@@ -838,6 +872,22 @@
 
       .rodape-subtitulo {
         font-size: 21px;
+      }
+
+      .rodape-creditos {
+        gap: 17px;
+      }
+
+      .credito-label {
+        font-size: 18px;
+      }
+
+      .credito-nome {
+        font-size: 19px;
+      }
+
+      .credito-perfis {
+        font-size: 11px;
       }
     }
 
@@ -850,6 +900,7 @@
         scroll-behavior: auto !important;
       }
     }
+
   </style>
 </head>
 
@@ -857,9 +908,12 @@
 
 <div class="site">
 
-  <!-- MENU -->
+  <!-- ======================================
+       MENU
+  ====================================== -->
 
   <header>
+
     <div class="cabecalho">
 
       <button
@@ -873,24 +927,50 @@
       </button>
 
       <nav id="menuPrincipal" aria-label="Menu principal">
-        <button type="button" data-pagina="inicio" class="ativo">Início</button>
-        <button type="button" data-pagina="a-margem">À Margem</button>
-        <button type="button" data-pagina="linha-do-tempo">Linha do Tempo</button>
-        <button type="button" data-pagina="nucleo-biruta">Núcleo Biruta</button>
-        <button type="button" data-pagina="coletivo-abdias">Coletivo Abdias</button>
-        <button type="button" data-pagina="caatingayro">Caatingayro</button>
-        <button type="button" data-pagina="artistas">Artistas</button>
-        <button type="button" data-pagina="lugares">Lugares</button>
+
+        <button type="button" data-pagina="inicio" class="ativo">
+          Início
+        </button>
+
+        <button type="button" data-pagina="a-margem">
+          À Margem
+        </button>
+
+        <button type="button" data-pagina="linha-do-tempo">
+          Linha do Tempo
+        </button>
+
+        <button type="button" data-pagina="nucleo-biruta">
+          Núcleo Biruta
+        </button>
+
+        <button type="button" data-pagina="coletivo-abdias">
+          Coletivo Abdias
+        </button>
+
+        <button type="button" data-pagina="caatingayro">
+          Caatingayro
+        </button>
+
+        <button type="button" data-pagina="artistas">
+          Artistas
+        </button>
+
+        <button type="button" data-pagina="lugares">
+          Lugares
+        </button>
+
       </nav>
 
     </div>
+
   </header>
 
   <main>
 
-    <!-- =====================================
-         PÁGINA INICIAL
-    ===================================== -->
+    <!-- ======================================
+         INÍCIO
+    ====================================== -->
 
     <section class="pagina ativa" id="inicio">
 
@@ -932,9 +1012,7 @@
 
       </div>
 
-      <!-- =====================================
-           CONTINUIDADE DA ILHA DO FOGO
-      ===================================== -->
+      <!-- ILHA DO FOGO -->
 
       <div class="transicao-ilha" aria-hidden="true">
         <img
@@ -943,9 +1021,7 @@
         >
       </div>
 
-      <!-- =====================================
-           REPORTAGEM
-      ===================================== -->
+      <!-- REPORTAGEM -->
 
       <article class="reportagem" id="reportagem">
 
@@ -957,7 +1033,7 @@
 
           <div class="corpo-reportagem">
 
-            <!-- ILUSTRAÇÃO CIBS CRIANÇA -->
+            <!-- CIBS CRIANÇA -->
 
             <figure class="ilustracao-cibs">
               <img
@@ -1096,7 +1172,7 @@
 
       </article>
 
-      <!-- NAVEGAÇÃO PARA AS DEMAIS PÁGINAS -->
+      <!-- LINKS PARA OUTRAS PÁGINAS -->
 
       <div class="conteudo">
 
@@ -1158,9 +1234,9 @@
 
     </section>
 
-    <!-- =====================================
+    <!-- ======================================
          À MARGEM
-    ===================================== -->
+    ====================================== -->
 
     <section class="pagina" id="a-margem">
 
@@ -1184,9 +1260,9 @@
 
     </section>
 
-    <!-- =====================================
+    <!-- ======================================
          LINHA DO TEMPO
-    ===================================== -->
+    ====================================== -->
 
     <section class="pagina" id="linha-do-tempo">
 
@@ -1218,7 +1294,9 @@
               alt="Construção da Barragem"
               loading="lazy"
             >
-            <p class="galeria-legenda">Construção da Barragem</p>
+            <p class="galeria-legenda">
+              Construção da Barragem
+            </p>
           </div>
 
           <div class="galeria-item">
@@ -1227,7 +1305,9 @@
               alt="Círculo Operário de Juazeiro"
               loading="lazy"
             >
-            <p class="galeria-legenda">Círculo Operário de Juazeiro</p>
+            <p class="galeria-legenda">
+              Círculo Operário de Juazeiro
+            </p>
           </div>
 
         </div>
@@ -1236,9 +1316,9 @@
 
     </section>
 
-    <!-- =====================================
+    <!-- ======================================
          NÚCLEO BIRUTA
-    ===================================== -->
+    ====================================== -->
 
     <section class="pagina" id="nucleo-biruta">
 
@@ -1260,9 +1340,9 @@
 
     </section>
 
-    <!-- =====================================
+    <!-- ======================================
          COLETIVO ABDIAS
-    ===================================== -->
+    ====================================== -->
 
     <section class="pagina" id="coletivo-abdias">
 
@@ -1284,9 +1364,9 @@
 
     </section>
 
-    <!-- =====================================
+    <!-- ======================================
          CAATINGAYRO
-    ===================================== -->
+    ====================================== -->
 
     <section class="pagina" id="caatingayro">
 
@@ -1308,9 +1388,9 @@
 
     </section>
 
-    <!-- =====================================
+    <!-- ======================================
          ARTISTAS
-    ===================================== -->
+    ====================================== -->
 
     <section class="pagina" id="artistas">
 
@@ -1334,9 +1414,9 @@
 
     </section>
 
-    <!-- =====================================
+    <!-- ======================================
          LUGARES
-    ===================================== -->
+    ====================================== -->
 
     <section class="pagina" id="lugares">
 
@@ -1365,7 +1445,9 @@
               alt="Ilha do Fogo"
               loading="lazy"
             >
-            <p class="galeria-legenda">Ilha do Fogo</p>
+            <p class="galeria-legenda">
+              Ilha do Fogo
+            </p>
           </div>
 
           <div class="galeria-item">
@@ -1374,7 +1456,9 @@
               alt="Comissão Pastoral da Terra"
               loading="lazy"
             >
-            <p class="galeria-legenda">Comissão Pastoral da Terra</p>
+            <p class="galeria-legenda">
+              Comissão Pastoral da Terra
+            </p>
           </div>
 
         </div>
@@ -1385,13 +1469,14 @@
 
   </main>
 
-  <!-- =====================================
-       RODAPÉ PRESENTE EM TODAS AS PÁGINAS
-  ===================================== -->
+  <!-- ======================================
+       RODAPÉ
+       APARECE EM TODAS AS PÁGINAS
+  ====================================== -->
 
   <footer class="rodape">
 
-    <!-- FUNDO COM ZOOM -->
+    <!-- FUNDO -->
 
     <div class="rodape-fundo">
       <img
@@ -1401,7 +1486,7 @@
       >
     </div>
 
-    <!-- ILHA DO FOGO NO FUNDO DO RODAPÉ -->
+    <!-- ILHA DO FOGO -->
 
     <div class="rodape-ilha">
       <img
@@ -1411,7 +1496,7 @@
       >
     </div>
 
-    <!-- BARQUINHO -->
+    <!-- BARQUINHO MAIS ALTO -->
 
     <div class="rodape-barco">
       <img
@@ -1421,9 +1506,11 @@
       >
     </div>
 
-    <!-- CRÉDITOS -->
+    <!-- CONTEÚDO CENTRALIZADO -->
 
     <div class="rodape-conteudo">
+
+      <!-- TÍTULO -->
 
       <div class="rodape-identidade">
 
@@ -1437,24 +1524,73 @@
 
       </div>
 
+      <!-- CRÉDITOS COM LINKS -->
+
       <div class="rodape-creditos">
 
         <div class="credito-grupo">
-          <span class="credito-label">REPORTAGEM</span>
-          <span class="credito-nome">Cibelle Vieira</span>
+
+          <span class="credito-label">
+            REPORTAGEM
+          </span>
+
+          <span class="credito-nome">
+
+            <a
+              href="https://www.linkedin.com/in/cibelle-vieira-42a801272/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn de Cibelle Vieira"
+            >
+              Cibelle Vieira
+            </a>
+
+          </span>
+
         </div>
 
         <div class="credito-grupo">
-          <span class="credito-label">ORIENTAÇÃO</span>
-          <span class="credito-nome">Raiane Sousa</span>
+
+          <span class="credito-label">
+            ORIENTAÇÃO
+          </span>
+
+          <span class="credito-nome">
+            Raiane Sousa
+          </span>
+
         </div>
 
         <div class="credito-grupo">
+
           <span class="credito-label">
             DESIGN E<br>
             DESENVOLVIMENTO DO SITE
           </span>
-          <span class="credito-nome">Jenifer Silva</span>
+
+          <span class="credito-nome">
+            Jenifer Silva
+          </span>
+
+          <div class="credito-perfis">
+
+            <span class="separador-perfil">|</span>
+
+            <a
+              href="https://www.instagram.com/jeniilustra/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram @jeniilustra"
+            >
+              @jeniilustra
+            </a>
+
+            <span class="separador-perfil">|</span>
+
+            <span>@labmap.s</span>
+
+          </div>
+
         </div>
 
       </div>
@@ -1465,9 +1601,9 @@
 
 </div>
 
-<!-- =====================================
+<!-- ======================================
      SOM DO RIO
-===================================== -->
+====================================== -->
 
 <audio id="somRio" loop preload="none">
   <source
@@ -1487,9 +1623,9 @@
   <span id="textoSom">ATIVAR SOM DO RIO</span>
 </button>
 
-<!-- =====================================
+<!-- ======================================
      JAVASCRIPT
-===================================== -->
+====================================== -->
 
 <script>
 
@@ -1507,9 +1643,12 @@
 
   let paginaAtual = "inicio";
 
-  /* SOM */
+  /* ======================================
+     SOM
+  ====================================== */
 
   function atualizarSom() {
+
     const tocando = !audio.paused;
 
     textoSom.textContent = tocando
@@ -1518,48 +1657,70 @@
 
     iconeSom.textContent = tocando ? "♫" : "♪";
 
-    controleSom.setAttribute("aria-pressed", String(tocando));
+    controleSom.setAttribute(
+      "aria-pressed",
+      String(tocando)
+    );
 
     controleSom.setAttribute(
       "aria-label",
-      tocando ? "Desativar som do rio" : "Ativar som do rio"
+      tocando
+        ? "Desativar som do rio"
+        : "Ativar som do rio"
     );
+
   }
 
   function pararSom() {
+
     audio.pause();
     audio.currentTime = 0;
+
     atualizarSom();
+
   }
 
   controleSom.addEventListener("click", async () => {
-    if (paginaAtual !== "inicio") return;
+
+    if (paginaAtual !== "inicio") {
+      return;
+    }
 
     if (audio.paused) {
+
       try {
         await audio.play();
       } catch (erro) {
         console.error("Erro ao reproduzir o áudio:", erro);
       }
+
     } else {
       audio.pause();
     }
 
     atualizarSom();
+
   });
 
   audio.addEventListener("play", atualizarSom);
   audio.addEventListener("pause", atualizarSom);
 
-  /* NAVEGAÇÃO */
+  /* ======================================
+     NAVEGAÇÃO
+  ====================================== */
 
   function abrirPagina(id, atualizarHistorico = true) {
 
     const destino = document.getElementById(id);
 
-    if (!destino || !destino.classList.contains("pagina")) {
+    if (
+      !destino ||
+      !destino.classList.contains("pagina")
+    ) {
       return;
     }
+
+    // Parar o som ao sair do início
 
     if (id !== "inicio") {
       pararSom();
@@ -1568,10 +1729,16 @@
     paginaAtual = id;
 
     paginas.forEach(pagina => {
-      pagina.classList.toggle("ativa", pagina.id === id);
+
+      pagina.classList.toggle(
+        "ativa",
+        pagina.id === id
+      );
+
     });
 
     botoesMenu.forEach(botao => {
+
       const ativo = botao.dataset.pagina === id;
 
       botao.classList.toggle("ativo", ativo);
@@ -1581,48 +1748,90 @@
       } else {
         botao.removeAttribute("aria-current");
       }
+
     });
 
-    controleSom.classList.toggle("visivel", id === "inicio");
+    controleSom.classList.toggle(
+      "visivel",
+      id === "inicio"
+    );
 
     menuPrincipal.classList.remove("aberto");
-    botaoMenu.setAttribute("aria-expanded", "false");
+
+    botaoMenu.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
     botaoMenu.textContent = "☰";
 
     if (atualizarHistorico) {
-      history.pushState({ pagina: id }, "", "#" + id);
+
+      history.pushState(
+        { pagina: id },
+        "",
+        "#" + id
+      );
+
     }
 
     window.scrollTo(0, 0);
+
   }
 
   botoes.forEach(botao => {
+
     botao.addEventListener("click", evento => {
+
       evento.preventDefault();
+
       abrirPagina(botao.dataset.pagina);
+
     });
+
   });
 
-  /* MENU MOBILE */
+  /* ======================================
+     MENU MOBILE
+  ====================================== */
 
   botaoMenu.addEventListener("click", () => {
-    const aberto = menuPrincipal.classList.toggle("aberto");
 
-    botaoMenu.setAttribute("aria-expanded", String(aberto));
+    const aberto = menuPrincipal.classList.toggle(
+      "aberto"
+    );
+
+    botaoMenu.setAttribute(
+      "aria-expanded",
+      String(aberto)
+    );
+
     botaoMenu.textContent = aberto ? "✕" : "☰";
+
   });
 
-  /* BOTÃO DA CAPA */
+  /* ======================================
+     BOTÃO DA CAPA
+  ====================================== */
 
-  document.getElementById("botaoDescer").addEventListener("click", () => {
-    document.getElementById("reportagem").scrollIntoView({
+  document.getElementById(
+    "botaoDescer"
+  ).addEventListener("click", () => {
+
+    document.getElementById(
+      "reportagem"
+    ).scrollIntoView({
       behavior: "smooth"
     });
+
   });
 
-  /* HISTÓRICO */
+  /* ======================================
+     HISTÓRICO
+  ====================================== */
 
   function verificarEndereco() {
+
     const id = decodeURIComponent(
       window.location.hash.replace("#", "")
     );
@@ -1630,13 +1839,25 @@
     const elemento = document.getElementById(id);
 
     const paginaValida =
-      elemento && elemento.classList.contains("pagina");
+      elemento &&
+      elemento.classList.contains("pagina");
 
-    abrirPagina(paginaValida ? id : "inicio", false);
+    abrirPagina(
+      paginaValida ? id : "inicio",
+      false
+    );
+
   }
 
-  window.addEventListener("popstate", verificarEndereco);
-  window.addEventListener("hashchange", verificarEndereco);
+  window.addEventListener(
+    "popstate",
+    verificarEndereco
+  );
+
+  window.addEventListener(
+    "hashchange",
+    verificarEndereco
+  );
 
   verificarEndereco();
   atualizarSom();
