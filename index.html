@@ -3,56 +3,59 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#050505">
-
 <title>Entre Duas Margens, Uma Só Correnteza</title>
 
 <style>
-/* =====================================================
-   FONTES
-===================================================== */
+/* ===================== FONTES ===================== */
 
 @font-face {
   font-family: "Cubao";
   src: url("./fontes/cubao-free/Cubao_Free_Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Morisawa";
   src: url("./fontes/morisawa-otf-cufonfonts-webfont/MorisawaOtfRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Gordita";
   src: url("./fontes/gordita-regular-maisfontes.80be/gordita-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Neue Montreal";
   src: url("./fontes/neue-montreal-regular-maisfontes.525c/neue-montreal-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
 
-/* =====================================================
-   CONFIGURAÇÕES GERAIS
-===================================================== */
+/* ===================== GERAL ===================== */
 
 :root {
   --preto: #050505;
   --azul: #a6b7ef;
-  --texto: #f3f3f3;
-  --largura-texto: 740px;
+  --branco: #f5f5f5;
   --altura-menu: 72px;
+  --largura-texto: 740px;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -62,14 +65,18 @@ html {
 
 body {
   background: var(--preto);
-  color: white;
+  color: var(--branco);
   font-family: "Neue Montreal", Arial, sans-serif;
+  font-weight: 400;
   overflow-x: hidden;
+}
+
+button, input, textarea {
+  font-family: inherit;
 }
 
 button {
   cursor: pointer;
-  font-family: inherit;
 }
 
 a {
@@ -88,21 +95,19 @@ img {
   background: var(--preto);
 }
 
-/* =====================================================
-   MENU
-===================================================== */
+/* ===================== MENU ===================== */
 
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.97);
+  background: rgba(0,0,0,.97);
   backdrop-filter: blur(12px);
 }
 
 .cabecalho {
   min-height: var(--altura-menu);
-  padding: 12px 25px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,19 +115,20 @@ header {
 
 nav {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: clamp(12px, 1.8vw, 30px);
 }
 
 nav button {
-  background: none;
-  border: none;
+  background: transparent;
+  border: 0;
   color: #eee;
-  font-family: "Gordita", Arial, sans-serif;
-  font-size: clamp(10px, 0.9vw, 13px);
   padding: 9px 0;
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: clamp(10px, .9vw, 13px);
+  font-weight: 400;
   position: relative;
 }
 
@@ -134,7 +140,7 @@ nav button::after {
   width: 0;
   height: 1px;
   background: var(--azul);
-  transition: width 0.3s;
+  transition: width .3s ease;
 }
 
 nav button:hover,
@@ -149,16 +155,14 @@ nav button.ativo::after {
 
 .menu-mobile {
   display: none;
-  background: transparent;
-  color: white;
+  background: none;
   border: 1px solid #555;
+  color: white;
   padding: 8px 13px;
   font-size: 22px;
 }
 
-/* =====================================================
-   PÁGINAS
-===================================================== */
+/* ===================== PÁGINAS ===================== */
 
 .pagina {
   display: none;
@@ -167,7 +171,7 @@ nav button.ativo::after {
 
 .pagina.ativa {
   display: block;
-  animation: aparecer 0.45s ease;
+  animation: aparecer .45s ease;
 }
 
 @keyframes aparecer {
@@ -175,17 +179,14 @@ nav button.ativo::after {
   to { opacity: 1; }
 }
 
-/* =====================================================
-   CAPA INICIAL
-===================================================== */
+/* ===================== CAPA ===================== */
 
 .capa {
   position: relative;
-  width: 100%;
+  isolation: isolate;
   min-height: min(780px, calc(100svh - var(--altura-menu)));
   background: black;
   overflow: hidden;
-  isolation: isolate;
 }
 
 .capa-imagem {
@@ -213,9 +214,9 @@ nav button.ativo::after {
 
 .capa-titulo {
   font-family: "Cubao", Impact, sans-serif;
-  font-weight: normal;
   font-size: clamp(56px, 8vw, 125px);
-  line-height: 0.98;
+  line-height: .98;
+  font-weight: 400;
 }
 
 .capa-titulo span {
@@ -224,8 +225,8 @@ nav button.ativo::after {
 
 .capa-subtitulo {
   font-family: "Morisawa", Georgia, serif;
-  font-weight: normal;
   font-size: clamp(22px, 2.8vw, 36px);
+  font-weight: 400;
   margin-top: 25px;
 }
 
@@ -242,7 +243,7 @@ nav button.ativo::after {
   transform: translateX(-50%);
   padding: 13px 18px;
   border: 1px solid #777;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,.8);
   color: white;
   font-family: "Gordita", Arial, sans-serif;
   font-size: 11px;
@@ -253,15 +254,12 @@ nav button.ativo::after {
   background: #34437e;
 }
 
-/* =====================================================
-   CONTINUAÇÃO DA CAPA
-===================================================== */
+/* ===================== CONTINUAÇÃO DA CAPA ===================== */
 
 .continuacao-capa {
   position: relative;
-  width: 100%;
-  background: var(--preto);
   isolation: isolate;
+  background: var(--preto);
 }
 
 .continuacao-arte {
@@ -300,9 +298,7 @@ nav button.ativo::after {
   transform: scale(1.08);
 }
 
-/* =====================================================
-   REPORTAGEM INICIAL
-===================================================== */
+/* ===================== TEXTOS DAS REPORTAGENS ===================== */
 
 .reportagem {
   position: relative;
@@ -322,18 +318,30 @@ nav button.ativo::after {
 .texto-margem p {
   font-family: "Neue Montreal", Arial, sans-serif;
   font-size: clamp(18px, 1.65vw, 21px);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -.025em;
   line-height: 1.48;
+  color: var(--branco);
   margin-bottom: 28px;
-  color: var(--texto);
+  text-align: left;
 }
+
+/*
+  LETRA INICIAL AMPLIADA:
+  Aplicada à primeira reportagem e a À Margem.
+*/
 
 .primeiro-paragrafo::first-letter {
   float: left;
-  font-size: 49px;
-  font-weight: bold;
-  line-height: 0.9;
-  padding: 4px 4px 0 0;
+  font-family: "Neue Montreal", Arial, sans-serif;
+  font-size: 51px;
+  font-weight: 400;
+  line-height: .79;
+  padding: 7px 3px 0 0;
 }
+
+/* ===================== CIBELLE CRIANÇA ===================== */
 
 .ilustracao-cibs {
   position: relative;
@@ -353,37 +361,37 @@ nav button.ativo::after {
   clear: both;
 }
 
-/* Somente o último parágrafo da PRIMEIRA reportagem */
+/* Destaque apenas na primeira reportagem */
 
 .corpo-reportagem .paragrafo-final {
   clear: both;
   max-width: 850px;
   margin: 85px auto 55px;
+  font-family: "Neue Montreal", Arial, sans-serif;
   font-size: clamp(22px, 2.5vw, 32px);
   font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.02em;
   text-transform: uppercase;
   text-align: center;
-  line-height: 1.3;
 }
 
-/* =====================================================
-   BARQUINHOS
-===================================================== */
+/* ===================== BARQUINHOS PEQUENOS ===================== */
+
+/*
+  A imagem é repetida lado a lado.
+  Não estica a imagem para preencher a tela.
+*/
 
 .barquinhos-final {
   width: 100%;
-  background: var(--preto);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100px;
+  margin: 30px 0 0;
+  background-image: url("./imagens/barquinho.png.png");
+  background-repeat: repeat-x;
+  background-position: center center;
+  background-size: auto 100px;
   overflow: hidden;
-}
-
-.barquinhos-final img {
-  width: 100%;
-  height: auto;
-  max-height: 240px;
-  object-fit: contain;
 }
 
 .margem-separador {
@@ -393,13 +401,11 @@ nav button.ativo::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .margem-separador img {
   width: min(100%, 520px);
   max-height: 140px;
-  height: auto;
   object-fit: contain;
 }
 
@@ -408,9 +414,7 @@ nav button.ativo::after {
   background: var(--preto);
 }
 
-/* =====================================================
-   À MARGEM — ABERTURA
-===================================================== */
+/* ===================== À MARGEM ===================== */
 
 .margem-cabecalho {
   max-width: 1120px;
@@ -419,8 +423,8 @@ nav button.ativo::after {
 }
 
 .margem-numero {
-  font-family: "Gordita", Arial, sans-serif;
   color: var(--azul);
+  font-family: "Gordita", Arial, sans-serif;
   font-size: 12px;
   letter-spacing: 3px;
   margin-bottom: 22px;
@@ -429,7 +433,7 @@ nav button.ativo::after {
 .margem-titulo {
   font-family: "Cubao", Impact, sans-serif;
   font-size: clamp(56px, 7vw, 105px);
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1;
   margin-bottom: 24px;
 }
@@ -437,35 +441,27 @@ nav button.ativo::after {
 .margem-subtitulo {
   font-family: "Neue Montreal", Arial, sans-serif;
   font-size: clamp(20px, 2.5vw, 32px);
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.25;
   max-width: 800px;
 }
 
-/* =====================================================
-   NOVA CAPA DA PÁGINA À MARGEM
-
-   Usa somente a imagem 123.png.
-   Ocupa de uma ponta a outra do site.
-===================================================== */
+/* Capa 123.png */
 
 .margem-capa {
   width: 100%;
   margin: 25px 0 75px;
-  background: #050505;
   overflow: hidden;
+  background: #050505;
 }
 
 .margem-capa img {
-  display: block;
   width: 100%;
   height: auto;
   max-width: none;
 }
 
-/* =====================================================
-   TEXTO À MARGEM
-===================================================== */
+/* Imagens da reportagem */
 
 .margem-foto-direita {
   float: right;
@@ -500,7 +496,7 @@ nav button.ativo::after {
   margin: 85px 0 30px;
   font-family: "Cubao", Impact, sans-serif;
   font-size: clamp(32px, 4.5vw, 55px);
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.1;
 }
 
@@ -520,7 +516,7 @@ nav button.ativo::after {
   font-size: 13px;
 }
 
-/* Final da segunda reportagem: TEXTO NORMAL */
+/* Final de À Margem: texto normal */
 
 .texto-margem p.margem-final {
   clear: both;
@@ -528,14 +524,12 @@ nav button.ativo::after {
   font-size: clamp(18px, 1.65vw, 21px);
   font-weight: 400;
   line-height: 1.48;
-  text-align: left;
   text-transform: none;
-  margin: 0 0 28px;
+  text-align: left;
+  margin-bottom: 28px;
 }
 
-/* =====================================================
-   VÍDEOS
-===================================================== */
+/* ===================== VÍDEOS ===================== */
 
 .video-reportagem {
   clear: both;
@@ -553,7 +547,6 @@ nav button.ativo::after {
 }
 
 .video-reportagem-player {
-  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   background: #101010;
@@ -567,28 +560,16 @@ nav button.ativo::after {
   border: 0;
 }
 
-.video-reportagem figcaption {
-  font-family: "Gordita", Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1.6;
-  color: #aaa;
-  margin-top: 14px;
-}
-
-/* Vídeo ao final de À Margem */
-
 .video-final-margem {
   width: calc(100% - 48px);
   max-width: 1000px;
   margin: 70px auto 90px;
 }
 
-/* =====================================================
-   DEMAIS PÁGINAS
-===================================================== */
+/* ===================== OUTRAS PÁGINAS ===================== */
 
 .pagina-abertura {
-  padding: 110px max(40px, calc((100vw - 1100px) / 2)) 75px;
+  padding: 110px max(40px, calc((100vw - 1100px)/2)) 75px;
 }
 
 .pagina-numero {
@@ -603,7 +584,7 @@ nav button.ativo::after {
 .pagina-titulo {
   font-family: "Cubao", Impact, sans-serif;
   font-size: clamp(60px, 9vw, 115px);
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1;
   margin-bottom: 30px;
 }
@@ -657,9 +638,7 @@ nav button.ativo::after {
   color: #ccc;
 }
 
-/* =====================================================
-   RODAPÉ
-===================================================== */
+/* ===================== RODAPÉ ===================== */
 
 .rodape {
   position: relative;
@@ -718,7 +697,7 @@ nav button.ativo::after {
 .rodape-titulo {
   font-family: "Cubao", Impact, sans-serif;
   font-size: clamp(32px, 4.4vw, 75px);
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1;
   white-space: nowrap;
 }
@@ -774,9 +753,7 @@ nav button.ativo::after {
   color: #bbb;
 }
 
-/* =====================================================
-   ÁUDIO
-===================================================== */
+/* ===================== ÁUDIO ===================== */
 
 .controle-som {
   position: fixed;
@@ -789,7 +766,7 @@ nav button.ativo::after {
   padding: 14px 18px;
   border: 1px solid var(--azul);
   border-radius: 30px;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,.9);
   color: white;
   font-family: "Gordita", Arial, sans-serif;
   font-size: 11px;
@@ -799,16 +776,12 @@ nav button.ativo::after {
   display: flex;
 }
 
-/* =====================================================
-   ANIMAÇÕES DE ROLAGEM
-===================================================== */
+/* ===================== ROLAGEM ===================== */
 
 .revelar {
   opacity: 0;
   transform: translateY(32px);
-  transition:
-    opacity 0.85s ease,
-    transform 0.85s ease;
+  transition: opacity .85s ease, transform .85s ease;
 }
 
 .revelar.visivel {
@@ -816,9 +789,7 @@ nav button.ativo::after {
   transform: translateY(0);
 }
 
-/* =====================================================
-   RESPONSIVIDADE
-===================================================== */
+/* ===================== RESPONSIVIDADE ===================== */
 
 @media (max-width: 1100px) {
   .ilustracao-cibs {
@@ -915,6 +886,11 @@ nav button.ativo::after {
     line-height: 1.55;
   }
 
+  .primeiro-paragrafo::first-letter {
+    font-size: 43px;
+    padding-top: 6px;
+  }
+
   .ilustracao-cibs {
     width: 235px;
     margin: 15px -15px 10px 8px;
@@ -953,8 +929,9 @@ nav button.ativo::after {
     max-height: 95px;
   }
 
-  .barquinhos-final img {
-    max-height: 140px;
+  .barquinhos-final {
+    height: 72px;
+    background-size: auto 72px;
   }
 
   .respiro-rodape {
@@ -1016,12 +993,10 @@ nav button.ativo::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
   }
 
   .revelar {
@@ -1036,20 +1011,10 @@ nav button.ativo::after {
 
 <div class="site">
 
-<!-- =====================================================
-     MENU
-===================================================== -->
-
 <header>
   <div class="cabecalho">
-
-    <button
-      class="menu-mobile"
-      id="botaoMenu"
-      type="button"
-      aria-expanded="false"
-      aria-label="Abrir menu"
-    >☰</button>
+    <button class="menu-mobile" id="botaoMenu" type="button"
+      aria-expanded="false" aria-label="Abrir menu">☰</button>
 
     <nav id="menuPrincipal" aria-label="Menu principal">
       <button type="button" data-pagina="inicio" class="ativo">Início</button>
@@ -1061,645 +1026,384 @@ nav button.ativo::after {
       <button type="button" data-pagina="artistas">Artistas</button>
       <button type="button" data-pagina="lugares">Lugares</button>
     </nav>
-
   </div>
 </header>
 
 <main>
 
-<!-- =====================================================
-     PÁGINA 1 — INÍCIO
-===================================================== -->
+<!-- ===================== INÍCIO ===================== -->
 
 <section class="pagina ativa" id="inicio">
 
   <div class="capa">
-
     <div class="capa-imagem">
-      <img
-        src="./imagens/IMAGEM DA CAPA.PNG.png"
-        alt="Ilustração de capa da Correnteza"
-      >
+      <img src="./imagens/IMAGEM DA CAPA.PNG.png"
+        alt="Ilustração da capa Correnteza">
     </div>
 
     <div class="capa-conteudo">
-
       <h1 class="capa-titulo">
         <span>ENTRE DUAS</span>
         <span>MARGENS</span>
       </h1>
-
-      <h2 class="capa-subtitulo">
-        UMA SÓ CORRENTEZA
-      </h2>
-
-      <p class="capa-autoria">
-        por CIBELLE VIEIRA
-      </p>
-
+      <h2 class="capa-subtitulo">UMA SÓ CORRENTEZA</h2>
+      <p class="capa-autoria">por CIBELLE VIEIRA</p>
     </div>
 
     <button class="capa-descer" id="botaoDescer" type="button">
       CONTINUE A TRAVESSIA ↓
     </button>
-
   </div>
 
-  <!-- CONTINUAÇÃO DA CAPA -->
-
   <div class="continuacao-capa">
-
     <div class="continuacao-arte">
-      <img
-        src="./imagens/continuação da capa.png"
-        alt=""
-        aria-hidden="true"
-      >
+      <img src="./imagens/continuação da capa.png" alt="" aria-hidden="true">
     </div>
 
     <div class="ilha-sobreposta">
-      <img
-        src="./imagens/ILHA DO FOGO.PNG.png"
-        alt=""
-        aria-hidden="true"
-      >
+      <img src="./imagens/ILHA DO FOGO.PNG.png" alt="" aria-hidden="true">
     </div>
 
     <article class="reportagem" id="reportagem">
-
       <div class="corpo-reportagem">
 
         <figure class="ilustracao-cibs">
-          <img
-            src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
-            alt="Ilustração de Cibelle criança"
-          >
+          <img src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
+            alt="Ilustração de Cibelle criança">
         </figure>
 
-        <p class="primeiro-paragrafo revelar">
-          Nasci em Juazeiro, na Bahia, mas vivi a vida inteira em Petrolina, Pernambuco. Certa vez, durante a apresentação de um trabalho em Salvador, mencionei esse fato. Com certa desconfiança, alguém me perguntou se aquilo era uma piada. Respondi com outra pergunta: por que seria?
-        </p>
+        <p class="primeiro-paragrafo revelar">Nasci em Juazeiro, na Bahia, mas vivi a vida inteira em Petrolina, Pernambuco. Certa vez, durante a apresentação de um trabalho em Salvador, mencionei esse fato. Com certa desconfiança, alguém me perguntou se aquilo era uma piada. Respondi com outra pergunta: por que seria?</p>
 
-        <p class="revelar">
-          Petrolina e Juazeiro ficaram imortalizadas nos versos da canção Petrolina-Juazeiro, composta por Jorge de Altinho: “Petrolina, Juazeiro; Juazeiro, Petrolina. Todas as duas eu acho uma coisa linda”. A música traduz, em poucas palavras, a proximidade entre duas cidades que, embora pertençam a estados diferentes, compartilham muito mais do que uma paisagem. Ainda assim, para quem olha de fora, essa relação nem sempre parece tão evidente. Talvez porque as fronteiras políticas insistam em separar aquilo que a vida cotidiana aproxima.
-        </p>
+        <p class="revelar">Petrolina e Juazeiro ficaram imortalizadas nos versos da canção Petrolina-Juazeiro, composta por Jorge de Altinho: “Petrolina, Juazeiro; Juazeiro, Petrolina. Todas as duas eu acho uma coisa linda”. A música traduz, em poucas palavras, a proximidade entre duas cidades que, embora pertençam a estados diferentes, compartilham muito mais do que uma paisagem. Ainda assim, para quem olha de fora, essa relação nem sempre parece tão evidente. Talvez porque as fronteiras políticas insistam em separar aquilo que a vida cotidiana aproxima.</p>
 
-        <p class="revelar">
-          Minha história entre essas duas margens não tem nada de extraordinário para quem cresceu por aqui. Meu nascimento, assim como o de tantas outras pessoas da minha geração, também atravessa um período de dificuldades na saúde pública de Petrolina, quando nascer em uma cidade e buscar atendimento na outra se tornou parte da realidade de muitas famílias.
-        </p>
+        <p class="revelar">Minha história entre essas duas margens não tem nada de extraordinário para quem cresceu por aqui. Meu nascimento, assim como o de tantas outras pessoas da minha geração, também atravessa um período de dificuldades na saúde pública de Petrolina, quando nascer em uma cidade e buscar atendimento na outra se tornou parte da realidade de muitas famílias.</p>
 
         <div class="limpar"></div>
 
-        <p class="revelar">
-          É assim que se vive entre Petrolina e Juazeiro: cidades separadas por uma divisa estadual, mas aproximadas pelo Rio Opará, também conhecido como São Francisco, e por uma vida cotidiana que não cabe nas fronteiras dos mapas. Quando falta algo de um lado, atravessa-se a ponte para buscar do outro. Trabalha-se em uma cidade, estuda-se na outra e constroem-se afetos, histórias e pertencimentos que circulam entre as duas margens. Somos pernambaianos, PEBA's, como gostamos de dizer. E não há contradição nisso.
-        </p>
+        <p class="revelar">É assim que se vive entre Petrolina e Juazeiro: cidades separadas por uma divisa estadual, mas aproximadas pelo Rio Opará, também conhecido como São Francisco, e por uma vida cotidiana que não cabe nas fronteiras dos mapas. Quando falta algo de um lado, atravessa-se a ponte para buscar do outro. Trabalha-se em uma cidade, estuda-se na outra e constroem-se afetos, histórias e pertencimentos que circulam entre as duas margens. Somos pernambaianos, PEBA's, como gostamos de dizer. E não há contradição nisso.</p>
 
-        <p class="revelar">
-          A arte produzida neste território também atravessa pontes, margens e fronteiras. Artistas, coletivos, grupos culturais e iniciativas independentes constroem suas trajetórias em meio a essas trocas, criando formas próprias de expressar o lugar onde vivem. Entre Petrolina e Juazeiro, a produção artística não se limita aos equipamentos culturais, aos palcos ou às galerias: ela também ocupa ruas, escolas, bairros periféricos, espaços comunitários e territórios onde a criação se torna uma possibilidade de encontro, reconhecimento e transformação.
-        </p>
+        <p class="revelar">A arte produzida neste território também atravessa pontes, margens e fronteiras. Artistas, coletivos, grupos culturais e iniciativas independentes constroem suas trajetórias em meio a essas trocas, criando formas próprias de expressar o lugar onde vivem. Entre Petrolina e Juazeiro, a produção artística não se limita aos equipamentos culturais, aos palcos ou às galerias: ela também ocupa ruas, escolas, bairros periféricos, espaços comunitários e territórios onde a criação se torna uma possibilidade de encontro, reconhecimento e transformação.</p>
 
-        <p class="revelar">
-          Olhar para essa produção é também reconhecer que o Semiárido não se resume à paisagem da seca, à escassez ou às imagens historicamente associadas ao sertão. Há outras narrativas sendo construídas por quem vive aqui. Narrativas que passam pelo teatro, pela música, pelas artes visuais, pela dança, pelo audiovisual, pela literatura e por tantas outras linguagens. São expressões que reivindicam o direito de contar a própria história, questionar representações estabelecidas e produzir imagens diferentes sobre o Nordeste e sobre si mesmas.
-        </p>
+        <p class="revelar">Olhar para essa produção é também reconhecer que o Semiárido não se resume à paisagem da seca, à escassez ou às imagens historicamente associadas ao sertão. Há outras narrativas sendo construídas por quem vive aqui. Narrativas que passam pelo teatro, pela música, pelas artes visuais, pela dança, pelo audiovisual, pela literatura e por tantas outras linguagens. São expressões que reivindicam o direito de contar a própria história, questionar representações estabelecidas e produzir imagens diferentes sobre o Nordeste e sobre si mesmas.</p>
 
-        <p class="revelar">
-          Mas essas manifestações não surgiram de maneira isolada, tampouco começaram a existir quando passaram a receber reconhecimento institucional. Há uma trajetória de artistas, mestres, grupos, movimentos e espaços culturais que, em diferentes momentos, abriram caminhos para que outras formas de criação encontrassem lugar neste território.
-        </p>
+        <p class="revelar">Mas essas manifestações não surgiram de maneira isolada, tampouco começaram a existir quando passaram a receber reconhecimento institucional. Há uma trajetória de artistas, mestres, grupos, movimentos e espaços culturais que, em diferentes momentos, abriram caminhos para que outras formas de criação encontrassem lugar neste território.</p>
 
-        <p class="revelar">
-          Como nenhuma história começa exatamente onde a gente decide contá-la, compreender as expressões artísticas que existem hoje entre essas duas margens exige reconhecer os caminhos que vieram antes, as memórias que permanecem e as histórias que nem sempre encontraram espaço para serem narradas. É também uma oportunidade de questionar quem teve o direito de representar o sertão, quais imagens foram legitimadas e quais experiências permaneceram à margem dessas narrativas.
-        </p>
+        <p class="revelar">Como nenhuma história começa exatamente onde a gente decide contá-la, compreender as expressões artísticas que existem hoje entre essas duas margens exige reconhecer os caminhos que vieram antes, as memórias que permanecem e as histórias que nem sempre encontraram espaço para serem narradas. É também uma oportunidade de questionar quem teve o direito de representar o sertão, quais imagens foram legitimadas e quais experiências permaneceram à margem dessas narrativas.</p>
 
-        <p class="revelar">
-          Por isso, peço licença a quem veio antes de mim. Esta reportagem nasce também da minha experiência de viver entre essas duas cidades, de reconhecer neste território parte da minha identidade e de compreender a arte como uma das maneiras pelas quais construímos nossas próprias formas de existir. Não se trata de contar uma história definitiva sobre a cultura de Petrolina e Juazeiro, mas de percorrer algumas das muitas histórias que a constituem, dando espaço a quem cria, resiste, experimenta e transforma o lugar que chama de casa.
-        </p>
+        <p class="revelar">Por isso, peço licença a quem veio antes de mim. Esta reportagem nasce também da minha experiência de viver entre essas duas cidades, de reconhecer neste território parte da minha identidade e de compreender a arte como uma das maneiras pelas quais construímos nossas próprias formas de existir. Não se trata de contar uma história definitiva sobre a cultura de Petrolina e Juazeiro, mas de percorrer algumas das muitas histórias que a constituem, dando espaço a quem cria, resiste, experimenta e transforma o lugar que chama de casa.</p>
 
-        <p class="paragrafo-final revelar">
-          Esta é uma tentativa de acompanhar a correnteza dessas narrativas: reconhecer suas origens, encontrar seus percursos e escutar as vozes que seguem movimentando a arte e a identidade no Vale do São Francisco.
-        </p>
+        <p class="paragrafo-final revelar">Esta é uma tentativa de acompanhar a correnteza dessas narrativas: reconhecer suas origens, encontrar seus percursos e escutar as vozes que seguem movimentando a arte e a identidade no Vale do São Francisco.</p>
 
       </div>
-
     </article>
-
   </div>
 
-  <figure class="barquinhos-final">
-    <img
-      src="./imagens/barquinho.png.png"
-      alt="Ilustração de barquinhos"
-    >
-  </figure>
-
+  <div class="barquinhos-final" role="img"
+    aria-label="Faixa de ilustrações de barquinhos"></div>
   <div class="respiro-rodape"></div>
 
 </section>
 
-<!-- =====================================================
-     PÁGINA 2 — À MARGEM
-===================================================== -->
+<!-- ===================== À MARGEM ===================== -->
 
 <section class="pagina" id="a-margem">
 
   <div class="margem-cabecalho">
-
-    <p class="margem-numero">
-      02 / HISTÓRIAS E MEMÓRIAS
-    </p>
-
-    <h1 class="margem-titulo">
-      À MARGEM
-    </h1>
-
+    <p class="margem-numero">02 / HISTÓRIAS E MEMÓRIAS</p>
+    <h1 class="margem-titulo">À MARGEM</h1>
     <h2 class="margem-subtitulo">
       À margem dos equipamentos oficiais: as histórias que nem sempre encontraram espaço para serem narradas
     </h2>
-
   </div>
 
-  <!-- NOVA CAPA 123.PNG -->
-
   <figure class="margem-capa revelar">
-    <img
-      src="./imagens/123.png"
-      alt="Composição fotográfica sobre a produção artística e cultural no Vale do São Francisco"
-    >
+    <img src="./imagens/123.png"
+      alt="Composição fotográfica sobre a produção artística e cultural no Vale do São Francisco">
   </figure>
-
-  <!-- REPORTAGEM À MARGEM -->
 
   <article class="texto-margem">
 
-    <p class="revelar">
-      A história cultural de Petrolina e Juazeiro não começa com a inauguração de um teatro, a criação de uma secretaria de governo ou a publicação de um edital. Antes que os equipamentos culturais passassem a integrar a paisagem das duas cidades, já existiam pessoas organizando festivais, montando espetáculos, criando cineclubes, promovendo encontros e inventando maneiras de fazer a arte circular pelo Sertão.
-    </p>
+    <p class="primeiro-paragrafo revelar">A história cultural de Petrolina e Juazeiro não começa com a inauguração de um teatro, a criação de uma secretaria de governo ou a publicação de um edital. Antes que os equipamentos culturais passassem a integrar a paisagem das duas cidades, já existiam pessoas organizando festivais, montando espetáculos, criando cineclubes, promovendo encontros e inventando maneiras de fazer a arte circular pelo Sertão.</p>
 
-    <p class="revelar">
-      Parte dessa história não está nos prédios. Está nas lembranças de quem participou dos movimentos, nas fotografias guardadas, nos jornais antigos, nos documentos que sobreviveram ao tempo e nas narrativas transmitidas entre diferentes gerações de artistas.
-    </p>
+    <p class="revelar">Parte dessa história não está nos prédios. Está nas lembranças de quem participou dos movimentos, nas fotografias guardadas, nos jornais antigos, nos documentos que sobreviveram ao tempo e nas narrativas transmitidas entre diferentes gerações de artistas.</p>
 
-    <p class="revelar">
-      Reconstruir essa trajetória exige olhar para além das instituições. É preciso compreender também as transformações de um território atravessado por disputas econômicas, mudanças políticas e diferentes formas de organização social. Afinal, enquanto o Vale do São Francisco era apresentado como uma região de potencial desenvolvimento, seus habitantes também construíam outras maneiras de interpretar, ocupar e representar o lugar onde viviam.
-    </p>
+    <p class="revelar">Reconstruir essa trajetória exige olhar para além das instituições. É preciso compreender também as transformações de um território atravessado por disputas econômicas, mudanças políticas e diferentes formas de organização social. Afinal, enquanto o Vale do São Francisco era apresentado como uma região de potencial desenvolvimento, seus habitantes também construíam outras maneiras de interpretar, ocupar e representar o lugar onde viviam.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="">
     </div>
 
-    <h3 class="margem-intertitulo revelar">
-      O TERRITÓRIO EM TRANSFORMAÇÃO
-    </h3>
+    <h3 class="margem-intertitulo revelar">O TERRITÓRIO EM TRANSFORMAÇÃO</h3>
 
-    <p class="revelar">
-      Nos anos 1970, Petrolina, em Pernambuco, e Juazeiro, na Bahia, passaram por transformações importantes. Durante a Ditadura Militar (1964–1985), o governo brasileiro intensificou projetos de modernização econômica, e o Vale do São Francisco passou a ocupar posição estratégica nas políticas de desenvolvimento nacional.
-    </p>
+    <p class="revelar">Nos anos 1970, Petrolina, em Pernambuco, e Juazeiro, na Bahia, passaram por transformações importantes. Durante a Ditadura Militar (1964–1985), o governo brasileiro intensificou projetos de modernização econômica, e o Vale do São Francisco passou a ocupar posição estratégica nas políticas de desenvolvimento nacional.</p>
 
-    <p class="revelar">
-      A irrigação e a expansão agrícola modificaram a paisagem, as relações de trabalho e a economia regional. Em 16 de julho de 1974, foi criada a Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba (Codevasf), que sucedeu à Superintendência do Vale do São Francisco (Suvale). A instituição tinha como uma de suas principais frentes o aproveitamento econômico dos recursos hídricos e o desenvolvimento de projetos de irrigação.
-    </p>
+    <p class="revelar">A irrigação e a expansão agrícola modificaram a paisagem, as relações de trabalho e a economia regional. Em 16 de julho de 1974, foi criada a Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba (Codevasf), que sucedeu à Superintendência do Vale do São Francisco (Suvale). A instituição tinha como uma de suas principais frentes o aproveitamento econômico dos recursos hídricos e o desenvolvimento de projetos de irrigação.</p>
 
-    <p class="revelar">
-      O rio, que há gerações sustentava atividades como pesca, navegação e agricultura, também passou a ser compreendido como infraestrutura estratégica para a expansão econômica. Essa transformação, entretanto, não aconteceu sem conflitos.
-    </p>
+    <p class="revelar">O rio, que há gerações sustentava atividades como pesca, navegação e agricultura, também passou a ser compreendido como infraestrutura estratégica para a expansão econômica. Essa transformação, entretanto, não aconteceu sem conflitos.</p>
 
     <figure class="margem-foto-direita revelar">
-      <img
-        src="./imagens/construção da Barragem.png.png"
-        alt="Construção da Barragem"
-      >
+      <img src="./imagens/construção da Barragem.png.png"
+        alt="Construção da Barragem">
       <figcaption>Construção da Barragem de Sobradinho.</figcaption>
     </figure>
 
-    <p class="revelar">
-      A construção da Barragem de Sobradinho, iniciada em 1971 e concluída em 1978, provocou o deslocamento compulsório de mais de 72 mil pessoas e a desapropriação de aproximadamente 26 mil propriedades. As antigas sedes de Casa Nova, Sento Sé, Remanso e Pilão Arcado foram atingidas pela formação do lago.
-    </p>
+    <p class="revelar">A construção da Barragem de Sobradinho, iniciada em 1971 e concluída em 1978, provocou o deslocamento compulsório de mais de 72 mil pessoas e a desapropriação de aproximadamente 26 mil propriedades. As antigas sedes de Casa Nova, Sento Sé, Remanso e Pilão Arcado foram atingidas pela formação do lago.</p>
 
-    <p class="revelar">
-      Para milhares de famílias, o desenvolvimento significou deixar para trás casas, terras, relações comunitárias e referências afetivas. A modernização que redesenhava o território também produzia rupturas que nem sempre apareciam nas narrativas oficiais sobre o progresso.
-    </p>
+    <p class="revelar">Para milhares de famílias, o desenvolvimento significou deixar para trás casas, terras, relações comunitárias e referências afetivas. A modernização que redesenhava o território também produzia rupturas que nem sempre apareciam nas narrativas oficiais sobre o progresso.</p>
 
-    <p class="revelar">
-      É nesse contexto que a memória se torna uma questão política. Preservar histórias, registrar experiências e garantir que diferentes grupos pudessem narrar suas próprias vivências era também uma forma de enfrentar o apagamento.
-    </p>
+    <p class="revelar">É nesse contexto que a memória se torna uma questão política. Preservar histórias, registrar experiências e garantir que diferentes grupos pudessem narrar suas próprias vivências era também uma forma de enfrentar o apagamento.</p>
 
     <div class="limpar"></div>
 
     <figure class="margem-foto-esquerda revelar">
-      <img
-        src="./imagens/Comissão Pastoral da Terra.png.png"
-        alt="Comissão Pastoral da Terra"
-      >
+      <img src="./imagens/Comissão Pastoral da Terra.png.png"
+        alt="Comissão Pastoral da Terra">
       <figcaption>Memórias das mobilizações sociais na região.</figcaption>
     </figure>
 
-    <p class="revelar">
-      A atuação de Dom José Rodrigues à frente da Diocese de Juazeiro e a organização de trabalhadores rurais, com a participação da Comissão Pastoral da Terra, criada em 1975 em âmbito nacional, integraram esse processo de mobilização social. As lutas pelo território, pela terra e pelos direitos das comunidades atravessavam a vida regional.
-    </p>
+    <p class="revelar">A atuação de Dom José Rodrigues à frente da Diocese de Juazeiro e a organização de trabalhadores rurais, com a participação da Comissão Pastoral da Terra, criada em 1975 em âmbito nacional, integraram esse processo de mobilização social. As lutas pelo território, pela terra e pelos direitos das comunidades atravessavam a vida regional.</p>
 
-    <p class="revelar">
-      A cultura também estava inserida nesse cenário de disputas. Em um país submetido à censura e à vigilância política, artistas, estudantes e intelectuais precisavam encontrar caminhos para produzir, circular e compartilhar suas ideias.
-    </p>
+    <p class="revelar">A cultura também estava inserida nesse cenário de disputas. Em um país submetido à censura e à vigilância política, artistas, estudantes e intelectuais precisavam encontrar caminhos para produzir, circular e compartilhar suas ideias.</p>
+
+    <div class="limpar"></div>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="">
     </div>
 
-    <h3 class="margem-intertitulo revelar">
-      A ARTE ANTES DOS EQUIPAMENTOS
-    </h3>
+    <h3 class="margem-intertitulo revelar">A ARTE ANTES DOS EQUIPAMENTOS</h3>
 
-    <p class="revelar">
-      Em Juazeiro, parte dessa movimentação pode ser recuperada por meio das memórias de Antônio Carlos Coêlho de Assis, conhecido como Coelhão, reunidas no livro <em>Juazeiro de perto: uma mistura de arte, cultura e política</em>, publicado em 2021.
-    </p>
+    <p class="revelar">Em Juazeiro, parte dessa movimentação pode ser recuperada por meio das memórias de Antônio Carlos Coêlho de Assis, conhecido como Coelhão, reunidas no livro <em>Juazeiro de perto: uma mistura de arte, cultura e política</em>, publicado em 2021.</p>
 
     <figure class="margem-foto-direita revelar">
       <img src="./imagens/Coelhão.png.png" alt="Coelhão">
       <figcaption>Antônio Carlos Coêlho de Assis, conhecido como Coelhão.</figcaption>
     </figure>
 
-    <p class="revelar">
-      Segundo Coelhão, a cultura em Juazeiro foi construída através das experiências de grupos, associações e movimentos que atuaram a partir da década de 1970. Entre eles está a Associação dos Universitários de Juazeiro (AUJ), cuja primeira formação surgiu em 1970.
-    </p>
+    <p class="revelar">Segundo Coelhão, a cultura em Juazeiro foi construída através das experiências de grupos, associações e movimentos que atuaram a partir da década de 1970. Entre eles está a Associação dos Universitários de Juazeiro (AUJ), cuja primeira formação surgiu em 1970.</p>
 
-    <p class="revelar">
-      A associação reunia estudantes juazeirenses que cursavam o ensino superior em cidades como Salvador, capital baiana. A proposta era fazer retornar à comunidade parte do conhecimento adquirido fora do município, por meio de projetos sociais, culturais e artísticos.
-    </p>
+    <p class="revelar">A associação reunia estudantes juazeirenses que cursavam o ensino superior em cidades como Salvador, capital baiana. A proposta era fazer retornar à comunidade parte do conhecimento adquirido fora do município, por meio de projetos sociais, culturais e artísticos.</p>
 
-    <p class="revelar">
-      Festivais de música, exposições e gincanas e iniciativas que faziam parte desse esforço. O Festival São Franciscano da Canção, que hoje se chama Festival Edesio Santos e está na 28° edição e o Salão de Artes Plásticas PRO-ARTE, ambos realizados em 1972, também integraram essa movimentação.
-    </p>
+    <p class="revelar">Festivais de música, exposições e gincanas e iniciativas que faziam parte desse esforço. O Festival São Franciscano da Canção, que hoje se chama Festival Edesio Santos e está na 28° edição e o Salão de Artes Plásticas PRO-ARTE, ambos realizados em 1972, também integraram essa movimentação.</p>
 
-    <p class="revelar">
-      No mesmo período, o Grupo Êxodus reuniu artistas de diferentes linguagens, entre atores, músicos, poetas e artistas plásticos. Mais do que produzir apresentações, essas iniciativas procuravam estabelecer relações entre a arte e os acontecimentos que atravessavam a cidade.
-    </p>
+    <p class="revelar">No mesmo período, o Grupo Êxodus reuniu artistas de diferentes linguagens, entre atores, músicos, poetas e artistas plásticos. Mais do que produzir apresentações, essas iniciativas procuravam estabelecer relações entre a arte e os acontecimentos que atravessavam a cidade.</p>
 
-    <p class="revelar">
-      A movimentação não se limitava à realização de eventos. Tratava-se de construir um circuito cultural próprio, em uma época em que as oportunidades de formação e circulação artística no interior eram mais restritas.
-    </p>
+    <p class="revelar">A movimentação não se limitava à realização de eventos. Tratava-se de construir um circuito cultural próprio, em uma época em que as oportunidades de formação e circulação artística no interior eram mais restritas.</p>
 
     <div class="limpar"></div>
 
     <figure class="margem-foto-esquerda revelar">
-      <img
-        src="./imagens/Círculo Operário de Juazeiro.png.png"
-        alt="Círculo Operário de Juazeiro"
-      >
+      <img src="./imagens/Círculo Operário de Juazeiro.png.png"
+        alt="Círculo Operário de Juazeiro">
       <figcaption>Círculo Operário de Juazeiro.</figcaption>
     </figure>
 
-    <p class="revelar">
-      Em março de 1980, o Círculo de Convivência Cultural lançou um manifesto que defendia a pesquisa, a experimentação, a troca de informações e o incentivo à produção literária. A iniciativa procurava aproximar diferentes áreas do conhecimento e criar um ambiente de convivência entre artistas e intelectuais.
-    </p>
+    <p class="revelar">Em março de 1980, o Círculo de Convivência Cultural lançou um manifesto que defendia a pesquisa, a experimentação, a troca de informações e o incentivo à produção literária. A iniciativa procurava aproximar diferentes áreas do conhecimento e criar um ambiente de convivência entre artistas e intelectuais.</p>
 
-    <p class="revelar">
-      Na década seguinte, a articulação entre cultura e participação política ganhou novas expressões. Em 1983, o Centro de Cultura e Debate passou a reunir artistas, professores e produtores culturais no Círculo Operário de Juazeiro. O espaço recebeu ensaios teatrais, exposições e discussões sobre os rumos da cidade.
-    </p>
+    <p class="revelar">Na década seguinte, a articulação entre cultura e participação política ganhou novas expressões. Em 1983, o Centro de Cultura e Debate passou a reunir artistas, professores e produtores culturais no Círculo Operário de Juazeiro. O espaço recebeu ensaios teatrais, exposições e discussões sobre os rumos da cidade.</p>
 
-    <p class="revelar">
-      Em 1984, a mobilização em defesa do Rio São Francisco também aproximou diferentes grupos. Depois de um episódio de mortandade de peixes associado ao lançamento de resíduos industriais no rio, o Movimento de Defesa do São Francisco organizou atividades de mobilização e conscientização ambiental.
-    </p>
+    <p class="revelar">Em 1984, a mobilização em defesa do Rio São Francisco também aproximou diferentes grupos. Depois de um episódio de mortandade de peixes associado ao lançamento de resíduos industriais no rio, o Movimento de Defesa do São Francisco organizou atividades de mobilização e conscientização ambiental.</p>
 
     <div class="limpar"></div>
 
-    <p class="revelar">
-      Naquele mesmo período, o Cineclube Angarís ampliou as possibilidades de acesso ao audiovisual, promovendo sessões de filmes fora da programação comercial. O cinema se tornava também um espaço de encontro, formação de público e discussão.
-    </p>
+    <p class="revelar">Naquele mesmo período, o Cineclube Angarís ampliou as possibilidades de acesso ao audiovisual, promovendo sessões de filmes fora da programação comercial. O cinema se tornava também um espaço de encontro, formação de público e discussão.</p>
 
-    <p class="revelar">
-      A segunda formação da AUJ, entre 1983 e 1984, assumiu uma atuação mais explicitamente política e participou da articulação de um comitê suprapartidário pelas Diretas Já.
-    </p>
+    <p class="revelar">A segunda formação da AUJ, entre 1983 e 1984, assumiu uma atuação mais explicitamente política e participou da articulação de um comitê suprapartidário pelas Diretas Já.</p>
 
-    <p class="revelar">
-      A cultura não estava isolada das questões que atravessavam a população. O teatro, a música, a literatura e o cinema também são formas de discutir a cidade, defender o território e construir espaços de participação.
-    </p>
+    <p class="revelar">A cultura não estava isolada das questões que atravessavam a população. O teatro, a música, a literatura e o cinema também são formas de discutir a cidade, defender o território e construir espaços de participação.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="">
     </div>
 
-    <h3 class="margem-intertitulo revelar">
-      MEMÓRIAS DO VALE EM CENA
-    </h3>
+    <h3 class="margem-intertitulo revelar">MEMÓRIAS DO VALE EM CENA</h3>
 
-    <p class="revelar">
-      A história das artes cênicas de Petrolina e Juazeiro possui uma característica particular: ela não respeita os limites administrativos que separam Pernambuco e Bahia. Artistas, grupos, professores e espectadores circulam entre as duas cidades, construindo uma cena que tem o rio como elemento de aproximação.
-    </p>
+    <p class="revelar">A história das artes cênicas de Petrolina e Juazeiro possui uma característica particular: ela não respeita os limites administrativos que separam Pernambuco e Bahia. Artistas, grupos, professores e espectadores circulam entre as duas cidades, construindo uma cena que tem o rio como elemento de aproximação.</p>
 
     <figure class="margem-foto-direita revelar">
       <img src="./imagens/Thom Galeano.png" alt="Thom Galiano">
       <figcaption>Thom Galiano.</figcaption>
     </figure>
 
-    <p class="revelar">
-      Uma das pessoas que se dedica a investigar e preservar essa trajetória é Thom Galiano, diretor teatral, professor e integrante da Trup Errante. Sua atuação está ligada à formação de artistas e à pesquisa das artes cênicas no Vale do São Francisco.
-    </p>
+    <p class="revelar">Uma das pessoas que se dedica a investigar e preservar essa trajetória é Thom Galiano, diretor teatral, professor e integrante da Trup Errante. Sua atuação está ligada à formação de artistas e à pesquisa das artes cênicas no Vale do São Francisco.</p>
 
-    <p class="revelar">
-      Recentemente Thom desenvolveu um livro em torno do projeto <em>Memórias do Vale em Cena</em> onde reuniu vestígios dessa história: documentos, fotografias, entrevistas, cronologias e relatos de pessoas que participaram da construção do teatro regional.
-    </p>
+    <p class="revelar">Recentemente Thom desenvolveu um livro em torno do projeto <em>Memórias do Vale em Cena</em> onde reuniu vestígios dessa história: documentos, fotografias, entrevistas, cronologias e relatos de pessoas que participaram da construção do teatro regional.</p>
 
-    <p class="revelar">
-      Existem experiências que sobreviveram principalmente porque alguém guardou uma fotografia, registrou uma apresentação ou se dispôs a contar o que aconteceu.
-    </p>
+    <p class="revelar">Existem experiências que sobreviveram principalmente porque alguém guardou uma fotografia, registrou uma apresentação ou se dispôs a contar o que aconteceu.</p>
 
-    <p class="revelar">
-      Thom Galiano fala sobre a dimensão política presente em parte das experiências de formação teatral desenvolvidas na cidade. Ao falar sobre o espetáculo <em>Andamos Todos Iguais</em>, adaptação de <em>Bailei na Curva</em>, de Júlio Conte, ele lembra uma montagem que abordava a Ditadura Militar, desde o golpe até a redemocratização.
-    </p>
+    <p class="revelar">Thom Galiano fala sobre a dimensão política presente em parte das experiências de formação teatral desenvolvidas na cidade. Ao falar sobre o espetáculo <em>Andamos Todos Iguais</em>, adaptação de <em>Bailei na Curva</em>, de Júlio Conte, ele lembra uma montagem que abordava a Ditadura Militar, desde o golpe até a redemocratização.</p>
 
-    <p class="revelar">
-      A memória política também atravessou outros trabalhos dirigidos por Galiano. Em <em>Procura-se um corpo: Ação nº 3</em>, desenvolvido pelo Núcleo de Teatro do Sesc Petrolina, histórias de pessoas perseguidas pela Ditadura Militar foram transformadas em experiência cênica e posteriormente reunidas em publicação.
-    </p>
+    <p class="revelar">A memória política também atravessou outros trabalhos dirigidos por Galiano. Em <em>Procura-se um corpo: Ação nº 3</em>, desenvolvido pelo Núcleo de Teatro do Sesc Petrolina, histórias de pessoas perseguidas pela Ditadura Militar foram transformadas em experiência cênica e posteriormente reunidas em publicação.</p>
 
     <blockquote class="margem-citacao revelar">
       “Acredito que a gente vive hoje uma guerra, inclusive em relação à narrativa”.
       <small>Thom Galiano</small>
     </blockquote>
 
-    <p class="revelar">
-      A observação ajuda a compreender por que recuperar a história cultural de uma região é também uma forma de intervenção no presente. Aquilo que se escolhe registrar, preservar ou deixar de fora interfere diretamente na maneira como uma sociedade reconhece sua própria trajetória.
-    </p>
+    <p class="revelar">A observação ajuda a compreender por que recuperar a história cultural de uma região é também uma forma de intervenção no presente. Aquilo que se escolhe registrar, preservar ou deixar de fora interfere diretamente na maneira como uma sociedade reconhece sua própria trajetória.</p>
+
+    <div class="limpar"></div>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="">
     </div>
 
-    <h3 class="margem-intertitulo revelar">
-      QUEM PODE OCUPAR OS ESPAÇOS CULTURAIS?
-    </h3>
+    <h3 class="margem-intertitulo revelar">QUEM PODE OCUPAR OS ESPAÇOS CULTURAIS?</h3>
 
-    <p class="revelar">
-      Em novembro de 1986, Juazeiro ganhou um equipamento que se tornaria uma referência para a produção artística regional: o Centro de Cultura João Gilberto, inaugurado pelo Governo da Bahia.
-    </p>
+    <p class="revelar">Em novembro de 1986, Juazeiro ganhou um equipamento que se tornaria uma referência para a produção artística regional: o Centro de Cultura João Gilberto, inaugurado pelo Governo da Bahia.</p>
 
-    <p class="revelar">
-      A implantação do espaço representou um avanço na estrutura cultural do município. Ao longo dos anos, o Centro passou a receber diferentes linguagens artísticas e se tornou lugar de encontro para artistas de várias gerações.
-    </p>
+    <p class="revelar">A implantação do espaço representou um avanço na estrutura cultural do município. Ao longo dos anos, o Centro passou a receber diferentes linguagens artísticas e se tornou lugar de encontro para artistas de várias gerações.</p>
 
-    <p class="revelar">
-      Mas a existência de um equipamento público não significa, automaticamente, que todas as pessoas consigam acessá-lo ou se reconhecer nele. Localizado na região central de Juazeiro, o Centro impõe dificuldades de deslocamento para artistas e jovens que vivem em bairros mais distantes.
-    </p>
+    <p class="revelar">Mas a existência de um equipamento público não significa, automaticamente, que todas as pessoas consigam acessá-lo ou se reconhecer nele. Localizado na região central de Juazeiro, o Centro impõe dificuldades de deslocamento para artistas e jovens que vivem em bairros mais distantes.</p>
 
-    <p class="revelar">
-      Para Odilon Neto, que integra o coletivo Abdias, formado majoritariamente por pessoas da periferia de Juazeiro, essa distância revela um problema que vai além do transporte: a concentração dos equipamentos culturais em determinadas áreas da cidade limita as possibilidades de criação e participação de quem vive em outros territórios.
-    </p>
+    <p class="revelar">Para Odilon Neto, que integra o coletivo Abdias, formado majoritariamente por pessoas da periferia de Juazeiro, essa distância revela um problema que vai além do transporte: a concentração dos equipamentos culturais em determinadas áreas da cidade limita as possibilidades de criação e participação de quem vive em outros territórios.</p>
 
-    <p class="revelar">
-      O Centro de Cultura João Gilberto acaba sendo uma das poucas referências com uma infraestrutura mais completa. Por isso, Odilon defende que a política cultural também precisa chegar aos bairros, com a criação de espaços físicos equipados onde os jovens possam se reunir, desenvolver suas produções e construir suas próprias experiências artísticas sem depender exclusivamente do deslocamento até o centro da cidade.
-    </p>
+    <p class="revelar">O Centro de Cultura João Gilberto acaba sendo uma das poucas referências com uma infraestrutura mais completa. Por isso, Odilon defende que a política cultural também precisa chegar aos bairros, com a criação de espaços físicos equipados onde os jovens possam se reunir, desenvolver suas produções e construir suas próprias experiências artísticas sem depender exclusivamente do deslocamento até o centro da cidade.</p>
 
-    <p class="revelar">
-      Em Petrolina, essa questão também atravessou a relação entre artistas e espaços de apresentação. Para quem vivia em bairros distantes do centro, frequentar um teatro poderia envolver dificuldades de transporte, dinheiro e acesso à programação.
-    </p>
+    <p class="revelar">Em Petrolina, essa questão também atravessou a relação entre artistas e espaços de apresentação. Para quem vivia em bairros distantes do centro, frequentar um teatro poderia envolver dificuldades de transporte, dinheiro e acesso à programação.</p>
 
-    <p class="revelar">
-      A distância não era apenas geográfica. Também envolvia a percepção de quem tinha o direito de ocupar determinados espaços e de quais manifestações eram reconhecidas como parte da vida cultural da cidade.
-    </p>
+    <p class="revelar">A distância não era apenas geográfica. Também envolvia a percepção de quem tinha o direito de ocupar determinados espaços e de quais manifestações eram reconhecidas como parte da vida cultural da cidade.</p>
 
-    <p class="revelar">
-      É uma questão que aparece na trajetória de Antônio Veronaldo, ator, diretor, dramaturgo e cofundador da Cia. Biruta de Teatro. Natural de Picos, no Piauí, o artista construiu em Petrolina uma trajetória diretamente relacionada à produção cultural nas periferias.
-    </p>
+    <p class="revelar">É uma questão que aparece na trajetória de Antônio Veronaldo, ator, diretor, dramaturgo e cofundador da Cia. Biruta de Teatro. Natural de Picos, no Piauí, o artista construiu em Petrolina uma trajetória diretamente relacionada à produção cultural nas periferias.</p>
 
-    <p class="revelar">
-      Em 2008, junto a Cristiane Crispim, participou da criação da Cia. Biruta, que estabeleceu suas atividades no bairro São Gonçalo, na zona oeste de Petrolina.
-    </p>
+    <p class="revelar">Em 2008, junto a Cristiane Crispim, participou da criação da Cia. Biruta, que estabeleceu suas atividades no bairro São Gonçalo, na zona oeste de Petrolina.</p>
 
-    <p class="revelar">
-      Antes de contar com um equipamento cultural de referência nas proximidades, o grupo precisou construir suas próprias condições de funcionamento. A Budega, um ponto comercial alugado e utilizado como primeira sede, tornou-se um lugar de ensaio, criação e convivência.
-    </p>
+    <p class="revelar">Antes de contar com um equipamento cultural de referência nas proximidades, o grupo precisou construir suas próprias condições de funcionamento. A Budega, um ponto comercial alugado e utilizado como primeira sede, tornou-se um lugar de ensaio, criação e convivência.</p>
 
-    <p class="revelar">
-      A decisão de desenvolver atividades no próprio bairro também significava questionar a ideia de que a produção artística precisava estar concentrada no centro da cidade.
-    </p>
+    <p class="revelar">A decisão de desenvolver atividades no próprio bairro também significava questionar a ideia de que a produção artística precisava estar concentrada no centro da cidade.</p>
 
-    <p class="revelar">
-      Veronaldo conta que, durante uma audição para um dos primeiros espetáculos da companhia, perceberam que muitos dos interessados em participar eram moradores da mesma região periférica que os integrantes.
-    </p>
+    <p class="revelar">Veronaldo conta que, durante uma audição para um dos primeiros espetáculos da companhia, perceberam que muitos dos interessados em participar eram moradores da mesma região periférica que os integrantes.</p>
 
-    <p class="revelar">
-      A percepção provocou uma mudança na maneira como o grupo compreendia sua própria produção. Uma das bases da investigação artística da Cia Biruta é que “a maior característica da cultura popular é ser local, de fazer parte de uma vivência comunitária”, afirma Veronaldo.
-    </p>
+    <p class="revelar">A percepção provocou uma mudança na maneira como o grupo compreendia sua própria produção. Uma das bases da investigação artística da Cia Biruta é que “a maior característica da cultura popular é ser local, de fazer parte de uma vivência comunitária”, afirma Veronaldo.</p>
 
-    <p class="revelar">
-      A partir dessa compreensão, a companhia passou a investigar referências culturais presentes no cotidiano do território: os corpos, as tradições populares, as histórias ribeirinhas e as experiências de quem vive às margens do São Francisco.
-    </p>
+    <p class="revelar">A partir dessa compreensão, a companhia passou a investigar referências culturais presentes no cotidiano do território: os corpos, as tradições populares, as histórias ribeirinhas e as experiências de quem vive às margens do São Francisco.</p>
 
-    <p class="revelar">
-      Essa pesquisa aparece em trabalhos como <em>Chico e Flor contra os monstros da Ilha do Fogo</em>, espetáculo criado a partir das lendas e tradições orais relacionadas ao rio. Ao falar sobre a montagem, Veronaldo explicou que as lendas serviam como ponto de partida para construir uma poética ribeirinha e estabelecer relações com questões contemporâneas, como a degradação ambiental e o desenvolvimento não sustentável.
-    </p>
+    <p class="revelar">Essa pesquisa aparece em trabalhos como <em>Chico e Flor contra os monstros da Ilha do Fogo</em>, espetáculo criado a partir das lendas e tradições orais relacionadas ao rio. Ao falar sobre a montagem, Veronaldo explicou que as lendas serviam como ponto de partida para construir uma poética ribeirinha e estabelecer relações com questões contemporâneas, como a degradação ambiental e o desenvolvimento não sustentável.</p>
 
-    <p class="revelar">
-      A experiência da companhia fala sobre a periferia sertaneja como um lugar de criação, pesquisa, elaboração estética e produção de conhecimento.
-    </p>
+    <p class="revelar">A experiência da companhia fala sobre a periferia sertaneja como um lugar de criação, pesquisa, elaboração estética e produção de conhecimento.</p>
 
-    <p class="revelar">
-      A reivindicação por espaços culturais nas periferias também passa pela possibilidade de criar, manter e financiar iniciativas que nascem nesses territórios. Afinal, não basta que os artistas consigam chegar aos espaços existentes: é preciso que tenham condições de produzir, circular e dar continuidade ao próprio trabalho.
-    </p>
+    <p class="revelar">A reivindicação por espaços culturais nas periferias também passa pela possibilidade de criar, manter e financiar iniciativas que nascem nesses territórios. Afinal, não basta que os artistas consigam chegar aos espaços existentes: é preciso que tenham condições de produzir, circular e dar continuidade ao próprio trabalho.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="">
     </div>
 
-    <h3 class="margem-intertitulo revelar">
-      FINANCIAR A CULTURA, GARANTIR O ACESSO
-    </h3>
+    <h3 class="margem-intertitulo revelar">FINANCIAR A CULTURA, GARANTIR O ACESSO</h3>
 
-    <p class="revelar">
-      A partir dos anos 1990, os mecanismos de financiamento cultural passaram por mudanças importantes no Brasil. A criação de programas estaduais de incentivo e fundos específicos ampliou as possibilidades de apoio a projetos artísticos, embora o acesso aos recursos continuasse condicionado a exigências administrativas e técnicas.
-    </p>
+    <p class="revelar">A partir dos anos 1990, os mecanismos de financiamento cultural passaram por mudanças importantes no Brasil. A criação de programas estaduais de incentivo e fundos específicos ampliou as possibilidades de apoio a projetos artísticos, embora o acesso aos recursos continuasse condicionado a exigências administrativas e técnicas.</p>
 
-    <p class="revelar">
-      Na Bahia, o Fazcultura foi instituído em 1996, por meio de incentivo fiscal vinculado ao ICMS. Em Pernambuco, o Sistema de Incentivo à Cultura, que inclui o Funcultura, foi instituído pela Lei nº 12.310, de 19 de dezembro de 2002. Já o Fundo de Cultura do Estado da Bahia foi criado pela Lei nº 9.431, de 11 de fevereiro de 2005.
-    </p>
+    <p class="revelar">Na Bahia, o Fazcultura foi instituído em 1996, por meio de incentivo fiscal vinculado ao ICMS. Em Pernambuco, o Sistema de Incentivo à Cultura, que inclui o Funcultura, foi instituído pela Lei nº 12.310, de 19 de dezembro de 2002. Já o Fundo de Cultura do Estado da Bahia foi criado pela Lei nº 9.431, de 11 de fevereiro de 2005.</p>
 
-    <p class="revelar">
-      Esses mecanismos estabeleceram diferentes formas de participação do poder público no financiamento da produção cultural.
-    </p>
+    <p class="revelar">Esses mecanismos estabeleceram diferentes formas de participação do poder público no financiamento da produção cultural.</p>
 
-    <p class="revelar">
-      Entretanto, a existência de recursos não significa que todos os agentes culturais tenham as mesmas condições de disputá-los. Elaborar projetos, reunir documentação, manter uma estrutura administrativa e prestar contas exige conhecimentos e tempo que nem sempre estão disponíveis para coletivos independentes e grupos periféricos.
-    </p>
+    <p class="revelar">Entretanto, a existência de recursos não significa que todos os agentes culturais tenham as mesmas condições de disputá-los. Elaborar projetos, reunir documentação, manter uma estrutura administrativa e prestar contas exige conhecimentos e tempo que nem sempre estão disponíveis para coletivos independentes e grupos periféricos.</p>
 
-    <p class="revelar">
-      A profissionalização da gestão passou a integrar o cotidiano de quem desejava garantir a continuidade de suas atividades. Para muitos artistas, produzir cultura significava também aprender a lidar com formulários, inscrições, contrapartidas e processos burocráticos.
-    </p>
+    <p class="revelar">A profissionalização da gestão passou a integrar o cotidiano de quem desejava garantir a continuidade de suas atividades. Para muitos artistas, produzir cultura significava também aprender a lidar com formulários, inscrições, contrapartidas e processos burocráticos.</p>
 
-    <p class="revelar">
-      A institucionalização, contudo, não substituiu as práticas independentes. Muitos grupos continuaram produzindo com recursos próprios, parcerias, trabalho voluntário e ocupação de espaços comunitários.
-    </p>
+    <p class="revelar">A institucionalização, contudo, não substituiu as práticas independentes. Muitos grupos continuaram produzindo com recursos próprios, parcerias, trabalho voluntário e ocupação de espaços comunitários.</p>
 
-    <p class="revelar">
-      O financiamento público tornou-se uma possibilidade de ampliação, mas não a origem de toda a produção artística regional.
-    </p>
+    <p class="revelar">O financiamento público tornou-se uma possibilidade de ampliação, mas não a origem de toda a produção artística regional.</p>
 
-    <p class="revelar">
-      Em Juazeiro, essa disputa também acontece no campo das políticas públicas. Se, de um lado, os coletivos reivindicam espaços onde possam desenvolver suas atividades, de outro, enfrentam entraves para acessar os recursos que deveriam fortalecer a produção cultural do município.
-    </p>
+    <p class="revelar">Em Juazeiro, essa disputa também acontece no campo das políticas públicas. Se, de um lado, os coletivos reivindicam espaços onde possam desenvolver suas atividades, de outro, enfrentam entraves para acessar os recursos que deveriam fortalecer a produção cultural do município.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="">
     </div>
 
-    <h3 class="margem-intertitulo revelar">
-      A MOBILIZAÇÃO DE NOVEMBRO DE 2026
-    </h3>
+    <h3 class="margem-intertitulo revelar">A MOBILIZAÇÃO DE NOVEMBRO DE 2026</h3>
 
-    <p class="revelar">
-      Na manhã de 12 de novembro de 2026, artistas, produtores culturais e conselheiros ocuparam a Praça da Bandeira, no centro de Juazeiro (BA), e seguiram em cortejo até a sede da Secretaria de Cultura, Esporte e Lazer (Seculte), no Paço Municipal. O protesto ocorreu um dia depois de integrantes do Fórum Permanente de Cultura de Juazeiro e conselheiros da sociedade civil denunciarem, por meio de notas públicas e vídeos nas redes sociais, a paralisia administrativa na execução das políticas culturais do município.
-    </p>
-
-    <!-- VÍDEO 1 — CORTEJO -->
+    <p class="revelar">Na manhã de 12 de novembro de 2026, artistas, produtores culturais e conselheiros ocuparam a Praça da Bandeira, no centro de Juazeiro (BA), e seguiram em cortejo até a sede da Secretaria de Cultura, Esporte e Lazer (Seculte), no Paço Municipal. O protesto ocorreu um dia depois de integrantes do Fórum Permanente de Cultura de Juazeiro e conselheiros da sociedade civil denunciarem, por meio de notas públicas e vídeos nas redes sociais, a paralisia administrativa na execução das políticas culturais do município.</p>
 
     <figure class="video-reportagem revelar">
-
       <div class="video-reportagem-titulo">
         REGISTRO DO CORTEJO / 12 DE NOVEMBRO DE 2026
       </div>
-
       <div class="video-reportagem-player">
         <iframe
           src="https://drive.google.com/file/d/1FgzavNdO0LM0KQ08PAKqvCw5Lak3FL2M/preview"
           title="Vídeo do cortejo em Juazeiro"
           allow="autoplay; fullscreen"
           allowfullscreen
-          loading="lazy">
-        </iframe>
+          loading="lazy"></iframe>
       </div>
-
     </figure>
 
-    <p class="revelar">
-      A mobilização expôs um paradoxo enfrentado por quem produz arte no Vale do São Francisco: os recursos federais de fomento existem, mas podem encontrar obstáculos nos trâmites burocráticos locais antes de chegar aos coletivos. Se, nos anos 1970, o desafio era criar circuitos próprios diante da inexistência de estruturas municipais, em 2026 a disputa dos trabalhadores da cultura também passa por destravar a máquina pública, garantir a execução dos editais e fortalecer os espaços de participação social.
-    </p>
+    <p class="revelar">A mobilização expôs um paradoxo enfrentado por quem produz arte no Vale do São Francisco: os recursos federais de fomento existem, mas podem encontrar obstáculos nos trâmites burocráticos locais antes de chegar aos coletivos. Se, nos anos 1970, o desafio era criar circuitos próprios diante da inexistência de estruturas municipais, em 2026 a disputa dos trabalhadores da cultura também passa por destravar a máquina pública, garantir a execução dos editais e fortalecer os espaços de participação social.</p>
 
-    <p class="revelar">
-      Na margem baiana do rio, o impasse institucional esbarra em dois entraves estruturais: o esvaziamento prático do Conselho Municipal de Política Cultural (CMPC) e a falta de operacionalização do Fundo Municipal de Cultura. Embora exista formalmente, o colegiado teve sua capacidade de atuação reduzida após a sanção da Lei Municipal nº 3.240/2024, especialmente em seu artigo 39, que deixou de assegurar expressamente o caráter deliberativo pleno do Conselho sobre o orçamento da pasta. Somam-se a isso o atraso na convocação de eleições para preencher cadeiras vagas da sociedade civil e a ausência de um Fundo Municipal de Cultura ativo e com CNPJ próprio — requisito apontado pelos representantes do movimento como necessário à adequação plena ao Sistema Nacional de Cultura e à gestão dos repasses federais, como os da Política Nacional Aldir Blanc (PNAB).
-    </p>
+    <p class="revelar">Na margem baiana do rio, o impasse institucional esbarra em dois entraves estruturais: o esvaziamento prático do Conselho Municipal de Política Cultural (CMPC) e a falta de operacionalização do Fundo Municipal de Cultura. Embora exista formalmente, o colegiado teve sua capacidade de atuação reduzida após a sanção da Lei Municipal nº 3.240/2024, especialmente em seu artigo 39, que deixou de assegurar expressamente o caráter deliberativo pleno do Conselho sobre o orçamento da pasta. Somam-se a isso o atraso na convocação de eleições para preencher cadeiras vagas da sociedade civil e a ausência de um Fundo Municipal de Cultura ativo e com CNPJ próprio — requisito apontado pelos representantes do movimento como necessário à adequação plena ao Sistema Nacional de Cultura e à gestão dos repasses federais, como os da Política Nacional Aldir Blanc (PNAB).</p>
 
     <blockquote class="margem-citacao revelar">
       “Vamos estar mobilizados reivindicando a criação do Fundo de Cultura e do CNPJ para que possamos receber essas verbas da PNAB, cobrando que o Conselho de Cultura tenha autonomia para deliberar e fiscalizar o orçamento. E queremos eleições para o Conselho, para que os trabalhadores da cultura possam se eleger e ocupar esses espaços.”
       <small>Euri Mania, vídeo de convocação de 11 de novembro de 2026</small>
     </blockquote>
 
-    <p class="revelar">
-      Além do ato público no Paço Municipal, os coletivos lançaram um abaixo-assinado digital para reunir apoio da comunidade regional às reivindicações.
-    </p>
-
-    <!-- VÍDEO 2 — FALAS DOS MANIFESTANTES -->
+    <p class="revelar">Além do ato público no Paço Municipal, os coletivos lançaram um abaixo-assinado digital para reunir apoio da comunidade regional às reivindicações.</p>
 
     <figure class="video-reportagem revelar">
-
-      <div class="video-reportagem-titulo">
-        FALAS DOS MANIFESTANTES
-      </div>
-
+      <div class="video-reportagem-titulo">FALAS DOS MANIFESTANTES</div>
       <div class="video-reportagem-player">
         <iframe
           src="https://drive.google.com/file/d/17177brpXBfht9FcSVJqTRFJsGtGtjnk4/preview"
           title="Vídeo com falas dos manifestantes"
           allow="autoplay; fullscreen"
           allowfullscreen
-          loading="lazy">
-        </iframe>
+          loading="lazy"></iframe>
       </div>
-
     </figure>
 
-    <p class="revelar">
-      Sem um Conselho com autonomia deliberativa e capacidade de fiscalização, o controle social sobre os recursos da cultura fica comprometido. A instância, prevista no Sistema Nacional de Cultura, deveria garantir a participação da sociedade civil nas decisões e no acompanhamento das políticas públicas. Quando esses mecanismos não funcionam plenamente, as decisões correm o risco de voltar a ser tomadas de cima para baixo, distantes das necessidades de quem produz cultura nos bairros.
-    </p>
+    <p class="revelar">Sem um Conselho com autonomia deliberativa e capacidade de fiscalização, o controle social sobre os recursos da cultura fica comprometido. A instância, prevista no Sistema Nacional de Cultura, deveria garantir a participação da sociedade civil nas decisões e no acompanhamento das políticas públicas. Quando esses mecanismos não funcionam plenamente, as decisões correm o risco de voltar a ser tomadas de cima para baixo, distantes das necessidades de quem produz cultura nos bairros.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="">
     </div>
 
-    <h3 class="margem-intertitulo revelar">
-      A RESPOSTA DA PREFEITURA
-    </h3>
+    <h3 class="margem-intertitulo revelar">A RESPOSTA DA PREFEITURA</h3>
 
-    <p class="revelar">
-      Em nota oficial divulgada à imprensa na tarde de 12 de novembro de 2026 — mesmo dia do cortejo —, a Prefeitura de Juazeiro afirmou que está adotando providências administrativas para "garantir que o município não perderá recursos destinados ao setor". A reportagem confirmou que, naquela mesma quinta-feira (12), a Casa dos Conselhos publicou no Diário Oficial do Município o edital para a eleição complementar destinada a preencher as cadeiras vagas do Conselho Municipal de Política Cultural (CMPC) no biênio 2026/2028.
-    </p>
+    <p class="revelar">Em nota oficial divulgada à imprensa na tarde de 12 de novembro de 2026 — mesmo dia do cortejo —, a Prefeitura de Juazeiro afirmou que está adotando providências administrativas para "garantir que o município não perderá recursos destinados ao setor". A reportagem confirmou que, naquela mesma quinta-feira (12), a Casa dos Conselhos publicou no Diário Oficial do Município o edital para a eleição complementar destinada a preencher as cadeiras vagas do Conselho Municipal de Política Cultural (CMPC) no biênio 2026/2028.</p>
 
-    <p class="revelar">
-      Por outro lado, duas reivindicações estruturais dos coletivos permaneceram sem solução imediata: segundo a administração, o pedido de alteração da Lei Municipal nº 3.240/2024 para assegurar o caráter deliberativo do colegiado ainda estava em análise na Procuradoria do Município. A nota também não apresentou prazos para a abertura do CNPJ próprio do Fundo Municipal de Cultura. No comunicado, a gestão citou eventos como o Festival Edésio Santos da Canção e a retomada do Festival Nacional de Teatro Wellington Monteclaro como demonstrações de investimento no setor.
-    </p>
+    <p class="revelar">Por outro lado, duas reivindicações estruturais dos coletivos permaneceram sem solução imediata: segundo a administração, o pedido de alteração da Lei Municipal nº 3.240/2024 para assegurar o caráter deliberativo do colegiado ainda estava em análise na Procuradoria do Município. A nota também não apresentou prazos para a abertura do CNPJ próprio do Fundo Municipal de Cultura. No comunicado, a gestão citou eventos como o Festival Edésio Santos da Canção e a retomada do Festival Nacional de Teatro Wellington Monteclaro como demonstrações de investimento no setor.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="">
     </div>
 
-    <h3 class="margem-intertitulo revelar">
-      OUTRAS FORMAS DE OCUPAR O TERRITÓRIO
-    </h3>
+    <h3 class="margem-intertitulo revelar">OUTRAS FORMAS DE OCUPAR O TERRITÓRIO</h3>
 
-    <p class="revelar">
-      Em Juazeiro, o Coletivo Abdias integra uma geração de iniciativas que colocam no centro da criação questões relacionadas à raça, à identidade e à presença negra nas artes cênicas.
-    </p>
+    <p class="revelar">Em Juazeiro, o Coletivo Abdias integra uma geração de iniciativas que colocam no centro da criação questões relacionadas à raça, à identidade e à presença negra nas artes cênicas.</p>
 
-    <p class="revelar">
-      Em Petrolina, a Cia. Biruta segue desenvolvendo atividades de criação e formação, tendo a periferia como parte fundamental de sua identidade artística.
-    </p>
+    <p class="revelar">Em Petrolina, a Cia. Biruta segue desenvolvendo atividades de criação e formação, tendo a periferia como parte fundamental de sua identidade artística.</p>
 
-    <p class="revelar">
-      Entre as experiências contemporâneas está também o Coletivo Caatingayro, formado por estudantes de Licenciatura em Artes Visuais da Universidade Federal do Vale do São Francisco. Sem uma sede fixa, o grupo desenvolve atividades nas duas margens do São Francisco, aproximando arte-educação, produção independente e vivências LGBTQIAPN+.
-    </p>
+    <p class="revelar">Entre as experiências contemporâneas está também o Coletivo Caatingayro, formado por estudantes de Licenciatura em Artes Visuais da Universidade Federal do Vale do São Francisco. Sem uma sede fixa, o grupo desenvolve atividades nas duas margens do São Francisco, aproximando arte-educação, produção independente e vivências LGBTQIAPN+.</p>
 
-    <p class="revelar">
-      Encontros de desenho urbano, oficinas, feiras e exibições audiovisuais transformam ruas, praças e outros espaços públicos em lugares de aprendizagem e criação.
-    </p>
+    <p class="revelar">Encontros de desenho urbano, oficinas, feiras e exibições audiovisuais transformam ruas, praças e outros espaços públicos em lugares de aprendizagem e criação.</p>
 
-    <p class="revelar">
-      Essas experiências não representam uma ruptura completa com os movimentos das décadas anteriores. Existe uma continuidade entre os grupos que organizavam festivais, cineclubes e encontros culturais sem estruturas permanentes e os coletivos que hoje constroem suas próprias redes de colaboração.
-    </p>
+    <p class="revelar">Essas experiências não representam uma ruptura completa com os movimentos das décadas anteriores. Existe uma continuidade entre os grupos que organizavam festivais, cineclubes e encontros culturais sem estruturas permanentes e os coletivos que hoje constroem suas próprias redes de colaboração.</p>
 
-    <p class="revelar">
-      O que muda são as linguagens, as pautas e as formas de organização. Se em outros momentos a articulação cultural esteve fortemente relacionada à redemocratização, à defesa do rio e às lutas sociais, as experiências contemporâneas também incorporam discussões sobre raça, gênero, sexualidade, identidade e direito à cidade.
-    </p>
+    <p class="revelar">O que muda são as linguagens, as pautas e as formas de organização. Se em outros momentos a articulação cultural esteve fortemente relacionada à redemocratização, à defesa do rio e às lutas sociais, as experiências contemporâneas também incorporam discussões sobre raça, gênero, sexualidade, identidade e direito à cidade.</p>
 
-    <p class="revelar">
-      Uma cartografia cultural do Vale do São Francisco precisa, portanto, ultrapassar os limites dos teatros, museus e centros culturais. Precisa localizar também os espaços independentes, as sedes improvisadas, os bairros onde acontecem as oficinas e os lugares que se transformam em palco por iniciativa de seus moradores.
-    </p>
+    <p class="revelar">Uma cartografia cultural do Vale do São Francisco precisa, portanto, ultrapassar os limites dos teatros, museus e centros culturais. Precisa localizar também os espaços independentes, as sedes improvisadas, os bairros onde acontecem as oficinas e os lugares que se transformam em palco por iniciativa de seus moradores.</p>
 
     <div class="margem-separador revelar">
-      <img src="./imagens/barquinho.png.png" alt="" aria-hidden="true">
+      <img src="./imagens/barquinho.png.png" alt="">
     </div>
 
-    <h3 class="margem-intertitulo revelar">
-      UMA HISTÓRIA FEITA DE MUITAS VOZES
-    </h3>
+    <h3 class="margem-intertitulo revelar">UMA HISTÓRIA FEITA DE MUITAS VOZES</h3>
 
-    <p class="revelar">
-      Olhar para a trajetória cultural de Petrolina e Juazeiro permite perceber que ela não se desenvolveu em uma linha contínua de conquistas institucionais. Sua história é feita de avanços, interrupções, disputas e reinvenções.
-    </p>
+    <p class="revelar">Olhar para a trajetória cultural de Petrolina e Juazeiro permite perceber que ela não se desenvolveu em uma linha contínua de conquistas institucionais. Sua história é feita de avanços, interrupções, disputas e reinvenções.</p>
 
-    <p class="revelar">
-      Entre os equipamentos públicos e os espaços improvisados, entre os projetos financiados e as produções independentes, existe uma rede de pessoas que sustentou a criação artística mesmo quando as condições eram insuficientes.
-    </p>
+    <p class="revelar">Entre os equipamentos públicos e os espaços improvisados, entre os projetos financiados e as produções independentes, existe uma rede de pessoas que sustentou a criação artística mesmo quando as condições eram insuficientes.</p>
 
-    <p class="revelar">
-      O trabalho de pesquisadores, artistas e memorialistas como Thom Galiano, as experiências de formação e criação conduzidas por Antônio Veronaldo e a memória preservada por pessoas como Coelhão ajudam a reconstruir partes dessa trajetória. São diferentes formas de registrar uma história que não cabe em uma única versão.
-    </p>
+    <p class="revelar">O trabalho de pesquisadores, artistas e memorialistas como Thom Galiano, as experiências de formação e criação conduzidas por Antônio Veronaldo e a memória preservada por pessoas como Coelhão ajudam a reconstruir partes dessa trajetória. São diferentes formas de registrar uma história que não cabe em uma única versão.</p>
 
-    <p class="revelar">
-      Talvez seja justamente por isso que ela precise ser contada a partir de muitas vozes: das pessoas que organizaram encontros sem saber se teriam público, dos artistas que produziram nos próprios bairros, dos grupos que precisaram inventar seus espaços e daqueles que encontraram na arte uma maneira de permanecer no território.
-    </p>
+    <p class="revelar">Talvez seja justamente por isso que ela precise ser contada a partir de muitas vozes: das pessoas que organizaram encontros sem saber se teriam público, dos artistas que produziram nos próprios bairros, dos grupos que precisaram inventar seus espaços e daqueles que encontraram na arte uma maneira de permanecer no território.</p>
 
-    <p class="revelar">
-      Antes de existir uma estrutura capaz de reconhecer, financiar e documentar essas produções, já havia gente criando. E, enquanto novos espaços são inaugurados, outros continuam sendo inventados.
-    </p>
+    <p class="revelar">Antes de existir uma estrutura capaz de reconhecer, financiar e documentar essas produções, já havia gente criando. E, enquanto novos espaços são inaugurados, outros continuam sendo inventados.</p>
 
-    <!-- FINAL EM TEXTO NORMAL -->
-
-    <p class="margem-final revelar">
-      A história cultural do Vale do São Francisco não está somente naquilo que foi construído. Está, sobretudo, nas pessoas que fizeram da criação uma maneira de ocupar o território e imaginar outras possibilidades de existência.
-    </p>
+    <p class="margem-final revelar">A história cultural do Vale do São Francisco não está somente naquilo que foi construído. Está, sobretudo, nas pessoas que fizeram da criação uma maneira de ocupar o território e imaginar outras possibilidades de existência.</p>
 
   </article>
 
-  <!-- VÍDEO DO YOUTUBE NO FINAL DA REPORTAGEM -->
-
   <figure class="video-reportagem video-final-margem revelar">
-
     <div class="video-reportagem-player">
       <iframe
         src="https://www.youtube-nocookie.com/embed/xZpd-ePQszg"
@@ -1707,29 +1411,19 @@ nav button.ativo::after {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
-        loading="lazy">
-      </iframe>
+        loading="lazy"></iframe>
     </div>
-
   </figure>
 
-  <figure class="barquinhos-final">
-    <img
-      src="./imagens/barquinho.png.png"
-      alt="Ilustração de barquinhos"
-    >
-  </figure>
-
+  <div class="barquinhos-final" role="img"
+    aria-label="Faixa de ilustrações de barquinhos"></div>
   <div class="respiro-rodape"></div>
 
 </section>
 
-<!-- =====================================================
-     PÁGINA 3 — LINHA DO TEMPO
-===================================================== -->
+<!-- ===================== LINHA DO TEMPO ===================== -->
 
 <section class="pagina" id="linha-do-tempo">
-
   <div class="pagina-abertura">
     <span class="pagina-numero">03 / MEMÓRIAS</span>
     <h1 class="pagina-titulo">LINHA DO TEMPO</h1>
@@ -1739,117 +1433,79 @@ nav button.ativo::after {
   </div>
 
   <div class="conteudo">
-
     <div class="texto">
       <p>Espaço reservado para os acontecimentos históricos e culturais da linha do tempo.</p>
     </div>
 
     <div class="galeria">
-
       <figure class="galeria-item">
-        <img
-          src="./imagens/construção da Barragem.png.png"
-          alt="Construção da Barragem"
-        >
-        <figcaption class="galeria-legenda">
-          Construção da Barragem
-        </figcaption>
+        <img src="./imagens/construção da Barragem.png.png"
+          alt="Construção da Barragem">
+        <figcaption class="galeria-legenda">Construção da Barragem</figcaption>
       </figure>
 
       <figure class="galeria-item">
-        <img
-          src="./imagens/Círculo Operário de Juazeiro.png.png"
-          alt="Círculo Operário de Juazeiro"
-        >
-        <figcaption class="galeria-legenda">
-          Círculo Operário de Juazeiro
-        </figcaption>
+        <img src="./imagens/Círculo Operário de Juazeiro.png.png"
+          alt="Círculo Operário de Juazeiro">
+        <figcaption class="galeria-legenda">Círculo Operário de Juazeiro</figcaption>
       </figure>
-
     </div>
-
   </div>
 
   <div class="respiro-rodape"></div>
-
 </section>
 
-<!-- =====================================================
-     PÁGINA 4 — NÚCLEO BIRUTA
-===================================================== -->
+<!-- ===================== NÚCLEO BIRUTA ===================== -->
 
 <section class="pagina" id="nucleo-biruta">
-
   <div class="pagina-abertura">
     <span class="pagina-numero">04 / COLETIVOS</span>
     <h1 class="pagina-titulo">NÚCLEO BIRUTA</h1>
     <p class="pagina-descricao">Trajetórias e produções culturais.</p>
   </div>
-
   <div class="conteudo">
     <div class="texto">
       <p>Espaço reservado para o conteúdo do Núcleo Biruta.</p>
     </div>
   </div>
-
   <div class="respiro-rodape"></div>
-
 </section>
 
-<!-- =====================================================
-     PÁGINA 5 — COLETIVO ABDIAS
-===================================================== -->
+<!-- ===================== COLETIVO ABDIAS ===================== -->
 
 <section class="pagina" id="coletivo-abdias">
-
   <div class="pagina-abertura">
     <span class="pagina-numero">05 / COLETIVOS</span>
     <h1 class="pagina-titulo">COLETIVO ABDIAS</h1>
-    <p class="pagina-descricao">
-      Arte, memória e experiências coletivas.
-    </p>
+    <p class="pagina-descricao">Arte, memória e experiências coletivas.</p>
   </div>
-
   <div class="conteudo">
     <div class="texto">
       <p>Espaço reservado para o conteúdo do Coletivo Abdias.</p>
     </div>
   </div>
-
   <div class="respiro-rodape"></div>
-
 </section>
 
-<!-- =====================================================
-     PÁGINA 6 — CAATINGAYRO
-===================================================== -->
+<!-- ===================== CAATINGAYRO ===================== -->
 
 <section class="pagina" id="caatingayro">
-
   <div class="pagina-abertura">
     <span class="pagina-numero">06 / EXPRESSÕES CULTURAIS</span>
     <h1 class="pagina-titulo">CAATINGAYRO</h1>
-    <p class="pagina-descricao">
-      Arte e outras formas de expressão do território.
-    </p>
+    <p class="pagina-descricao">Arte e outras formas de expressão do território.</p>
   </div>
-
   <div class="conteudo">
     <div class="texto">
       <p>Espaço reservado para o conteúdo do Caatingayro.</p>
     </div>
   </div>
-
   <div class="respiro-rodape"></div>
-
 </section>
 
-<!-- =====================================================
-     PÁGINA 7 — ARTISTAS
-===================================================== -->
+<!-- ===================== ARTISTAS ===================== -->
 
 <section class="pagina" id="artistas">
-
   <div class="pagina-abertura">
     <span class="pagina-numero">07 / CRIAÇÕES</span>
     <h1 class="pagina-titulo">ARTISTAS</h1>
@@ -1857,112 +1513,75 @@ nav button.ativo::after {
       Pessoas que criam e transformam as formas de representar o Sertão.
     </p>
   </div>
-
   <div class="conteudo">
     <div class="texto">
       <p>Espaço reservado para as trajetórias e produções dos artistas.</p>
     </div>
   </div>
-
   <div class="respiro-rodape"></div>
-
 </section>
 
-<!-- =====================================================
-     PÁGINA 8 — LUGARES
-===================================================== -->
+<!-- ===================== LUGARES ===================== -->
 
 <section class="pagina" id="lugares">
-
   <div class="pagina-abertura">
     <span class="pagina-numero">08 / TERRITÓRIOS</span>
     <h1 class="pagina-titulo">LUGARES</h1>
-    <p class="pagina-descricao">
-      Espaços de memória, pertencimento e encontros.
-    </p>
+    <p class="pagina-descricao">Espaços de memória, pertencimento e encontros.</p>
   </div>
 
   <div class="conteudo">
-
     <div class="texto">
       <p>Espaço reservado para as narrativas dos lugares que integram a Correnteza.</p>
     </div>
 
     <div class="galeria">
-
       <figure class="galeria-item">
         <img src="./imagens/ILHA DO FOGO.PNG.png" alt="Ilha do Fogo">
         <figcaption class="galeria-legenda">Ilha do Fogo</figcaption>
       </figure>
 
       <figure class="galeria-item">
-        <img
-          src="./imagens/Comissão Pastoral da Terra.png.png"
-          alt="Comissão Pastoral da Terra"
-        >
-        <figcaption class="galeria-legenda">
-          Comissão Pastoral da Terra
-        </figcaption>
+        <img src="./imagens/Comissão Pastoral da Terra.png.png"
+          alt="Comissão Pastoral da Terra">
+        <figcaption class="galeria-legenda">Comissão Pastoral da Terra</figcaption>
       </figure>
-
     </div>
-
   </div>
 
   <div class="respiro-rodape"></div>
-
 </section>
 
 </main>
 
-<!-- =====================================================
-     RODAPÉ EM TODAS AS PÁGINAS
-===================================================== -->
+<!-- ===================== RODAPÉ ===================== -->
 
 <footer class="rodape">
 
   <div class="rodape-fundo">
-    <img
-      src="./imagens/IMAGEM DO FINAL DO SITE.PNG.png"
-      alt=""
-      aria-hidden="true"
-    >
+    <img src="./imagens/IMAGEM DO FINAL DO SITE.PNG.png"
+      alt="" aria-hidden="true">
   </div>
 
   <div class="rodape-barquinho">
-    <img
-      src="./imagens/barquinho do final. PNG.png"
-      alt="Ilustração de barco"
-    >
+    <img src="./imagens/barquinho do final. PNG.png"
+      alt="Ilustração de barco">
   </div>
 
   <div class="rodape-conteudo">
 
     <div class="rodape-identidade">
-
-      <h2 class="rodape-titulo">
-        ENTRE DUAS MARGENS
-      </h2>
-
-      <p class="rodape-subtitulo">
-        UMA SÓ CORRENTEZA
-      </p>
-
+      <h2 class="rodape-titulo">ENTRE DUAS MARGENS</h2>
+      <p class="rodape-subtitulo">UMA SÓ CORRENTEZA</p>
     </div>
 
     <div class="rodape-creditos">
 
       <div class="credito-grupo">
         <span class="credito-label">REPORTAGEM</span>
-
         <span class="credito-nome">
-          <a
-            href="https://www.linkedin.com/in/cibelle-vieira-42a801272/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Cibelle Vieira
-          </a>
+          <a href="https://www.linkedin.com/in/cibelle-vieira-42a801272/"
+            target="_blank" rel="noopener noreferrer">Cibelle Vieira</a>
         </span>
       </div>
 
@@ -1972,76 +1591,43 @@ nav button.ativo::after {
       </div>
 
       <div class="credito-grupo">
-
         <span class="credito-label">
-          DESIGN E<br>
-          DESENVOLVIMENTO DO SITE
+          DESIGN E<br>DESENVOLVIMENTO DO SITE
         </span>
-
-        <span class="credito-nome">
-          Jenifer Silva
-        </span>
-
+        <span class="credito-nome">Jenifer Silva</span>
         <div class="credito-perfis">
-
           <span class="separador-perfil">|</span>
-
-          <a
-            href="https://www.instagram.com/jeniilustra/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            @jeniilustra
-          </a>
-
+          <a href="https://www.instagram.com/jeniilustra/"
+            target="_blank" rel="noopener noreferrer">@jeniilustra</a>
           <span class="separador-perfil">|</span>
-
           <span>@labmap.s</span>
-
         </div>
-
       </div>
 
     </div>
-
   </div>
-
 </footer>
 
 </div>
 
-<!-- =====================================================
-     ÁUDIO DO RIO
-===================================================== -->
+<!-- ===================== SOM DO RIO ===================== -->
 
-<audio id="somRio" loop preload="none">
-  <source
-    src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
-    type="audio/mpeg"
-  >
+<audio id="somRio" autoplay loop preload="auto">
+  <source src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
+    type="audio/mpeg">
 </audio>
 
-<button
-  class="controle-som visivel"
-  id="controleSom"
-  type="button"
-  aria-pressed="false"
->
+<button class="controle-som visivel" id="controleSom"
+  type="button" aria-pressed="false">
   <span id="iconeSom">♪</span>
   <span id="textoSom">ATIVAR SOM DO RIO</span>
 </button>
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
-
-/* ELEMENTOS */
+/* ===================== ELEMENTOS ===================== */
 
 const paginas = document.querySelectorAll(".pagina");
 const botoesMenu = document.querySelectorAll("nav [data-pagina]");
-
 const menuPrincipal = document.getElementById("menuPrincipal");
 const botaoMenu = document.getElementById("botaoMenu");
 
@@ -2051,13 +1637,14 @@ const textoSom = document.getElementById("textoSom");
 const iconeSom = document.getElementById("iconeSom");
 
 let paginaAtual = "inicio";
+let audioAutorizado = false;
+let usuarioDesativouSom = false;
 
-/* =====================================================
-   SOM
-===================================================== */
+/* ===================== ÁUDIO ===================== */
+
+audio.volume = 0.45;
 
 function atualizarSom() {
-
   const tocando = !audio.paused;
 
   textoSom.textContent = tocando
@@ -2065,8 +1652,21 @@ function atualizarSom() {
     : "ATIVAR SOM DO RIO";
 
   iconeSom.textContent = tocando ? "♫" : "♪";
-
   controleSom.setAttribute("aria-pressed", String(tocando));
+}
+
+async function iniciarSom() {
+  if (paginaAtual !== "inicio" || usuarioDesativouSom) return;
+
+  try {
+    await audio.play();
+    audioAutorizado = true;
+  } catch (erro) {
+    // O navegador pode bloquear autoplay até o primeiro clique.
+    audioAutorizado = false;
+  }
+
+  atualizarSom();
 }
 
 function pararSom() {
@@ -2076,16 +1676,13 @@ function pararSom() {
 }
 
 controleSom.addEventListener("click", async () => {
-
   if (paginaAtual !== "inicio") return;
 
   if (audio.paused) {
-    try {
-      await audio.play();
-    } catch (erro) {
-      console.error("Não foi possível reproduzir o áudio:", erro);
-    }
+    usuarioDesativouSom = false;
+    await iniciarSom();
   } else {
+    usuarioDesativouSom = true;
     audio.pause();
   }
 
@@ -2095,21 +1692,48 @@ controleSom.addEventListener("click", async () => {
 audio.addEventListener("play", atualizarSom);
 audio.addEventListener("pause", atualizarSom);
 
-/* =====================================================
-   ANIMAÇÕES NA ROLAGEM
-===================================================== */
+/*
+  Primeira tentativa: imediatamente na abertura.
+*/
+
+window.addEventListener("DOMContentLoaded", iniciarSom);
+
+/*
+  Segunda tentativa: após o carregamento completo.
+*/
+
+window.addEventListener("load", iniciarSom);
+
+/*
+  Caso o navegador bloqueie o som, inicia no primeiro
+  clique ou toque do visitante dentro da página inicial.
+*/
+
+function iniciarNaPrimeiraInteracao() {
+  if (
+    paginaAtual === "inicio" &&
+    audio.paused &&
+    !usuarioDesativouSom
+  ) {
+    iniciarSom();
+  }
+}
+
+document.addEventListener("pointerdown", iniciarNaPrimeiraInteracao, {
+  passive: true
+});
+
+document.addEventListener("keydown", iniciarNaPrimeiraInteracao);
+
+/* ===================== ANIMAÇÕES ===================== */
 
 const observador = new IntersectionObserver(entradas => {
-
   entradas.forEach(entrada => {
-
     if (entrada.isIntersecting) {
       entrada.target.classList.add("visivel");
       observador.unobserve(entrada.target);
     }
-
   });
-
 }, {
   threshold: 0.05,
   rootMargin: "0px 0px 100px 0px"
@@ -2119,30 +1743,20 @@ document.querySelectorAll(".revelar").forEach(elemento => {
   observador.observe(elemento);
 });
 
-/* =====================================================
-   PARAR VÍDEOS AO MUDAR DE PÁGINA
-===================================================== */
+/* ===================== PARAR VÍDEOS ===================== */
 
 function pararVideos(pagina) {
-
   pagina.querySelectorAll("iframe").forEach(iframe => {
-
     const endereco = iframe.getAttribute("src");
-
     if (endereco) {
       iframe.setAttribute("src", endereco);
     }
-
   });
-
 }
 
-/* =====================================================
-   NAVEGAÇÃO
-===================================================== */
+/* ===================== NAVEGAÇÃO ===================== */
 
 function abrirPagina(id, atualizarHistorico = true) {
-
   const destino = document.getElementById(id);
 
   if (!destino || !destino.classList.contains("pagina")) {
@@ -2154,11 +1768,8 @@ function abrirPagina(id, atualizarHistorico = true) {
   }
 
   if (paginaAtual !== id) {
-    const paginaAnterior = document.getElementById(paginaAtual);
-
-    if (paginaAnterior) {
-      pararVideos(paginaAnterior);
-    }
+    const anterior = document.getElementById(paginaAtual);
+    if (anterior) pararVideos(anterior);
   }
 
   paginaAtual = id;
@@ -2168,9 +1779,7 @@ function abrirPagina(id, atualizarHistorico = true) {
   });
 
   botoesMenu.forEach(botao => {
-
     const ativo = botao.dataset.pagina === id;
-
     botao.classList.toggle("ativo", ativo);
 
     if (ativo) {
@@ -2178,13 +1787,11 @@ function abrirPagina(id, atualizarHistorico = true) {
     } else {
       botao.removeAttribute("aria-current");
     }
-
   });
 
   controleSom.classList.toggle("visivel", id === "inicio");
 
   menuPrincipal.classList.remove("aberto");
-
   botaoMenu.setAttribute("aria-expanded", "false");
   botaoMenu.textContent = "☰";
 
@@ -2192,52 +1799,39 @@ function abrirPagina(id, atualizarHistorico = true) {
     history.pushState({ pagina: id }, "", "#" + id);
   }
 
-  window.scrollTo({
-    top: 0,
-    behavior: "instant"
-  });
+  window.scrollTo({ top: 0, behavior: "instant" });
+
+  if (id === "inicio" && !usuarioDesativouSom) {
+    iniciarSom();
+  }
 }
 
 botoesMenu.forEach(botao => {
-
   botao.addEventListener("click", () => {
     abrirPagina(botao.dataset.pagina);
   });
-
 });
 
-/* =====================================================
-   MENU MOBILE
-===================================================== */
+/* ===================== MENU MOBILE ===================== */
 
 botaoMenu.addEventListener("click", () => {
-
   const aberto = menuPrincipal.classList.toggle("aberto");
-
   botaoMenu.setAttribute("aria-expanded", String(aberto));
   botaoMenu.textContent = aberto ? "✕" : "☰";
-
 });
 
-/* =====================================================
-   BOTÃO DA CAPA
-===================================================== */
+/* ===================== BOTÃO DA CAPA ===================== */
 
 document.getElementById("botaoDescer").addEventListener("click", () => {
-
   document.getElementById("reportagem").scrollIntoView({
     behavior: "smooth",
     block: "start"
   });
-
 });
 
-/* =====================================================
-   ENDEREÇO E HISTÓRICO
-===================================================== */
+/* ===================== HISTÓRICO ===================== */
 
 function verificarEndereco() {
-
   const id = decodeURIComponent(location.hash.replace("#", ""));
   const elemento = document.getElementById(id);
 
@@ -2254,7 +1848,6 @@ window.addEventListener("hashchange", verificarEndereco);
 
 verificarEndereco();
 atualizarSom();
-
 </script>
 
 </body>
