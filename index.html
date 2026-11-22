@@ -1,9 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050505">
 
 <title>Entre Duas Margens, Uma Só Correnteza</title>
@@ -39,7 +41,7 @@
 }
 
 /* ==================================================
-   CORES E CONFIGURAÇÕES GERAIS
+   CONFIGURAÇÕES GERAIS
 ================================================== */
 
 :root {
@@ -48,6 +50,7 @@
   --azul: #a6b7ef;
   --azul-suave: #c0cbef;
   --azul-escuro: #222b50;
+  --azul-rio: #7389c7;
   --largura-texto: 740px;
   --altura-menu: 72px;
 }
@@ -319,12 +322,7 @@ nav button.ativo::after {
   padding: 7px 3px 0 0;
 }
 
-/*
-  ILUSTRAÇÃO CIBS CRIANÇA
-
-  Mantida com 460px no computador,
-  flutuando à direita do texto.
-*/
+/* ILUSTRAÇÃO CIBS CRIANÇA */
 
 .ilustracao-cibs {
   position: relative;
@@ -543,9 +541,10 @@ nav button.ativo::after {
 /* ==================================================
    LINHA DO TEMPO
 
+   TÍTULO ORIGINAL
    FUNDO PRETO
-   AZUIS DA IDENTIDADE VISUAL
-   CORRENTEZA SINUOSA
+   RIO CONTÍNUO
+   SEM ESTRELAS
 ================================================== */
 
 #linha-do-tempo {
@@ -553,77 +552,41 @@ nav button.ativo::after {
   color: var(--branco);
 }
 
+/* ABERTURA */
+
 .tempo-abertura {
   position: relative;
-  padding: 105px 24px 90px;
+  padding: 110px 24px 95px;
   text-align: center;
   overflow: hidden;
 }
 
-.tempo-abertura::before {
-  content: "";
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border: 1px solid rgba(166,183,239,.18);
-  border-radius: 50%;
-  top: -250px;
-  left: -170px;
-}
-
-.tempo-abertura::after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border: 1px solid rgba(166,183,239,.15);
-  border-radius: 50%;
-  right: -130px;
-  bottom: -130px;
-}
-
-.tempo-marca {
-  font-family: "Gordita", Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--azul);
-  margin-bottom: 22px;
-}
-
 .tempo-titulo {
+  max-width: 1150px;
+  margin: 0 auto;
   font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(70px,12vw,165px);
+  font-size: clamp(56px,8vw,112px);
   font-weight: 400;
-  line-height: .88;
-  letter-spacing: -.025em;
-}
-
-.tempo-titulo span {
-  display: block;
+  line-height: 1.02;
+  letter-spacing: -.015em;
+  color: var(--branco);
 }
 
 .tempo-subtitulo {
-  max-width: 760px;
-  margin: 35px auto 0;
+  max-width: 890px;
+  margin: 40px auto 0;
   font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(23px,3vw,38px);
-  line-height: 1.22;
+  font-size: clamp(23px,2.6vw,36px);
+  font-weight: 400;
+  line-height: 1.32;
   color: var(--azul);
-}
-
-.tempo-introducao {
-  max-width: 620px;
-  margin: 28px auto 0;
-  font-size: 17px;
-  line-height: 1.65;
-  color: #ddd;
 }
 
 .tempo-instrucao {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 36px;
+  margin-top: 45px;
   font-family: "Gordita", Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 1px;
@@ -641,13 +604,17 @@ nav button.ativo::after {
   50% { transform: translateY(8px); }
 }
 
-/* CORRENTEZA */
+/* ==================================================
+   RIO
+
+   Uma correnteza contínua, sem linha tracejada.
+================================================== */
 
 .tempo-percurso {
   position: relative;
   max-width: 1320px;
   margin: 0 auto;
-  padding: 10px 20px 90px;
+  padding: 20px 20px 90px;
   isolation: isolate;
 }
 
@@ -655,7 +622,6 @@ nav button.ativo::after {
   position: absolute;
   z-index: -1;
   top: 0;
-  bottom: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -663,37 +629,39 @@ nav button.ativo::after {
   overflow: visible;
 }
 
+/* BORDA SUAVE DO RIO */
+
 .rio-margem {
   fill: none;
-  stroke: rgba(166,183,239,.12);
-  stroke-width: 30;
+  stroke: rgba(166,183,239,.16);
+  stroke-width: 42;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* ÁGUA AZUL CONTÍNUA */
 
 .rio-agua {
   fill: none;
-  stroke: #7389c7;
-  stroke-width: 18;
+  stroke: var(--azul-rio);
+  stroke-width: 31;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.rio-agua-interna {
+/* BRILHO SUAVE SEM TRAÇOS */
+
+.rio-brilho {
   fill: none;
-  stroke: #c0cbef;
-  stroke-width: 5;
+  stroke: rgba(192,203,239,.20);
+  stroke-width: 8;
   stroke-linecap: round;
-  stroke-dasharray: 20 22;
+  stroke-linejoin: round;
 }
 
-.rio-onda {
-  fill: none;
-  stroke: rgba(166,183,239,.3);
-  stroke-width: 1.5;
-}
-
-/* MARCOS HISTÓRICOS */
+/* ==================================================
+   EVENTOS
+================================================== */
 
 .tempo-evento {
   position: relative;
@@ -814,7 +782,9 @@ nav button.ativo::after {
   margin-bottom: 0;
 }
 
-/* IMAGENS E COLAGENS */
+/* ==================================================
+   IMAGENS DA LINHA DO TEMPO
+================================================== */
 
 .tempo-visual {
   position: absolute;
@@ -846,18 +816,6 @@ nav button.ativo::after {
   box-shadow: 0 12px 35px rgba(0,0,0,.35);
 }
 
-.tempo-visual .imagem-secundaria {
-  position: absolute;
-  width: 45%;
-  height: 85px;
-  object-fit: cover;
-  right: -18%;
-  bottom: -15%;
-  border: 5px solid var(--preto);
-  border-radius: 50%;
-  transform: rotate(10deg);
-}
-
 .tempo-visual figcaption {
   font-family: "Gordita", Arial, sans-serif;
   font-size: 10px;
@@ -875,66 +833,45 @@ nav button.ativo::after {
   transform: rotate(5deg);
 }
 
-/* ELEMENTOS GRÁFICOS */
+/* ==================================================
+   ILUSTRAÇÕES DE PEIXES
 
-.tempo-estrela {
-  position: absolute;
-  z-index: 1;
-  color: #a6b7ef;
-  font-family: Arial, sans-serif;
-  font-size: 72px;
-  line-height: 1;
-  pointer-events: none;
-}
+   Estrutura preparada para receber a imagem
+   que será enviada posteriormente.
 
-.tempo-evento.esquerda .tempo-estrela {
-  left: 76%;
-  bottom: 14%;
-}
+   Quando o arquivo estiver na pasta imagens,
+   basta indicar seu nome exato.
+================================================== */
 
-.tempo-evento.direita .tempo-estrela {
-  left: 15%;
-  bottom: 9%;
-}
-
-.tempo-evento:nth-of-type(3n) .tempo-estrela {
-  color: #7389c7;
-}
-
-.tempo-evento:nth-of-type(4n) .tempo-estrela {
-  color: #c0cbef;
-}
-
-.tempo-selo {
+.tempo-peixe {
   position: absolute;
   z-index: 2;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 8px;
-  background: #a6b7ef;
-  color: #101321;
-  font-family: "Gordita", Arial, sans-serif;
-  font-size: 10px;
-  line-height: 1.3;
+  width: clamp(90px,12vw,170px);
+  height: auto;
+  pointer-events: none;
+  opacity: .95;
+}
+
+.tempo-peixe img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.tempo-peixe.peixe-esquerda {
+  left: 13%;
   transform: rotate(-12deg);
 }
 
-.tempo-evento.esquerda .tempo-selo {
-  left: 44%;
-  bottom: 12%;
+.tempo-peixe.peixe-direita {
+  right: 13%;
+  transform: rotate(12deg) scaleX(-1);
 }
 
-.tempo-evento.direita .tempo-selo {
-  right: 44%;
-  bottom: 12%;
-}
-
-/* FONTES NO FINAL DA LINHA DO TEMPO */
+/* ==================================================
+   FONTES DA LINHA DO TEMPO
+================================================== */
 
 .tempo-fontes {
   max-width: 800px;
@@ -1357,31 +1294,27 @@ nav button.ativo::after {
   }
 
   .tempo-titulo {
-    font-size: clamp(65px,13vw,105px);
+    font-size: clamp(45px,10vw,72px);
   }
 
   .tempo-subtitulo {
-    font-size: 24px;
-  }
-
-  .tempo-introducao {
-    font-size: 15px;
+    font-size: 23px;
   }
 
   .tempo-percurso {
     padding: 15px 15px 60px;
   }
 
-  .tempo-rio {
-    width: 100%;
+  .rio-margem {
+    stroke-width: 27;
   }
 
   .rio-agua {
-    stroke-width: 12;
+    stroke-width: 20;
   }
 
-  .rio-margem {
-    stroke-width: 20;
+  .rio-brilho {
+    stroke-width: 5;
   }
 
   .tempo-evento {
@@ -1442,21 +1375,12 @@ nav button.ativo::after {
     max-height: 120px;
   }
 
-  .tempo-visual .imagem-secundaria {
-    height: 48px;
-    border-width: 3px;
-  }
-
   .tempo-visual figcaption {
     display: none;
   }
 
-  .tempo-selo {
-    display: none;
-  }
-
-  .tempo-estrela {
-    font-size: 45px;
+  .tempo-peixe {
+    width: 80px;
   }
 
   .pagina-abertura {
@@ -1532,6 +1456,7 @@ nav button.ativo::after {
 }
 
 </style>
+
 </head>
 
 <body>
@@ -1539,6 +1464,7 @@ nav button.ativo::after {
 <div class="site">
 
 <header>
+
   <div class="cabecalho">
 
     <button
@@ -1562,6 +1488,7 @@ nav button.ativo::after {
     </nav>
 
   </div>
+
 </header>
 
 <main>
@@ -1575,9 +1502,11 @@ nav button.ativo::after {
   <div class="capa">
 
     <div class="capa-imagem">
+
       <img
         src="./imagens/IMAGEM DA CAPA.PNG.png"
         alt="Ilustração da capa Correnteza">
+
     </div>
 
     <div class="capa-conteudo">
@@ -1609,10 +1538,12 @@ nav button.ativo::after {
   <div class="continuacao-capa">
 
     <div class="ilha-sobreposta">
+
       <img
         src="./imagens/ILHA DO FOGO.PNG.png"
         alt=""
         aria-hidden="true">
+
     </div>
 
     <article class="reportagem" id="reportagem">
@@ -1620,9 +1551,11 @@ nav button.ativo::after {
       <div class="corpo-reportagem">
 
         <figure class="ilustracao-cibs">
+
           <img
             src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
             alt="Ilustração de Cibelle criança">
+
         </figure>
 
         <p class="primeiro-paragrafo revelar">Nasci em Juazeiro, na Bahia, mas vivi a vida inteira em Petrolina, Pernambuco. Certa vez, durante a apresentação de um trabalho em Salvador, mencionei esse fato. Com certa desconfiança, alguém me perguntou se aquilo era uma piada. Respondi com outra pergunta: por que seria?</p>
@@ -1678,9 +1611,11 @@ nav button.ativo::after {
   </div>
 
   <figure class="margem-capa revelar">
+
     <img
       src="./imagens/123.png"
       alt="Produção cultural no Vale do São Francisco">
+
   </figure>
 
   <article class="texto-margem">
@@ -1704,8 +1639,15 @@ nav button.ativo::after {
     <p class="revelar">O rio, que há gerações sustentava atividades como pesca, navegação e agricultura, também passou a ser compreendido como infraestrutura estratégica para a expansão econômica. Essa transformação, entretanto, não aconteceu sem conflitos.</p>
 
     <figure class="margem-foto-direita revelar">
-      <img src="./imagens/construção da Barragem.png.png" alt="Construção da Barragem">
-      <figcaption>Construção da Barragem de Sobradinho.</figcaption>
+
+      <img
+        src="./imagens/construção da Barragem.png.png"
+        alt="Construção da Barragem">
+
+      <figcaption>
+        Construção da Barragem de Sobradinho.
+      </figcaption>
+
     </figure>
 
     <p class="revelar">A construção da Barragem de Sobradinho, iniciada em 1971 e concluída em 1978, provocou o deslocamento compulsório de mais de 72 mil pessoas e a desapropriação de aproximadamente 26 mil propriedades. As antigas sedes de Casa Nova, Sento Sé, Remanso e Pilão Arcado foram atingidas pela formação do lago.</p>
@@ -1717,8 +1659,15 @@ nav button.ativo::after {
     <div class="limpar"></div>
 
     <figure class="margem-foto-esquerda revelar">
-      <img src="./imagens/Comissão Pastoral da Terra.png.png" alt="Comissão Pastoral da Terra">
-      <figcaption>Memórias das mobilizações sociais na região.</figcaption>
+
+      <img
+        src="./imagens/Comissão Pastoral da Terra.png.png"
+        alt="Comissão Pastoral da Terra">
+
+      <figcaption>
+        Memórias das mobilizações sociais na região.
+      </figcaption>
+
     </figure>
 
     <p class="revelar">A atuação de Dom José Rodrigues à frente da Diocese de Juazeiro e a organização de trabalhadores rurais, com a participação da Comissão Pastoral da Terra, criada em 1975 em âmbito nacional, integraram esse processo de mobilização social. As lutas pelo território, pela terra e pelos direitos das comunidades atravessavam a vida regional.</p>
@@ -1736,8 +1685,15 @@ nav button.ativo::after {
     <p class="revelar">Em Juazeiro, parte dessa movimentação pode ser recuperada por meio das memórias de Antônio Carlos Coêlho de Assis, conhecido como Coelhão, reunidas no livro <em>Juazeiro de perto: uma mistura de arte, cultura e política</em>, publicado em 2021.</p>
 
     <figure class="margem-foto-direita revelar">
-      <img src="./imagens/Coelhão.png.png" alt="Coelhão">
-      <figcaption>Antônio Carlos Coêlho de Assis, conhecido como Coelhão.</figcaption>
+
+      <img
+        src="./imagens/Coelhão.png.png"
+        alt="Coelhão">
+
+      <figcaption>
+        Antônio Carlos Coêlho de Assis, conhecido como Coelhão.
+      </figcaption>
+
     </figure>
 
     <p class="revelar">Segundo Coelhão, a cultura em Juazeiro foi construída através das experiências de grupos, associações e movimentos que atuaram a partir da década de 1970. Entre eles está a Associação dos Universitários de Juazeiro (AUJ), cuja primeira formação surgiu em 1970.</p>
@@ -1753,8 +1709,15 @@ nav button.ativo::after {
     <div class="limpar"></div>
 
     <figure class="margem-foto-esquerda revelar">
-      <img src="./imagens/Círculo Operário de Juazeiro.png.png" alt="Círculo Operário de Juazeiro">
-      <figcaption>Círculo Operário de Juazeiro.</figcaption>
+
+      <img
+        src="./imagens/Círculo Operário de Juazeiro.png.png"
+        alt="Círculo Operário de Juazeiro">
+
+      <figcaption>
+        Círculo Operário de Juazeiro.
+      </figcaption>
+
     </figure>
 
     <p class="revelar">Em março de 1980, o Círculo de Convivência Cultural lançou um manifesto que defendia a pesquisa, a experimentação, a troca de informações e o incentivo à produção literária. A iniciativa procurava aproximar diferentes áreas do conhecimento e criar um ambiente de convivência entre artistas e intelectuais.</p>
@@ -1780,8 +1743,15 @@ nav button.ativo::after {
     <p class="revelar">A história das artes cênicas de Petrolina e Juazeiro possui uma característica particular: ela não respeita os limites administrativos que separam Pernambuco e Bahia. Artistas, grupos, professores e espectadores circulam entre as duas cidades, construindo uma cena que tem o rio como elemento de aproximação.</p>
 
     <figure class="margem-foto-direita revelar">
-      <img src="./imagens/Thom Galeano.png" alt="Thom Galiano">
-      <figcaption>Thom Galiano.</figcaption>
+
+      <img
+        src="./imagens/Thom Galeano.png"
+        alt="Thom Galiano">
+
+      <figcaption>
+        Thom Galiano.
+      </figcaption>
+
     </figure>
 
     <p class="revelar">Uma das pessoas que se dedica a investigar e preservar essa trajetória é Thom Galiano, diretor teatral, professor e integrante da Trup Errante. Sua atuação está ligada à formação de artistas e à pesquisa das artes cênicas no Vale do São Francisco.</p>
@@ -1795,8 +1765,11 @@ nav button.ativo::after {
     <p class="revelar">A memória política também atravessou outros trabalhos dirigidos por Galiano. Em <em>Procura-se um corpo: Ação nº 3</em>, desenvolvido pelo Núcleo de Teatro do Sesc Petrolina, histórias de pessoas perseguidas pela Ditadura Militar foram transformadas em experiência cênica e posteriormente reunidas em publicação.</p>
 
     <blockquote class="margem-citacao revelar">
+
       “Acredito que a gente vive hoje uma guerra, inclusive em relação à narrativa”.
+
       <small>Thom Galiano</small>
+
     </blockquote>
 
     <p class="revelar">A observação ajuda a compreender por que recuperar a história cultural de uma região é também uma forma de intervenção no presente. Aquilo que se escolhe registrar, preservar ou deixar de fora interfere diretamente na maneira como uma sociedade reconhece sua própria trajetória.</p>
@@ -1880,12 +1853,14 @@ nav button.ativo::after {
       </div>
 
       <div class="video-reportagem-player">
+
         <iframe
           src="https://drive.google.com/file/d/1FgzavNdO0LM0KQ08PAKqvCw5Lak3FL2M/preview"
           title="Vídeo do cortejo em Juazeiro"
           allow="autoplay; fullscreen"
           allowfullscreen
           loading="lazy"></iframe>
+
       </div>
 
     </figure>
@@ -1895,8 +1870,13 @@ nav button.ativo::after {
     <p class="revelar">Na margem baiana do rio, o impasse institucional esbarra em dois entraves estruturais: o esvaziamento prático do Conselho Municipal de Política Cultural (CMPC) e a falta de operacionalização do Fundo Municipal de Cultura. Embora exista formalmente, o colegiado teve sua capacidade de atuação reduzida após a sanção da Lei Municipal nº 3.240/2024, especialmente em seu artigo 39, que deixou de assegurar expressamente o caráter deliberativo pleno do Conselho sobre o orçamento da pasta. Somam-se a isso o atraso na convocação de eleições para preencher cadeiras vagas da sociedade civil e a ausência de um Fundo Municipal de Cultura ativo e com CNPJ próprio — requisito apontado pelos representantes do movimento como necessário à adequação plena ao Sistema Nacional de Cultura e à gestão dos repasses federais, como os da Política Nacional Aldir Blanc (PNAB).</p>
 
     <blockquote class="margem-citacao revelar">
+
       “Vamos estar mobilizados reivindicando a criação do Fundo de Cultura e do CNPJ para que possamos receber essas verbas da PNAB, cobrando que o Conselho de Cultura tenha autonomia para deliberar e fiscalizar o orçamento. E queremos eleições para o Conselho, para que os trabalhadores da cultura possam se eleger e ocupar esses espaços.”
-      <small>Euri Mania, vídeo de convocação de 11 de novembro de 2026</small>
+
+      <small>
+        Euri Mania, vídeo de convocação de 11 de novembro de 2026
+      </small>
+
     </blockquote>
 
     <p class="revelar">Além do ato público no Paço Municipal, os coletivos lançaram um abaixo-assinado digital para reunir apoio da comunidade regional às reivindicações.</p>
@@ -1908,12 +1888,14 @@ nav button.ativo::after {
       </div>
 
       <div class="video-reportagem-player">
+
         <iframe
           src="https://drive.google.com/file/d/17177brpXBfht9FcSVJqTRFJsGtGtjnk4/preview"
           title="Vídeo com falas dos manifestantes"
           allow="autoplay; fullscreen"
           allowfullscreen
           loading="lazy"></iframe>
+
       </div>
 
     </figure>
@@ -1971,7 +1953,9 @@ nav button.ativo::after {
   </article>
 
   <figure class="video-reportagem video-final-margem revelar">
+
     <div class="video-reportagem-player">
+
       <iframe
         src="https://www.youtube-nocookie.com/embed/xZpd-ePQszg"
         title="Vídeo de encerramento da reportagem À Margem"
@@ -1979,7 +1963,9 @@ nav button.ativo::after {
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
         loading="lazy"></iframe>
+
     </div>
+
   </figure>
 
   <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
@@ -1996,26 +1982,15 @@ nav button.ativo::after {
 
   <div class="tempo-abertura">
 
-    <p class="tempo-marca">
-      MEMÓRIAS DO FOMENTO CULTURAL
-    </p>
-
     <h1 class="tempo-titulo">
-      <span>LINHA DO</span>
-      <span>TEMPO</span>
+      Fomento Cultural nas Margens do Velho Chico
     </h1>
 
     <h2 class="tempo-subtitulo">
-      O curso da cultura nas margens do Velho Chico
+      Uma linha do tempo histórica e comparativa das políticas públicas,
+      fundos estaduais, leis municipais e recursos federais aplicados
+      em Petrolina (PE) e Juazeiro (BA).
     </h2>
-
-    <p class="tempo-introducao">
-      Assim como o rio, a história cultural de Petrolina e Juazeiro
-      não segue um caminho reto. Entre políticas públicas,
-      equipamentos culturais, movimentos e formas de financiamento,
-      diferentes acontecimentos transformaram as possibilidades
-      de produzir arte nas duas margens.
-    </p>
 
     <p class="tempo-instrucao">
       ACOMPANHE A CORRENTEZA
@@ -2026,6 +2001,8 @@ nav button.ativo::after {
 
   <div class="tempo-percurso" id="tempoPercurso">
 
+    <!-- RIO CONTÍNUO, SEM TRACEJADO -->
+
     <svg
       class="tempo-rio"
       id="rioLinhaTempo"
@@ -2034,12 +2011,13 @@ nav button.ativo::after {
 
       <path class="rio-margem" id="rioMargem"></path>
       <path class="rio-agua" id="rioAgua"></path>
-      <path class="rio-agua-interna" id="rioInterno"></path>
-      <path class="rio-onda" id="rioOnda"></path>
+      <path class="rio-brilho" id="rioBrilho"></path>
 
     </svg>
 
-    <!-- 1975 -->
+    <!-- ==================================================
+         1975
+    ================================================== -->
 
     <div class="tempo-evento esquerda revelar">
 
@@ -2061,7 +2039,9 @@ nav button.ativo::after {
           das políticas estaduais de cultura.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2087,25 +2067,26 @@ nav button.ativo::after {
       </div>
 
       <div class="tempo-visual">
+
         <figure>
+
           <img
             src="./imagens/construção da Barragem.png.png"
             alt="Construção da Barragem de Sobradinho">
+
           <figcaption>
             Transformações do território nos anos 1970
           </figcaption>
+
         </figure>
-      </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✳</span>
-
-      <div class="tempo-selo" aria-hidden="true">
-        CULTURA<br>NO SERTÃO
       </div>
 
     </div>
 
-    <!-- 1986 -->
+    <!-- ==================================================
+         1986
+    ================================================== -->
 
     <div class="tempo-evento direita revelar">
 
@@ -2127,7 +2108,9 @@ nav button.ativo::after {
           da produção artística regional.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2151,11 +2134,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✦</span>
-
     </div>
 
-    <!-- 1991 -->
+    <!-- ==================================================
+         1991
+    ================================================== -->
 
     <div class="tempo-evento esquerda revelar">
 
@@ -2176,7 +2159,9 @@ nav button.ativo::after {
           nacionais de financiamento e incentivo à cultura.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2201,11 +2186,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✳</span>
-
     </div>
 
-    <!-- 1995 -->
+    <!-- ==================================================
+         1995
+    ================================================== -->
 
     <div class="tempo-evento direita revelar">
 
@@ -2227,7 +2212,9 @@ nav button.ativo::after {
           apresentações e formação artística da cidade.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2252,11 +2239,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✦</span>
-
     </div>
 
-    <!-- 1996 -->
+    <!-- ==================================================
+         1996
+    ================================================== -->
 
     <div class="tempo-evento esquerda revelar">
 
@@ -2278,7 +2265,9 @@ nav button.ativo::after {
           de incentivo fiscal do ICMS.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2302,11 +2291,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✳</span>
-
     </div>
 
-    <!-- 2002 -->
+    <!-- ==================================================
+         2002
+    ================================================== -->
 
     <div class="tempo-evento direita revelar">
 
@@ -2328,7 +2317,9 @@ nav button.ativo::after {
           artística por meio de editais públicos.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2354,15 +2345,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✦</span>
-
-      <div class="tempo-selo" aria-hidden="true">
-        NOVOS<br>CAMINHOS
-      </div>
-
     </div>
 
-    <!-- 2005 -->
+    <!-- ==================================================
+         2005
+    ================================================== -->
 
     <div class="tempo-evento esquerda revelar">
 
@@ -2384,7 +2371,9 @@ nav button.ativo::after {
           público de projetos culturais.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2409,11 +2398,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✳</span>
-
     </div>
 
-    <!-- 2005-2010 -->
+    <!-- ==================================================
+         2005–2010
+    ================================================== -->
 
     <div class="tempo-evento direita revelar">
 
@@ -2435,7 +2424,9 @@ nav button.ativo::after {
           e apoio nas políticas federais de cultura.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2466,11 +2457,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✦</span>
-
     </div>
 
-    <!-- 2010 -->
+    <!-- ==================================================
+         2010
+    ================================================== -->
 
     <div class="tempo-evento esquerda revelar">
 
@@ -2492,7 +2483,9 @@ nav button.ativo::after {
           e apoio à produção cultural.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2516,11 +2509,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✳</span>
-
     </div>
 
-    <!-- 2013-2015 -->
+    <!-- ==================================================
+         2013–2015
+    ================================================== -->
 
     <div class="tempo-evento direita revelar">
 
@@ -2542,7 +2535,9 @@ nav button.ativo::after {
           em bairros fora dos centros tradicionais.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2577,15 +2572,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✦</span>
-
-      <div class="tempo-selo" aria-hidden="true">
-        ARTE NOS<br>BAIRROS
-      </div>
-
     </div>
 
-    <!-- 2020 -->
+    <!-- ==================================================
+         2020
+    ================================================== -->
 
     <div class="tempo-evento esquerda revelar">
 
@@ -2608,7 +2599,9 @@ nav button.ativo::after {
           das atividades presenciais.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2632,11 +2625,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✳</span>
-
     </div>
 
-    <!-- 2023 -->
+    <!-- ==================================================
+         2023
+    ================================================== -->
 
     <div class="tempo-evento direita revelar">
 
@@ -2658,7 +2651,9 @@ nav button.ativo::after {
           e para ações afirmativas.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2688,11 +2683,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✦</span>
-
     </div>
 
-    <!-- 2024-2026 -->
+    <!-- ==================================================
+         2024–2026
+    ================================================== -->
 
     <div class="tempo-evento esquerda revelar">
 
@@ -2715,7 +2710,9 @@ nav button.ativo::after {
           comunitárias.
         </p>
 
-        <button class="tempo-botao" type="button"
+        <button
+          class="tempo-botao"
+          type="button"
           aria-expanded="false">
           CONHEÇA ESSE MARCO <span>+</span>
         </button>
@@ -2748,13 +2745,11 @@ nav button.ativo::after {
 
       </div>
 
-      <span class="tempo-estrela" aria-hidden="true">✳</span>
-
     </div>
 
   </div>
 
-  <!-- FONTES MANTIDAS; ENCERRAMENTO RETIRADO -->
+  <!-- FONTES -->
 
   <div class="tempo-fontes">
 
@@ -2763,19 +2758,26 @@ nav button.ativo::after {
       <em>Fomento Cultural nas Margens do Velho Chico</em>.
       Para consulta e conferência dos marcos,
       visite os portais da
-      <a href="https://www.fundarpe.pe.gov.br"
-         target="_blank" rel="noopener noreferrer">Fundarpe</a>,
+      <a
+        href="https://www.fundarpe.pe.gov.br"
+        target="_blank"
+        rel="noopener noreferrer">Fundarpe</a>,
       da
-      <a href="https://www.gov.br/cultura"
-         target="_blank" rel="noopener noreferrer">Ministério da Cultura</a>
+      <a
+        href="https://www.gov.br/cultura"
+        target="_blank"
+        rel="noopener noreferrer">Ministério da Cultura</a>
       e da
-      <a href="https://www.gov.br/funarte"
-         target="_blank" rel="noopener noreferrer">Funarte</a>.
+      <a
+        href="https://www.gov.br/funarte"
+        target="_blank"
+        rel="noopener noreferrer">Funarte</a>.
     </p>
 
   </div>
 
   <div class="barquinhos-final"></div>
+
   <div class="respiro-rodape"></div>
 
 </section>
@@ -2799,9 +2801,15 @@ nav button.ativo::after {
   </div>
 
   <div class="conteudo">
+
     <div class="texto">
-      <p>Espaço reservado para o conteúdo do Núcleo Biruta.</p>
+
+      <p>
+        Espaço reservado para o conteúdo do Núcleo Biruta.
+      </p>
+
     </div>
+
   </div>
 
   <div class="respiro-rodape"></div>
@@ -2827,9 +2835,15 @@ nav button.ativo::after {
   </div>
 
   <div class="conteudo">
+
     <div class="texto">
-      <p>Espaço reservado para o conteúdo do Coletivo Abdias.</p>
+
+      <p>
+        Espaço reservado para o conteúdo do Coletivo Abdias.
+      </p>
+
     </div>
+
   </div>
 
   <div class="respiro-rodape"></div>
@@ -2855,9 +2869,15 @@ nav button.ativo::after {
   </div>
 
   <div class="conteudo">
+
     <div class="texto">
-      <p>Espaço reservado para o conteúdo do Caatingayro.</p>
+
+      <p>
+        Espaço reservado para o conteúdo do Caatingayro.
+      </p>
+
     </div>
+
   </div>
 
   <div class="respiro-rodape"></div>
@@ -2883,9 +2903,15 @@ nav button.ativo::after {
   </div>
 
   <div class="conteudo">
+
     <div class="texto">
-      <p>Espaço reservado para as trajetórias e produções dos artistas.</p>
+
+      <p>
+        Espaço reservado para as trajetórias e produções dos artistas.
+      </p>
+
     </div>
+
   </div>
 
   <div class="respiro-rodape"></div>
@@ -2913,19 +2939,37 @@ nav button.ativo::after {
   <div class="conteudo">
 
     <div class="texto">
-      <p>Espaço reservado para as narrativas dos lugares que integram a Correnteza.</p>
+
+      <p>
+        Espaço reservado para as narrativas dos lugares que integram a Correnteza.
+      </p>
+
     </div>
 
     <div class="galeria">
 
       <figure class="galeria-item">
-        <img src="./imagens/ILHA DO FOGO.PNG.png" alt="Ilha do Fogo">
-        <figcaption class="galeria-legenda">Ilha do Fogo</figcaption>
+
+        <img
+          src="./imagens/ILHA DO FOGO.PNG.png"
+          alt="Ilha do Fogo">
+
+        <figcaption class="galeria-legenda">
+          Ilha do Fogo
+        </figcaption>
+
       </figure>
 
       <figure class="galeria-item">
-        <img src="./imagens/Comissão Pastoral da Terra.png.png" alt="Comissão Pastoral da Terra">
-        <figcaption class="galeria-legenda">Comissão Pastoral da Terra</figcaption>
+
+        <img
+          src="./imagens/Comissão Pastoral da Terra.png.png"
+          alt="Comissão Pastoral da Terra">
+
+        <figcaption class="galeria-legenda">
+          Comissão Pastoral da Terra
+        </figcaption>
+
       </figure>
 
     </div>
@@ -2945,16 +2989,20 @@ nav button.ativo::after {
 <footer class="rodape">
 
   <div class="rodape-fundo">
+
     <img
       src="./imagens/IMAGEM DO FINAL DO SITE.PNG.png"
       alt=""
       aria-hidden="true">
+
   </div>
 
   <div class="rodape-barquinho">
+
     <img
       src="./imagens/barquinho do final. PNG.png"
       alt="Ilustração de barco">
+
   </div>
 
   <div class="rodape-conteudo">
@@ -2980,12 +3028,14 @@ nav button.ativo::after {
         </span>
 
         <span class="credito-nome">
+
           <a
             href="https://www.linkedin.com/in/cibelle-vieira-42a801272/"
             target="_blank"
             rel="noopener noreferrer">
             Cibelle Vieira
           </a>
+
         </span>
 
       </div>
@@ -3045,9 +3095,11 @@ nav button.ativo::after {
 ================================================== -->
 
 <audio id="somRio" autoplay loop preload="auto">
+
   <source
     src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
     type="audio/mpeg">
+
 </audio>
 
 <button
@@ -3274,7 +3326,11 @@ document.querySelectorAll(".tempo-botao").forEach(
 );
 
 /* ==================================================
-   DESENHO DA CORRENTEZA
+   DESENHO DO RIO
+
+   SEM TRAÇOS BRANCOS
+   SEM LINHA TRACEJADA
+   APENAS CURSO CONTÍNUO
 ================================================== */
 
 const tempoPercurso = document.getElementById(
@@ -3293,12 +3349,8 @@ const rioAgua = document.getElementById(
   "rioAgua"
 );
 
-const rioInterno = document.getElementById(
-  "rioInterno"
-);
-
-const rioOnda = document.getElementById(
-  "rioOnda"
+const rioBrilho = document.getElementById(
+  "rioBrilho"
 );
 
 let desenhoRioPendente = false;
@@ -3402,15 +3454,13 @@ function desenharRio() {
 
   rioMargem.setAttribute("d", caminho);
   rioAgua.setAttribute("d", caminho);
-  rioInterno.setAttribute("d", caminho);
-  rioOnda.setAttribute("d", caminho);
-
-  rioOnda.setAttribute(
-    "transform",
-    "translate(16 0)"
-  );
+  rioBrilho.setAttribute("d", caminho);
 
 }
+
+/* ==================================================
+   ATUALIZAR RIO
+================================================== */
 
 window.addEventListener(
   "resize",
@@ -3660,4 +3710,5 @@ atualizarSom();
 </script>
 
 </body>
+
 </html>
