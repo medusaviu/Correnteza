@@ -50,7 +50,7 @@
   --azul: #a6b7ef;
   --azul-suave: #c0cbef;
   --azul-escuro: #222b50;
-  --azul-rio: #7389c7;
+  --azul-rio: #405785;
   --largura-texto: 740px;
   --altura-menu: 72px;
 }
@@ -322,15 +322,25 @@ nav button.ativo::after {
   padding: 7px 3px 0 0;
 }
 
-/* ILUSTRAÇÃO CIBS CRIANÇA */
+/* ==================================================
+   ILUSTRAÇÃO CIBS CRIANÇA
+
+   AUMENTADA PARA SE APROXIMAR DO PRINT
+================================================== */
 
 .ilustracao-cibs {
   position: relative;
   z-index: 4;
   float: right;
-  width: 460px;
+
+  width: 610px;
   max-width: none;
-  margin: 35px -205px 10px 15px;
+
+  margin:
+    20px
+    -300px
+    20px
+    12px;
 }
 
 .ilustracao-cibs img {
@@ -541,10 +551,10 @@ nav button.ativo::after {
 /* ==================================================
    LINHA DO TEMPO
 
-   TÍTULO ORIGINAL
+   TÍTULO MENOR
    FUNDO PRETO
-   RIO CONTÍNUO
-   SEM ESTRELAS
+   RIO MAIS FINO
+   AZUL MAIS ESCURO
 ================================================== */
 
 #linha-do-tempo {
@@ -556,29 +566,33 @@ nav button.ativo::after {
 
 .tempo-abertura {
   position: relative;
-  padding: 110px 24px 95px;
+  padding: 85px 24px 65px;
   text-align: center;
   overflow: hidden;
 }
 
 .tempo-titulo {
-  max-width: 1150px;
+  max-width: 900px;
   margin: 0 auto;
+
   font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(56px,8vw,112px);
+  font-size: clamp(42px,5.3vw,75px);
+
   font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: -.015em;
+  line-height: 1.05;
+  letter-spacing: -.01em;
   color: var(--branco);
 }
 
 .tempo-subtitulo {
-  max-width: 890px;
-  margin: 40px auto 0;
+  max-width: 850px;
+  margin: 28px auto 0;
+
   font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(23px,2.6vw,36px);
+  font-size: clamp(19px,2.1vw,29px);
+
   font-weight: 400;
-  line-height: 1.32;
+  line-height: 1.35;
   color: var(--azul);
 }
 
@@ -586,16 +600,17 @@ nav button.ativo::after {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 45px;
+  margin-top: 35px;
+
   font-family: "Gordita", Arial, sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--azul);
 }
 
 .tempo-instrucao span {
-  font-size: 20px;
+  font-size: 18px;
   animation: setaDescer 2s ease-in-out infinite;
 }
 
@@ -605,9 +620,7 @@ nav button.ativo::after {
 }
 
 /* ==================================================
-   RIO
-
-   Uma correnteza contínua, sem linha tracejada.
+   RIO COM MEANDROS E BRAÇOS
 ================================================== */
 
 .tempo-percurso {
@@ -629,107 +642,132 @@ nav button.ativo::after {
   overflow: visible;
 }
 
-/* BORDA SUAVE DO RIO */
+/* MARGEM DISCRETA */
 
 .rio-margem {
   fill: none;
-  stroke: rgba(166,183,239,.16);
-  stroke-width: 42;
+  stroke: rgba(64,87,133,.15);
+  stroke-width: 30;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-/* ÁGUA AZUL CONTÍNUA */
+/* CURSO PRINCIPAL */
 
 .rio-agua {
   fill: none;
   stroke: var(--azul-rio);
-  stroke-width: 31;
+  stroke-width: 19;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-/* BRILHO SUAVE SEM TRAÇOS */
+/* LEVE VARIAÇÃO DE TOM, SEM TRACEJADO */
 
 .rio-brilho {
   fill: none;
-  stroke: rgba(192,203,239,.20);
+  stroke: rgba(166,183,239,.12);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* BRAÇOS SECUNDÁRIOS */
+
+.rio-braco {
+  fill: none;
+  stroke: #344a72;
   stroke-width: 8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
+.rio-braco-margem {
+  fill: none;
+  stroke: rgba(64,87,133,.12);
+  stroke-width: 13;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* ==================================================
-   EVENTOS
+   EVENTOS — CAIXINHAS MENORES
 ================================================== */
 
 .tempo-evento {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-  min-height: 345px;
+  min-height: 320px;
   align-items: center;
-  padding: 30px 0;
+  padding: 25px 0;
 }
 
 .tempo-evento.esquerda .tempo-cartao {
   grid-column: 1;
-  margin-right: 20%;
+  margin-right: 25%;
 }
 
 .tempo-evento.direita .tempo-cartao {
   grid-column: 2;
-  margin-left: 20%;
+  margin-left: 25%;
 }
 
 .tempo-cartao {
   position: relative;
   z-index: 3;
-  max-width: 440px;
-  padding: 26px 26px 24px;
-  border: 1px solid rgba(166,183,239,.35);
-  border-radius: 3px 24px 3px 24px;
+
+  max-width: 350px;
+  padding: 20px 20px 19px;
+
+  border: 1px solid rgba(166,183,239,.28);
+  border-radius: 3px 19px 3px 19px;
+
   background: rgba(15,17,27,.96);
-  box-shadow: 0 15px 45px rgba(0,0,0,.25);
-  transition: transform .3s ease, box-shadow .3s ease;
+
+  box-shadow: 0 12px 35px rgba(0,0,0,.25);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
 }
 
 .tempo-cartao:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 22px 50px rgba(0,0,0,.5);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(0,0,0,.5);
 }
 
 .tempo-ano {
   display: block;
   font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(49px,6vw,80px);
+  font-size: clamp(39px,4.7vw,61px);
   line-height: .95;
   color: var(--azul);
-  margin-bottom: 13px;
+  margin-bottom: 11px;
 }
 
 .tempo-categoria {
   display: inline-block;
   font-family: "Gordita", Arial, sans-serif;
-  font-size: 9px;
-  letter-spacing: 1.4px;
+  font-size: 8px;
+  letter-spacing: 1.1px;
   text-transform: uppercase;
   color: #c0cbef;
-  margin-bottom: 11px;
+  margin-bottom: 9px;
 }
 
 .tempo-evento-titulo {
   font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(23px,2.4vw,32px);
+  font-size: clamp(20px,2vw,26px);
   line-height: 1.15;
   font-weight: 400;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   color: white;
 }
 
 .tempo-evento-resumo {
   font-family: "Neue Montreal", Arial, sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.55;
   color: #dedede;
 }
@@ -737,17 +775,20 @@ nav button.ativo::after {
 .tempo-botao {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 9px;
+  margin-top: 16px;
   padding: 0 0 5px;
+
   border: none;
   border-bottom: 1px solid var(--azul);
+
   background: transparent;
   color: var(--azul);
+
   font-family: "Gordita", Arial, sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: .5px;
+  letter-spacing: .4px;
 }
 
 .tempo-botao span {
@@ -761,8 +802,8 @@ nav button.ativo::after {
 
 .tempo-detalhe {
   display: none;
-  padding-top: 20px;
-  margin-top: 20px;
+  padding-top: 16px;
+  margin-top: 16px;
   border-top: 1px solid #3c4464;
 }
 
@@ -772,10 +813,10 @@ nav button.ativo::after {
 }
 
 .tempo-detalhe p {
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.65;
   color: #e2e2e2;
-  margin-bottom: 12px;
+  margin-bottom: 11px;
 }
 
 .tempo-detalhe p:last-child {
@@ -789,17 +830,17 @@ nav button.ativo::after {
 .tempo-visual {
   position: absolute;
   z-index: 2;
-  width: clamp(130px,19vw,255px);
+  width: clamp(120px,16vw,210px);
   pointer-events: none;
 }
 
 .tempo-evento.esquerda .tempo-visual {
-  left: 58%;
+  left: 60%;
   top: 15%;
 }
 
 .tempo-evento.direita .tempo-visual {
-  right: 58%;
+  right: 60%;
   top: 14%;
 }
 
@@ -809,7 +850,7 @@ nav button.ativo::after {
 
 .tempo-visual img {
   width: 100%;
-  max-height: 240px;
+  max-height: 200px;
   object-fit: cover;
   border-radius: 45% 45% 42% 42%;
   filter: saturate(.85);
@@ -835,12 +876,6 @@ nav button.ativo::after {
 
 /* ==================================================
    ILUSTRAÇÕES DE PEIXES
-
-   Estrutura preparada para receber a imagem
-   que será enviada posteriormente.
-
-   Quando o arquivo estiver na pasta imagens,
-   basta indicar seu nome exato.
 ================================================== */
 
 .tempo-peixe {
@@ -1124,8 +1159,8 @@ nav button.ativo::after {
 @media (max-width:1100px) {
 
   .ilustracao-cibs {
-    width: 390px;
-    margin-right: -125px;
+    width: 510px;
+    margin-right: -210px;
   }
 
   .margem-foto-direita {
@@ -1167,8 +1202,8 @@ nav button.ativo::after {
   }
 
   .ilustracao-cibs {
-    width: 310px;
-    margin-right: -45px;
+    width: 410px;
+    margin-right: -95px;
   }
 
   .rodape-conteudo {
@@ -1178,15 +1213,15 @@ nav button.ativo::after {
   }
 
   .tempo-evento.esquerda .tempo-cartao {
-    margin-right: 13%;
+    margin-right: 18%;
   }
 
   .tempo-evento.direita .tempo-cartao {
-    margin-left: 13%;
+    margin-left: 18%;
   }
 
   .tempo-visual {
-    width: 170px;
+    width: 150px;
   }
 
 }
@@ -1235,8 +1270,8 @@ nav button.ativo::after {
   }
 
   .ilustracao-cibs {
-    width: 235px;
-    margin: 15px -15px 10px 8px;
+    width: 285px;
+    margin: 15px -45px 10px 8px;
   }
 
   .corpo-reportagem .paragrafo-final {
@@ -1290,15 +1325,15 @@ nav button.ativo::after {
   /* LINHA DO TEMPO NO CELULAR */
 
   .tempo-abertura {
-    padding: 75px 22px 55px;
+    padding: 65px 22px 45px;
   }
 
   .tempo-titulo {
-    font-size: clamp(45px,10vw,72px);
+    font-size: clamp(37px,8vw,56px);
   }
 
   .tempo-subtitulo {
-    font-size: 23px;
+    font-size: 19px;
   }
 
   .tempo-percurso {
@@ -1306,15 +1341,23 @@ nav button.ativo::after {
   }
 
   .rio-margem {
-    stroke-width: 27;
+    stroke-width: 21;
   }
 
   .rio-agua {
-    stroke-width: 20;
+    stroke-width: 14;
   }
 
   .rio-brilho {
-    stroke-width: 5;
+    stroke-width: 4;
+  }
+
+  .rio-braco {
+    stroke-width: 6;
+  }
+
+  .rio-braco-margem {
+    stroke-width: 10;
   }
 
   .tempo-evento {
@@ -1322,14 +1365,14 @@ nav button.ativo::after {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    min-height: 340px;
-    padding: 35px 0 35px 20px;
+    min-height: 310px;
+    padding: 30px 0 30px 20px;
   }
 
   .tempo-evento.esquerda .tempo-cartao,
   .tempo-evento.direita .tempo-cartao {
     margin: 0;
-    width: min(83%,380px);
+    width: min(78%,320px);
   }
 
   .tempo-evento.direita {
@@ -1339,23 +1382,23 @@ nav button.ativo::after {
   }
 
   .tempo-cartao {
-    padding: 22px 20px;
+    padding: 18px 16px;
   }
 
   .tempo-ano {
-    font-size: 55px;
+    font-size: 45px;
   }
 
   .tempo-evento-titulo {
-    font-size: 24px;
+    font-size: 21px;
   }
 
   .tempo-evento-resumo {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .tempo-visual {
-    width: 105px;
+    width: 95px;
     opacity: .9;
   }
 
@@ -1372,7 +1415,7 @@ nav button.ativo::after {
   }
 
   .tempo-visual img {
-    max-height: 120px;
+    max-height: 110px;
   }
 
   .tempo-visual figcaption {
@@ -2001,7 +2044,7 @@ nav button.ativo::after {
 
   <div class="tempo-percurso" id="tempoPercurso">
 
-    <!-- RIO CONTÍNUO, SEM TRACEJADO -->
+    <!-- RIO COM MEANDROS E BRAÇOS -->
 
     <svg
       class="tempo-rio"
@@ -2009,9 +2052,21 @@ nav button.ativo::after {
       aria-hidden="true"
       preserveAspectRatio="none">
 
+      <!-- MARGENS DO CURSO PRINCIPAL -->
+
       <path class="rio-margem" id="rioMargem"></path>
+
+      <!-- ÁGUA -->
+
       <path class="rio-agua" id="rioAgua"></path>
+
+      <!-- VARIAÇÃO SUAVE DE TOM -->
+
       <path class="rio-brilho" id="rioBrilho"></path>
+
+      <!-- BRAÇOS SECUNDÁRIOS -->
+
+      <g id="rioBracos"></g>
 
     </svg>
 
@@ -3328,9 +3383,9 @@ document.querySelectorAll(".tempo-botao").forEach(
 /* ==================================================
    DESENHO DO RIO
 
-   SEM TRAÇOS BRANCOS
-   SEM LINHA TRACEJADA
-   APENAS CURSO CONTÍNUO
+   MEANDROS MAIS ACENTUADOS
+   BRAÇOS SECUNDÁRIOS
+   SEM TRACEJADO
 ================================================== */
 
 const tempoPercurso = document.getElementById(
@@ -3351,6 +3406,10 @@ const rioAgua = document.getElementById(
 
 const rioBrilho = document.getElementById(
   "rioBrilho"
+);
+
+const rioBracos = document.getElementById(
+  "rioBracos"
 );
 
 let desenhoRioPendente = false;
@@ -3394,13 +3453,13 @@ function desenharRio() {
     tempoPercurso.querySelectorAll(".tempo-evento")
   );
 
-  const pontos = [];
-
   const centro = largura / 2;
 
   const amplitude = largura < 700
-    ? largura * .20
-    : largura * .15;
+    ? largura * .25
+    : largura * .23;
+
+  const pontos = [];
 
   pontos.push({
     x: centro,
@@ -3413,13 +3472,17 @@ function desenharRio() {
       evento.offsetTop +
       evento.offsetHeight / 2;
 
-    const deslocamento =
-      indice % 2 === 0
-        ? amplitude
-        : -amplitude;
+    const direcao = indice % 2 === 0 ? 1 : -1;
+
+    const variacao =
+      indice % 3 === 0
+        ? 1.0
+        : indice % 3 === 1
+          ? .78
+          : 1.12;
 
     pontos.push({
-      x: centro + deslocamento,
+      x: centro + direcao * amplitude * variacao,
       y
     });
 
@@ -3434,6 +3497,8 @@ function desenharRio() {
     return;
   }
 
+  /* CURSO PRINCIPAL */
+
   let caminho = `M ${pontos[0].x} ${pontos[0].y}`;
 
   for (let i = 1; i < pontos.length; i++) {
@@ -3441,12 +3506,18 @@ function desenharRio() {
     const anterior = pontos[i - 1];
     const atual = pontos[i];
 
-    const meioY = (anterior.y + atual.y) / 2;
+    const distanciaY = atual.y - anterior.y;
+
+    const controle1Y =
+      anterior.y + distanciaY * .18;
+
+    const controle2Y =
+      atual.y - distanciaY * .18;
 
     caminho += `
       C
-      ${anterior.x} ${meioY},
-      ${atual.x} ${meioY},
+      ${anterior.x} ${controle1Y},
+      ${atual.x} ${controle2Y},
       ${atual.x} ${atual.y}
     `;
 
@@ -3455,6 +3526,91 @@ function desenharRio() {
   rioMargem.setAttribute("d", caminho);
   rioAgua.setAttribute("d", caminho);
   rioBrilho.setAttribute("d", caminho);
+
+  /* BRAÇOS DO RIO */
+
+  rioBracos.innerHTML = "";
+
+  const svgNS = "http://www.w3.org/2000/svg";
+
+  const indicesBracos = [2, 4, 6, 8, 10, 12];
+
+  indicesBracos.forEach((indice, ordem) => {
+
+    if (!pontos[indice]) {
+      return;
+    }
+
+    const ponto = pontos[indice];
+
+    const direcao = ordem % 2 === 0 ? -1 : 1;
+
+    const alcance = largura < 700
+      ? largura * .12
+      : largura * .17;
+
+    const subida = 85 + (ordem % 3) * 30;
+
+    const xFinal =
+      ponto.x + direcao * alcance;
+
+    const yFinal =
+      ponto.y - subida;
+
+    const xControle1 =
+      ponto.x + direcao * alcance * .20;
+
+    const yControle1 =
+      ponto.y - subida * .30;
+
+    const xControle2 =
+      ponto.x + direcao * alcance * .85;
+
+    const yControle2 =
+      ponto.y - subida * .60;
+
+    const caminhoBraco = `
+      M ${ponto.x} ${ponto.y}
+      C
+      ${xControle1} ${yControle1},
+      ${xControle2} ${yControle2},
+      ${xFinal} ${yFinal}
+    `;
+
+    const margem = document.createElementNS(
+      svgNS,
+      "path"
+    );
+
+    margem.setAttribute(
+      "class",
+      "rio-braco-margem"
+    );
+
+    margem.setAttribute(
+      "d",
+      caminhoBraco
+    );
+
+    const agua = document.createElementNS(
+      svgNS,
+      "path"
+    );
+
+    agua.setAttribute(
+      "class",
+      "rio-braco"
+    );
+
+    agua.setAttribute(
+      "d",
+      caminhoBraco
+    );
+
+    rioBracos.appendChild(margem);
+    rioBracos.appendChild(agua);
+
+  });
 
 }
 
