@@ -9,7 +9,6 @@
 <title>Entre Duas Margens, Uma Só Correnteza</title>
 
 <style>
-
 /* =========================
    FONTES
 ========================= */
@@ -40,7 +39,7 @@
 }
 
 /* =========================
-   GERAL
+   CONFIGURAÇÕES GERAIS
 ========================= */
 
 :root {
@@ -48,9 +47,6 @@
   --azul-claro: #a6b7ef;
   --largura-texto: 740px;
   --altura-menu: 72px;
-
-  /* Ajustes de enquadramento */
-  --zoom-capa: 1;
   --altura-rodape: 380px;
 }
 
@@ -67,15 +63,16 @@ html {
 }
 
 body {
+  min-height: 100vh;
   background: var(--preto);
-  color: white;
+  color: #fff;
   font-family: "Neue Montreal", Arial, sans-serif;
   overflow-x: hidden;
 }
 
 button {
-  font-family: inherit;
   cursor: pointer;
+  font-family: inherit;
 }
 
 img {
@@ -103,8 +100,8 @@ header {
   top: 0;
   z-index: 1000;
   width: 100%;
-  background: rgba(0,0,0,0.96);
-  border-bottom: 1px solid rgba(255,255,255,0.13);
+  background: rgba(0,0,0,.96);
+  border-bottom: 1px solid rgba(255,255,255,.13);
   backdrop-filter: blur(12px);
 }
 
@@ -127,11 +124,11 @@ nav {
 nav button {
   position: relative;
   padding: 9px 0;
-  border: 0;
+  border: none;
   background: transparent;
   color: #e4e4e4;
   font-family: "Gordita", Arial, sans-serif;
-  font-size: clamp(10px,0.9vw,13px);
+  font-size: clamp(10px,.9vw,13px);
   transition: color .25s;
 }
 
@@ -185,16 +182,16 @@ nav button.ativo::after {
 }
 
 /* =========================
-   CAPA ORIGINAL
+   CAPA MAIS EQUILIBRADA
 ========================= */
 
 .capa {
   position: relative;
   isolation: isolate;
   width: 100%;
-  min-height: calc(100svh - var(--altura-menu));
+  min-height: min(780px, calc(100svh - var(--altura-menu)));
   overflow: hidden;
-  background: black;
+  background: #050505;
 }
 
 .capa-imagem {
@@ -208,14 +205,13 @@ nav button.ativo::after {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transform: scale(var(--zoom-capa));
 }
 
 .capa-conteudo {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: clamp(80px,11vh,140px) 25px 260px;
+  padding: clamp(85px,11vh,125px) 24px 185px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,8 +221,9 @@ nav button.ativo::after {
 .capa-titulo {
   font-family: "Cubao", Impact, sans-serif;
   font-weight: 400;
-  font-size: clamp(64px,10vw,160px);
-  line-height: .93;
+  font-size: clamp(56px,8vw,125px);
+  line-height: .98;
+  letter-spacing: 0;
 }
 
 .capa-titulo span {
@@ -234,27 +231,27 @@ nav button.ativo::after {
 }
 
 .capa-subtitulo {
-  margin-top: 18px;
+  margin-top: 20px;
   font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(23px,3vw,42px);
+  font-size: clamp(22px,2.8vw,36px);
   font-weight: 400;
 }
 
 .capa-autoria {
   margin-top: 15px;
   font-family: "Gordita", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .capa-descer {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
   z-index: 5;
+  left: 50%;
+  bottom: 22px;
   transform: translateX(-50%);
   padding: 12px 18px;
-  background: rgba(0,0,0,.75);
   border: 1px solid rgba(255,255,255,.6);
+  background: rgba(0,0,0,.75);
   color: white;
   font-family: "Gordita", Arial, sans-serif;
   font-size: 10px;
@@ -267,15 +264,16 @@ nav button.ativo::after {
 }
 
 /* =========================
-   ILHA DO FOGO APÓS A CAPA
+   ILHA DO FOGO NA TRANSIÇÃO
+   DA CAPA PARA O TEXTO
 ========================= */
 
 .transicao-ilha {
   position: relative;
   z-index: 3;
   width: 100%;
-  height: clamp(300px,34vw,500px);
-  margin-top: calc(clamp(300px,34vw,500px) * -.46);
+  height: clamp(270px,31vw,450px);
+  margin-top: calc(clamp(270px,31vw,450px) * -.46);
   overflow: hidden;
   pointer-events: none;
 }
@@ -292,22 +290,13 @@ nav button.ativo::after {
 ========================= */
 
 .reportagem {
+  position: relative;
   width: 100%;
   background: var(--preto);
 }
 
 .reportagem-conteudo {
-  padding: 22px 0 30px;
-}
-
-.reportagem-titulo {
-  width: calc(100% - 48px);
-  max-width: var(--largura-texto);
-  margin: 0 auto 30px;
-  font-family: "Neue Montreal", Arial, sans-serif;
-  font-size: clamp(30px,4vw,48px);
-  font-weight: 400;
-  line-height: 1.12;
+  padding: 10px 0 30px;
 }
 
 .corpo-reportagem {
@@ -328,20 +317,26 @@ nav button.ativo::after {
 
 .primeiro-paragrafo::first-letter {
   float: left;
+  font-family: "Neue Montreal", Arial, sans-serif;
   font-size: 48px;
   font-weight: bold;
   line-height: .9;
   padding: 4px 4px 0 0;
 }
 
-/* CIBS CRIANÇA */
+/* =========================
+   ILUSTRAÇÃO CIBS CRIANÇA
+
+   Grande, transparente, à direita
+   e ultrapassando a coluna do texto.
+========================= */
 
 .ilustracao-cibs {
   float: right;
   position: relative;
   z-index: 5;
-  width: clamp(330px,38vw,560px);
-  margin: 5px -230px 12px 12px;
+  width: clamp(380px,42vw,630px);
+  margin: 20px -290px 0 12px;
 }
 
 .ilustracao-cibs img {
@@ -354,12 +349,45 @@ nav button.ativo::after {
   clear: both;
 }
 
-/* TEXTO FINAL EM NEGRITO */
+/* =========================
+   OUTRAS ILUSTRAÇÕES FUTURAS
+
+   Para adicionar novas imagens,
+   use as classes abaixo.
+========================= */
+
+.ilustracao-direita {
+  float: right;
+  position: relative;
+  z-index: 4;
+  width: min(450px,48vw);
+  margin: 15px -150px 20px 25px;
+}
+
+.ilustracao-esquerda {
+  float: left;
+  position: relative;
+  z-index: 4;
+  width: min(450px,48vw);
+  margin: 15px 25px 20px -150px;
+}
+
+.ilustracao-direita img,
+.ilustracao-esquerda img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* =========================
+   PARÁGRAFO FINAL
+========================= */
 
 .corpo-reportagem .paragrafo-final {
   clear: both;
-  margin: 85px auto 65px;
   max-width: 850px;
+  margin: 85px auto 55px;
+  font-family: "Neue Montreal", Arial, sans-serif;
   font-size: clamp(22px,2.5vw,32px);
   font-weight: 700;
   line-height: 1.3;
@@ -368,24 +396,24 @@ nav button.ativo::after {
 }
 
 /* =========================
-   ILHA DO FOGO ANTES DO RODAPÉ
+   IMAGEM DEPOIS DO TEXTO FINAL
 
-   A imagem aparece depois do
-   parágrafo final, em largura total.
+   Substitui a Ilha do Fogo
+   do final da reportagem.
 ========================= */
 
-.ilha-final {
+.imagem-final-reportagem {
   width: 100%;
-  background: var(--preto);
-  overflow: hidden;
+  max-width: 1050px;
+  margin: 0 auto 55px;
+  padding: 0 24px;
 }
 
-.ilha-final img {
+.imagem-final-reportagem img {
   display: block;
   width: 100%;
-  height: clamp(190px,24vw,320px);
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  object-fit: contain;
 }
 
 /* =========================
@@ -407,11 +435,11 @@ nav button.ativo::after {
 }
 
 .pagina-titulo {
+  margin-bottom: 30px;
   font-family: "Cubao", Impact, sans-serif;
   font-size: clamp(60px,9vw,115px);
   font-weight: 400;
   line-height: 1;
-  margin-bottom: 30px;
 }
 
 .pagina-descricao {
@@ -475,9 +503,6 @@ nav button.ativo::after {
 
 /* =========================
    RODAPÉ COMPACTO
-
-   Dimensão fixa no computador.
-   Fundo não aumenta a altura.
 ========================= */
 
 .rodape {
@@ -488,11 +513,6 @@ nav button.ativo::after {
   background: black;
   overflow: hidden;
 }
-
-/*
-  A imagem preenche a área do
-  rodapé sem determinar sua altura.
-*/
 
 .rodape-fundo {
   position: absolute;
@@ -506,12 +526,7 @@ nav button.ativo::after {
   object-fit: fill;
 }
 
-/*
-  BARQUINHO MAIS ACIMA
-
-  Fica próximo ao topo do rodapé,
-  sem descer junto com os créditos.
-*/
+/* BARQUINHO MAIS ACIMA */
 
 .rodape-barco {
   position: absolute;
@@ -528,23 +543,17 @@ nav button.ativo::after {
   object-fit: contain;
 }
 
-/*
-  TÍTULO E CRÉDITOS CENTRALIZADOS
-
-  Nada de align-items: end.
-*/
+/* TÍTULO E CRÉDITOS */
 
 .rodape-conteudo {
   position: relative;
   z-index: 2;
   width: 100%;
   height: 100%;
-
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   align-items: center;
   gap: 40px;
-
   padding: 55px 8% 30px;
 }
 
@@ -619,17 +628,12 @@ nav button.ativo::after {
   text-underline-offset: 4px;
 }
 
-.rodape-creditos a:focus-visible {
-  outline: 2px solid var(--azul-claro);
-  outline-offset: 4px;
-}
-
 .separador-perfil {
   color: #b5b5b5;
 }
 
 /* =========================
-   SOM
+   SOM DO RIO
 ========================= */
 
 .controle-som {
@@ -660,8 +664,16 @@ nav button.ativo::after {
 @media (max-width: 1100px) {
 
   .ilustracao-cibs {
-    width: 380px;
-    margin-right: -100px;
+    width: 440px;
+    margin-right: -130px;
+  }
+
+  .ilustracao-direita {
+    margin-right: -60px;
+  }
+
+  .ilustracao-esquerda {
+    margin-left: -60px;
   }
 
 }
@@ -696,8 +708,8 @@ nav button.ativo::after {
   }
 
   .ilustracao-cibs {
-    width: 310px;
-    margin-right: -45px;
+    width: 330px;
+    margin-right: -50px;
   }
 
   .rodape-conteudo {
@@ -719,7 +731,7 @@ nav button.ativo::after {
   }
 
   .capa-titulo {
-    font-size: clamp(43px,12vw,80px);
+    font-size: clamp(43px,11vw,75px);
   }
 
   .capa-subtitulo {
@@ -731,8 +743,7 @@ nav button.ativo::after {
     margin-top: -120px;
   }
 
-  .corpo-reportagem,
-  .reportagem-titulo {
+  .corpo-reportagem {
     width: calc(100% - 40px);
   }
 
@@ -742,8 +753,15 @@ nav button.ativo::after {
   }
 
   .ilustracao-cibs {
+    width: 245px;
+    margin: 10px -20px 10px 8px;
+  }
+
+  .ilustracao-direita,
+  .ilustracao-esquerda {
     width: 220px;
-    margin: 5px -20px 12px 8px;
+    margin-right: 0;
+    margin-left: 0;
   }
 
   .corpo-reportagem .paragrafo-final {
@@ -752,8 +770,9 @@ nav button.ativo::after {
     font-size: 21px;
   }
 
-  .ilha-final img {
-    height: 190px;
+  .imagem-final-reportagem {
+    padding: 0 12px;
+    margin-bottom: 35px;
   }
 
   .pagina-abertura {
@@ -767,12 +786,6 @@ nav button.ativo::after {
   .galeria {
     grid-template-columns: 1fr;
   }
-
-  /*
-    Rodapé adaptado ao celular:
-    compacto, com os créditos
-    totalmente visíveis.
-  */
 
   .rodape {
     height: 530px;
@@ -832,7 +845,6 @@ nav button.ativo::after {
   }
 
 }
-
 </style>
 </head>
 
@@ -940,23 +952,24 @@ nav button.ativo::after {
 
   </div>
 
-  <!-- ILHA DO FOGO DA CAPA -->
+  <!-- ILHA DO FOGO NA TRANSIÇÃO DA CAPA -->
 
   <div class="transicao-ilha" aria-hidden="true">
-    <img src="./imagens/ILHA DO FOGO.PNG.png" alt="">
+    <img
+      src="./imagens/ILHA DO FOGO.PNG.png"
+      alt=""
+    >
   </div>
 
-  <!-- REPORTAGEM -->
+  <!-- REPORTAGEM SEM TÍTULO REPETIDO -->
 
   <article class="reportagem" id="reportagem">
 
     <div class="reportagem-conteudo">
 
-      <h2 class="reportagem-titulo">
-        ENTRE DUAS MARGENS, UMA SÓ CORRENTEZA
-      </h2>
-
       <div class="corpo-reportagem">
+
+        <!-- CIBS CRIANÇA GRANDE À DIREITA -->
 
         <figure class="ilustracao-cibs">
           <img
@@ -1088,17 +1101,15 @@ nav button.ativo::after {
 
   </article>
 
-  <!-- ===================================
-       ILHA DO FOGO DEPOIS DO TEXTO FINAL
-  =================================== -->
+  <!-- IMAGEM NOVA DEPOIS DO TEXTO EM NEGRITO -->
 
-  <div class="ilha-final">
+  <figure class="imagem-final-reportagem">
     <img
-      src="./imagens/ILHA DO FOGO.PNG.png"
-      alt="Ilustração da Ilha do Fogo"
+      src="./imagens/barquinho.png.png"
+      alt="Ilustração de um barquinho"
       loading="lazy"
     >
-  </div>
+  </figure>
 
 </section>
 
@@ -1343,7 +1354,7 @@ nav button.ativo::after {
 
 <footer class="rodape">
 
-  <!-- FUNDO DO RODAPÉ -->
+  <!-- IMAGEM DO FUNDO -->
 
   <div class="rodape-fundo">
     <img
@@ -1353,11 +1364,11 @@ nav button.ativo::after {
     >
   </div>
 
-  <!-- BARQUINHO MAIS ACIMA -->
+  <!-- BARQUINHO -->
 
   <div class="rodape-barco">
     <img
-      src="./imagens/barquinho do final. PNG.png"
+      src="./imagens/barquinho.png.png"
       alt="Ilustração de um barco"
       loading="lazy"
     >
@@ -1381,8 +1392,6 @@ nav button.ativo::after {
 
     <div class="rodape-creditos">
 
-      <!-- REPORTAGEM -->
-
       <div class="credito-grupo">
 
         <span class="credito-label">
@@ -1401,8 +1410,6 @@ nav button.ativo::after {
 
       </div>
 
-      <!-- ORIENTAÇÃO -->
-
       <div class="credito-grupo">
 
         <span class="credito-label">
@@ -1414,8 +1421,6 @@ nav button.ativo::after {
         </span>
 
       </div>
-
-      <!-- DESIGN -->
 
       <div class="credito-grupo">
 
@@ -1457,7 +1462,7 @@ nav button.ativo::after {
 </div>
 
 <!-- =========================
-     ÁUDIO
+     SOM DO RIO
 ========================= -->
 
 <audio id="somRio" loop preload="none">
@@ -1498,9 +1503,12 @@ const iconeSom = document.getElementById("iconeSom");
 
 let paginaAtual = "inicio";
 
-/* SOM */
+/* =========================
+   SOM
+========================= */
 
 function atualizarSom() {
+
   const tocando = !audio.paused;
 
   textoSom.textContent = tocando
@@ -1513,6 +1521,14 @@ function atualizarSom() {
     "aria-pressed",
     String(tocando)
   );
+
+  controleSom.setAttribute(
+    "aria-label",
+    tocando
+      ? "Desativar som do rio"
+      : "Ativar som do rio"
+  );
+
 }
 
 function pararSom() {
@@ -1526,22 +1542,27 @@ controleSom.addEventListener("click", async () => {
   if (paginaAtual !== "inicio") return;
 
   if (audio.paused) {
+
     try {
       await audio.play();
     } catch (erro) {
       console.error("Erro ao reproduzir o áudio:", erro);
     }
+
   } else {
     audio.pause();
   }
 
   atualizarSom();
+
 });
 
 audio.addEventListener("play", atualizarSom);
 audio.addEventListener("pause", atualizarSom);
 
-/* NAVEGAÇÃO */
+/* =========================
+   NAVEGAÇÃO
+========================= */
 
 function abrirPagina(id, atualizarHistorico = true) {
 
@@ -1562,6 +1583,7 @@ function abrirPagina(id, atualizarHistorico = true) {
   });
 
   botoesMenu.forEach(botao => {
+
     const ativo = botao.dataset.pagina === id;
 
     botao.classList.toggle("ativo", ativo);
@@ -1571,48 +1593,78 @@ function abrirPagina(id, atualizarHistorico = true) {
     } else {
       botao.removeAttribute("aria-current");
     }
+
   });
 
-  controleSom.classList.toggle("visivel", id === "inicio");
+  controleSom.classList.toggle(
+    "visivel",
+    id === "inicio"
+  );
 
   menuPrincipal.classList.remove("aberto");
-  botaoMenu.setAttribute("aria-expanded", "false");
+
+  botaoMenu.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
   botaoMenu.textContent = "☰";
 
   if (atualizarHistorico) {
-    history.pushState({ pagina: id }, "", "#" + id);
+    history.pushState(
+      { pagina: id },
+      "",
+      "#" + id
+    );
   }
 
   window.scrollTo(0, 0);
 }
 
 botoes.forEach(botao => {
+
   botao.addEventListener("click", evento => {
     evento.preventDefault();
     abrirPagina(botao.dataset.pagina);
   });
+
 });
 
-/* MENU MOBILE */
+/* =========================
+   MENU MOBILE
+========================= */
 
 botaoMenu.addEventListener("click", () => {
+
   const aberto = menuPrincipal.classList.toggle("aberto");
 
-  botaoMenu.setAttribute("aria-expanded", String(aberto));
+  botaoMenu.setAttribute(
+    "aria-expanded",
+    String(aberto)
+  );
+
   botaoMenu.textContent = aberto ? "✕" : "☰";
+
 });
 
-/* BOTÃO DA CAPA */
+/* =========================
+   BOTÃO DA CAPA
+========================= */
 
 document.getElementById("botaoDescer").addEventListener("click", () => {
+
   document.getElementById("reportagem").scrollIntoView({
     behavior: "smooth"
   });
+
 });
 
-/* HISTÓRICO */
+/* =========================
+   HISTÓRICO
+========================= */
 
 function verificarEndereco() {
+
   const id = decodeURIComponent(
     window.location.hash.replace("#", "")
   );
@@ -1622,7 +1674,11 @@ function verificarEndereco() {
   const paginaValida =
     elemento && elemento.classList.contains("pagina");
 
-  abrirPagina(paginaValida ? id : "inicio", false);
+  abrirPagina(
+    paginaValida ? id : "inicio",
+    false
+  );
+
 }
 
 window.addEventListener("popstate", verificarEndereco);
