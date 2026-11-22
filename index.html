@@ -3,905 +3,861 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050505">
-
-  <title>Entre Duas Margens, Uma Só Correnteza</title>
-
-  <style>
-
-    /* ==========================================
-       1. FONTES
-    ========================================== */
-
-    @font-face {
-      font-family: "Cubao";
-      src: url("./fontes/cubao-free/Cubao_Free_Regular.otf") format("opentype");
-      font-weight: 400;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Morisawa";
-      src: url("./fontes/morisawa-otf-cufonfonts-webfont/MorisawaOtfRegular.woff") format("woff");
-      font-weight: 400;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Gordita";
-      src: url("./fontes/gordita-regular-maisfontes.80be/gordita-regular.otf") format("opentype");
-      font-weight: 400;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Neue Montreal";
-      src: url("./fontes/neue-montreal-regular-maisfontes.525c/neue-montreal-regular.otf") format("opentype");
-      font-weight: 400;
-      font-display: swap;
-    }
-
-    /* ==========================================
-       2. CONFIGURAÇÕES GERAIS
-    ========================================== */
-
-    :root {
-      --preto: #050505;
-      --branco: #ffffff;
-      --azul: #394a8c;
-      --azul-claro: #a6b7ef;
-      --largura-texto: 740px;
-      --altura-menu: 72px;
-
-      --zoom-capa: 1.12;
-      --zoom-rodape: 1.16;
-      --ilha-altura: clamp(300px, 34vw, 500px);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      background: var(--preto);
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--altura-menu);
-    }
-
-    body {
-      min-height: 100vh;
-      background: var(--preto);
-      color: var(--branco);
-      font-family: "Neue Montreal", Arial, sans-serif;
-      overflow-x: hidden;
-    }
-
-    button {
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .site {
-      width: 100%;
-      min-height: 100vh;
-      background: var(--preto);
-    }
-
-    /* ==========================================
-       3. MENU CENTRALIZADO
-    ========================================== */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.96);
-      border-bottom: 1px solid rgba(255,255,255,0.13);
-      backdrop-filter: blur(12px);
-    }
-
-    .cabecalho {
-      min-height: var(--altura-menu);
-      padding: 14px 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: clamp(12px, 1.8vw, 30px);
-    }
-
-    nav button {
-      position: relative;
-      padding: 9px 0;
-      border: none;
-      background: transparent;
-      color: #e4e4e4;
-      font-family: "Gordita", Arial, sans-serif;
-      font-size: clamp(10px, 0.9vw, 13px);
-      transition: color 0.3s;
-    }
-
-    nav button::after {
-      content: "";
-      position: absolute;
-      bottom: 2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--azul-claro);
-      transition: width 0.3s;
-    }
-
-    nav button:hover,
-    nav button.ativo {
-      color: var(--azul-claro);
-    }
-
-    nav button:hover::after,
-    nav button.ativo::after {
-      width: 100%;
-    }
-
-    .menu-mobile {
-      display: none;
-      border: 1px solid #555;
-      background: transparent;
-      color: white;
-      padding: 8px 13px;
-      font-size: 22px;
-    }
-
-    /* ==========================================
-       4. PÁGINAS
-    ========================================== */
-
-    .pagina {
-      display: none;
-      min-height: calc(100vh - var(--altura-menu));
-    }
-
-    .pagina.ativa {
-      display: block;
-      animation: aparecer 0.4s ease;
-    }
-
-    @keyframes aparecer {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* ==========================================
-       5. CAPA
-    ========================================== */
-
-    .capa {
-      position: relative;
-      isolation: isolate;
-      width: 100%;
-      min-height: calc(100svh - var(--altura-menu));
-      overflow: hidden;
-      background: black;
-    }
-
-    .capa-imagem {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      overflow: hidden;
-    }
-
-    .capa-imagem img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transform: scale(var(--zoom-capa));
-      transform-origin: center;
-    }
-
-    .capa-conteudo {
-      position: relative;
-      z-index: 4;
-      width: 100%;
-      padding: clamp(80px, 11vh, 140px) 25px 260px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .capa-titulo {
-      font-family: "Cubao", Impact, sans-serif;
-      font-weight: 400;
-      font-size: clamp(64px, 10vw, 160px);
-      line-height: 0.93;
-    }
-
-    .capa-titulo span {
-      display: block;
-    }
-
-    .capa-subtitulo {
-      margin-top: 18px;
-      font-family: "Morisawa", Georgia, serif;
-      font-size: clamp(23px, 3vw, 42px);
-      font-weight: 400;
-      line-height: 1.2;
-    }
-
-    .capa-autoria {
-      margin-top: 15px;
-      font-family: "Gordita", Arial, sans-serif;
-      font-size: 14px;
-    }
-
-    .capa-descer {
-      position: absolute;
-      z-index: 6;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 12px 18px;
-      border: 1px solid rgba(255,255,255,0.6);
-      background: rgba(0,0,0,0.75);
-      color: white;
-      font-family: "Gordita", sans-serif;
-      font-size: 10px;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
-
-    .capa-descer:hover {
-      background: var(--azul);
-    }
-
-    /* ==========================================
-       6. ILHA DO FOGO
-    ========================================== */
-
-    .transicao-ilha {
-      position: relative;
-      width: 100%;
-      height: var(--ilha-altura);
-      margin-top: calc(var(--ilha-altura) * -0.46);
-      z-index: 3;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .transicao-ilha img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /* ==========================================
-       7. REPORTAGEM
-    ========================================== */
-
-    .reportagem {
-      position: relative;
-      width: 100%;
-      padding: 0 0 100px;
-      background: var(--preto);
-    }
-
-    .reportagem-conteudo {
-      width: 100%;
-      padding: 22px 0 30px;
-    }
-
-    .reportagem-titulo {
-      width: calc(100% - 48px);
-      max-width: var(--largura-texto);
-      margin: 0 auto 30px;
-      font-family: "Neue Montreal", Arial, sans-serif;
-      font-size: clamp(30px, 4vw, 48px);
-      font-weight: 400;
-      line-height: 1.12;
-      text-align: left;
-    }
-
-    .corpo-reportagem {
-      position: relative;
-      width: calc(100% - 48px);
-      max-width: var(--largura-texto);
-      margin: 0 auto;
-      text-align: left;
-      display: flow-root;
-    }
-
-    .corpo-reportagem p {
-      font-family: "Neue Montreal", Arial, sans-serif;
-      font-size: clamp(18px, 1.65vw, 21px);
-      font-weight: 400;
-      line-height: 1.48;
-      color: #f3f3f3;
-      margin-bottom: 28px;
-    }
-
-    .primeiro-paragrafo::first-letter {
-      float: left;
-      font-family: "Neue Montreal", Arial, sans-serif;
-      font-size: 48px;
-      font-weight: bold;
-      line-height: 0.9;
-      padding: 4px 4px 0 0;
-    }
-
-    /* ==========================================
-       8. CIBS CRIANÇA
-    ========================================== */
-
-    .ilustracao-cibs {
-      float: right;
-      position: relative;
-      z-index: 5;
-      width: clamp(330px, 38vw, 560px);
-      margin: 5px -230px 12px 12px;
-    }
-
-    .ilustracao-cibs img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .limpar {
-      clear: both;
-    }
-
-    /* ==========================================
-       9. PARÁGRAFO FINAL
-    ========================================== */
-
-    .corpo-reportagem .paragrafo-final {
-      clear: both;
-      max-width: 850px;
-      margin: 85px auto 25px;
-      font-family: "Neue Montreal", Arial, sans-serif;
-      font-size: clamp(22px, 2.5vw, 32px);
-      font-weight: 700;
-      line-height: 1.3;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    /* ==========================================
-       10. OUTRAS PÁGINAS
-    ========================================== */
-
-    .pagina-abertura {
-      padding: 110px max(40px, calc((100vw - 1100px) / 2)) 75px;
-      border-bottom: 1px solid #292929;
-    }
-
-    .pagina-numero {
-      display: block;
-      margin-bottom: 25px;
-      font-family: "Gordita", sans-serif;
-      font-size: 11px;
-      letter-spacing: 3px;
-      color: var(--azul-claro);
-    }
-
-    .pagina-titulo {
-      font-family: "Cubao", Impact, sans-serif;
-      font-size: clamp(60px, 9vw, 115px);
-      font-weight: 400;
-      line-height: 1;
-      margin-bottom: 30px;
-    }
-
-    .pagina-descricao {
-      max-width: 700px;
-      font-family: "Neue Montreal", Arial, sans-serif;
-      font-size: 20px;
-      line-height: 1.6;
-      color: #c5c5c5;
-    }
-
-    .conteudo {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 90px 45px;
-    }
-
-    .titulo-secao {
-      margin-bottom: 35px;
-      font-family: "Cubao", Impact, sans-serif;
-      font-size: clamp(40px, 6vw, 75px);
-      font-weight: 400;
-    }
-
-    .texto {
-      max-width: var(--largura-texto);
-      margin: 0 auto;
-    }
-
-    .texto p {
-      font-family: "Neue Montreal", Arial, sans-serif;
-      font-size: 19px;
-      line-height: 1.7;
-      color: #dedede;
-      margin-bottom: 25px;
-    }
-
-    /* ==========================================
-       11. CARDS
-    ========================================== */
-
-    .grade {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      margin-top: 50px;
-    }
-
-    .card {
-      min-height: 190px;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 1px solid #333;
-      background: #101010;
-      color: white;
-      text-align: left;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      background: #1a2341;
-      transform: translateY(-5px);
-    }
-
-    .card-numero {
-      font-family: "Gordita", sans-serif;
-      font-size: 11px;
-      color: var(--azul-claro);
-    }
-
-    .card-titulo {
-      font-family: "Cubao", Impact, sans-serif;
-      font-size: 36px;
-    }
-
-    .card-seta {
-      align-self: flex-end;
-      color: var(--azul-claro);
-      font-size: 25px;
-    }
-
-    /* ==========================================
-       12. GALERIA
-    ========================================== */
-
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      margin-top: 50px;
-    }
-
-    .galeria-item {
-      background: #101010;
-      border: 1px solid #292929;
-    }
-
-    .galeria-item img {
-      width: 100%;
-      height: 290px;
-      object-fit: contain;
-      padding: 15px;
-    }
-
-    .galeria-legenda {
-      padding: 18px;
-      border-top: 1px solid #292929;
-      font-family: "Gordita", sans-serif;
-      font-size: 12px;
-      color: #c5c5c5;
-    }
-
-    /* ==========================================
-       13. RODAPÉ — NOVO POSICIONAMENTO
-    ========================================== */
-
-    .rodape {
-      position: relative;
-      isolation: isolate;
-      width: 100%;
-      min-height: 460px;
-      overflow: hidden;
-      background: black;
-    }
-
-    .rodape-fundo {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      overflow: hidden;
-    }
-
-    .rodape-fundo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transform: scale(var(--zoom-rodape));
-      transform-origin: center;
-    }
-
-    .rodape-ilha {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
-      opacity: 0.38;
-    }
-
-    .rodape-ilha img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 60%;
-      mix-blend-mode: screen;
-    }
-
-    /*
-      BARQUINHO MAIS ALTO
-
-      Antes: top: 0
-      Agora: top: -55px
-    */
-
-    .rodape-barco {
-      position: absolute;
-      top: -55px;
-      left: 7%;
-      z-index: 3;
-      width: clamp(160px, 20vw, 320px);
-      transform: rotate(-8deg);
-    }
-
-    .rodape-barco img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    /*
-      CONTEÚDO CENTRALIZADO VERTICALMENTE
-
-      Antes: align-items: end
-      Agora: align-items: center
-    */
-
-    .rodape-conteudo {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      min-height: 460px;
-
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      align-items: center;
-
-      gap: 50px;
-      padding: 75px 8% 55px;
-    }
-
-    .rodape-identidade {
-      text-align: center;
-      padding-top: 40px;
-    }
-
-    .rodape-titulo {
-      font-family: "Cubao", Impact, sans-serif;
-      font-size: clamp(32px, 4.4vw, 75px);
-      font-weight: 400;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .rodape-subtitulo {
-      margin-top: 10px;
-      font-family: "Morisawa", Georgia, serif;
-      font-size: clamp(18px, 2.1vw, 31px);
-      line-height: 1.3;
-    }
-
-    /* CRÉDITOS MAIS CENTRALIZADOS */
-
-    .rodape-creditos {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      gap: 20px;
-      text-align: center;
-    }
-
-    .credito-grupo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .credito-label {
-      font-family: "Neue Montreal", Arial, sans-serif;
-      font-size: clamp(15px, 1.8vw, 24px);
-      font-weight: 400;
-      line-height: 1.1;
-      text-transform: uppercase;
-    }
-
-    .credito-nome {
-      font-family: "Morisawa", Georgia, serif;
-      font-size: clamp(16px, 1.7vw, 24px);
-      line-height: 1.35;
-    }
-
-    .credito-perfis {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 5px;
-
-      font-family: "Gordita", Arial, sans-serif;
-      font-size: clamp(10px, 1vw, 13px);
-      line-height: 1.5;
-    }
-
-    .rodape-creditos a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .rodape-creditos a:hover {
-      color: var(--azul-claro);
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    .rodape-creditos a:focus-visible {
-      outline: 2px solid var(--azul-claro);
-      outline-offset: 4px;
-    }
-
-    .separador-perfil {
-      color: #b5b5b5;
-    }
-
-    /* ==========================================
-       14. CONTROLE DO SOM
-    ========================================== */
-
-    .controle-som {
-      position: fixed;
-      right: 25px;
-      bottom: 25px;
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 18px;
-      border: 1px solid var(--azul-claro);
-      border-radius: 30px;
-      background: rgba(0,0,0,0.9);
-      color: white;
-      font-family: "Gordita", sans-serif;
-      font-size: 11px;
-    }
-
-    .controle-som.visivel {
-      display: flex;
-    }
-
-    /* ==========================================
-       15. RESPONSIVIDADE
-    ========================================== */
-
-    @media (max-width: 1100px) {
-      .ilustracao-cibs {
-        width: 380px;
-        margin-right: -100px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .cabecalho {
-        justify-content: flex-end;
-        flex-wrap: wrap;
-      }
-
-      .menu-mobile {
-        display: block;
-      }
-
-      nav {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 15px 0;
-      }
-
-      nav.aberto {
-        display: flex;
-      }
-
-      nav button {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #292929;
-      }
-
-      .ilustracao-cibs {
-        width: 310px;
-        margin-right: -45px;
-      }
-
-      .rodape-conteudo {
-        gap: 25px;
-        padding-left: 5%;
-        padding-right: 5%;
-      }
-    }
-
-    @media (max-width: 700px) {
-      :root {
-        --ilha-altura: 260px;
-        --zoom-capa: 1.17;
-        --zoom-rodape: 1.2;
-      }
-
-      .capa {
-        min-height: 75svh;
-      }
-
-      .capa-conteudo {
-        padding: 75px 18px 170px;
-      }
-
-      .capa-titulo {
-        font-size: clamp(43px, 12vw, 80px);
-      }
-
-      .capa-subtitulo {
-        font-size: 21px;
-      }
-
-      .transicao-ilha {
-        margin-top: -120px;
-      }
-
-      .reportagem-conteudo {
-        padding-top: 20px;
-      }
-
-      .corpo-reportagem,
-      .reportagem-titulo {
-        width: calc(100% - 40px);
-      }
-
-      .corpo-reportagem p {
-        font-size: 17px;
-        line-height: 1.55;
-      }
-
-      .ilustracao-cibs {
-        width: 220px;
-        margin: 5px -20px 12px 8px;
-      }
-
-      .corpo-reportagem .paragrafo-final {
-        margin-top: 55px;
-        font-size: 21px;
-      }
-
-      .pagina-abertura {
-        padding: 75px 30px;
-      }
-
-      .conteudo {
-        padding: 70px 30px;
-      }
-
-      .grade,
-      .galeria {
-        grid-template-columns: 1fr;
-      }
-
-      /* RODAPÉ NO CELULAR */
-
-      .rodape {
-        min-height: 650px;
-      }
-
-      .rodape-conteudo {
-        min-height: 650px;
-        grid-template-columns: 1fr;
-        align-content: center;
-        align-items: center;
-        gap: 45px;
-        padding: 125px 25px 45px;
-      }
-
-      .rodape-barco {
-        width: 160px;
-        top: -35px;
-        left: 5%;
-      }
-
-      .rodape-identidade {
-        padding-top: 0;
-      }
-
-      .rodape-titulo {
-        font-size: clamp(30px, 7vw, 52px);
-      }
-
-      .rodape-subtitulo {
-        font-size: 21px;
-      }
-
-      .rodape-creditos {
-        gap: 17px;
-      }
-
-      .credito-label {
-        font-size: 18px;
-      }
-
-      .credito-nome {
-        font-size: 19px;
-      }
-
-      .credito-perfis {
-        font-size: 11px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+
+<title>Entre Duas Margens, Uma Só Correnteza</title>
+
+<style>
+
+/* ==========================================
+   1. FONTES
+========================================== */
+
+@font-face {
+  font-family: "Cubao";
+  src: url("./fontes/cubao-free/Cubao_Free_Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morisawa";
+  src: url("./fontes/morisawa-otf-cufonfonts-webfont/MorisawaOtfRegular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gordita";
+  src: url("./fontes/gordita-regular-maisfontes.80be/gordita-regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./fontes/neue-montreal-regular-maisfontes.525c/neue-montreal-regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* ==========================================
+   2. CONFIGURAÇÕES GERAIS
+========================================== */
+
+:root {
+  --preto: #050505;
+  --branco: #ffffff;
+  --azul: #394a8c;
+  --azul-claro: #a6b7ef;
+
+  --largura-texto: 740px;
+  --altura-menu: 72px;
+
+  /* Capa original, sem o zoom acrescentado */
+  --zoom-capa: 1;
+
+  /* Altura da transição da Ilha do Fogo */
+  --ilha-altura: clamp(300px, 34vw, 500px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--preto);
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--altura-menu);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--preto);
+  color: var(--branco);
+  font-family: "Neue Montreal", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--preto);
+}
+
+/* ==========================================
+   3. MENU CENTRALIZADO
+========================================== */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.96);
+  border-bottom: 1px solid rgba(255,255,255,0.13);
+  backdrop-filter: blur(12px);
+}
+
+.cabecalho {
+  min-height: var(--altura-menu);
+  padding: 14px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(12px, 1.8vw, 30px);
+}
+
+nav button {
+  position: relative;
+  padding: 9px 0;
+  border: none;
+  background: transparent;
+  color: #e4e4e4;
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: clamp(10px, 0.9vw, 13px);
+  transition: color 0.3s;
+}
+
+nav button::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--azul-claro);
+  transition: width 0.3s;
+}
+
+nav button:hover,
+nav button.ativo {
+  color: var(--azul-claro);
+}
+
+nav button:hover::after,
+nav button.ativo::after {
+  width: 100%;
+}
+
+.menu-mobile {
+  display: none;
+  border: 1px solid #555;
+  background: transparent;
+  color: white;
+  padding: 8px 13px;
+  font-size: 22px;
+}
+
+/* ==========================================
+   4. PÁGINAS
+========================================== */
+
+.pagina {
+  display: none;
+  min-height: calc(100vh - var(--altura-menu));
+}
+
+.pagina.ativa {
+  display: block;
+  animation: aparecer 0.4s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================================
+   5. CAPA ORIGINAL
+========================================== */
+
+.capa {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: calc(100svh - var(--altura-menu));
+  overflow: hidden;
+  background: black;
+}
+
+.capa-imagem {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.capa-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(var(--zoom-capa));
+}
+
+.capa-conteudo {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  padding: clamp(80px, 11vh, 140px) 25px 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.capa-titulo {
+  font-family: "Cubao", Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(64px, 10vw, 160px);
+  line-height: 0.93;
+  color: white;
+}
+
+.capa-titulo span {
+  display: block;
+}
+
+.capa-subtitulo {
+  margin-top: 18px;
+  font-family: "Morisawa", Georgia, serif;
+  font-size: clamp(23px, 3vw, 42px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.capa-autoria {
+  margin-top: 15px;
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: 14px;
+}
+
+.capa-descer {
+  position: absolute;
+  z-index: 6;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 18px;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.75);
+  color: white;
+  font-family: "Gordita", sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.capa-descer:hover {
+  background: var(--azul);
+}
+
+/* ==========================================
+   6. ILHA DO FOGO NA TRANSIÇÃO
+========================================== */
+
+.transicao-ilha {
+  position: relative;
+  width: 100%;
+  height: var(--ilha-altura);
+  margin-top: calc(var(--ilha-altura) * -0.46);
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.transicao-ilha img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ==========================================
+   7. REPORTAGEM
+========================================== */
+
+.reportagem {
+  position: relative;
+  width: 100%;
+  padding: 0 0 30px;
+  background: var(--preto);
+}
+
+.reportagem-conteudo {
+  width: 100%;
+  padding: 22px 0 30px;
+}
+
+.reportagem-titulo {
+  width: calc(100% - 48px);
+  max-width: var(--largura-texto);
+  margin: 0 auto 30px;
+  font-family: "Neue Montreal", Arial, sans-serif;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.12;
+  text-align: left;
+}
+
+.corpo-reportagem {
+  position: relative;
+  width: calc(100% - 48px);
+  max-width: var(--largura-texto);
+  margin: 0 auto;
+  text-align: left;
+  display: flow-root;
+}
+
+.corpo-reportagem p {
+  font-family: "Neue Montreal", Arial, sans-serif;
+  font-size: clamp(18px, 1.65vw, 21px);
+  font-weight: 400;
+  line-height: 1.48;
+  color: #f3f3f3;
+  margin-bottom: 28px;
+}
+
+.primeiro-paragrafo::first-letter {
+  float: left;
+  font-family: "Neue Montreal", Arial, sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 0.9;
+  padding: 4px 4px 0 0;
+}
+
+/* ==========================================
+   8. CIBS CRIANÇA
+========================================== */
+
+.ilustracao-cibs {
+  float: right;
+  position: relative;
+  z-index: 5;
+  width: clamp(330px, 38vw, 560px);
+  margin: 5px -230px 12px 12px;
+}
+
+.ilustracao-cibs img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.limpar {
+  clear: both;
+}
+
+/* ==========================================
+   9. PARÁGRAFO FINAL
+========================================== */
+
+.corpo-reportagem .paragrafo-final {
+  clear: both;
+  max-width: 850px;
+  margin: 85px auto 25px;
+  font-family: "Neue Montreal", Arial, sans-serif;
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ==========================================
+   10. OUTRAS PÁGINAS
+========================================== */
+
+.pagina-abertura {
+  padding: 110px max(40px, calc((100vw - 1100px) / 2)) 75px;
+  border-bottom: 1px solid #292929;
+}
+
+.pagina-numero {
+  display: block;
+  margin-bottom: 25px;
+  font-family: "Gordita", sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--azul-claro);
+}
+
+.pagina-titulo {
+  font-family: "Cubao", Impact, sans-serif;
+  font-size: clamp(60px, 9vw, 115px);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+
+.pagina-descricao {
+  max-width: 700px;
+  font-family: "Neue Montreal", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #c5c5c5;
+}
+
+.conteudo {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 45px;
+}
+
+.titulo-secao {
+  margin-bottom: 35px;
+  font-family: "Cubao", Impact, sans-serif;
+  font-size: clamp(40px, 6vw, 75px);
+  font-weight: 400;
+}
+
+.texto {
+  max-width: var(--largura-texto);
+  margin: 0 auto;
+}
+
+.texto p {
+  font-family: "Neue Montreal", Arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.7;
+  color: #dedede;
+  margin-bottom: 25px;
+}
+
+/* ==========================================
+   11. GALERIA
+========================================== */
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.galeria-item {
+  background: #101010;
+  border: 1px solid #292929;
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 290px;
+  object-fit: contain;
+  padding: 15px;
+}
+
+.galeria-legenda {
+  padding: 18px;
+  border-top: 1px solid #292929;
+  font-family: "Gordita", sans-serif;
+  font-size: 12px;
+  color: #c5c5c5;
+}
+
+/* ==========================================
+   12. RODAPÉ — SEM CORTAR A ILHA DO FOGO
+
+   A imagem do final do site é exibida
+   inteira, sem object-fit: cover.
+
+   Os créditos ficam sobre a parte inferior,
+   e o barco é posicionado na parte superior.
+========================================== */
+
+.rodape {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  background: #050505;
+  overflow: hidden;
+}
+
+/*
+  A imagem original determina a altura
+  do rodapé e mantém suas proporções.
+*/
+
+.rodape-fundo {
+  position: relative;
+  width: 100%;
+  z-index: -2;
+}
+
+.rodape-fundo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+/*
+  Não adicionamos outra Ilha do Fogo
+  por cima do rodapé, para evitar
+  duplicação e cortes na ilustração.
+*/
+
+/* BARQUINHO */
+
+.rodape-barco {
+  position: absolute;
+  top: 24%;
+  left: 7%;
+  z-index: 3;
+  width: clamp(150px, 20vw, 310px);
+  transform: rotate(-8deg);
+}
+
+.rodape-barco img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* TÍTULO E CRÉDITOS */
+
+.rodape-conteudo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: end;
+  gap: 45px;
+
+  padding: 0 8% 5%;
+}
+
+.rodape-identidade {
+  text-align: center;
+  align-self: end;
+  padding-bottom: 2%;
+}
+
+.rodape-titulo {
+  font-family: "Cubao", Impact, sans-serif;
+  font-size: clamp(32px, 4.4vw, 75px);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.rodape-subtitulo {
+  margin-top: 10px;
+  font-family: "Morisawa", Georgia, serif;
+  font-size: clamp(18px, 2.1vw, 31px);
+  line-height: 1.3;
+}
+
+/*
+  Créditos centralizados dentro
+  da metade direita do rodapé.
+*/
+
+.rodape-creditos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  align-self: end;
+}
+
+.credito-grupo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.credito-label {
+  font-family: "Neue Montreal", Arial, sans-serif;
+  font-size: clamp(15px, 1.7vw, 23px);
+  font-weight: 400;
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+.credito-nome {
+  font-family: "Morisawa", Georgia, serif;
+  font-size: clamp(16px, 1.6vw, 23px);
+  line-height: 1.3;
+}
+
+.credito-perfis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-family: "Gordita", Arial, sans-serif;
+  font-size: clamp(10px, 1vw, 13px);
+  line-height: 1.5;
+}
+
+.rodape-creditos a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.rodape-creditos a:hover {
+  color: var(--azul-claro);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.rodape-creditos a:focus-visible {
+  outline: 2px solid var(--azul-claro);
+  outline-offset: 4px;
+}
+
+.separador-perfil {
+  color: #b5b5b5;
+}
+
+/* ==========================================
+   13. SOM DO RIO
+========================================== */
+
+.controle-som {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border: 1px solid var(--azul-claro);
+  border-radius: 30px;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  font-family: "Gordita", sans-serif;
+  font-size: 11px;
+}
+
+.controle-som.visivel {
+  display: flex;
+}
+
+/* ==========================================
+   14. RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 1100px) {
+
+  .ilustracao-cibs {
+    width: 380px;
+    margin-right: -100px;
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .cabecalho {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .menu-mobile {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px 0;
+  }
+
+  nav.aberto {
+    display: flex;
+  }
+
+  nav button {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #292929;
+  }
+
+  .ilustracao-cibs {
+    width: 310px;
+    margin-right: -45px;
+  }
+
+  .rodape-conteudo {
+    gap: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .rodape-creditos {
+    gap: 10px;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  :root {
+    --ilha-altura: 260px;
+  }
+
+  .capa {
+    min-height: 75svh;
+  }
+
+  .capa-conteudo {
+    padding: 75px 18px 170px;
+  }
+
+  .capa-titulo {
+    font-size: clamp(43px, 12vw, 80px);
+  }
+
+  .capa-subtitulo {
+    font-size: 21px;
+  }
+
+  .transicao-ilha {
+    margin-top: -120px;
+  }
+
+  .reportagem-conteudo {
+    padding-top: 20px;
+  }
+
+  .corpo-reportagem,
+  .reportagem-titulo {
+    width: calc(100% - 40px);
+  }
+
+  .corpo-reportagem p {
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .ilustracao-cibs {
+    width: 220px;
+    margin: 5px -20px 12px 8px;
+  }
+
+  .corpo-reportagem .paragrafo-final {
+    margin-top: 55px;
+    font-size: 21px;
+  }
+
+  .pagina-abertura {
+    padding: 75px 30px;
+  }
+
+  .conteudo {
+    padding: 70px 30px;
+  }
+
+  .galeria {
+    grid-template-columns: 1fr;
+  }
+
+  /*
+    No celular, a imagem continua inteira,
+    e os créditos ficam abaixo dela para
+    não serem cortados.
+  */
+
+  .rodape-barco {
+    top: 15%;
+    left: 4%;
+    width: 25%;
+  }
+
+  .rodape-conteudo {
+    position: relative;
+    inset: auto;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 35px;
+    padding: 35px 25px 55px;
+    background: #050505;
+  }
+
+  .rodape-identidade {
+    padding: 0;
+  }
+
+  .rodape-titulo {
+    font-size: clamp(30px, 7vw, 52px);
+  }
+
+  .rodape-subtitulo {
+    font-size: 21px;
+  }
+
+  .rodape-creditos {
+    gap: 17px;
+  }
+
+  .credito-label {
+    font-size: 18px;
+  }
+
+  .credito-nome {
+    font-size: 19px;
+  }
+
+  .credito-perfis {
+    font-size: 11px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
@@ -974,7 +930,7 @@
 
     <section class="pagina ativa" id="inicio">
 
-      <!-- CAPA -->
+      <!-- CAPA ORIGINAL -->
 
       <div class="capa">
 
@@ -1172,65 +1128,10 @@
 
       </article>
 
-      <!-- LINKS PARA OUTRAS PÁGINAS -->
-
-      <div class="conteudo">
-
-        <span class="pagina-numero">
-          EXPLORE A CORRENTEZA
-        </span>
-
-        <h2 class="titulo-secao">
-          CONTINUE A TRAVESSIA
-        </h2>
-
-        <div class="grade">
-
-          <button class="card" data-pagina="a-margem">
-            <span class="card-numero">01</span>
-            <span class="card-titulo">À MARGEM</span>
-            <span class="card-seta">↗</span>
-          </button>
-
-          <button class="card" data-pagina="linha-do-tempo">
-            <span class="card-numero">02</span>
-            <span class="card-titulo">LINHA DO TEMPO</span>
-            <span class="card-seta">↗</span>
-          </button>
-
-          <button class="card" data-pagina="nucleo-biruta">
-            <span class="card-numero">03</span>
-            <span class="card-titulo">NÚCLEO BIRUTA</span>
-            <span class="card-seta">↗</span>
-          </button>
-
-          <button class="card" data-pagina="coletivo-abdias">
-            <span class="card-numero">04</span>
-            <span class="card-titulo">COLETIVO ABDIAS</span>
-            <span class="card-seta">↗</span>
-          </button>
-
-          <button class="card" data-pagina="caatingayro">
-            <span class="card-numero">05</span>
-            <span class="card-titulo">CAATINGAYRO</span>
-            <span class="card-seta">↗</span>
-          </button>
-
-          <button class="card" data-pagina="artistas">
-            <span class="card-numero">06</span>
-            <span class="card-titulo">ARTISTAS</span>
-            <span class="card-seta">↗</span>
-          </button>
-
-          <button class="card" data-pagina="lugares">
-            <span class="card-numero">07</span>
-            <span class="card-titulo">LUGARES</span>
-            <span class="card-seta">↗</span>
-          </button>
-
-        </div>
-
-      </div>
+      <!--
+        A seção "EXPLORE A CORRENTEZA"
+        e os cards foram removidos.
+      -->
 
     </section>
 
@@ -1470,13 +1371,15 @@
   </main>
 
   <!-- ======================================
-       RODAPÉ
-       APARECE EM TODAS AS PÁGINAS
+       RODAPÉ EM TODAS AS PÁGINAS
   ====================================== -->
 
   <footer class="rodape">
 
-    <!-- FUNDO -->
+    <!--
+      Imagem original inteira.
+      Ela define a altura do rodapé.
+    -->
 
     <div class="rodape-fundo">
       <img
@@ -1486,17 +1389,7 @@
       >
     </div>
 
-    <!-- ILHA DO FOGO -->
-
-    <div class="rodape-ilha">
-      <img
-        src="./imagens/ILHA DO FOGO.PNG.png"
-        alt=""
-        aria-hidden="true"
-      >
-    </div>
-
-    <!-- BARQUINHO MAIS ALTO -->
+    <!-- BARQUINHO -->
 
     <div class="rodape-barco">
       <img
@@ -1506,11 +1399,9 @@
       >
     </div>
 
-    <!-- CONTEÚDO CENTRALIZADO -->
+    <!-- TÍTULO E CRÉDITOS -->
 
     <div class="rodape-conteudo">
-
-      <!-- TÍTULO -->
 
       <div class="rodape-identidade">
 
@@ -1524,9 +1415,9 @@
 
       </div>
 
-      <!-- CRÉDITOS COM LINKS -->
-
       <div class="rodape-creditos">
+
+        <!-- REPORTAGEM -->
 
         <div class="credito-grupo">
 
@@ -1549,6 +1440,8 @@
 
         </div>
 
+        <!-- ORIENTAÇÃO -->
+
         <div class="credito-grupo">
 
           <span class="credito-label">
@@ -1560,6 +1453,8 @@
           </span>
 
         </div>
+
+        <!-- DESIGN -->
 
         <div class="credito-grupo">
 
@@ -1629,238 +1524,236 @@
 
 <script>
 
-  const paginas = document.querySelectorAll(".pagina");
-  const botoes = document.querySelectorAll("[data-pagina]");
-  const botoesMenu = document.querySelectorAll("nav [data-pagina]");
+const paginas = document.querySelectorAll(".pagina");
+const botoes = document.querySelectorAll("[data-pagina]");
+const botoesMenu = document.querySelectorAll("nav [data-pagina]");
 
-  const menuPrincipal = document.getElementById("menuPrincipal");
-  const botaoMenu = document.getElementById("botaoMenu");
+const menuPrincipal = document.getElementById("menuPrincipal");
+const botaoMenu = document.getElementById("botaoMenu");
 
-  const audio = document.getElementById("somRio");
-  const controleSom = document.getElementById("controleSom");
-  const textoSom = document.getElementById("textoSom");
-  const iconeSom = document.getElementById("iconeSom");
+const audio = document.getElementById("somRio");
+const controleSom = document.getElementById("controleSom");
+const textoSom = document.getElementById("textoSom");
+const iconeSom = document.getElementById("iconeSom");
 
-  let paginaAtual = "inicio";
+let paginaAtual = "inicio";
 
-  /* ======================================
-     SOM
-  ====================================== */
+/* ======================================
+   SOM
+====================================== */
 
-  function atualizarSom() {
+function atualizarSom() {
 
-    const tocando = !audio.paused;
+  const tocando = !audio.paused;
 
-    textoSom.textContent = tocando
-      ? "DESATIVAR SOM DO RIO"
-      : "ATIVAR SOM DO RIO";
+  textoSom.textContent = tocando
+    ? "DESATIVAR SOM DO RIO"
+    : "ATIVAR SOM DO RIO";
 
-    iconeSom.textContent = tocando ? "♫" : "♪";
+  iconeSom.textContent = tocando ? "♫" : "♪";
 
-    controleSom.setAttribute(
-      "aria-pressed",
-      String(tocando)
-    );
+  controleSom.setAttribute(
+    "aria-pressed",
+    String(tocando)
+  );
 
-    controleSom.setAttribute(
-      "aria-label",
-      tocando
-        ? "Desativar som do rio"
-        : "Ativar som do rio"
-    );
+  controleSom.setAttribute(
+    "aria-label",
+    tocando
+      ? "Desativar som do rio"
+      : "Ativar som do rio"
+  );
 
+}
+
+function pararSom() {
+
+  audio.pause();
+  audio.currentTime = 0;
+
+  atualizarSom();
+
+}
+
+controleSom.addEventListener("click", async () => {
+
+  if (paginaAtual !== "inicio") {
+    return;
   }
 
-  function pararSom() {
+  if (audio.paused) {
 
+    try {
+      await audio.play();
+    } catch (erro) {
+      console.error("Erro ao reproduzir o áudio:", erro);
+    }
+
+  } else {
     audio.pause();
-    audio.currentTime = 0;
-
-    atualizarSom();
-
   }
 
-  controleSom.addEventListener("click", async () => {
+  atualizarSom();
 
-    if (paginaAtual !== "inicio") {
-      return;
-    }
+});
 
-    if (audio.paused) {
+audio.addEventListener("play", atualizarSom);
+audio.addEventListener("pause", atualizarSom);
 
-      try {
-        await audio.play();
-      } catch (erro) {
-        console.error("Erro ao reproduzir o áudio:", erro);
-      }
+/* ======================================
+   NAVEGAÇÃO
+====================================== */
 
+function abrirPagina(id, atualizarHistorico = true) {
+
+  const destino = document.getElementById(id);
+
+  if (
+    !destino ||
+    !destino.classList.contains("pagina")
+  ) {
+    return;
+  }
+
+  if (id !== "inicio") {
+    pararSom();
+  }
+
+  paginaAtual = id;
+
+  paginas.forEach(pagina => {
+
+    pagina.classList.toggle(
+      "ativa",
+      pagina.id === id
+    );
+
+  });
+
+  botoesMenu.forEach(botao => {
+
+    const ativo = botao.dataset.pagina === id;
+
+    botao.classList.toggle("ativo", ativo);
+
+    if (ativo) {
+      botao.setAttribute("aria-current", "page");
     } else {
-      audio.pause();
+      botao.removeAttribute("aria-current");
     }
-
-    atualizarSom();
 
   });
 
-  audio.addEventListener("play", atualizarSom);
-  audio.addEventListener("pause", atualizarSom);
+  controleSom.classList.toggle(
+    "visivel",
+    id === "inicio"
+  );
 
-  /* ======================================
-     NAVEGAÇÃO
-  ====================================== */
+  menuPrincipal.classList.remove("aberto");
 
-  function abrirPagina(id, atualizarHistorico = true) {
+  botaoMenu.setAttribute(
+    "aria-expanded",
+    "false"
+  );
 
-    const destino = document.getElementById(id);
+  botaoMenu.textContent = "☰";
 
-    if (
-      !destino ||
-      !destino.classList.contains("pagina")
-    ) {
-      return;
-    }
+  if (atualizarHistorico) {
 
-    // Parar o som ao sair do início
-
-    if (id !== "inicio") {
-      pararSom();
-    }
-
-    paginaAtual = id;
-
-    paginas.forEach(pagina => {
-
-      pagina.classList.toggle(
-        "ativa",
-        pagina.id === id
-      );
-
-    });
-
-    botoesMenu.forEach(botao => {
-
-      const ativo = botao.dataset.pagina === id;
-
-      botao.classList.toggle("ativo", ativo);
-
-      if (ativo) {
-        botao.setAttribute("aria-current", "page");
-      } else {
-        botao.removeAttribute("aria-current");
-      }
-
-    });
-
-    controleSom.classList.toggle(
-      "visivel",
-      id === "inicio"
+    history.pushState(
+      { pagina: id },
+      "",
+      "#" + id
     );
-
-    menuPrincipal.classList.remove("aberto");
-
-    botaoMenu.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-    botaoMenu.textContent = "☰";
-
-    if (atualizarHistorico) {
-
-      history.pushState(
-        { pagina: id },
-        "",
-        "#" + id
-      );
-
-    }
-
-    window.scrollTo(0, 0);
 
   }
 
-  botoes.forEach(botao => {
+  window.scrollTo(0, 0);
 
-    botao.addEventListener("click", evento => {
+}
 
-      evento.preventDefault();
+botoes.forEach(botao => {
 
-      abrirPagina(botao.dataset.pagina);
+  botao.addEventListener("click", evento => {
 
-    });
+    evento.preventDefault();
 
-  });
-
-  /* ======================================
-     MENU MOBILE
-  ====================================== */
-
-  botaoMenu.addEventListener("click", () => {
-
-    const aberto = menuPrincipal.classList.toggle(
-      "aberto"
-    );
-
-    botaoMenu.setAttribute(
-      "aria-expanded",
-      String(aberto)
-    );
-
-    botaoMenu.textContent = aberto ? "✕" : "☰";
+    abrirPagina(botao.dataset.pagina);
 
   });
 
-  /* ======================================
-     BOTÃO DA CAPA
-  ====================================== */
+});
+
+/* ======================================
+   MENU MOBILE
+====================================== */
+
+botaoMenu.addEventListener("click", () => {
+
+  const aberto = menuPrincipal.classList.toggle(
+    "aberto"
+  );
+
+  botaoMenu.setAttribute(
+    "aria-expanded",
+    String(aberto)
+  );
+
+  botaoMenu.textContent = aberto ? "✕" : "☰";
+
+});
+
+/* ======================================
+   BOTÃO DA CAPA
+====================================== */
+
+document.getElementById(
+  "botaoDescer"
+).addEventListener("click", () => {
 
   document.getElementById(
-    "botaoDescer"
-  ).addEventListener("click", () => {
-
-    document.getElementById(
-      "reportagem"
-    ).scrollIntoView({
-      behavior: "smooth"
-    });
-
+    "reportagem"
+  ).scrollIntoView({
+    behavior: "smooth"
   });
 
-  /* ======================================
-     HISTÓRICO
-  ====================================== */
+});
 
-  function verificarEndereco() {
+/* ======================================
+   HISTÓRICO
+====================================== */
 
-    const id = decodeURIComponent(
-      window.location.hash.replace("#", "")
-    );
+function verificarEndereco() {
 
-    const elemento = document.getElementById(id);
-
-    const paginaValida =
-      elemento &&
-      elemento.classList.contains("pagina");
-
-    abrirPagina(
-      paginaValida ? id : "inicio",
-      false
-    );
-
-  }
-
-  window.addEventListener(
-    "popstate",
-    verificarEndereco
+  const id = decodeURIComponent(
+    window.location.hash.replace("#", "")
   );
 
-  window.addEventListener(
-    "hashchange",
-    verificarEndereco
+  const elemento = document.getElementById(id);
+
+  const paginaValida =
+    elemento &&
+    elemento.classList.contains("pagina");
+
+  abrirPagina(
+    paginaValida ? id : "inicio",
+    false
   );
 
-  verificarEndereco();
-  atualizarSom();
+}
+
+window.addEventListener(
+  "popstate",
+  verificarEndereco
+);
+
+window.addEventListener(
+  "hashchange",
+  verificarEndereco
+);
+
+verificarEndereco();
+atualizarSom();
 
 </script>
 
