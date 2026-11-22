@@ -2,1257 +2,1017 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Correnteza — Outras formas de representar o Sertão</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --black: #08090b;
-    --black-soft: #101116;
-    --white: #f3f1ed;
-    --blue: #5665ae;
-    --blue-light: #8d99d2;
-    --gray: #aaaab2;
-    --line: rgba(255,255,255,.16);
-    --header-height: 62px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    background: var(--black);
-}
-
-body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button {
-    font: inherit;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-}
-
-/* PROGRESSO DE LEITURA */
-
-.progress-track {
-    position: fixed;
-    z-index: 300;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: transparent;
-}
-
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background: var(--blue-light);
-}
-
-/* MENU */
-
-.header {
-    height: var(--header-height);
-    width: 100%;
-    padding: 0 4%;
-    position: sticky;
-    top: 0;
-    z-index: 200;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background: rgba(247,247,245,.97);
-    color: #171717;
-    backdrop-filter: blur(12px);
-}
-
-.logo {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 18px;
-    letter-spacing: -1px;
-}
-
-.logo span {
-    color: var(--blue);
-}
-
-.menu {
-    display: flex;
-    align-items: center;
-    gap: clamp(12px, 1.6vw, 25px);
-}
-
-.menu a {
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: color .25s ease;
-}
-
-.menu a:hover {
-    color: var(--blue);
-}
-
-.menu-toggle {
-    display: none;
-    border: none;
-    background: none;
-    font-size: 26px;
-    cursor: pointer;
-    color: #111;
-}
-
-/* CAPA */
-
-.hero {
-    min-height: min(850px, calc(100svh - var(--header-height)));
-    height: 760px;
-    max-height: 850px;
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    background: var(--black);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 5;
-    width: 92%;
-    max-width: 1400px;
-    margin: auto;
-    text-align: center;
-}
-
-.hero-location {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 35px;
-    color: var(--blue-light);
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
-
-.hero-location::before,
-.hero-location::after {
-    content: "";
-    width: 28px;
-    height: 1px;
-    background: var(--blue-light);
-}
-
-.hero-title {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(68px, 12.5vw, 175px);
-    line-height: .78;
-    letter-spacing: -.085em;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 5;
-}
-
-.hero-title span {
-    display: block;
-}
-
-.hero-title .second-line {
-    margin-top: 12px;
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--white);
-}
-
-.hero-subtitle {
-    margin-top: 38px;
-    font-size: clamp(12px, 1.6vw, 19px);
-    letter-spacing: .32em;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.hero-author {
-    margin-top: 13px;
-    color: var(--gray);
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-/* ONDAS AZUIS */
-
-.river {
-    position: absolute;
-    z-index: 2;
-    width: 130%;
-    height: 290px;
-    left: -15%;
-    top: 46%;
-    transform: rotate(-10deg);
-    pointer-events: none;
-}
-
-.river svg {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-}
-
-.river path {
-    transform-origin: center;
-}
-
-.river path:nth-child(1) {
-    fill: #38477f;
-    opacity: .92;
-}
-
-.river path:nth-child(2) {
-    fill: #5665ae;
-    opacity: .88;
-}
-
-.river path:nth-child(3) {
-    fill: #8b95c9;
-    opacity: .65;
-}
-
-/* PERSONAGEM */
-
-.character {
-    position: absolute;
-    z-index: 6;
-    right: 7%;
-    bottom: 5%;
-    width: clamp(110px, 16vw, 205px);
-    height: clamp(145px, 21vw, 270px);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.character img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.character-placeholder {
-    border: 1px dashed rgba(255,255,255,.35);
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-    color: var(--gray);
-    font-size: 10px;
-    text-align: center;
-    padding: 12px;
-}
-
-/* INDICAÇÃO DE ROLAGEM */
-
-.scroll-invite {
-    position: absolute;
-    z-index: 8;
-    left: 4%;
-    bottom: 38px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    color: var(--gray);
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.scroll-line {
-    width: 48px;
-    height: 1px;
-    background: var(--blue-light);
-}
-
-/* ABERTURA EDITORIAL */
-
-.opening {
-    width: min(1180px, 88%);
-    margin: auto;
-    padding: 125px 0 100px;
-}
-
-.eyebrow {
-    color: var(--blue-light);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
-
-.opening-title {
-    margin-top: 24px;
-    max-width: 920px;
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(43px, 7vw, 88px);
-    font-weight: 400;
-    line-height: .99;
-    letter-spacing: -2px;
-}
-
-.opening-title em {
-    color: var(--blue-light);
-    font-weight: 400;
-}
-
-.opening-intro {
-    margin-top: 45px;
-    max-width: 650px;
-    margin-left: auto;
-    font-size: 17px;
-    line-height: 1.8;
-    color: #c7c6c6;
-}
-
-.opening-intro p + p {
-    margin-top: 22px;
-}
-
-/* TEXTO DA REPORTAGEM */
-
-.story {
-    width: min(100%, 1180px);
-    margin: auto;
-    padding: 30px 5% 110px;
-}
-
-.story-block {
-    max-width: 690px;
-    margin: 0 auto 65px;
-    font-size: 16px;
-    line-height: 1.9;
-    color: #d4d3d0;
-}
-
-.story-block p + p {
-    margin-top: 24px;
-}
-
-.story-block strong {
-    color: white;
-    font-weight: 700;
-}
-
-.story-block a {
-    color: var(--blue-light);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
-/* FRASES DE DESTAQUE */
-
-.quote {
-    padding: 95px 5%;
-    margin: 80px 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    text-align: center;
-}
-
-.quote p {
-    max-width: 1000px;
-    margin: auto;
-    font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(26px, 5.5vw, 68px);
-    line-height: 1.08;
-    letter-spacing: -.04em;
-    text-transform: uppercase;
-}
-
-.quote span {
-    color: var(--blue-light);
-}
-
-/* ESPAÇOS DE IMAGEM */
-
-.media {
-    position: relative;
-    background: #171922;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.08);
-}
-
-.media-placeholder {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-    min-height: 200px;
-    padding: 20px;
-    color: #a7a9b9;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-align: center;
-    text-transform: uppercase;
-    background:
-        radial-gradient(ellipse at 70% 40%, rgba(86,101,174,.22), transparent 60%),
-        #171922;
-}
-
-.media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.media-wide {
-    width: 100%;
-    aspect-ratio: 16 / 8;
-    margin: 85px 0;
-}
-
-.media-caption {
-    padding: 12px 0 0;
-    color: #8e8e98;
-    font-size: 10px;
-    letter-spacing: .5px;
-}
-
-/* GALERIA */
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin: 75px 0;
-}
-
-.gallery-item {
-    min-width: 0;
-}
-
-.gallery-item .media {
-    aspect-ratio: 4 / 5;
-}
-
-.gallery-item:nth-child(2) {
-    margin-top: 40px;
-}
-
-.gallery-item:nth-child(3) {
-    margin-top: 80px;
-}
-
-/* CHAMADA PARA OUTRAS SEÇÕES */
-
-.next-section {
-    position: relative;
-    min-height: 420px;
-    padding: 85px 8%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--blue);
-}
-
-.next-section::after {
-    content: "";
-    position: absolute;
-    width: 480px;
-    height: 480px;
-    right: -180px;
-    bottom: -300px;
-    border: 1px solid rgba(255,255,255,.35);
-    border-radius: 50%;
-    box-shadow:
-        0 0 0 35px rgba(255,255,255,.04),
-        0 0 0 70px rgba(255,255,255,.04),
-        0 0 0 105px rgba(255,255,255,.04);
-}
-
-.next-section .eyebrow {
-    color: #e1e4fa;
-}
-
-.next-section h2 {
-    position: relative;
-    z-index: 2;
-    max-width: 850px;
-    margin-top: 25px;
-    font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(45px, 8vw, 100px);
-    line-height: .95;
-    text-transform: uppercase;
-}
-
-.next-section a {
-    position: relative;
-    z-index: 2;
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    width: fit-content;
-    margin-top: 40px;
-    border-bottom: 1px solid white;
-    padding-bottom: 10px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-/* SEÇÕES INTERNAS */
-
-.section {
-    min-height: 80vh;
-    padding: 120px 7%;
-    border-top: 1px solid var(--line);
-    scroll-margin-top: var(--header-height);
-}
-
-.section-header {
-    max-width: 1150px;
-    margin: 0 auto 75px;
-}
-
-.section-number {
-    color: var(--blue-light);
-    font-size: 12px;
-    letter-spacing: 4px;
-}
-
-.section-header h2 {
-    margin-top: 25px;
-    font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(45px, 9vw, 115px);
-    line-height: .9;
-    letter-spacing: -.06em;
-    text-transform: uppercase;
-}
-
-.section-content {
-    max-width: 1050px;
-    margin: auto;
-}
-
-/* RODAPÉ */
-
-.footer {
-    padding: 90px 7% 45px;
-    background: #050608;
-    border-top: 1px solid var(--line);
-}
-
-.footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 50px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.footer-title {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(45px, 8vw, 100px);
-    line-height: .85;
-    letter-spacing: -.06em;
-}
-
-.footer-subtitle {
-    margin-top: 20px;
-    color: var(--blue-light);
-    font-size: 11px;
-    letter-spacing: 3px;
-}
-
-.footer-credits {
-    color: #aaaab2;
-    font-size: 12px;
-    line-height: 2;
-}
-
-.footer-credits strong {
-    color: white;
-}
-
-.footer-bottom {
-    max-width: 1200px;
-    margin: 75px auto 0;
-    padding-top: 22px;
-    border-top: 1px solid var(--line);
-    color: #888891;
-    font-size: 10px;
-    line-height: 1.9;
-}
-
-/* ANIMAÇÕES DE ENTRADA */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(35px);
-    transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 1000px) {
-    .menu {
-        gap: 12px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+
+  <title>Correnteza — Outras formas de representar o Sertão</title>
+
+  <style>
+    /* =========================
+       FONTES LOCAIS
+    ========================= */
+
+    @font-face {
+      font-family: "Cubao";
+      src: url("./fontes/cubao-free/Cubao-Free_Regular.otf") format("opentype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
     }
 
-    .menu a {
-        font-size: 10px;
+    @font-face {
+      font-family: "Morisawa";
+      src: url("./fontes/morisawa-otf-cufonfonts-webfont/MorisawaOtfRegular.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
     }
 
-    .hero-title {
-        font-size: clamp(65px, 13vw, 125px);
+    @font-face {
+      font-family: "Gordita";
+      src: url("./fontes/gordita-regular-maisfontes.80be/gordita-regular.otf") format("opentype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
     }
-}
 
-@media (max-width: 760px) {
+    /* =========================
+       CONFIGURAÇÕES GERAIS
+    ========================= */
+
     :root {
-        --header-height: 58px;
+      --preto: #000000;
+      --azul: #0d3550;
+      --azul-claro: #78a8c1;
+      --branco: #f0ede9;
+      --cinza: #aaa8a4;
+      --largura: 1180px;
     }
 
-    .header {
-        padding: 0 20px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .menu-toggle {
-        display: block;
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
+
+    body {
+      background: var(--preto);
+      color: var(--branco);
+      font-family: "Morisawa", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    ::selection {
+      background: var(--azul);
+      color: white;
+    }
+
+    /* =========================
+       BARRA DE PROGRESSO
+    ========================= */
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--azul-claro);
+      z-index: 2000;
+    }
+
+    /* =========================
+       MENU
+    ========================= */
 
     .menu {
-        position: absolute;
-        top: var(--header-height);
-        left: 0;
-        right: 0;
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        padding: 12px 25px 22px;
-        background: #f7f7f5;
-        box-shadow: 0 12px 20px rgba(0,0,0,.15);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 68px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      z-index: 1000;
     }
 
-    .menu.open {
-        display: flex;
+    .menu-logo {
+      font-family: "Cubao", sans-serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: var(--branco);
     }
 
-    .menu a {
-        width: 100%;
-        padding: 13px 0;
-        border-bottom: 1px solid #ddd;
-        font-size: 13px;
+    .menu-links {
+      display: flex;
+      align-items: center;
+      gap: 35px;
     }
 
-    .hero {
-        height: 720px;
-        min-height: calc(100svh - var(--header-height));
+    .menu-links a {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--branco);
+      transition: color 0.3s;
     }
 
-    .hero-title {
-        font-size: clamp(55px, 12vw, 100px);
-        letter-spacing: -.07em;
+    .menu-links a:hover {
+      color: var(--azul-claro);
     }
 
-    .hero-title .second-line {
-        -webkit-text-stroke-width: 1px;
+    /* =========================
+       CAPA
+    ========================= */
+
+    .capa {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      width: 100%;
+      background: var(--preto);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 110px 5% 80px;
     }
 
-    .river {
-        top: 48%;
-        height: 190px;
+    .capa-conteudo {
+      width: 100%;
+      max-width: var(--largura);
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
-    .character {
-        right: 4%;
-        bottom: 4%;
-        width: 110px;
-        height: 150px;
+    .capa-titulo {
+      position: relative;
+      z-index: 3;
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(65px, 12vw, 150px);
+      font-weight: normal;
+      line-height: 0.82;
+      letter-spacing: -3px;
+      color: var(--branco);
+      text-transform: uppercase;
     }
 
-    .opening {
-        padding-top: 85px;
+    .capa-titulo span {
+      display: block;
     }
 
-    .opening-intro {
-        font-size: 15px;
-        margin-top: 30px;
+    .capa-subtitulo {
+      margin-top: 25px;
+      font-family: "Morisawa", sans-serif;
+      font-size: clamp(14px, 2vw, 23px);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--azul-claro);
     }
 
-    .story-block {
-        font-size: 15px;
+    .capa-ilustracao {
+      width: min(85%, 660px);
+      margin-top: 25px;
+      position: relative;
+      z-index: 2;
+      animation: entradaIlustracao 1.5s ease both;
     }
 
-    .gallery {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
+    .capa-ilustracao img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
 
-    .gallery-item:nth-child(2),
-    .gallery-item:nth-child(3) {
-        margin-top: 0;
+    .capa-autoria {
+      margin-top: 12px;
+      font-family: "Gordita", sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--branco);
+      text-transform: uppercase;
     }
 
-    .gallery-item:last-child {
-        display: none;
+    .capa-chamada {
+      margin-top: 65px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cinza);
+      animation: pulsar 2s infinite;
     }
 
-    .footer-top {
-        flex-direction: column;
+    .capa-chamada span {
+      display: block;
+      margin-top: 12px;
+      font-size: 20px;
+      color: var(--azul-claro);
     }
 
-    .footer-credits {
-        text-align: left;
-    }
-}
+    /* =========================
+       ONDAS DA CAPA
+    ========================= */
 
-@media (max-width: 480px) {
-    .hero {
-        height: 660px;
-    }
-
-    .hero-content {
-        width: 94%;
-    }
-
-    .hero-location {
-        font-size: 8px;
-        letter-spacing: 2px;
-        margin-bottom: 30px;
+    .ondas {
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 190px;
+      z-index: 1;
+      opacity: 0.75;
+      pointer-events: none;
     }
 
-    .hero-title {
-        font-size: clamp(49px, 12.3vw, 70px);
+    .onda {
+      animation: movimentoOnda 12s ease-in-out infinite alternate;
+      transform-origin: center;
     }
 
-    .hero-subtitle {
-        font-size: 11px;
-        letter-spacing: 2px;
-        margin-top: 25px;
+    .onda:nth-child(2) {
+      animation-duration: 16s;
+      animation-direction: alternate-reverse;
     }
 
-    .scroll-invite {
-        bottom: 25px;
-        font-size: 8px;
+    .onda:nth-child(3) {
+      animation-duration: 20s;
     }
 
-    .opening {
-        width: 88%;
-        padding-top: 75px;
+    /* =========================
+       CONTROLE DE ÁUDIO
+    ========================= */
+
+    .audio-controle {
+      position: absolute;
+      bottom: 28px;
+      right: 5%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .opening-title {
-        font-size: 47px;
+    .audio-botao {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 16px;
+      border: 1px solid rgba(240, 237, 233, 0.45);
+      border-radius: 40px;
+      background: rgba(0, 0, 0, 0.55);
+      color: var(--branco);
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
     }
 
-    .story {
-        padding-left: 6%;
-        padding-right: 6%;
+    .audio-botao:hover {
+      border-color: var(--azul-claro);
+      color: var(--azul-claro);
+      background: rgba(13, 53, 80, 0.45);
     }
 
-    .gallery {
-        grid-template-columns: 1fr;
+    .audio-icone {
+      width: 17px;
+      height: 17px;
+      display: block;
     }
 
-    .gallery-item .media {
-        aspect-ratio: 16/10;
+    .audio-botao.ativo {
+      border-color: var(--azul-claro);
+      color: var(--azul-claro);
     }
 
-    .quote {
-        padding: 65px 7%;
+    /* =========================
+       INTRODUÇÃO
+    ========================= */
+
+    .introducao {
+      position: relative;
+      padding: 150px 8%;
+      background: var(--preto);
     }
 
-    .next-section {
-        min-height: 380px;
+    .conteudo {
+      max-width: var(--largura);
+      margin: auto;
     }
 
-    .section {
-        padding: 85px 7%;
+    .etiqueta {
+      color: var(--azul-claro);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
     }
 
-    .footer {
-        padding: 70px 7% 35px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
+    .titulo-secao {
+      max-width: 900px;
+      font-family: "Cubao", sans-serif;
+      font-weight: normal;
+      font-size: clamp(42px, 7vw, 85px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 45px;
     }
 
-    .reveal {
+    .texto-introducao {
+      max-width: 720px;
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.9;
+      color: #d0ceca;
+    }
+
+    .texto-introducao p + p {
+      margin-top: 25px;
+    }
+
+    /* =========================
+       SEÇÕES EDITORIAIS
+    ========================= */
+
+    .secao {
+      padding: 120px 8%;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .secao-conteudo {
+      max-width: var(--largura);
+      margin: auto;
+    }
+
+    .secao-numero {
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(60px, 10vw, 120px);
+      line-height: 1;
+      color: var(--azul);
+      margin-bottom: 25px;
+    }
+
+    .secao-titulo {
+      max-width: 850px;
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(40px, 7vw, 80px);
+      line-height: 0.95;
+      font-weight: normal;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .secao-texto {
+      max-width: 740px;
+      color: #d0ceca;
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    .secao-texto p + p {
+      margin-top: 25px;
+    }
+
+    /* =========================
+       DESTAQUE
+    ========================= */
+
+    .destaque {
+      position: relative;
+      padding: 130px 8%;
+      background: var(--azul);
+      overflow: hidden;
+    }
+
+    .destaque-conteudo {
+      max-width: 1000px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .destaque-frase {
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(38px, 7vw, 82px);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--branco);
+    }
+
+    .destaque-assinatura {
+      margin-top: 35px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* =========================
+       ESPAÇOS PARA IMAGENS
+    ========================= */
+
+    .imagem-editorial {
+      width: 100%;
+      min-height: 420px;
+      margin: 60px 0;
+      background: #101820;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      color: #8da8b7;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .imagem-editorial img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* =========================
+       LINHA DO TEMPO
+    ========================= */
+
+    .linha-tempo {
+      padding: 130px 8%;
+      background: #05090d;
+    }
+
+    .linha-tempo-conteudo {
+      max-width: var(--largura);
+      margin: auto;
+    }
+
+    .linha-tempo-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 35px;
+      padding: 35px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .linha-tempo-data {
+      font-family: "Cubao", sans-serif;
+      font-size: 30px;
+      color: var(--azul-claro);
+    }
+
+    .linha-tempo-descricao {
+      color: #d0ceca;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       RODAPÉ
+    ========================= */
+
+    .rodape {
+      padding: 100px 8% 40px;
+      background: #000;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .rodape-conteudo {
+      max-width: var(--largura);
+      margin: auto;
+    }
+
+    .rodape-titulo {
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(55px, 10vw, 120px);
+      line-height: 0.9;
+      color: var(--branco);
+    }
+
+    .rodape-subtitulo {
+      margin-top: 20px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--azul-claro);
+      text-transform: uppercase;
+    }
+
+    .rodape-creditos {
+      margin-top: 100px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 25px;
+      color: var(--cinza);
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       ANIMAÇÕES
+    ========================= */
+
+    .revelar {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .revelar.visivel {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes movimentoOnda {
+      from {
+        transform: translateX(-2%) scaleY(1);
+      }
+      to {
+        transform: translateX(2%) scaleY(1.08);
+      }
+    }
+
+    @keyframes entradaIlustracao {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
         opacity: 1;
-        transform: none;
+        transform: translateY(0);
+      }
     }
-}
-</style>
+
+    @keyframes pulsar {
+      0%, 100% {
+        opacity: 0.45;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* =========================
+       RESPONSIVIDADE
+    ========================= */
+
+    @media (max-width: 700px) {
+      .menu {
+        height: 60px;
+        padding: 0 5%;
+      }
+
+      .menu-logo {
+        font-size: 20px;
+      }
+
+      .menu-links {
+        gap: 14px;
+      }
+
+      .menu-links a {
+        font-size: 9px;
+        letter-spacing: 0.8px;
+      }
+
+      .capa {
+        padding: 110px 5% 100px;
+      }
+
+      .capa-titulo {
+        font-size: clamp(55px, 15vw, 95px);
+        letter-spacing: -1px;
+      }
+
+      .capa-subtitulo {
+        font-size: 12px;
+        letter-spacing: 3px;
+      }
+
+      .capa-ilustracao {
+        width: 100%;
+        margin-top: 35px;
+      }
+
+      .capa-chamada {
+        margin-top: 45px;
+      }
+
+      .audio-controle {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 18px;
+      }
+
+      .audio-botao {
+        font-size: 9px;
+        padding: 9px 13px;
+      }
+
+      .introducao,
+      .secao,
+      .linha-tempo {
+        padding: 90px 7%;
+      }
+
+      .destaque {
+        padding: 90px 7%;
+      }
+
+      .imagem-editorial {
+        min-height: 260px;
+      }
+
+      .linha-tempo-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .rodape {
+        padding: 80px 7% 30px;
+      }
+
+      .rodape-creditos {
+        margin-top: 65px;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- PROGRESSO DA LEITURA -->
-<div class="progress-track">
-    <div class="progress-bar" id="progress"></div>
-</div>
+  <div class="progress-bar" id="progressBar"></div>
 
-<!-- MENU -->
-<header class="header">
+  <!-- MENU -->
+  <header class="menu">
+    <a href="#inicio" class="menu-logo">CORRENTEZA</a>
 
-    <a href="#inicio" class="logo">CORRENTEZA<span>.</span></a>
-
-    <button class="menu-toggle" id="menuToggle"
-        aria-label="Abrir menu" aria-expanded="false">
-        ☰
-    </button>
-
-    <nav class="menu" id="menu">
-        <a href="#inicio">Início</a>
-        <a href="#margem">À Margem do Palco</a>
-        <a href="#linha">Linha do Tempo</a>
-        <a href="#biruta">Núcleo Biruta</a>
-        <a href="#abdias">Coletivo Abdias</a>
-        <a href="#caatingayro">Caatingayro</a>
-        <a href="#artistas">Artistas</a>
-        <a href="#lugares">Lugares</a>
+    <nav class="menu-links">
+      <a href="#introducao">Apresentação</a>
+      <a href="#territorio">Território</a>
+      <a href="#narrativas">Narrativas</a>
     </nav>
+  </header>
 
-</header>
+  <main>
 
+    <!-- CAPA -->
+    <section class="capa" id="inicio">
 
-<main>
+      <div class="capa-conteudo">
 
-<!-- CAPA -->
-<section class="hero" id="inicio">
-
-    <div class="river">
-        <svg viewBox="0 0 1400 300" preserveAspectRatio="none"
-             aria-hidden="true">
-            <path d="M-100 130 C180 20 300 220 560 110 S980 10 1500 125 L1500 300 L-100 300 Z"/>
-            <path d="M-100 160 C160 60 360 250 620 150 S1080 40 1500 160 L1500 300 L-100 300 Z"/>
-            <path d="M-100 190 C180 100 400 280 700 190 S1100 90 1500 190 L1500 300 L-100 300 Z"/>
-        </svg>
-    </div>
-
-    <div class="hero-content">
-
-        <div class="hero-location">
-            PETROLINA · JUAZEIRO · VALE DO SÃO FRANCISCO
-        </div>
-
-        <h1 class="hero-title">
-            <span>ENTRE DUAS</span>
-            <span class="second-line">MARGENS</span>
+        <h1 class="capa-titulo">
+          <span>ENTRE DUAS</span>
+          <span>MARGENS</span>
         </h1>
 
-        <p class="hero-subtitle">UMA SÓ CORRENTEZA</p>
+        <p class="capa-subtitulo">
+          UMA SÓ CORRENTEZA
+        </p>
 
-        <p class="hero-author">POR CIBELLE VIEIRA</p>
-
-    </div>
-
-    <!-- SUBSTITUIR PELO ARQUIVO ORIGINAL DA PERSONAGEM -->
-    <div class="character">
-        <div class="character-placeholder">
-            ILUSTRAÇÃO<br>DA PERSONAGEM
+        <div class="capa-ilustracao">
+          <img
+            src="./imagens/IMAGEM DA CAPA.PNG"
+            alt="Ilustração de capa da Correnteza"
+          >
         </div>
-    </div>
 
-    <div class="scroll-invite">
-        <span class="scroll-line"></span>
-        ROLE PARA ATRAVESSAR
-    </div>
-
-</section>
-
-
-<!-- ABERTURA -->
-<section class="opening reveal">
-
-    <span class="eyebrow">UMA REPORTAGEM SOBRE TERRITÓRIO E CULTURA</span>
-
-    <h2 class="opening-title">
-        Entre duas margens,<br>
-        <em>uma só correnteza.</em>
-    </h2>
-
-    <div class="opening-intro">
-        <p>
-            Este é o espaço para o texto de abertura da reportagem.
-            A proposta é apresentar a narrativa em blocos menores,
-            preservando integralmente o texto original e criando
-            pausas visuais para acompanhar a leitura.
-        </p>
-    </div>
-
-</section>
-
-
-<!-- CORPO DA REPORTAGEM -->
-<section class="story">
-
-    <div class="story-block reveal">
-        <p>
-            Insira aqui o primeiro trecho da reportagem.
-            A largura reduzida do texto permite uma leitura
-            mais confortável e cria uma relação entre palavra,
-            imagem e espaço.
+        <p class="capa-autoria">
+          Por Cibelle Vieira
         </p>
 
-        <p>
-            Insira aqui a continuação do texto original,
-            sem alterar seu conteúdo.
-        </p>
-    </div>
+        <a href="#introducao" class="capa-chamada">
+          Desça para navegar
+          <span>↓</span>
+        </a>
 
+      </div>
 
-    <!-- IMAGEM DE DESTAQUE -->
-    <figure class="media media-wide reveal">
-        <div class="media-placeholder">
-            IMAGEM PRINCIPAL DA REPORTAGEM
+      <!-- ONDAS DECORATIVAS -->
+      <svg class="ondas" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true">
+        <path class="onda"
+          d="M0,100 C180,150 300,40 480,85 C670,135 790,40 960,75 C1140,120 1300,55 1440,90 L1440,190 L0,190 Z"
+          fill="#0d3550"/>
+        <path class="onda"
+          d="M0,125 C190,80 320,160 520,110 C720,60 820,145 1030,110 C1200,80 1310,145 1440,115 L1440,190 L0,190 Z"
+          fill="#123f5c" opacity="0.8"/>
+        <path class="onda"
+          d="M0,150 C200,120 350,180 540,140 C760,100 900,170 1080,135 C1250,105 1350,165 1440,145 L1440,190 L0,190 Z"
+          fill="#071e2d"/>
+      </svg>
+
+      <!-- CONTROLE DE SOM -->
+      <div class="audio-controle">
+        <button
+          class="audio-botao"
+          id="audioBotao"
+          type="button"
+          aria-label="Ativar som do rio"
+          aria-pressed="false"
+        >
+          <svg class="audio-icone" id="audioIcone" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 8c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/>
+            <path d="M3 13c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/>
+            <path d="M3 18c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/>
+          </svg>
+
+          <span id="audioTexto">Ouvir o rio</span>
+        </button>
+      </div>
+
+      <audio id="somRio" loop preload="none">
+        <source src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+      </audio>
+
+    </section>
+
+    <!-- INTRODUÇÃO -->
+    <section class="introducao" id="introducao">
+      <div class="conteudo revelar">
+
+        <p class="etiqueta">CORRENTEZA · APRESENTAÇÃO</p>
+
+        <h2 class="titulo-secao">
+          Outras formas de representar o Sertão
+        </h2>
+
+        <div class="texto-introducao">
+          <p>
+            Entre duas margens, uma só correnteza. Um convite a olhar
+            para o Sertão a partir de outras perspectivas, narrativas
+            e experiências.
+          </p>
+
+          <p>
+            Este espaço nasce do desejo de ampliar as formas de
+            representar o território, reconhecendo a pluralidade
+            de histórias, paisagens e sujeitos que o constituem.
+          </p>
         </div>
-    </figure>
 
+      </div>
+    </section>
 
-    <div class="story-block reveal">
-        <p>
-            Continue aqui a narrativa. Neste ponto, podemos
-            inserir uma fotografia histórica, uma memória
-            ou um registro que dialogue com o conteúdo.
-        </p>
+    <!-- TERRITÓRIO -->
+    <section class="secao" id="territorio">
+      <div class="secao-conteudo revelar">
 
-        <p>
-            Os parágrafos devem manter o texto original,
-            sem serem fragmentados artificialmente.
-        </p>
-    </div>
+        <p class="etiqueta">01 · TERRITÓRIO</p>
 
+        <p class="secao-numero">01</p>
 
-    <!-- GALERIA -->
-    <div class="gallery reveal">
+        <h2 class="secao-titulo">
+          Um território, muitas histórias
+        </h2>
 
-        <figure class="gallery-item">
-            <div class="media">
-                <div class="media-placeholder">FOTOGRAFIA 01</div>
-            </div>
-            <figcaption class="media-caption">
-                Legenda e crédito da fotografia.
-            </figcaption>
-        </figure>
+        <div class="secao-texto">
+          <p>
+            O Sertão não cabe em uma única imagem. É território
+            vivido, construído e transformado por diferentes
+            experiências e modos de existência.
+          </p>
 
-        <figure class="gallery-item">
-            <div class="media">
-                <div class="media-placeholder">FOTOGRAFIA 02</div>
-            </div>
-            <figcaption class="media-caption">
-                Legenda e crédito da fotografia.
-            </figcaption>
-        </figure>
+          <p>
+            Aqui, a proposta é deslocar os olhares habituais e
+            reconhecer outras maneiras de narrar e representar
+            esse espaço.
+          </p>
+        </div>
 
-        <figure class="gallery-item">
-            <div class="media">
-                <div class="media-placeholder">FOTOGRAFIA 03</div>
-            </div>
-            <figcaption class="media-caption">
-                Legenda e crédito da fotografia.
-            </figcaption>
-        </figure>
+        <div class="imagem-editorial">
+          Espaço reservado para fotografia ou imagem do território
+        </div>
 
-    </div>
-
-
-    <div class="story-block reveal">
-        <p>
-            Mais um bloco de texto da reportagem.
-            A alternância entre texto e fotografia
-            ajuda a construir o ritmo da leitura.
-        </p>
-    </div>
-
+      </div>
+    </section>
 
     <!-- DESTAQUE -->
-    <div class="quote reveal">
-        <p>
-            O TERRITÓRIO TAMBÉM É FEITO
-            DE <span>HISTÓRIAS.</span>
+    <section class="destaque revelar">
+      <div class="destaque-conteudo">
+
+        <p class="destaque-frase">
+          O Sertão é também aquilo que contamos sobre ele.
         </p>
-    </div>
 
-
-    <div class="story-block reveal">
-        <p>
-            Continuação da reportagem. Aqui podemos inserir
-            outro trecho do texto, acompanhado de uma imagem
-            ou de uma legenda contextual.
+        <p class="destaque-assinatura">
+          CORRENTEZA — OUTRAS FORMAS DE REPRESENTAR O SERTÃO
         </p>
-    </div>
 
-</section>
+      </div>
+    </section>
 
+    <!-- NARRATIVAS -->
+    <section class="secao" id="narrativas">
+      <div class="secao-conteudo revelar">
 
-<!-- CHAMADA PARA A PRÓXIMA SEÇÃO -->
-<section class="next-section reveal" id="margem">
+        <p class="etiqueta">02 · NARRATIVAS</p>
 
-    <span class="eyebrow">01 — OUTRAS FORMAS DE OCUPAR</span>
+        <p class="secao-numero">02</p>
 
-    <h2>À margem<br>do palco.</h2>
+        <h2 class="secao-titulo">
+          Vozes, memórias e paisagens
+        </h2>
 
-    <a href="#linha">
-        CONTINUE A TRAVESSIA
-        <span>↗</span>
-    </a>
+        <div class="secao-texto">
+          <p>
+            Cada narrativa abre uma possibilidade de perceber
+            o território. As experiências individuais e coletivas
+            revelam dimensões que nem sempre aparecem nas
+            representações mais conhecidas do Sertão.
+          </p>
 
-</section>
-
-
-<!-- LINHA DO TEMPO -->
-<section class="section" id="linha">
-
-    <div class="section-header reveal">
-        <span class="section-number">02 — MEMÓRIA</span>
-        <h2>Linha do<br>tempo.</h2>
-    </div>
-
-    <div class="section-content">
-        <div class="story-block">
-            <p>
-                Conteúdo da linha do tempo conforme a reportagem.
-                Os acontecimentos, datas e imagens serão inseridos
-                a partir do material original.
-            </p>
-        </div>
-    </div>
-
-</section>
-
-
-<!-- NÚCLEO BIRUTA -->
-<section class="section" id="biruta">
-
-    <div class="section-header reveal">
-        <span class="section-number">03 — COLETIVOS E EXPRESSÕES</span>
-        <h2>Núcleo<br>Biruta.</h2>
-    </div>
-
-    <div class="section-content">
-        <div class="media media-wide">
-            <div class="media-placeholder">IMAGEM DO NÚCLEO BIRUTA</div>
-        </div>
-    </div>
-
-</section>
-
-
-<!-- COLETIVO ABDIAS -->
-<section class="section" id="abdias">
-
-    <div class="section-header reveal">
-        <span class="section-number">04 — COLETIVOS E EXPRESSÕES</span>
-        <h2>Coletivo<br>Abdias.</h2>
-    </div>
-
-    <div class="section-content">
-        <div class="media media-wide">
-            <div class="media-placeholder">IMAGEM DO COLETIVO ABDIAS</div>
-        </div>
-    </div>
-
-</section>
-
-
-<!-- CAATINGAYRO -->
-<section class="section" id="caatingayro">
-
-    <div class="section-header reveal">
-        <span class="section-number">05 — COLETIVOS E EXPRESSÕES</span>
-        <h2>Caatingayro.</h2>
-    </div>
-
-    <div class="section-content">
-        <div class="media media-wide">
-            <div class="media-placeholder">IMAGEM CAATINGAYRO</div>
-        </div>
-    </div>
-
-</section>
-
-
-<!-- ARTISTAS -->
-<section class="section" id="artistas">
-
-    <div class="section-header reveal">
-        <span class="section-number">06 — QUEM FAZ</span>
-        <h2>Artistas.</h2>
-    </div>
-
-    <div class="section-content">
-        <div class="story-block">
-            <p>
-                Espaço para apresentação dos artistas e de suas
-                trajetórias, conforme o conteúdo da reportagem.
-            </p>
-        </div>
-    </div>
-
-</section>
-
-
-<!-- LUGARES -->
-<section class="section" id="lugares">
-
-    <div class="section-header reveal">
-        <span class="section-number">07 — TERRITÓRIO</span>
-        <h2>Lugares.</h2>
-    </div>
-
-    <div class="section-content">
-        <div class="media media-wide">
-            <div class="media-placeholder">IMAGENS DOS LUGARES</div>
-        </div>
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- ENCERRAMENTO -->
-<footer class="footer">
-
-    <div class="footer-top">
-
-        <div>
-            <h2 class="footer-title">CORRENTEZA.</h2>
-
-            <p class="footer-subtitle">
-                OUTRAS FORMAS DE REPRESENTAR O SERTÃO
-            </p>
+          <p>
+            É na diversidade dessas vozes que outras imagens
+            e sentidos podem emergir.
+          </p>
         </div>
 
-        <div class="footer-credits">
-            <p><strong>Autora:</strong> Cibelle Vieira</p>
-            <p><strong>Orientação:</strong> Raiane Sousa</p>
-            <p><strong>Design e desenvolvimento do site:</strong> Jenifer Silva</p>
+        <div class="imagem-editorial">
+          Espaço reservado para fotografia, vídeo ou produção visual
         </div>
 
-    </div>
+      </div>
+    </section>
 
-    <div class="footer-bottom">
+    <!-- LINHA DO TEMPO -->
+    <section class="linha-tempo">
+      <div class="linha-tempo-conteudo revelar">
+
+        <p class="etiqueta">03 · PERCURSO</p>
+
+        <h2 class="secao-titulo">
+          Uma travessia em movimento
+        </h2>
+
+        <div class="linha-tempo-item">
+          <p class="linha-tempo-data">01</p>
+          <p class="linha-tempo-descricao">
+            O encontro com o território e com as diferentes
+            formas de percebê-lo.
+          </p>
+        </div>
+
+        <div class="linha-tempo-item">
+          <p class="linha-tempo-data">02</p>
+          <p class="linha-tempo-descricao">
+            O reconhecimento das narrativas, memórias e
+            experiências que atravessam o Sertão.
+          </p>
+        </div>
+
+        <div class="linha-tempo-item">
+          <p class="linha-tempo-data">03</p>
+          <p class="linha-tempo-descricao">
+            A construção de outras possibilidades de representação.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+    <div class="rodape-conteudo">
+
+      <h2 class="rodape-titulo">CORRENTEZA</h2>
+
+      <p class="rodape-subtitulo">
+        Entre duas margens, uma só correnteza.
+      </p>
+
+      <div class="rodape-creditos">
         <p>
-            Long-form jornalístico | Trabalho de Conclusão de Curso
-            — Graduação em Jornalismo, Universidade do Estado da Bahia (UNEB).
+          Outras formas de representar o Sertão.
         </p>
-        <p>© 2026 — CORRENTEZA</p>
+
+        <p>
+          Projeto desenvolvido por Cibelle Vieira.
+        </p>
+
+        <p>
+          © 2026 · Todos os direitos reservados.
+        </p>
+      </div>
+
     </div>
+  </footer>
 
-</footer>
+  <script>
+    /* =========================
+       CONTROLE DO SOM DO RIO
+    ========================= */
 
+    const somRio = document.getElementById("somRio");
+    const audioBotao = document.getElementById("audioBotao");
+    const audioTexto = document.getElementById("audioTexto");
 
-<script>
+    audioBotao.addEventListener("click", async () => {
+      if (somRio.paused) {
+        try {
+          await somRio.play();
 
-// MENU MOBILE
+          audioTexto.textContent = "Silenciar rio";
+          audioBotao.classList.add("ativo");
+          audioBotao.setAttribute("aria-label", "Desativar som do rio");
+          audioBotao.setAttribute("aria-pressed", "true");
 
-const menuToggle = document.getElementById('menuToggle');
-const menu = document.getElementById('menu');
-
-menuToggle.addEventListener('click', () => {
-    const aberto = menu.classList.toggle('open');
-
-    menuToggle.setAttribute('aria-expanded', aberto);
-    menuToggle.setAttribute(
-        'aria-label',
-        aberto ? 'Fechar menu' : 'Abrir menu'
-    );
-
-    menuToggle.textContent = aberto ? '×' : '☰';
-});
-
-menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        menu.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Abrir menu');
-        menuToggle.textContent = '☰';
-    });
-});
-
-
-// PROGRESSO DE LEITURA
-
-const progress = document.getElementById('progress');
-
-function updateProgress() {
-    const altura = document.documentElement.scrollHeight - window.innerHeight;
-    const porcentagem = altura > 0
-        ? (window.scrollY / altura) * 100
-        : 0;
-
-    progress.style.width = porcentagem + '%';
-}
-
-window.addEventListener('scroll', updateProgress, { passive: true });
-
-
-// ANIMAÇÕES AO ROLAR
-
-const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+        } catch (erro) {
+          console.error("Não foi possível reproduzir o áudio:", erro);
+          audioTexto.textContent = "Tente novamente";
         }
+
+      } else {
+        somRio.pause();
+
+        audioTexto.textContent = "Ouvir o rio";
+        audioBotao.classList.remove("ativo");
+        audioBotao.setAttribute("aria-label", "Ativar som do rio");
+        audioBotao.setAttribute("aria-pressed", "false");
+      }
     });
 
-}, {
-    threshold: 0.12
-});
+    /* =========================
+       BARRA DE PROGRESSO
+    ========================= */
 
-document.querySelectorAll('.reveal').forEach(element => {
-    observer.observe(element);
-});
+    const progressBar = document.getElementById("progressBar");
 
-</script>
+    window.addEventListener("scroll", () => {
+      const alturaTotal =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const progresso =
+        alturaTotal > 0 ? (window.scrollY / alturaTotal) * 100 : 0;
+
+      progressBar.style.width = progresso + "%";
+    });
+
+    /* =========================
+       ANIMAÇÃO DE ENTRADA
+    ========================= */
+
+    const elementos = document.querySelectorAll(".revelar");
+
+    const observador = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add("visivel");
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    elementos.forEach((elemento) => {
+      observador.observe(elemento);
+    });
+  </script>
 
 </body>
 </html>
