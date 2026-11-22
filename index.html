@@ -4,18 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#000000">
 
-  <title>Correnteza — Outras formas de representar o Sertão</title>
+  <title>Correnteza — Entre duas margens</title>
 
   <style>
-    /* =========================
-       FONTES LOCAIS
-    ========================= */
+    /* ==========================================
+       FONTES LOCAIS — CAMINHOS CORRIGIDOS
+    ========================================== */
 
     @font-face {
       font-family: "Cubao";
-      src: url("./fontes/cubao-free/Cubao-Free_Regular.otf") format("opentype");
+      src: url("./fontes/cubao-free/Cubao_Free_Regular.otf") format("opentype");
       font-weight: normal;
       font-style: normal;
       font-display: swap;
@@ -37,17 +36,17 @@
       font-display: swap;
     }
 
-    /* =========================
+    /* ==========================================
        CONFIGURAÇÕES GERAIS
-    ========================= */
+    ========================================== */
 
     :root {
-      --preto: #000000;
-      --azul: #0d3550;
-      --azul-claro: #78a8c1;
+      --preto: #08090b;
+      --azul: #397db5;
+      --azul-claro: #9bcde9;
       --branco: #f0ede9;
-      --cinza: #aaa8a4;
-      --largura: 1180px;
+      --cinza: #aaa9a6;
+      --borda: rgba(155, 205, 233, 0.18);
     }
 
     * {
@@ -58,14 +57,22 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
     }
 
     body {
       background: var(--preto);
       color: var(--branco);
-      font-family: "Morisawa", Arial, sans-serif;
+      font-family: "Morisawa", sans-serif;
       overflow-x: hidden;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font-family: inherit;
     }
 
     a {
@@ -73,133 +80,212 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
-    }
-
     ::selection {
       background: var(--azul);
       color: white;
     }
 
-    /* =========================
-       BARRA DE PROGRESSO
-    ========================= */
+    /* ==========================================
+       BARRA SUPERIOR
+    ========================================== */
 
-    .progress-bar {
+    .barra-progresso {
       position: fixed;
       top: 0;
       left: 0;
-      width: 0%;
       height: 3px;
+      width: 0;
       background: var(--azul-claro);
-      z-index: 2000;
+      z-index: 1000;
+      transition: width 0.1s;
     }
 
-    /* =========================
-       MENU
-    ========================= */
-
-    .menu {
+    header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 68px;
-      padding: 0 5%;
+      z-index: 100;
+      background: rgba(8, 9, 11, 0.93);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .cabecalho {
+      max-width: 1600px;
+      margin: auto;
+      min-height: 85px;
+      padding: 18px 4%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-      z-index: 1000;
+      gap: 25px;
     }
 
-    .menu-logo {
+    .logo {
       font-family: "Cubao", sans-serif;
-      font-size: 24px;
+      font-size: 31px;
       letter-spacing: 1px;
       color: var(--branco);
+      cursor: pointer;
+      flex-shrink: 0;
     }
 
-    .menu-links {
-      display: flex;
-      align-items: center;
-      gap: 35px;
-    }
-
-    .menu-links a {
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--branco);
-      transition: color 0.3s;
-    }
-
-    .menu-links a:hover {
+    .logo span {
       color: var(--azul-claro);
     }
 
-    /* =========================
-       CAPA
-    ========================= */
-
-    .capa {
-      position: relative;
-      min-height: 100vh;
-      min-height: 100svh;
-      width: 100%;
-      background: var(--preto);
-      overflow: hidden;
+    nav {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
-      padding: 110px 5% 80px;
+      justify-content: flex-end;
+      gap: 20px;
     }
 
-    .capa-conteudo {
-      width: 100%;
-      max-width: var(--largura);
+    nav button {
+      border: none;
+      background: transparent;
+      color: var(--cinza);
+      cursor: pointer;
+      font-family: "Gordita", sans-serif;
+      font-size: 11px;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+
+    nav button:hover,
+    nav button.ativo {
+      color: var(--azul-claro);
+    }
+
+    nav button.ativo {
+      text-decoration: underline;
+      text-underline-offset: 8px;
+    }
+
+    .menu-mobile {
+      display: none;
+      border: 1px solid var(--borda);
+      background: transparent;
+      color: var(--branco);
+      padding: 9px 13px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* ==========================================
+       SISTEMA DE PÁGINAS
+    ========================================== */
+
+    .pagina {
+      display: none;
+      min-height: 100vh;
+      padding-top: 85px;
+      animation: aparecer 0.65s ease;
+    }
+
+    .pagina.ativa {
+      display: block;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================================
+       CAPA
+    ========================================== */
+
+    .capa {
+      min-height: calc(100vh - 85px);
       position: relative;
-      z-index: 3;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 75px 20px 100px;
+      isolation: isolate;
+    }
+
+    .capa::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          ellipse at 50% 58%,
+          rgba(35, 92, 137, 0.16),
+          transparent 65%
+        );
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .capa-conteudo {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: 1250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .capa-selo {
+      font-family: "Gordita", sans-serif;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--azul-claro);
+      margin-bottom: 30px;
     }
 
     .capa-titulo {
-      position: relative;
-      z-index: 3;
       font-family: "Cubao", sans-serif;
-      font-size: clamp(65px, 12vw, 150px);
       font-weight: normal;
-      line-height: 0.82;
-      letter-spacing: -3px;
-      color: var(--branco);
+      font-size: clamp(65px, 11vw, 170px);
+      line-height: 0.91;
+      letter-spacing: 1px;
       text-transform: uppercase;
+      max-width: 1200px;
+      position: relative;
+      z-index: 4;
     }
 
     .capa-titulo span {
       display: block;
     }
 
-    .capa-subtitulo {
-      margin-top: 25px;
-      font-family: "Morisawa", sans-serif;
-      font-size: clamp(14px, 2vw, 23px);
-      letter-spacing: 5px;
-      text-transform: uppercase;
+    .capa-titulo .azul {
       color: var(--azul-claro);
     }
 
-    .capa-ilustracao {
-      width: min(85%, 660px);
+    .capa-subtitulo {
+      font-family: "Morisawa", sans-serif;
+      font-weight: normal;
+      font-size: clamp(15px, 2vw, 25px);
+      letter-spacing: 5px;
       margin-top: 25px;
       position: relative;
+      z-index: 4;
+    }
+
+    .capa-ilustracao {
+      width: min(690px, 88vw);
+      margin-top: -5px;
+      position: relative;
       z-index: 2;
-      animation: entradaIlustracao 1.5s ease both;
     }
 
     .capa-ilustracao img {
@@ -207,344 +293,414 @@
       width: 100%;
       height: auto;
       object-fit: contain;
+      filter: drop-shadow(0 20px 55px rgba(0,0,0,0.45));
+      animation: flutuar 7s ease-in-out infinite;
+    }
+
+    @keyframes flutuar {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-13px);
+      }
     }
 
     .capa-autoria {
-      margin-top: 12px;
       font-family: "Gordita", sans-serif;
-      font-size: 12px;
-      letter-spacing: 2px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-top: 15px;
       color: var(--branco);
-      text-transform: uppercase;
+      position: relative;
+      z-index: 4;
     }
 
-    .capa-chamada {
-      margin-top: 65px;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--cinza);
-      animation: pulsar 2s infinite;
-    }
-
-    .capa-chamada span {
-      display: block;
-      margin-top: 12px;
-      font-size: 20px;
+    .capa-descer {
+      margin-top: 45px;
+      border: none;
+      background: transparent;
       color: var(--azul-claro);
+      cursor: pointer;
+      font-family: "Gordita", sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.3s;
     }
 
-    /* =========================
-       ONDAS DA CAPA
-    ========================= */
+    .capa-descer:hover {
+      transform: translateY(5px);
+    }
+
+    .capa-descer span {
+      font-size: 27px;
+    }
+
+    /* ==========================================
+       ONDAS
+    ========================================== */
 
     .ondas {
       position: absolute;
+      bottom: -1px;
       left: 0;
-      bottom: -2px;
       width: 100%;
-      height: 190px;
-      z-index: 1;
-      opacity: 0.75;
+      height: 130px;
+      overflow: hidden;
       pointer-events: none;
+      opacity: 0.45;
     }
 
-    .onda {
-      animation: movimentoOnda 12s ease-in-out infinite alternate;
-      transform-origin: center;
-    }
-
-    .onda:nth-child(2) {
-      animation-duration: 16s;
-      animation-direction: alternate-reverse;
-    }
-
-    .onda:nth-child(3) {
-      animation-duration: 20s;
-    }
-
-    /* =========================
-       CONTROLE DE ÁUDIO
-    ========================= */
-
-    .audio-controle {
+    .ondas svg {
       position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      animation: moverOnda 14s linear infinite;
+    }
+
+    .ondas svg:nth-child(2) {
+      animation-duration: 20s;
+      animation-direction: reverse;
+      opacity: 0.5;
+    }
+
+    @keyframes moverOnda {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ==========================================
+       CONTROLE DE SOM
+    ========================================== */
+
+    .controle-som {
+      position: fixed;
+      right: 28px;
       bottom: 28px;
-      right: 5%;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .audio-botao {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 11px 16px;
-      border: 1px solid rgba(240, 237, 233, 0.45);
-      border-radius: 40px;
-      background: rgba(0, 0, 0, 0.55);
+      z-index: 120;
+      border: 1px solid rgba(155,205,233,0.35);
+      background: rgba(8,9,11,0.9);
       color: var(--branco);
+      border-radius: 50px;
+      padding: 13px 18px;
+      display: none;
+      align-items: center;
+      gap: 10px;
       cursor: pointer;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(8px);
+      font-family: "Gordita", sans-serif;
+      font-size: 11px;
+      transition: background 0.3s;
     }
 
-    .audio-botao:hover {
-      border-color: var(--azul-claro);
+    .controle-som.visivel {
+      display: flex;
+    }
+
+    .controle-som:hover {
+      background: #17354c;
+    }
+
+    .som-icone {
+      font-size: 17px;
+    }
+
+    /* ==========================================
+       CONTEÚDO GERAL
+    ========================================== */
+
+    .conteudo {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 7%;
+    }
+
+    .pagina-abertura {
+      padding: 105px 7% 75px;
+      max-width: 1400px;
+      margin: auto;
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .pagina-numero {
+      font-family: "Gordita", sans-serif;
       color: var(--azul-claro);
-      background: rgba(13, 53, 80, 0.45);
-    }
-
-    .audio-icone {
-      width: 17px;
-      height: 17px;
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 25px;
       display: block;
     }
 
-    .audio-botao.ativo {
-      border-color: var(--azul-claro);
-      color: var(--azul-claro);
-    }
-
-    /* =========================
-       INTRODUÇÃO
-    ========================= */
-
-    .introducao {
-      position: relative;
-      padding: 150px 8%;
-      background: var(--preto);
-    }
-
-    .conteudo {
-      max-width: var(--largura);
-      margin: auto;
-    }
-
-    .etiqueta {
-      color: var(--azul-claro);
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+    .pagina-titulo {
+      font-family: "Cubao", sans-serif;
+      font-weight: normal;
+      font-size: clamp(65px, 11vw, 145px);
+      line-height: 0.95;
       margin-bottom: 30px;
     }
 
+    .pagina-descricao {
+      font-family: "Morisawa", sans-serif;
+      font-size: clamp(17px, 2vw, 23px);
+      line-height: 1.7;
+      color: var(--cinza);
+      max-width: 750px;
+    }
+
     .titulo-secao {
-      max-width: 900px;
       font-family: "Cubao", sans-serif;
+      font-size: clamp(42px, 6vw, 85px);
       font-weight: normal;
-      font-size: clamp(42px, 7vw, 85px);
-      line-height: 0.95;
-      text-transform: uppercase;
-      margin-bottom: 45px;
-    }
-
-    .texto-introducao {
-      max-width: 720px;
-      font-size: clamp(17px, 2vw, 21px);
-      line-height: 1.9;
-      color: #d0ceca;
-    }
-
-    .texto-introducao p + p {
-      margin-top: 25px;
-    }
-
-    /* =========================
-       SEÇÕES EDITORIAIS
-    ========================= */
-
-    .secao {
-      padding: 120px 8%;
-      border-top: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .secao-conteudo {
-      max-width: var(--largura);
-      margin: auto;
-    }
-
-    .secao-numero {
-      font-family: "Cubao", sans-serif;
-      font-size: clamp(60px, 10vw, 120px);
+      margin-bottom: 35px;
       line-height: 1;
-      color: var(--azul);
-      margin-bottom: 25px;
     }
 
-    .secao-titulo {
-      max-width: 850px;
-      font-family: "Cubao", sans-serif;
-      font-size: clamp(40px, 7vw, 80px);
-      line-height: 0.95;
-      font-weight: normal;
-      text-transform: uppercase;
-      margin-bottom: 40px;
-    }
-
-    .secao-texto {
-      max-width: 740px;
-      color: #d0ceca;
+    .texto {
+      font-family: "Morisawa", sans-serif;
       font-size: 18px;
-      line-height: 1.9;
+      line-height: 1.95;
+      color: #d0d0cf;
+      max-width: 790px;
     }
 
-    .secao-texto p + p {
-      margin-top: 25px;
+    .texto p + p {
+      margin-top: 24px;
     }
-
-    /* =========================
-       DESTAQUE
-    ========================= */
 
     .destaque {
-      position: relative;
-      padding: 130px 8%;
-      background: var(--azul);
-      overflow: hidden;
-    }
-
-    .destaque-conteudo {
-      max-width: 1000px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
+      padding: 110px 7%;
+      text-align: center;
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+      background: #0c1319;
     }
 
     .destaque-frase {
       font-family: "Cubao", sans-serif;
-      font-size: clamp(38px, 7vw, 82px);
-      line-height: 1;
-      text-transform: uppercase;
-      color: var(--branco);
-    }
-
-    .destaque-assinatura {
-      margin-top: 35px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-    }
-
-    /* =========================
-       ESPAÇOS PARA IMAGENS
-    ========================= */
-
-    .imagem-editorial {
-      width: 100%;
-      min-height: 420px;
-      margin: 60px 0;
-      background: #101820;
-      border: 1px solid rgba(255,255,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 30px;
-      color: #8da8b7;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .imagem-editorial img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* =========================
-       LINHA DO TEMPO
-    ========================= */
-
-    .linha-tempo {
-      padding: 130px 8%;
-      background: #05090d;
-    }
-
-    .linha-tempo-conteudo {
-      max-width: var(--largura);
+      font-weight: normal;
+      font-size: clamp(35px, 6vw, 80px);
+      line-height: 1.15;
+      max-width: 1100px;
       margin: auto;
     }
 
-    .linha-tempo-item {
+    .destaque-frase span {
+      color: var(--azul-claro);
+    }
+
+    /* ==========================================
+       CARDS E NAVEGAÇÃO
+    ========================================== */
+
+    .grade {
       display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 35px;
-      padding: 35px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 55px;
+    }
+
+    .card {
+      border: 1px solid var(--borda);
+      background: #0d1115;
+      padding: 35px;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.35s;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      width: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: var(--azul-claro);
+      background: #111c25;
+    }
+
+    .card-numero {
+      font-family: "Gordita", sans-serif;
+      font-size: 12px;
+      color: var(--azul-claro);
+    }
+
+    .card-titulo {
+      font-family: "Cubao", sans-serif;
+      font-size: 37px;
+      font-weight: normal;
+      line-height: 1.05;
+    }
+
+    .card-seta {
+      font-size: 25px;
+      color: var(--azul-claro);
+      align-self: flex-end;
+    }
+
+    /* ==========================================
+       IMAGENS E GALERIA
+    ========================================== */
+
+    .imagem-destaque {
+      width: 100%;
+      max-height: 680px;
+      object-fit: contain;
+      display: block;
+      margin: 55px auto;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      margin-top: 55px;
+    }
+
+    .galeria-item {
+      border: 1px solid var(--borda);
+      overflow: hidden;
+      background: #101419;
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 350px;
+      object-fit: contain;
+      display: block;
+      padding: 20px;
+      transition: transform 0.5s;
+    }
+
+    .galeria-item:hover img {
+      transform: scale(1.035);
+    }
+
+    .galeria-legenda {
+      padding: 20px;
+      font-family: "Gordita", sans-serif;
+      font-size: 12px;
+      color: var(--cinza);
+      border-top: 1px solid var(--borda);
+    }
+
+    /* ==========================================
+       LINHA DO TEMPO
+    ========================================== */
+
+    .linha-tempo {
+      position: relative;
+      margin-top: 60px;
+      border-left: 1px solid var(--azul);
+      padding-left: 40px;
+    }
+
+    .linha-tempo-item {
+      position: relative;
+      padding: 0 0 65px;
+    }
+
+    .linha-tempo-item::before {
+      content: "";
+      position: absolute;
+      left: -47px;
+      top: 9px;
+      width: 13px;
+      height: 13px;
+      background: var(--azul-claro);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(155,205,233,0.4);
     }
 
     .linha-tempo-data {
       font-family: "Cubao", sans-serif;
-      font-size: 30px;
+      font-size: 35px;
       color: var(--azul-claro);
+      margin-bottom: 12px;
     }
 
-    .linha-tempo-descricao {
-      color: #d0ceca;
+    .linha-tempo-texto {
       font-size: 17px;
       line-height: 1.8;
+      color: var(--cinza);
+      max-width: 650px;
     }
 
-    /* =========================
+    /* ==========================================
+       BOTÕES
+    ========================================== */
+
+    .botao-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 40px;
+      border: 1px solid var(--azul-claro);
+      background: transparent;
+      padding: 17px 25px;
+      color: var(--branco);
+      cursor: pointer;
+      font-family: "Gordita", sans-serif;
+      font-size: 12px;
+      transition: 0.3s;
+    }
+
+    .botao-link:hover {
+      background: var(--azul);
+      border-color: var(--azul);
+    }
+
+    /* ==========================================
        RODAPÉ
-    ========================= */
+    ========================================== */
 
-    .rodape {
-      padding: 100px 8% 40px;
-      background: #000;
-      border-top: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .rodape-conteudo {
-      max-width: var(--largura);
-      margin: auto;
+    footer {
+      border-top: 1px solid var(--borda);
+      padding: 70px 7% 35px;
+      background: #08090b;
     }
 
     .rodape-titulo {
       font-family: "Cubao", sans-serif;
-      font-size: clamp(55px, 10vw, 120px);
-      line-height: 0.9;
-      color: var(--branco);
-    }
-
-    .rodape-subtitulo {
-      margin-top: 20px;
-      font-size: 12px;
-      letter-spacing: 3px;
+      font-size: clamp(50px, 8vw, 110px);
+      font-weight: normal;
       color: var(--azul-claro);
-      text-transform: uppercase;
     }
 
-    .rodape-creditos {
-      margin-top: 100px;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.15);
+    .rodape-info {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 25px;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 35px;
       color: var(--cinza);
+      font-family: "Gordita", sans-serif;
       font-size: 11px;
       line-height: 1.8;
     }
 
-    /* =========================
-       ANIMAÇÕES
-    ========================= */
+    /* ==========================================
+       ANIMAÇÃO AO ROLAR
+    ========================================== */
 
     .revelar {
       opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
+      transform: translateY(30px);
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
     }
 
     .revelar.visivel {
@@ -552,118 +708,84 @@
       transform: translateY(0);
     }
 
-    @keyframes movimentoOnda {
-      from {
-        transform: translateX(-2%) scaleY(1);
-      }
-      to {
-        transform: translateX(2%) scaleY(1.08);
-      }
-    }
-
-    @keyframes entradaIlustracao {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes pulsar {
-      0%, 100% {
-        opacity: 0.45;
-      }
-      50% {
-        opacity: 1;
-      }
-    }
-
-    /* =========================
+    /* ==========================================
        RESPONSIVIDADE
-    ========================= */
+    ========================================== */
 
-    @media (max-width: 700px) {
-      .menu {
-        height: 60px;
-        padding: 0 5%;
+    @media (max-width: 1100px) {
+      .cabecalho {
+        flex-wrap: wrap;
       }
 
-      .menu-logo {
-        font-size: 20px;
+      nav {
+        gap: 15px;
       }
 
-      .menu-links {
-        gap: 14px;
+      nav button {
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .cabecalho {
+        min-height: 75px;
       }
 
-      .menu-links a {
-        font-size: 9px;
-        letter-spacing: 0.8px;
+      .menu-mobile {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 0;
+        gap: 0;
+      }
+
+      nav.aberto {
+        display: flex;
+      }
+
+      nav button {
+        text-align: left;
+        padding: 14px 5px;
+        font-size: 12px;
+        border-bottom: 1px solid var(--borda);
+      }
+
+      .pagina {
+        padding-top: 75px;
       }
 
       .capa {
-        padding: 110px 5% 100px;
+        min-height: calc(100vh - 75px);
       }
 
       .capa-titulo {
-        font-size: clamp(55px, 15vw, 95px);
-        letter-spacing: -1px;
+        font-size: clamp(57px, 12vw, 100px);
       }
 
       .capa-subtitulo {
-        font-size: 12px;
-        letter-spacing: 3px;
+        letter-spacing: 2px;
       }
 
-      .capa-ilustracao {
-        width: 100%;
-        margin-top: 35px;
-      }
-
-      .capa-chamada {
-        margin-top: 45px;
-      }
-
-      .audio-controle {
-        right: 50%;
-        transform: translateX(50%);
-        bottom: 18px;
-      }
-
-      .audio-botao {
-        font-size: 9px;
-        padding: 9px 13px;
-      }
-
-      .introducao,
-      .secao,
-      .linha-tempo {
-        padding: 90px 7%;
-      }
-
-      .destaque {
-        padding: 90px 7%;
-      }
-
-      .imagem-editorial {
-        min-height: 260px;
-      }
-
-      .linha-tempo-item {
+      .grade,
+      .galeria {
         grid-template-columns: 1fr;
-        gap: 10px;
       }
 
-      .rodape {
-        padding: 80px 7% 30px;
+      .conteudo {
+        padding: 75px 7%;
       }
 
-      .rodape-creditos {
-        margin-top: 65px;
-        flex-direction: column;
+      .pagina-abertura {
+        padding: 80px 7% 55px;
+      }
+
+      .galeria-item img {
+        height: 300px;
       }
     }
 
@@ -671,9 +793,9 @@
       *,
       *::before,
       *::after {
-        scroll-behavior: auto !important;
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
@@ -681,337 +803,1055 @@
 
 <body>
 
-  <div class="progress-bar" id="progressBar"></div>
+  <div class="barra-progresso" id="barraProgresso"></div>
 
-  <!-- MENU -->
-  <header class="menu">
-    <a href="#inicio" class="menu-logo">CORRENTEZA</a>
+  <!-- ========================================
+       CABEÇALHO
+  ======================================== -->
 
-    <nav class="menu-links">
-      <a href="#introducao">Apresentação</a>
-      <a href="#territorio">Território</a>
-      <a href="#narrativas">Narrativas</a>
-    </nav>
+  <header>
+    <div class="cabecalho">
+
+      <a href="#inicio" class="logo" data-pagina="inicio">
+        CORRENTE<span>ZA</span>
+      </a>
+
+      <button
+        class="menu-mobile"
+        id="botaoMenu"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <nav id="menuPrincipal" aria-label="Navegação principal">
+
+        <button type="button" data-pagina="inicio" class="ativo">
+          Início
+        </button>
+
+        <button type="button" data-pagina="a-margem">
+          À Margem
+        </button>
+
+        <button type="button" data-pagina="linha-do-tempo">
+          Linha do Tempo
+        </button>
+
+        <button type="button" data-pagina="nucleo-biruta">
+          Núcleo Biruta
+        </button>
+
+        <button type="button" data-pagina="coletivo-abdias">
+          Coletivo Abdias
+        </button>
+
+        <button type="button" data-pagina="caatingayro">
+          Caatingayro
+        </button>
+
+        <button type="button" data-pagina="artistas">
+          Artistas
+        </button>
+
+        <button type="button" data-pagina="lugares">
+          Lugares
+        </button>
+
+      </nav>
+    </div>
   </header>
+
+  <!-- ========================================
+       PÁGINA 1 — INÍCIO
+  ======================================== -->
 
   <main>
 
-    <!-- CAPA -->
-    <section class="capa" id="inicio">
+    <section class="pagina ativa" id="inicio">
 
-      <div class="capa-conteudo">
+      <div class="capa">
 
-        <h1 class="capa-titulo">
-          <span>ENTRE DUAS</span>
-          <span>MARGENS</span>
-        </h1>
+        <div class="capa-conteudo">
 
-        <p class="capa-subtitulo">
-          UMA SÓ CORRENTEZA
-        </p>
+          <p class="capa-selo">
+            Uma travessia pelo Sertão
+          </p>
 
-        <div class="capa-ilustracao">
-          <img
-            src="./imagens/FOTO DA CAPA.PNG.png"
-            alt="Ilustração de capa da Correnteza"
+          <h1 class="capa-titulo">
+            <span>ENTRE DUAS</span>
+            <span class="azul">MARGENS</span>
+          </h1>
+
+          <h2 class="capa-subtitulo">
+            UMA SÓ CORRENTEZA
+          </h2>
+
+          <!-- IMAGEM DA CAPA — CAMINHO CORRETO -->
+          <div class="capa-ilustracao">
+            <img
+              src="./imagens/IMAGEM DA CAPA.PNG.png"
+              alt="Ilustração principal da capa Correnteza"
+            >
+          </div>
+
+          <p class="capa-autoria">
+            Por Cibelle Vieira
+          </p>
+
+          <button
+            class="capa-descer"
+            type="button"
+            id="botaoDescer"
           >
+            CONHEÇA A CORRENTEZA
+            <span>↓</span>
+          </button>
+
         </div>
 
-        <p class="capa-autoria">
-          Por Cibelle Vieira
-        </p>
+        <div class="ondas" aria-hidden="true">
 
-        <a href="#introducao" class="capa-chamada">
-          Desça para navegar
-          <span>↓</span>
-        </a>
-
-      </div>
-
-      <!-- ONDAS DECORATIVAS -->
-      <svg class="ondas" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true">
-        <path class="onda"
-          d="M0,100 C180,150 300,40 480,85 C670,135 790,40 960,75 C1140,120 1300,55 1440,90 L1440,190 L0,190 Z"
-          fill="#0d3550"/>
-        <path class="onda"
-          d="M0,125 C190,80 320,160 520,110 C720,60 820,145 1030,110 C1200,80 1310,145 1440,115 L1440,190 L0,190 Z"
-          fill="#123f5c" opacity="0.8"/>
-        <path class="onda"
-          d="M0,150 C200,120 350,180 540,140 C760,100 900,170 1080,135 C1250,105 1350,165 1440,145 L1440,190 L0,190 Z"
-          fill="#071e2d"/>
-      </svg>
-
-      <!-- CONTROLE DE SOM -->
-      <div class="audio-controle">
-        <button
-          class="audio-botao"
-          id="audioBotao"
-          type="button"
-          aria-label="Ativar som do rio"
-          aria-pressed="false"
-        >
-          <svg class="audio-icone" id="audioIcone" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 8c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/>
-            <path d="M3 13c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/>
-            <path d="M3 18c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/>
+          <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
+            <path
+              fill="#397db5"
+              d="M0,90 C180,20 360,160 540,90 C720,20 900,160 1080,90 C1260,20 1440,160 1620,90 L1620,180 L0,180 Z"
+            />
           </svg>
 
-          <span id="audioTexto">Ouvir o rio</span>
+          <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
+            <path
+              fill="#9bcde9"
+              d="M0,110 C240,30 480,170 720,110 C960,30 1200,170 1440,110 L1440,180 L0,180 Z"
+            />
+          </svg>
+
+        </div>
+
+      </div>
+
+      <div class="conteudo" id="apresentacao">
+
+        <span class="pagina-numero revelar">
+          01 / APRESENTAÇÃO
+        </span>
+
+        <h2 class="titulo-secao revelar">
+          O QUE É A CORRENTEZA?
+        </h2>
+
+        <div class="texto revelar">
+
+          <p>
+            Entre duas margens, existe um território de encontros,
+            memórias, movimentos e diferentes formas de produzir
+            cultura.
+          </p>
+
+          <p>
+            Correnteza é um espaço de travessia por narrativas,
+            artistas, coletivos e lugares que participam da
+            construção cultural do Sertão.
+          </p>
+
+          <p>
+            Aqui, a navegação é também um convite para conhecer
+            experiências e descobrir outras formas de representar
+            esse território.
+          </p>
+
+        </div>
+
+        <button
+          class="botao-link revelar"
+          type="button"
+          data-pagina="a-margem"
+        >
+          INICIAR A TRAVESSIA →
         </button>
+
       </div>
 
-      <audio id="somRio" loop preload="none">
-        <source src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio.
-      </audio>
+      <div class="destaque">
 
-    </section>
-
-    <!-- INTRODUÇÃO -->
-    <section class="introducao" id="introducao">
-      <div class="conteudo revelar">
-
-        <p class="etiqueta">CORRENTEZA · APRESENTAÇÃO</p>
-
-        <h2 class="titulo-secao">
-          Outras formas de representar o Sertão
+        <h2 class="destaque-frase revelar">
+          O SERTÃO NÃO CABE EM UMA
+          <span>ÚNICA NARRATIVA.</span>
         </h2>
 
-        <div class="texto-introducao">
-          <p>
-            Entre duas margens, uma só correnteza. Um convite a olhar
-            para o Sertão a partir de outras perspectivas, narrativas
-            e experiências.
-          </p>
-
-          <p>
-            Este espaço nasce do desejo de ampliar as formas de
-            representar o território, reconhecendo a pluralidade
-            de histórias, paisagens e sujeitos que o constituem.
-          </p>
-        </div>
-
       </div>
-    </section>
 
-    <!-- TERRITÓRIO -->
-    <section class="secao" id="territorio">
-      <div class="secao-conteudo revelar">
+      <div class="conteudo">
 
-        <p class="etiqueta">01 · TERRITÓRIO</p>
+        <span class="pagina-numero revelar">
+          02 / EXPLORE
+        </span>
 
-        <p class="secao-numero">01</p>
-
-        <h2 class="secao-titulo">
-          Um território, muitas histórias
+        <h2 class="titulo-secao revelar">
+          ESCOLHA SUA TRAVESSIA
         </h2>
 
-        <div class="secao-texto">
-          <p>
-            O Sertão não cabe em uma única imagem. É território
-            vivido, construído e transformado por diferentes
-            experiências e modos de existência.
-          </p>
+        <div class="grade">
 
-          <p>
-            Aqui, a proposta é deslocar os olhares habituais e
-            reconhecer outras maneiras de narrar e representar
-            esse espaço.
-          </p>
-        </div>
+          <button class="card revelar" data-pagina="a-margem">
+            <span class="card-numero">01</span>
+            <span class="card-titulo">À MARGEM</span>
+            <span class="card-seta">↗</span>
+          </button>
 
-        <div class="imagem-editorial">
-          Espaço reservado para fotografia ou imagem do território
+          <button class="card revelar" data-pagina="linha-do-tempo">
+            <span class="card-numero">02</span>
+            <span class="card-titulo">LINHA DO TEMPO</span>
+            <span class="card-seta">↗</span>
+          </button>
+
+          <button class="card revelar" data-pagina="nucleo-biruta">
+            <span class="card-numero">03</span>
+            <span class="card-titulo">NÚCLEO BIRUTA</span>
+            <span class="card-seta">↗</span>
+          </button>
+
+          <button class="card revelar" data-pagina="coletivo-abdias">
+            <span class="card-numero">04</span>
+            <span class="card-titulo">COLETIVO ABDIAS</span>
+            <span class="card-seta">↗</span>
+          </button>
+
+          <button class="card revelar" data-pagina="caatingayro">
+            <span class="card-numero">05</span>
+            <span class="card-titulo">CAATINGAYRO</span>
+            <span class="card-seta">↗</span>
+          </button>
+
+          <button class="card revelar" data-pagina="artistas">
+            <span class="card-numero">06</span>
+            <span class="card-titulo">ARTISTAS</span>
+            <span class="card-seta">↗</span>
+          </button>
+
+          <button class="card revelar" data-pagina="lugares">
+            <span class="card-numero">07</span>
+            <span class="card-titulo">LUGARES</span>
+            <span class="card-seta">↗</span>
+          </button>
+
         </div>
 
       </div>
+
     </section>
 
-    <!-- DESTAQUE -->
-    <section class="destaque revelar">
-      <div class="destaque-conteudo">
+    <!-- ======================================
+         PÁGINA 2 — À MARGEM
+    ======================================= -->
 
-        <p class="destaque-frase">
-          O Sertão é também aquilo que contamos sobre ele.
+    <section class="pagina" id="a-margem">
+
+      <div class="pagina-abertura">
+
+        <span class="pagina-numero">
+          02 / À MARGEM
+        </span>
+
+        <h1 class="pagina-titulo">
+          À MARGEM
+        </h1>
+
+        <p class="pagina-descricao">
+          Outras perspectivas sobre o território,
+          suas histórias e suas representações.
         </p>
 
-        <p class="destaque-assinatura">
-          CORRENTEZA — OUTRAS FORMAS DE REPRESENTAR O SERTÃO
+      </div>
+
+      <div class="conteudo">
+
+        <h2 class="titulo-secao revelar">
+          ENTRE MARGENS
+        </h2>
+
+        <div class="texto revelar">
+
+          <p>
+            O território não é apenas aquilo que aparece nos mapas.
+            Ele também é construído por quem vive, circula,
+            cria e transforma os espaços.
+          </p>
+
+          <p>
+            Esta página apresenta uma abertura para refletir
+            sobre as representações do Sertão e as narrativas
+            que emergem de seus próprios sujeitos.
+          </p>
+
+        </div>
+
+        <img
+          class="imagem-destaque revelar"
+          src="./imagens/ILHA DO FOGO.PNG.png"
+          alt="Ilha do Fogo"
+          loading="lazy"
+        >
+
+        <button
+          class="botao-link"
+          type="button"
+          data-pagina="linha-do-tempo"
+        >
+          CONTINUAR A TRAVESSIA →
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================
+         PÁGINA 3 — LINHA DO TEMPO
+    ======================================= -->
+
+    <section class="pagina" id="linha-do-tempo">
+
+      <div class="pagina-abertura">
+
+        <span class="pagina-numero">
+          03 / MEMÓRIAS
+        </span>
+
+        <h1 class="pagina-titulo">
+          LINHA DO TEMPO
+        </h1>
+
+        <p class="pagina-descricao">
+          Percursos, acontecimentos e transformações
+          que atravessam o território.
         </p>
 
       </div>
-    </section>
 
-    <!-- NARRATIVAS -->
-    <section class="secao" id="narrativas">
-      <div class="secao-conteudo revelar">
+      <div class="conteudo">
 
-        <p class="etiqueta">02 · NARRATIVAS</p>
-
-        <p class="secao-numero">02</p>
-
-        <h2 class="secao-titulo">
-          Vozes, memórias e paisagens
+        <h2 class="titulo-secao revelar">
+          O TEMPO TAMBÉM É TERRITÓRIO
         </h2>
 
-        <div class="secao-texto">
+        <div class="texto revelar">
           <p>
-            Cada narrativa abre uma possibilidade de perceber
-            o território. As experiências individuais e coletivas
-            revelam dimensões que nem sempre aparecem nas
-            representações mais conhecidas do Sertão.
-          </p>
-
-          <p>
-            É na diversidade dessas vozes que outras imagens
-            e sentidos podem emergir.
+            A história de um lugar pode ser contada por
+            acontecimentos, lembranças, imagens e experiências.
+            Esta linha do tempo será construída a partir dos
+            marcos históricos e culturais selecionados para
+            o projeto.
           </p>
         </div>
 
-        <div class="imagem-editorial">
-          Espaço reservado para fotografia, vídeo ou produção visual
+        <div class="linha-tempo">
+
+          <div class="linha-tempo-item revelar">
+            <h3 class="linha-tempo-data">MEMÓRIAS</h3>
+            <p class="linha-tempo-texto">
+              Narrativas que permanecem e ajudam a compreender
+              as transformações do território.
+            </p>
+          </div>
+
+          <div class="linha-tempo-item revelar">
+            <h3 class="linha-tempo-data">MOVIMENTOS</h3>
+            <p class="linha-tempo-texto">
+              Experiências coletivas, manifestações culturais
+              e formas de organização.
+            </p>
+          </div>
+
+          <div class="linha-tempo-item revelar">
+            <h3 class="linha-tempo-data">PRESENTE</h3>
+            <p class="linha-tempo-texto">
+              As produções e os sujeitos que continuam
+              construindo outras narrativas.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="galeria">
+
+          <div class="galeria-item revelar">
+            <img
+              src="./imagens/construção da Barragem.png.png"
+              alt="Construção da Barragem"
+              loading="lazy"
+            >
+            <p class="galeria-legenda">
+              Construção da Barragem
+            </p>
+          </div>
+
+          <div class="galeria-item revelar">
+            <img
+              src="./imagens/Círculo Operário de Juazeiro.png.png"
+              alt="Círculo Operário de Juazeiro"
+              loading="lazy"
+            >
+            <p class="galeria-legenda">
+              Círculo Operário de Juazeiro
+            </p>
+          </div>
+
         </div>
 
       </div>
+
     </section>
 
-    <!-- LINHA DO TEMPO -->
-    <section class="linha-tempo">
-      <div class="linha-tempo-conteudo revelar">
+    <!-- ======================================
+         PÁGINA 4 — NÚCLEO BIRUTA
+    ======================================= -->
 
-        <p class="etiqueta">03 · PERCURSO</p>
+    <section class="pagina" id="nucleo-biruta">
 
-        <h2 class="secao-titulo">
-          Uma travessia em movimento
+      <div class="pagina-abertura">
+
+        <span class="pagina-numero">
+          04 / COLETIVOS
+        </span>
+
+        <h1 class="pagina-titulo">
+          NÚCLEO BIRUTA
+        </h1>
+
+        <p class="pagina-descricao">
+          Um espaço dedicado às experiências e produções
+          do Núcleo Biruta.
+        </p>
+
+      </div>
+
+      <div class="conteudo">
+
+        <h2 class="titulo-secao revelar">
+          CULTURA EM MOVIMENTO
         </h2>
 
-        <div class="linha-tempo-item">
-          <p class="linha-tempo-data">01</p>
-          <p class="linha-tempo-descricao">
-            O encontro com o território e com as diferentes
-            formas de percebê-lo.
-          </p>
-        </div>
-
-        <div class="linha-tempo-item">
-          <p class="linha-tempo-data">02</p>
-          <p class="linha-tempo-descricao">
-            O reconhecimento das narrativas, memórias e
-            experiências que atravessam o Sertão.
-          </p>
-        </div>
-
-        <div class="linha-tempo-item">
-          <p class="linha-tempo-data">03</p>
-          <p class="linha-tempo-descricao">
-            A construção de outras possibilidades de representação.
+        <div class="texto revelar">
+          <p>
+            Esta página reunirá a apresentação do Núcleo Biruta,
+            sua trajetória e as produções selecionadas
+            para integrar a Correnteza.
           </p>
         </div>
 
       </div>
+
+    </section>
+
+    <!-- ======================================
+         PÁGINA 5 — COLETIVO ABDIAS
+    ======================================= -->
+
+    <section class="pagina" id="coletivo-abdias">
+
+      <div class="pagina-abertura">
+
+        <span class="pagina-numero">
+          05 / COLETIVOS
+        </span>
+
+        <h1 class="pagina-titulo">
+          COLETIVO ABDIAS
+        </h1>
+
+        <p class="pagina-descricao">
+          Narrativas, produções e experiências coletivas.
+        </p>
+
+      </div>
+
+      <div class="conteudo">
+
+        <h2 class="titulo-secao revelar">
+          OUTRAS VOZES
+        </h2>
+
+        <div class="texto revelar">
+          <p>
+            Este espaço será dedicado à trajetória,
+            às ações e às produções do Coletivo Abdias
+            selecionadas para o projeto.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================
+         PÁGINA 6 — CAATINGAYRO
+    ======================================= -->
+
+    <section class="pagina" id="caatingayro">
+
+      <div class="pagina-abertura">
+
+        <span class="pagina-numero">
+          06 / EXPRESSÕES CULTURAIS
+        </span>
+
+        <h1 class="pagina-titulo">
+          CAATINGAYRO
+        </h1>
+
+        <p class="pagina-descricao">
+          Arte, identidade e formas de expressão
+          construídas no território.
+        </p>
+
+      </div>
+
+      <div class="conteudo">
+
+        <h2 class="titulo-secao revelar">
+          EXPRESSAR O SERTÃO
+        </h2>
+
+        <div class="texto revelar">
+          <p>
+            Esta página receberá as narrativas,
+            os registros e as produções do Caatingayro
+            que compõem a proposta da Correnteza.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================
+         PÁGINA 7 — ARTISTAS
+    ======================================= -->
+
+    <section class="pagina" id="artistas">
+
+      <div class="pagina-abertura">
+
+        <span class="pagina-numero">
+          07 / CRIAÇÕES
+        </span>
+
+        <h1 class="pagina-titulo">
+          ARTISTAS
+        </h1>
+
+        <p class="pagina-descricao">
+          Pessoas que criam, interpretam e transformam
+          as formas de representar o Sertão.
+        </p>
+
+      </div>
+
+      <div class="conteudo">
+
+        <h2 class="titulo-secao revelar">
+          QUEM CRIA TAMBÉM CONTA
+        </h2>
+
+        <div class="texto revelar">
+          <p>
+            Aqui serão apresentados os artistas participantes
+            do projeto, suas trajetórias e produções.
+          </p>
+        </div>
+
+        <div class="galeria">
+
+          <div class="galeria-item revelar">
+            <img
+              src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
+              alt="Ilustração de Cibs criança"
+              loading="lazy"
+            >
+            <p class="galeria-legenda">
+              Ilustração
+            </p>
+          </div>
+
+          <div class="galeria-item revelar">
+            <img
+              src="./imagens/Coelhão.png.png"
+              alt="Ilustração Coelhão"
+              loading="lazy"
+            >
+            <p class="galeria-legenda">
+              Coelhão
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================
+         PÁGINA 8 — LUGARES
+    ======================================= -->
+
+    <section class="pagina" id="lugares">
+
+      <div class="pagina-abertura">
+
+        <span class="pagina-numero">
+          08 / TERRITÓRIOS
+        </span>
+
+        <h1 class="pagina-titulo">
+          LUGARES
+        </h1>
+
+        <p class="pagina-descricao">
+          Espaços de memória, encontros,
+          pertencimentos e transformações.
+        </p>
+
+      </div>
+
+      <div class="conteudo">
+
+        <h2 class="titulo-secao revelar">
+          GEOGRAFIAS DO COTIDIANO
+        </h2>
+
+        <div class="texto revelar">
+          <p>
+            Os lugares guardam histórias que nem sempre
+            aparecem nas representações mais conhecidas
+            de um território.
+          </p>
+
+          <p>
+            Nesta página, imagens e narrativas ajudarão
+            a construir outros olhares sobre os espaços
+            que integram a Correnteza.
+          </p>
+        </div>
+
+        <div class="galeria">
+
+          <div class="galeria-item revelar">
+            <img
+              src="./imagens/ILHA DO FOGO.PNG.png"
+              alt="Ilha do Fogo"
+              loading="lazy"
+            >
+            <p class="galeria-legenda">
+              Ilha do Fogo
+            </p>
+          </div>
+
+          <div class="galeria-item revelar">
+            <img
+              src="./imagens/Comissão Pastoral da Terra.png.png"
+              alt="Comissão Pastoral da Terra"
+              loading="lazy"
+            >
+            <p class="galeria-legenda">
+              Comissão Pastoral da Terra
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
 
   </main>
 
-  <!-- RODAPÉ -->
-  <footer class="rodape">
-    <div class="rodape-conteudo">
+  <!-- ========================================
+       RODAPÉ
+  ======================================== -->
 
-      <h2 class="rodape-titulo">CORRENTEZA</h2>
+  <footer>
 
-      <p class="rodape-subtitulo">
-        Entre duas margens, uma só correnteza.
+    <h2 class="rodape-titulo">
+      CORRENTEZA
+    </h2>
+
+    <div class="rodape-info">
+
+      <p>
+        ENTRE DUAS MARGENS, UMA SÓ CORRENTEZA
       </p>
 
-      <div class="rodape-creditos">
-        <p>
-          Outras formas de representar o Sertão.
-        </p>
+      <p>
+        Por Cibelle Vieira
+      </p>
 
-        <p>
-          Projeto desenvolvido por Cibelle Vieira.
-        </p>
-
-        <p>
-          © 2026 · Todos os direitos reservados.
-        </p>
-      </div>
+      <p>
+        Outras formas de representar o Sertão
+      </p>
 
     </div>
+
   </footer>
 
+  <!-- ========================================
+       ÁUDIO — CAMINHO CORRIGIDO
+  ======================================== -->
+
+  <audio id="somRio" loop preload="none">
+    <source
+      src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
+      type="audio/mpeg"
+    >
+  </audio>
+
+  <button
+    class="controle-som visivel"
+    id="controleSom"
+    type="button"
+    aria-label="Ativar som do rio"
+    aria-pressed="false"
+  >
+    <span class="som-icone" id="iconeSom">♪</span>
+    <span id="textoSom">ATIVAR SOM DO RIO</span>
+  </button>
+
+  <!-- ========================================
+       JAVASCRIPT
+  ======================================== -->
+
   <script>
-    /* =========================
-       CONTROLE DO SOM DO RIO
-    ========================= */
 
-    const somRio = document.getElementById("somRio");
-    const audioBotao = document.getElementById("audioBotao");
-    const audioTexto = document.getElementById("audioTexto");
+    /* ========================================
+       ELEMENTOS
+    ======================================== */
 
-    audioBotao.addEventListener("click", async () => {
-      if (somRio.paused) {
+    const paginas = document.querySelectorAll(".pagina");
+
+    const botoesNavegacao =
+      document.querySelectorAll("[data-pagina]");
+
+    const botoesMenu =
+      document.querySelectorAll("nav [data-pagina]");
+
+    const menuPrincipal =
+      document.getElementById("menuPrincipal");
+
+    const botaoMenu =
+      document.getElementById("botaoMenu");
+
+    const audio =
+      document.getElementById("somRio");
+
+    const controleSom =
+      document.getElementById("controleSom");
+
+    const textoSom =
+      document.getElementById("textoSom");
+
+    const iconeSom =
+      document.getElementById("iconeSom");
+
+    const barraProgresso =
+      document.getElementById("barraProgresso");
+
+    let paginaAtual = "inicio";
+
+    /* ========================================
+       CONTROLE DE ÁUDIO
+    ======================================== */
+
+    function atualizarBotaoSom() {
+
+      const tocando = !audio.paused;
+
+      textoSom.textContent = tocando
+        ? "DESATIVAR SOM DO RIO"
+        : "ATIVAR SOM DO RIO";
+
+      iconeSom.textContent = tocando ? "♫" : "♪";
+
+      controleSom.setAttribute(
+        "aria-pressed",
+        String(tocando)
+      );
+
+      controleSom.setAttribute(
+        "aria-label",
+        tocando
+          ? "Desativar som do rio"
+          : "Ativar som do rio"
+      );
+
+    }
+
+    function pararSom() {
+
+      audio.pause();
+      audio.currentTime = 0;
+
+      atualizarBotaoSom();
+
+    }
+
+    controleSom.addEventListener("click", async () => {
+
+      if (paginaAtual !== "inicio") {
+        return;
+      }
+
+      if (audio.paused) {
+
         try {
-          await somRio.play();
-
-          audioTexto.textContent = "Silenciar rio";
-          audioBotao.classList.add("ativo");
-          audioBotao.setAttribute("aria-label", "Desativar som do rio");
-          audioBotao.setAttribute("aria-pressed", "true");
-
+          await audio.play();
         } catch (erro) {
-          console.error("Não foi possível reproduzir o áudio:", erro);
-          audioTexto.textContent = "Tente novamente";
+          console.error(
+            "Não foi possível reproduzir o áudio:",
+            erro
+          );
         }
 
       } else {
-        somRio.pause();
 
-        audioTexto.textContent = "Ouvir o rio";
-        audioBotao.classList.remove("ativo");
-        audioBotao.setAttribute("aria-label", "Ativar som do rio");
-        audioBotao.setAttribute("aria-pressed", "false");
+        audio.pause();
+
       }
+
+      atualizarBotaoSom();
+
     });
 
-    /* =========================
-       BARRA DE PROGRESSO
-    ========================= */
+    audio.addEventListener("play", atualizarBotaoSom);
+    audio.addEventListener("pause", atualizarBotaoSom);
 
-    const progressBar = document.getElementById("progressBar");
+    /* ========================================
+       NAVEGAÇÃO ENTRE PÁGINAS
+    ======================================== */
 
-    window.addEventListener("scroll", () => {
-      const alturaTotal =
-        document.documentElement.scrollHeight - window.innerHeight;
+    function abrirPagina(id, atualizarHistorico = true) {
 
-      const progresso =
-        alturaTotal > 0 ? (window.scrollY / alturaTotal) * 100 : 0;
+      const destino = document.getElementById(id);
 
-      progressBar.style.width = progresso + "%";
-    });
+      if (!destino || !destino.classList.contains("pagina")) {
+        return;
+      }
 
-    /* =========================
-       ANIMAÇÃO DE ENTRADA
-    ========================= */
+      // O áudio para sempre que sai da página inicial.
+      if (id !== "inicio") {
+        pararSom();
+      }
 
-    const elementos = document.querySelectorAll(".revelar");
+      paginaAtual = id;
 
-    const observador = new IntersectionObserver((entradas) => {
-      entradas.forEach((entrada) => {
-        if (entrada.isIntersecting) {
-          entrada.target.classList.add("visivel");
-          observador.unobserve(entrada.target);
-        }
+      paginas.forEach(pagina => {
+        pagina.classList.toggle(
+          "ativa",
+          pagina.id === id
+        );
       });
-    }, {
-      threshold: 0.12
+
+      botoesMenu.forEach(botao => {
+
+        const ativo =
+          botao.dataset.pagina === id;
+
+        botao.classList.toggle("ativo", ativo);
+
+        if (ativo) {
+          botao.setAttribute("aria-current", "page");
+        } else {
+          botao.removeAttribute("aria-current");
+        }
+
+      });
+
+      controleSom.classList.toggle(
+        "visivel",
+        id === "inicio"
+      );
+
+      menuPrincipal.classList.remove("aberto");
+
+      botaoMenu.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      botaoMenu.textContent = "☰";
+
+      if (atualizarHistorico) {
+        history.pushState(
+          { pagina: id },
+          "",
+          "#" + id
+        );
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+      atualizarBarraProgresso();
+      observarElementos();
+
+    }
+
+    botoesNavegacao.forEach(botao => {
+
+      botao.addEventListener("click", evento => {
+
+        evento.preventDefault();
+
+        const id = botao.dataset.pagina;
+
+        abrirPagina(id);
+
+      });
+
     });
 
-    elementos.forEach((elemento) => {
-      observador.observe(elemento);
+    /* ========================================
+       MENU MOBILE
+    ======================================== */
+
+    botaoMenu.addEventListener("click", () => {
+
+      const aberto =
+        menuPrincipal.classList.toggle("aberto");
+
+      botaoMenu.setAttribute(
+        "aria-expanded",
+        String(aberto)
+      );
+
+      botaoMenu.textContent = aberto ? "✕" : "☰";
+
     });
+
+    /* ========================================
+       BOTÃO DE DESCER NA CAPA
+    ======================================== */
+
+    document
+      .getElementById("botaoDescer")
+      .addEventListener("click", () => {
+
+        document
+          .getElementById("apresentacao")
+          .scrollIntoView({
+            behavior: "smooth"
+          });
+
+      });
+
+    /* ========================================
+       BARRA DE PROGRESSO
+    ======================================== */
+
+    function atualizarBarraProgresso() {
+
+      const alturaDocumento =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const progresso = alturaDocumento > 0
+        ? (window.scrollY / alturaDocumento) * 100
+        : 0;
+
+      barraProgresso.style.width =
+        Math.min(100, Math.max(0, progresso)) + "%";
+
+    }
+
+    window.addEventListener(
+      "scroll",
+      atualizarBarraProgresso,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      atualizarBarraProgresso
+    );
+
+    /* ========================================
+       ANIMAÇÕES DE ENTRADA
+    ======================================== */
+
+    const observador = new IntersectionObserver(
+      entradas => {
+
+        entradas.forEach(entrada => {
+
+          if (entrada.isIntersecting) {
+
+            entrada.target.classList.add("visivel");
+
+            observador.unobserve(entrada.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -25px 0px"
+      }
+    );
+
+    function observarElementos() {
+
+      const elementos = document.querySelectorAll(
+        ".pagina.ativa .revelar:not(.visivel)"
+      );
+
+      elementos.forEach(elemento => {
+        observador.observe(elemento);
+      });
+
+    }
+
+    /* ========================================
+       VOLTAR / AVANÇAR DO NAVEGADOR
+    ======================================== */
+
+    function verificarEndereco() {
+
+      const id = decodeURIComponent(
+        window.location.hash.replace("#", "")
+      );
+
+      const paginaValida =
+        document.getElementById(id)?.classList.contains("pagina");
+
+      abrirPagina(
+        paginaValida ? id : "inicio",
+        false
+      );
+
+    }
+
+    window.addEventListener(
+      "popstate",
+      verificarEndereco
+    );
+
+    window.addEventListener(
+      "hashchange",
+      verificarEndereco
+    );
+
+    /* ========================================
+       INICIALIZAÇÃO
+    ======================================== */
+
+    verificarEndereco();
+    atualizarBotaoSom();
+    atualizarBarraProgresso();
+
   </script>
 
 </body>
