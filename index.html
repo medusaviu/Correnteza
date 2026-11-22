@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,363 +8,1011 @@
 
   <title>Correnteza — Outras formas de representar o Sertão</title>
 
-  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    /* =========================
+       FONTES LOCAIS
+    ========================= */
+
+    @font-face {
+      font-family: "Cubao";
+      src: url("./fontes/cubao-free/Cubao-Free_Regular.otf") format("opentype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Morisawa";
+      src: url("./fontes/morisawa-otf-cufonfonts-webfont/MorisawaOtfRegular.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Gordita";
+      src: url("./fontes/gordita-regular-maisfontes.80be/gordita-regular.otf") format("opentype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* =========================
+       CONFIGURAÇÕES GERAIS
+    ========================= */
+
+    :root {
+      --preto: #000000;
+      --azul: #0d3550;
+      --azul-claro: #78a8c1;
+      --branco: #f0ede9;
+      --cinza: #aaa8a4;
+      --largura: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--preto);
+      color: var(--branco);
+      font-family: "Morisawa", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    ::selection {
+      background: var(--azul);
+      color: white;
+    }
+
+    /* =========================
+       BARRA DE PROGRESSO
+    ========================= */
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--azul-claro);
+      z-index: 2000;
+    }
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 68px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      z-index: 1000;
+    }
+
+    .menu-logo {
+      font-family: "Cubao", sans-serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: var(--branco);
+    }
+
+    .menu-links {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .menu-links a {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--branco);
+      transition: color 0.3s;
+    }
+
+    .menu-links a:hover {
+      color: var(--azul-claro);
+    }
+
+    /* =========================
+       CAPA
+    ========================= */
+
+    .capa {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      width: 100%;
+      background: var(--preto);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 110px 5% 80px;
+    }
+
+    .capa-conteudo {
+      width: 100%;
+      max-width: var(--largura);
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .capa-titulo {
+      position: relative;
+      z-index: 3;
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(65px, 12vw, 150px);
+      font-weight: normal;
+      line-height: 0.82;
+      letter-spacing: -3px;
+      color: var(--branco);
+      text-transform: uppercase;
+    }
+
+    .capa-titulo span {
+      display: block;
+    }
+
+    .capa-subtitulo {
+      margin-top: 25px;
+      font-family: "Morisawa", sans-serif;
+      font-size: clamp(14px, 2vw, 23px);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--azul-claro);
+    }
+
+    .capa-ilustracao {
+      width: min(85%, 660px);
+      margin-top: 25px;
+      position: relative;
+      z-index: 2;
+      animation: entradaIlustracao 1.5s ease both;
+    }
+
+    .capa-ilustracao img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .capa-autoria {
+      margin-top: 12px;
+      font-family: "Gordita", sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--branco);
+      text-transform: uppercase;
+    }
+
+    .capa-chamada {
+      margin-top: 65px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cinza);
+      animation: pulsar 2s infinite;
+    }
+
+    .capa-chamada span {
+      display: block;
+      margin-top: 12px;
+      font-size: 20px;
+      color: var(--azul-claro);
+    }
+
+    /* =========================
+       ONDAS DA CAPA
+    ========================= */
+
+    .ondas {
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 190px;
+      z-index: 1;
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .onda {
+      animation: movimentoOnda 12s ease-in-out infinite alternate;
+      transform-origin: center;
+    }
+
+    .onda:nth-child(2) {
+      animation-duration: 16s;
+      animation-direction: alternate-reverse;
+    }
+
+    .onda:nth-child(3) {
+      animation-duration: 20s;
+    }
+
+    /* =========================
+       CONTROLE DE ÁUDIO
+    ========================= */
+
+    .audio-controle {
+      position: absolute;
+      bottom: 28px;
+      right: 5%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .audio-botao {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 16px;
+      border: 1px solid rgba(240, 237, 233, 0.45);
+      border-radius: 40px;
+      background: rgba(0, 0, 0, 0.55);
+      color: var(--branco);
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .audio-botao:hover {
+      border-color: var(--azul-claro);
+      color: var(--azul-claro);
+      background: rgba(13, 53, 80, 0.45);
+    }
+
+    .audio-icone {
+      width: 17px;
+      height: 17px;
+      display: block;
+    }
+
+    .audio-botao.ativo {
+      border-color: var(--azul-claro);
+      color: var(--azul-claro);
+    }
+
+    /* =========================
+       INTRODUÇÃO
+    ========================= */
+
+    .introducao {
+      position: relative;
+      padding: 150px 8%;
+      background: var(--preto);
+    }
+
+    .conteudo {
+      max-width: var(--largura);
+      margin: auto;
+    }
+
+    .etiqueta {
+      color: var(--azul-claro);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .titulo-secao {
+      max-width: 900px;
+      font-family: "Cubao", sans-serif;
+      font-weight: normal;
+      font-size: clamp(42px, 7vw, 85px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 45px;
+    }
+
+    .texto-introducao {
+      max-width: 720px;
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.9;
+      color: #d0ceca;
+    }
+
+    .texto-introducao p + p {
+      margin-top: 25px;
+    }
+
+    /* =========================
+       SEÇÕES EDITORIAIS
+    ========================= */
+
+    .secao {
+      padding: 120px 8%;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .secao-conteudo {
+      max-width: var(--largura);
+      margin: auto;
+    }
+
+    .secao-numero {
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(60px, 10vw, 120px);
+      line-height: 1;
+      color: var(--azul);
+      margin-bottom: 25px;
+    }
+
+    .secao-titulo {
+      max-width: 850px;
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(40px, 7vw, 80px);
+      line-height: 0.95;
+      font-weight: normal;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .secao-texto {
+      max-width: 740px;
+      color: #d0ceca;
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    .secao-texto p + p {
+      margin-top: 25px;
+    }
+
+    /* =========================
+       DESTAQUE
+    ========================= */
+
+    .destaque {
+      position: relative;
+      padding: 130px 8%;
+      background: var(--azul);
+      overflow: hidden;
+    }
+
+    .destaque-conteudo {
+      max-width: 1000px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .destaque-frase {
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(38px, 7vw, 82px);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--branco);
+    }
+
+    .destaque-assinatura {
+      margin-top: 35px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* =========================
+       ESPAÇOS PARA IMAGENS
+    ========================= */
+
+    .imagem-editorial {
+      width: 100%;
+      min-height: 420px;
+      margin: 60px 0;
+      background: #101820;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      color: #8da8b7;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .imagem-editorial img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* =========================
+       LINHA DO TEMPO
+    ========================= */
+
+    .linha-tempo {
+      padding: 130px 8%;
+      background: #05090d;
+    }
+
+    .linha-tempo-conteudo {
+      max-width: var(--largura);
+      margin: auto;
+    }
+
+    .linha-tempo-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 35px;
+      padding: 35px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .linha-tempo-data {
+      font-family: "Cubao", sans-serif;
+      font-size: 30px;
+      color: var(--azul-claro);
+    }
+
+    .linha-tempo-descricao {
+      color: #d0ceca;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       RODAPÉ
+    ========================= */
+
+    .rodape {
+      padding: 100px 8% 40px;
+      background: #000;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .rodape-conteudo {
+      max-width: var(--largura);
+      margin: auto;
+    }
+
+    .rodape-titulo {
+      font-family: "Cubao", sans-serif;
+      font-size: clamp(55px, 10vw, 120px);
+      line-height: 0.9;
+      color: var(--branco);
+    }
+
+    .rodape-subtitulo {
+      margin-top: 20px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--azul-claro);
+      text-transform: uppercase;
+    }
+
+    .rodape-creditos {
+      margin-top: 100px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 25px;
+      color: var(--cinza);
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       ANIMAÇÕES
+    ========================= */
+
+    .revelar {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .revelar.visivel {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes movimentoOnda {
+      from {
+        transform: translateX(-2%) scaleY(1);
+      }
+      to {
+        transform: translateX(2%) scaleY(1.08);
+      }
+    }
+
+    @keyframes entradaIlustracao {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulsar {
+      0%, 100% {
+        opacity: 0.45;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* =========================
+       RESPONSIVIDADE
+    ========================= */
+
+    @media (max-width: 700px) {
+      .menu {
+        height: 60px;
+        padding: 0 5%;
+      }
+
+      .menu-logo {
+        font-size: 20px;
+      }
+
+      .menu-links {
+        gap: 14px;
+      }
+
+      .menu-links a {
+        font-size: 9px;
+        letter-spacing: 0.8px;
+      }
+
+      .capa {
+        padding: 110px 5% 100px;
+      }
+
+      .capa-titulo {
+        font-size: clamp(55px, 15vw, 95px);
+        letter-spacing: -1px;
+      }
+
+      .capa-subtitulo {
+        font-size: 12px;
+        letter-spacing: 3px;
+      }
+
+      .capa-ilustracao {
+        width: 100%;
+        margin-top: 35px;
+      }
+
+      .capa-chamada {
+        margin-top: 45px;
+      }
+
+      .audio-controle {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 18px;
+      }
+
+      .audio-botao {
+        font-size: 9px;
+        padding: 9px 13px;
+      }
+
+      .introducao,
+      .secao,
+      .linha-tempo {
+        padding: 90px 7%;
+      }
+
+      .destaque {
+        padding: 90px 7%;
+      }
+
+      .imagem-editorial {
+        min-height: 260px;
+      }
+
+      .linha-tempo-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .rodape {
+        padding: 80px 7% 30px;
+      }
+
+      .rodape-creditos {
+        margin-top: 65px;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
-<body class="pagina-inicio">
+<body>
 
-  <!-- BARRA DE PROGRESSO -->
   <div class="progress-bar" id="progressBar"></div>
 
-  <!-- MENU PRINCIPAL -->
+  <!-- MENU -->
   <header class="menu">
+    <a href="#inicio" class="menu-logo">CORRENTEZA</a>
 
-    <a href="./index.html" class="menu-logo">
-      CORRENTEZA
-    </a>
-
-    <button
-      class="menu-toggle"
-      id="menuToggle"
-      type="button"
-      aria-label="Abrir menu"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="menu-links" id="menuLinks">
-
-      <a href="./index.html" class="link-ativo">Início</a>
-
-      <a href="./a-margem.html">À Margem</a>
-
-      <a href="./linha-do-tempo.html">Linha do Tempo</a>
-
-      <a href="./nucleo-biruta.html">Núcleo Biruta</a>
-
-      <a href="./coletivo-abdias.html">Coletivo Abdias</a>
-
-      <a href="./caatingayro.html">Caatingayro</a>
-
-      <a href="./artistas.html">Artistas</a>
-
-      <a href="./lugares.html">Lugares</a>
-
+    <nav class="menu-links">
+      <a href="#introducao">Apresentação</a>
+      <a href="#territorio">Território</a>
+      <a href="#narrativas">Narrativas</a>
     </nav>
-
   </header>
-
 
   <main>
 
-    <!-- =================================
-         CAPA
-    ================================== -->
-
+    <!-- CAPA -->
     <section class="capa" id="inicio">
 
       <div class="capa-conteudo">
 
-        <div class="capa-textos">
+        <h1 class="capa-titulo">
+          <span>ENTRE DUAS</span>
+          <span>MARGENS</span>
+        </h1>
 
-          <h1 class="capa-titulo">
-            ENTRE DUAS<br>
-            MARGENS
-          </h1>
+        <p class="capa-subtitulo">
+          UMA SÓ CORRENTEZA
+        </p>
 
-          <p class="capa-subtitulo">
-            UMA SÓ CORRENTEZA
-          </p>
-
-        </div>
-
-        <!-- ILUSTRAÇÃO ORIGINAL DA CAPA -->
         <div class="capa-ilustracao">
-
           <img
             src="./imagens/IMAGEM DA CAPA.PNG"
-            alt="Ilustração principal da Correnteza"
+            alt="Ilustração de capa da Correnteza"
           >
-
         </div>
 
         <p class="capa-autoria">
           Por Cibelle Vieira
         </p>
 
-        <a href="./a-margem.html" class="capa-entrada">
-          <span>ENTRE NA CORRENTEZA</span>
-          <span class="seta-entrada">↓</span>
+        <a href="#introducao" class="capa-chamada">
+          Desça para navegar
+          <span>↓</span>
         </a>
 
       </div>
 
-
       <!-- ONDAS DECORATIVAS -->
-      <div class="capa-ondas" aria-hidden="true">
+      <svg class="ondas" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true">
+        <path class="onda"
+          d="M0,100 C180,150 300,40 480,85 C670,135 790,40 960,75 C1140,120 1300,55 1440,90 L1440,190 L0,190 Z"
+          fill="#0d3550"/>
+        <path class="onda"
+          d="M0,125 C190,80 320,160 520,110 C720,60 820,145 1030,110 C1200,80 1310,145 1440,115 L1440,190 L0,190 Z"
+          fill="#123f5c" opacity="0.8"/>
+        <path class="onda"
+          d="M0,150 C200,120 350,180 540,140 C760,100 900,170 1080,135 C1250,105 1350,165 1440,145 L1440,190 L0,190 Z"
+          fill="#071e2d"/>
+      </svg>
 
-        <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
-
-          <path
-            d="M0 100 C180 150 300 40 480 85 C670 135 790 40 960 75 C1140 120 1300 55 1440 90 L1440 220 L0 220 Z"
-            fill="#0d3550"
-          />
-
-          <path
-            d="M0 125 C190 80 320 160 520 110 C720 60 820 145 1030 110 C1200 80 1310 145 1440 115 L1440 220 L0 220 Z"
-            fill="#123f5c"
-            opacity="0.85"
-          />
-
-          <path
-            d="M0 160 C200 120 350 180 540 140 C760 100 900 170 1080 135 C1250 105 1350 165 1440 145 L1440 220 L0 220 Z"
-            fill="#071e2d"
-          />
-
-        </svg>
-
-      </div>
-
-
-      <!-- CONTROLE DO SOM -->
+      <!-- CONTROLE DE SOM -->
       <div class="audio-controle">
-
         <button
-          type="button"
           class="audio-botao"
           id="audioBotao"
+          type="button"
           aria-label="Ativar som do rio"
           aria-pressed="false"
         >
-
-          <svg
-            class="audio-icone"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-
+          <svg class="audio-icone" id="audioIcone" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 8c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/>
-
             <path d="M3 13c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/>
-
             <path d="M3 18c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/>
-
           </svg>
 
-          <span id="audioTexto">OUVIR O RIO</span>
-
+          <span id="audioTexto">Ouvir o rio</span>
         </button>
-
       </div>
 
-
-      <!-- ÁUDIO EXCLUSIVO DA PÁGINA INICIAL -->
       <audio id="somRio" loop preload="none">
-
-        <source
-          src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
-          type="audio/mpeg"
-        >
-
+        <source src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3" type="audio/mpeg">
         Seu navegador não suporta áudio.
-
       </audio>
 
     </section>
 
+    <!-- INTRODUÇÃO -->
+    <section class="introducao" id="introducao">
+      <div class="conteudo revelar">
 
-    <!-- =================================
-         APRESENTAÇÃO
-    ================================== -->
+        <p class="etiqueta">CORRENTEZA · APRESENTAÇÃO</p>
 
-    <section class="inicio-apresentacao">
-
-      <div class="inicio-apresentacao-conteudo revelar">
-
-        <span class="etiqueta">
-          CORRENTEZA · OUTRAS FORMAS DE REPRESENTAR O SERTÃO
-        </span>
-
-        <h2>
-          O Sertão não é uma história só.
+        <h2 class="titulo-secao">
+          Outras formas de representar o Sertão
         </h2>
 
-        <p>
-          Entre paisagens, memórias, movimentos e experiências,
-          existem muitas maneiras de contar e perceber o Sertão.
-          A Correnteza é um convite a atravessar essas narrativas,
-          encontrar outras perspectivas e conhecer histórias
-          que também constituem esse território.
-        </p>
+        <div class="texto-introducao">
+          <p>
+            Entre duas margens, uma só correnteza. Um convite a olhar
+            para o Sertão a partir de outras perspectivas, narrativas
+            e experiências.
+          </p>
 
-        <a href="./a-margem.html" class="link-leitura">
-          COMEÇAR A NAVEGAR <span>↗</span>
-        </a>
+          <p>
+            Este espaço nasce do desejo de ampliar as formas de
+            representar o território, reconhecendo a pluralidade
+            de histórias, paisagens e sujeitos que o constituem.
+          </p>
+        </div>
 
       </div>
-
     </section>
 
+    <!-- TERRITÓRIO -->
+    <section class="secao" id="territorio">
+      <div class="secao-conteudo revelar">
 
-    <!-- =================================
-         ACESSO ÀS NARRATIVAS
-    ================================== -->
+        <p class="etiqueta">01 · TERRITÓRIO</p>
 
-    <section class="inicio-navegacao">
+        <p class="secao-numero">01</p>
 
-      <div class="inicio-navegacao-cabecalho revelar">
+        <h2 class="secao-titulo">
+          Um território, muitas histórias
+        </h2>
 
-        <span class="etiqueta">EXPLORE A CORRENTEZA</span>
+        <div class="secao-texto">
+          <p>
+            O Sertão não cabe em uma única imagem. É território
+            vivido, construído e transformado por diferentes
+            experiências e modos de existência.
+          </p>
 
-        <h2>Escolha por onde começar.</h2>
+          <p>
+            Aqui, a proposta é deslocar os olhares habituais e
+            reconhecer outras maneiras de narrar e representar
+            esse espaço.
+          </p>
+        </div>
 
-      </div>
-
-
-      <div class="inicio-cards">
-
-        <a href="./a-margem.html" class="inicio-card revelar">
-
-          <span class="card-numero">01</span>
-
-          <div>
-            <h3>À Margem</h3>
-            <p>Uma travessia por outras perspectivas do Sertão.</p>
-          </div>
-
-          <span class="card-seta">↗</span>
-
-        </a>
-
-
-        <a href="./linha-do-tempo.html" class="inicio-card revelar">
-
-          <span class="card-numero">02</span>
-
-          <div>
-            <h3>Linha do Tempo</h3>
-            <p>Memórias, acontecimentos e transformações.</p>
-          </div>
-
-          <span class="card-seta">↗</span>
-
-        </a>
-
-
-        <a href="./nucleo-biruta.html" class="inicio-card revelar">
-
-          <span class="card-numero">03</span>
-
-          <div>
-            <h3>Núcleo Biruta</h3>
-            <p>Conheça as histórias e experiências do núcleo.</p>
-          </div>
-
-          <span class="card-seta">↗</span>
-
-        </a>
-
-
-        <a href="./coletivo-abdias.html" class="inicio-card revelar">
-
-          <span class="card-numero">04</span>
-
-          <div>
-            <h3>Coletivo Abdias</h3>
-            <p>Conheça o coletivo e suas ações.</p>
-          </div>
-
-          <span class="card-seta">↗</span>
-
-        </a>
-
-
-        <a href="./caatingayro.html" class="inicio-card revelar">
-
-          <span class="card-numero">05</span>
-
-          <div>
-            <h3>Caatingayro</h3>
-            <p>Outras experiências e expressões do território.</p>
-          </div>
-
-          <span class="card-seta">↗</span>
-
-        </a>
-
-
-        <a href="./artistas.html" class="inicio-card revelar">
-
-          <span class="card-numero">06</span>
-
-          <div>
-            <h3>Artistas</h3>
-            <p>Vozes e produções artísticas do Sertão.</p>
-          </div>
-
-          <span class="card-seta">↗</span>
-
-        </a>
-
-
-        <a href="./lugares.html" class="inicio-card revelar">
-
-          <span class="card-numero">07</span>
-
-          <div>
-            <h3>Lugares</h3>
-            <p>Espaços, paisagens e territórios para conhecer.</p>
-          </div>
-
-          <span class="card-seta">↗</span>
-
-        </a>
+        <div class="imagem-editorial">
+          Espaço reservado para fotografia ou imagem do território
+        </div>
 
       </div>
+    </section>
 
+    <!-- DESTAQUE -->
+    <section class="destaque revelar">
+      <div class="destaque-conteudo">
+
+        <p class="destaque-frase">
+          O Sertão é também aquilo que contamos sobre ele.
+        </p>
+
+        <p class="destaque-assinatura">
+          CORRENTEZA — OUTRAS FORMAS DE REPRESENTAR O SERTÃO
+        </p>
+
+      </div>
+    </section>
+
+    <!-- NARRATIVAS -->
+    <section class="secao" id="narrativas">
+      <div class="secao-conteudo revelar">
+
+        <p class="etiqueta">02 · NARRATIVAS</p>
+
+        <p class="secao-numero">02</p>
+
+        <h2 class="secao-titulo">
+          Vozes, memórias e paisagens
+        </h2>
+
+        <div class="secao-texto">
+          <p>
+            Cada narrativa abre uma possibilidade de perceber
+            o território. As experiências individuais e coletivas
+            revelam dimensões que nem sempre aparecem nas
+            representações mais conhecidas do Sertão.
+          </p>
+
+          <p>
+            É na diversidade dessas vozes que outras imagens
+            e sentidos podem emergir.
+          </p>
+        </div>
+
+        <div class="imagem-editorial">
+          Espaço reservado para fotografia, vídeo ou produção visual
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LINHA DO TEMPO -->
+    <section class="linha-tempo">
+      <div class="linha-tempo-conteudo revelar">
+
+        <p class="etiqueta">03 · PERCURSO</p>
+
+        <h2 class="secao-titulo">
+          Uma travessia em movimento
+        </h2>
+
+        <div class="linha-tempo-item">
+          <p class="linha-tempo-data">01</p>
+          <p class="linha-tempo-descricao">
+            O encontro com o território e com as diferentes
+            formas de percebê-lo.
+          </p>
+        </div>
+
+        <div class="linha-tempo-item">
+          <p class="linha-tempo-data">02</p>
+          <p class="linha-tempo-descricao">
+            O reconhecimento das narrativas, memórias e
+            experiências que atravessam o Sertão.
+          </p>
+        </div>
+
+        <div class="linha-tempo-item">
+          <p class="linha-tempo-data">03</p>
+          <p class="linha-tempo-descricao">
+            A construção de outras possibilidades de representação.
+          </p>
+        </div>
+
+      </div>
     </section>
 
   </main>
 
-
-  <!-- =================================
-       RODAPÉ
-  ================================== -->
-
+  <!-- RODAPÉ -->
   <footer class="rodape">
-
     <div class="rodape-conteudo">
 
-      <a href="./index.html" class="rodape-logo">
-        CORRENTEZA
-      </a>
+      <h2 class="rodape-titulo">CORRENTEZA</h2>
 
-      <p class="rodape-frase">
+      <p class="rodape-subtitulo">
         Entre duas margens, uma só correnteza.
       </p>
 
-      <div class="rodape-inferior">
+      <div class="rodape-creditos">
+        <p>
+          Outras formas de representar o Sertão.
+        </p>
 
-        <span>Outras formas de representar o Sertão.</span>
+        <p>
+          Projeto desenvolvido por Cibelle Vieira.
+        </p>
 
-        <span>© 2026</span>
-
+        <p>
+          © 2026 · Todos os direitos reservados.
+        </p>
       </div>
 
     </div>
-
   </footer>
 
+  <script>
+    /* =========================
+       CONTROLE DO SOM DO RIO
+    ========================= */
 
-  <script src="./js/main.js"></script>
+    const somRio = document.getElementById("somRio");
+    const audioBotao = document.getElementById("audioBotao");
+    const audioTexto = document.getElementById("audioTexto");
+
+    audioBotao.addEventListener("click", async () => {
+      if (somRio.paused) {
+        try {
+          await somRio.play();
+
+          audioTexto.textContent = "Silenciar rio";
+          audioBotao.classList.add("ativo");
+          audioBotao.setAttribute("aria-label", "Desativar som do rio");
+          audioBotao.setAttribute("aria-pressed", "true");
+
+        } catch (erro) {
+          console.error("Não foi possível reproduzir o áudio:", erro);
+          audioTexto.textContent = "Tente novamente";
+        }
+
+      } else {
+        somRio.pause();
+
+        audioTexto.textContent = "Ouvir o rio";
+        audioBotao.classList.remove("ativo");
+        audioBotao.setAttribute("aria-label", "Ativar som do rio");
+        audioBotao.setAttribute("aria-pressed", "false");
+      }
+    });
+
+    /* =========================
+       BARRA DE PROGRESSO
+    ========================= */
+
+    const progressBar = document.getElementById("progressBar");
+
+    window.addEventListener("scroll", () => {
+      const alturaTotal =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const progresso =
+        alturaTotal > 0 ? (window.scrollY / alturaTotal) * 100 : 0;
+
+      progressBar.style.width = progresso + "%";
+    });
+
+    /* =========================
+       ANIMAÇÃO DE ENTRADA
+    ========================= */
+
+    const elementos = document.querySelectorAll(".revelar");
+
+    const observador = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add("visivel");
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    elementos.forEach((elemento) => {
+      observador.observe(elemento);
+    });
+  </script>
 
 </body>
 </html>
