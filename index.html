@@ -1,52 +1,48 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Correnteza — Entre duas margens</title>
+  <title>Correnteza — Entre Duas Margens</title>
 
   <style>
-    /* ==========================================
-       FONTES LOCAIS — CAMINHOS CORRIGIDOS
-    ========================================== */
+
+    /* =========================================
+       FONTES
+    ========================================= */
 
     @font-face {
       font-family: "Cubao";
       src: url("./fontes/cubao-free/Cubao_Free_Regular.otf") format("opentype");
-      font-weight: normal;
-      font-style: normal;
       font-display: swap;
     }
 
     @font-face {
       font-family: "Morisawa";
       src: url("./fontes/morisawa-otf-cufonfonts-webfont/MorisawaOtfRegular.woff") format("woff");
-      font-weight: normal;
-      font-style: normal;
       font-display: swap;
     }
 
     @font-face {
       font-family: "Gordita";
       src: url("./fontes/gordita-regular-maisfontes.80be/gordita-regular.otf") format("opentype");
-      font-weight: normal;
-      font-style: normal;
       font-display: swap;
     }
 
-    /* ==========================================
+    /* =========================================
        CONFIGURAÇÕES GERAIS
-    ========================================== */
+    ========================================= */
 
     :root {
       --preto: #08090b;
-      --azul: #397db5;
-      --azul-claro: #9bcde9;
-      --branco: #f0ede9;
-      --cinza: #aaa9a6;
-      --borda: rgba(155, 205, 233, 0.18);
+      --branco: #ffffff;
+      --azul: #485b9d;
+      --azul-claro: #a6b7ef;
+      --cinza: #b6b6b6;
+      --borda: rgba(255,255,255,0.15);
     }
 
     * {
@@ -66,69 +62,49 @@
       overflow-x: hidden;
     }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
     button {
       font-family: inherit;
+      cursor: pointer;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
-    ::selection {
-      background: var(--azul);
-      color: white;
-    }
-
-    /* ==========================================
-       BARRA SUPERIOR
-    ========================================== */
-
-    .barra-progresso {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 0;
-      background: var(--azul-claro);
-      z-index: 1000;
-      transition: width 0.1s;
-    }
+    /* =========================================
+       CABEÇALHO
+    ========================================= */
 
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 100;
-      background: rgba(8, 9, 11, 0.93);
-      backdrop-filter: blur(15px);
+      z-index: 1000;
+
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
+
       border-bottom: 1px solid var(--borda);
     }
 
     .cabecalho {
       max-width: 1600px;
       margin: auto;
-      min-height: 85px;
-      padding: 18px 4%;
+      min-height: 78px;
+      padding: 15px 4%;
+
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 25px;
     }
 
     .logo {
       font-family: "Cubao", sans-serif;
-      font-size: 31px;
-      letter-spacing: 1px;
-      color: var(--branco);
-      cursor: pointer;
-      flex-shrink: 0;
+      font-size: 30px;
+      white-space: nowrap;
     }
 
     .logo span {
@@ -137,21 +113,21 @@
 
     nav {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
       justify-content: flex-end;
-      gap: 20px;
     }
 
     nav button {
-      border: none;
       background: transparent;
-      color: var(--cinza);
-      cursor: pointer;
+      border: none;
+      color: #c4c4c4;
+
       font-family: "Gordita", sans-serif;
       font-size: 11px;
+
       transition: color 0.3s;
-      white-space: nowrap;
     }
 
     nav button:hover,
@@ -166,259 +142,191 @@
 
     .menu-mobile {
       display: none;
-      border: 1px solid var(--borda);
+      color: white;
       background: transparent;
-      color: var(--branco);
-      padding: 9px 13px;
-      cursor: pointer;
+      border: 1px solid var(--borda);
+      padding: 8px 12px;
       font-size: 20px;
     }
 
-    /* ==========================================
-       SISTEMA DE PÁGINAS
-    ========================================== */
+    /* =========================================
+       PÁGINAS
+    ========================================= */
 
     .pagina {
       display: none;
+      padding-top: 78px;
       min-height: 100vh;
-      padding-top: 85px;
-      animation: aparecer 0.65s ease;
+      animation: entrada 0.6s ease;
     }
 
     .pagina.ativa {
       display: block;
     }
 
-    @keyframes aparecer {
+    @keyframes entrada {
       from {
         opacity: 0;
-        transform: translateY(12px);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0);
       }
     }
 
-    /* ==========================================
-       CAPA
-    ========================================== */
+    /* =========================================
+       CAPA — IMAGEM EM TELA INTEIRA
+    ========================================= */
 
     .capa {
-      min-height: calc(100vh - 85px);
       position: relative;
+
+      width: 100%;
+      min-height: calc(100svh - 78px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       overflow: hidden;
+      isolation: isolate;
+
+      background: #08090b;
+    }
+
+    /* IMAGEM GRANDE */
+
+    .capa-ilustracao {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .capa-ilustracao img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      filter: none;
+      animation: none;
+    }
+
+    /* CONTEÚDO SOBRE A IMAGEM */
+
+    .capa-conteudo {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      min-height: calc(100svh - 78px);
+
+      padding: 8vh 4% 12vh;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
       text-align: center;
-      padding: 75px 20px 100px;
-      isolation: isolate;
     }
 
-    .capa::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(
-          ellipse at 50% 58%,
-          rgba(35, 92, 137, 0.16),
-          transparent 65%
-        );
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .capa-conteudo {
-      position: relative;
-      z-index: 3;
-      width: 100%;
-      max-width: 1250px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .capa-selo {
-      font-family: "Gordita", sans-serif;
-      text-transform: uppercase;
-      font-size: 10px;
-      letter-spacing: 4px;
-      color: var(--azul-claro);
-      margin-bottom: 30px;
-    }
+    /* TÍTULO */
 
     .capa-titulo {
       font-family: "Cubao", sans-serif;
+
+      font-size: clamp(65px, 9.2vw, 150px);
       font-weight: normal;
-      font-size: clamp(65px, 11vw, 170px);
-      line-height: 0.91;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      max-width: 1200px;
+
+      line-height: 0.94;
+      letter-spacing: 0;
+
+      color: white;
+      width: 100%;
+      max-width: 1300px;
+
       position: relative;
-      z-index: 4;
+      z-index: 3;
     }
 
     .capa-titulo span {
       display: block;
     }
 
-    .capa-titulo .azul {
-      color: var(--azul-claro);
-    }
+    /* SUBTÍTULO */
 
     .capa-subtitulo {
       font-family: "Morisawa", sans-serif;
+
+      font-size: clamp(20px, 2.7vw, 37px);
       font-weight: normal;
-      font-size: clamp(15px, 2vw, 25px);
-      letter-spacing: 5px;
-      margin-top: 25px;
+
+      letter-spacing: 0;
+      line-height: 1.3;
+
+      color: white;
+      margin-top: 20px;
+
       position: relative;
-      z-index: 4;
+      z-index: 3;
     }
 
-    .capa-ilustracao {
-      width: min(690px, 88vw);
-      margin-top: -5px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .capa-ilustracao img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 20px 55px rgba(0,0,0,0.45));
-      animation: flutuar 7s ease-in-out infinite;
-    }
-
-    @keyframes flutuar {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-13px);
-      }
-    }
+    /* AUTORIA */
 
     .capa-autoria {
       font-family: "Gordita", sans-serif;
-      font-size: 13px;
-      letter-spacing: 1px;
-      margin-top: 15px;
-      color: var(--branco);
+
+      font-size: clamp(11px, 1.1vw, 15px);
+      color: white;
+
+      margin-top: 14px;
+
       position: relative;
-      z-index: 4;
+      z-index: 3;
     }
 
+    /* BOTÃO DESCER */
+
     .capa-descer {
-      margin-top: 45px;
-      border: none;
-      background: transparent;
-      color: var(--azul-claro);
-      cursor: pointer;
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.35);
+
+      padding: 12px 18px;
+      color: white;
+
       font-family: "Gordita", sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
+      font-size: 10px;
+      letter-spacing: 1px;
+
       display: flex;
-      flex-direction: column;
       align-items: center;
       gap: 12px;
-      transition: transform 0.3s;
+
+      transition: 0.3s;
     }
 
     .capa-descer:hover {
-      transform: translateY(5px);
+      background: var(--azul);
     }
 
-    .capa-descer span {
-      font-size: 27px;
-    }
-
-    /* ==========================================
-       ONDAS
-    ========================================== */
-
-    .ondas {
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
-      height: 130px;
-      overflow: hidden;
-      pointer-events: none;
-      opacity: 0.45;
-    }
-
-    .ondas svg {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 200%;
-      height: 100%;
-      animation: moverOnda 14s linear infinite;
-    }
-
-    .ondas svg:nth-child(2) {
-      animation-duration: 20s;
-      animation-direction: reverse;
-      opacity: 0.5;
-    }
-
-    @keyframes moverOnda {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* ==========================================
-       CONTROLE DE SOM
-    ========================================== */
-
-    .controle-som {
-      position: fixed;
-      right: 28px;
-      bottom: 28px;
-      z-index: 120;
-      border: 1px solid rgba(155,205,233,0.35);
-      background: rgba(8,9,11,0.9);
-      color: var(--branco);
-      border-radius: 50px;
-      padding: 13px 18px;
-      display: none;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      font-family: "Gordita", sans-serif;
-      font-size: 11px;
-      transition: background 0.3s;
-    }
-
-    .controle-som.visivel {
-      display: flex;
-    }
-
-    .controle-som:hover {
-      background: #17354c;
-    }
-
-    .som-icone {
-      font-size: 17px;
-    }
-
-    /* ==========================================
-       CONTEÚDO GERAL
-    ========================================== */
+    /* =========================================
+       CONTEÚDO DAS PÁGINAS
+    ========================================= */
 
     .conteudo {
       max-width: 1200px;
@@ -427,70 +335,90 @@
     }
 
     .pagina-abertura {
-      padding: 105px 7% 75px;
       max-width: 1400px;
       margin: auto;
+
+      padding: 110px 7% 80px;
+
       border-bottom: 1px solid var(--borda);
     }
 
     .pagina-numero {
+      display: block;
+
       font-family: "Gordita", sans-serif;
-      color: var(--azul-claro);
       font-size: 12px;
       letter-spacing: 4px;
+
+      color: var(--azul-claro);
+
       margin-bottom: 25px;
-      display: block;
     }
 
     .pagina-titulo {
       font-family: "Cubao", sans-serif;
+
+      font-size: clamp(65px, 10vw, 145px);
       font-weight: normal;
-      font-size: clamp(65px, 11vw, 145px);
       line-height: 0.95;
+
       margin-bottom: 30px;
     }
 
     .pagina-descricao {
       font-family: "Morisawa", sans-serif;
+
       font-size: clamp(17px, 2vw, 23px);
       line-height: 1.7;
-      color: var(--cinza);
+
       max-width: 750px;
+      color: var(--cinza);
     }
 
     .titulo-secao {
       font-family: "Cubao", sans-serif;
+
       font-size: clamp(42px, 6vw, 85px);
       font-weight: normal;
-      margin-bottom: 35px;
+
       line-height: 1;
+      margin-bottom: 35px;
     }
 
     .texto {
+      max-width: 800px;
+
       font-family: "Morisawa", sans-serif;
       font-size: 18px;
-      line-height: 1.95;
-      color: #d0d0cf;
-      max-width: 790px;
+      line-height: 1.9;
+
+      color: #d0d0d0;
     }
 
     .texto p + p {
-      margin-top: 24px;
+      margin-top: 25px;
     }
 
+    /* =========================================
+       DESTAQUE
+    ========================================= */
+
     .destaque {
+      background: #101525;
+
       padding: 110px 7%;
       text-align: center;
+
       border-top: 1px solid var(--borda);
       border-bottom: 1px solid var(--borda);
-      background: #0c1319;
     }
 
     .destaque-frase {
       font-family: "Cubao", sans-serif;
+
+      font-size: clamp(38px, 6vw, 85px);
       font-weight: normal;
-      font-size: clamp(35px, 6vw, 80px);
-      line-height: 1.15;
+
       max-width: 1100px;
       margin: auto;
     }
@@ -499,36 +427,40 @@
       color: var(--azul-claro);
     }
 
-    /* ==========================================
-       CARDS E NAVEGAÇÃO
-    ========================================== */
+    /* =========================================
+       CARDS
+    ========================================= */
 
     .grade {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+
       gap: 20px;
       margin-top: 55px;
     }
 
     .card {
-      border: 1px solid var(--borda);
-      background: #0d1115;
-      padding: 35px;
       min-height: 240px;
+
+      padding: 35px;
+
+      background: #101217;
+      border: 1px solid var(--borda);
+
+      color: white;
+      text-align: left;
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
       transition: 0.35s;
-      cursor: pointer;
-      text-align: left;
-      color: inherit;
-      width: 100%;
     }
 
     .card:hover {
       transform: translateY(-7px);
+      background: #17213a;
       border-color: var(--azul-claro);
-      background: #111c25;
     }
 
     .card-numero {
@@ -539,168 +471,205 @@
 
     .card-titulo {
       font-family: "Cubao", sans-serif;
-      font-size: 37px;
-      font-weight: normal;
-      line-height: 1.05;
+      font-size: 38px;
+      line-height: 1;
     }
 
     .card-seta {
-      font-size: 25px;
-      color: var(--azul-claro);
       align-self: flex-end;
+      font-size: 27px;
+      color: var(--azul-claro);
     }
 
-    /* ==========================================
-       IMAGENS E GALERIA
-    ========================================== */
+    /* =========================================
+       IMAGENS
+    ========================================= */
 
     .imagem-destaque {
       width: 100%;
-      max-height: 680px;
+      max-height: 650px;
       object-fit: contain;
+
       display: block;
-      margin: 55px auto;
+      margin: 60px auto;
     }
 
     .galeria {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+
       gap: 25px;
       margin-top: 55px;
     }
 
     .galeria-item {
+      background: #101217;
       border: 1px solid var(--borda);
       overflow: hidden;
-      background: #101419;
     }
 
     .galeria-item img {
       width: 100%;
       height: 350px;
       object-fit: contain;
-      display: block;
+
       padding: 20px;
-      transition: transform 0.5s;
+      display: block;
+
+      transition: transform 0.4s;
     }
 
     .galeria-item:hover img {
-      transform: scale(1.035);
+      transform: scale(1.04);
     }
 
     .galeria-legenda {
       padding: 20px;
+
       font-family: "Gordita", sans-serif;
       font-size: 12px;
+
       color: var(--cinza);
       border-top: 1px solid var(--borda);
     }
 
-    /* ==========================================
+    /* =========================================
        LINHA DO TEMPO
-    ========================================== */
+    ========================================= */
 
     .linha-tempo {
-      position: relative;
-      margin-top: 60px;
-      border-left: 1px solid var(--azul);
+      border-left: 1px solid var(--azul-claro);
+
       padding-left: 40px;
+      margin-top: 65px;
     }
 
     .linha-tempo-item {
       position: relative;
-      padding: 0 0 65px;
+      padding-bottom: 65px;
     }
 
     .linha-tempo-item::before {
       content: "";
+
       position: absolute;
       left: -47px;
-      top: 9px;
+      top: 10px;
+
       width: 13px;
       height: 13px;
-      background: var(--azul-claro);
+
       border-radius: 50%;
-      box-shadow: 0 0 20px rgba(155,205,233,0.4);
+      background: var(--azul-claro);
     }
 
     .linha-tempo-data {
       font-family: "Cubao", sans-serif;
-      font-size: 35px;
+      font-size: 36px;
       color: var(--azul-claro);
+
       margin-bottom: 12px;
     }
 
     .linha-tempo-texto {
       font-size: 17px;
       line-height: 1.8;
+
       color: var(--cinza);
       max-width: 650px;
     }
 
-    /* ==========================================
+    /* =========================================
        BOTÕES
-    ========================================== */
+    ========================================= */
 
     .botao-link {
       display: inline-flex;
       align-items: center;
-      gap: 15px;
+
       margin-top: 40px;
-      border: 1px solid var(--azul-claro);
-      background: transparent;
       padding: 17px 25px;
-      color: var(--branco);
-      cursor: pointer;
+
+      background: transparent;
+      border: 1px solid var(--azul-claro);
+
+      color: white;
+
       font-family: "Gordita", sans-serif;
       font-size: 12px;
+
       transition: 0.3s;
     }
 
     .botao-link:hover {
       background: var(--azul);
-      border-color: var(--azul);
     }
 
-    /* ==========================================
-       RODAPÉ
-    ========================================== */
+    /* =========================================
+       CONTROLE DE SOM
+    ========================================= */
 
-    footer {
-      border-top: 1px solid var(--borda);
-      padding: 70px 7% 35px;
-      background: #08090b;
-    }
+    .controle-som {
+      position: fixed;
 
-    .rodape-titulo {
-      font-family: "Cubao", sans-serif;
-      font-size: clamp(50px, 8vw, 110px);
-      font-weight: normal;
-      color: var(--azul-claro);
-    }
+      right: 25px;
+      bottom: 25px;
 
-    .rodape-info {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 35px;
-      color: var(--cinza);
+      z-index: 1100;
+
+      background: rgba(0,0,0,0.85);
+      border: 1px solid var(--azul-claro);
+
+      border-radius: 40px;
+
+      color: white;
+      padding: 14px 20px;
+
       font-family: "Gordita", sans-serif;
       font-size: 11px;
-      line-height: 1.8;
+
+      display: none;
+      align-items: center;
+      gap: 10px;
     }
 
-    /* ==========================================
-       ANIMAÇÃO AO ROLAR
-    ========================================== */
+    .controle-som.visivel {
+      display: flex;
+    }
+
+    .controle-som:hover {
+      background: var(--azul);
+    }
+
+    /* =========================================
+       BARRA DE PROGRESSO
+    ========================================= */
+
+    .barra-progresso {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 0;
+      height: 3px;
+
+      background: var(--azul-claro);
+
+      z-index: 2000;
+    }
+
+    /* =========================================
+       ANIMAÇÕES
+    ========================================= */
 
     .revelar {
       opacity: 0;
       transform: translateY(30px);
+
       transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+        opacity 0.8s,
+        transform 0.8s;
     }
 
     .revelar.visivel {
@@ -708,25 +677,63 @@
       transform: translateY(0);
     }
 
-    /* ==========================================
+    /* =========================================
+       RODAPÉ
+    ========================================= */
+
+    footer {
+      background: #08090b;
+
+      padding: 70px 7% 35px;
+      border-top: 1px solid var(--borda);
+    }
+
+    .rodape-titulo {
+      font-family: "Cubao", sans-serif;
+
+      font-size: clamp(50px, 8vw, 110px);
+      font-weight: normal;
+
+      color: var(--azul-claro);
+    }
+
+    .rodape-info {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      gap: 20px;
+      margin-top: 35px;
+
+      font-family: "Gordita", sans-serif;
+      font-size: 11px;
+      line-height: 1.8;
+
+      color: var(--cinza);
+    }
+
+    /* =========================================
        RESPONSIVIDADE
-    ========================================== */
+    ========================================= */
 
     @media (max-width: 1100px) {
+
       .cabecalho {
         flex-wrap: wrap;
       }
 
       nav {
-        gap: 15px;
+        gap: 14px;
       }
 
       nav button {
         font-size: 10px;
       }
+
     }
 
     @media (max-width: 800px) {
+
       .cabecalho {
         min-height: 75px;
       }
@@ -737,11 +744,13 @@
 
       nav {
         display: none;
+
         width: 100%;
         flex-direction: column;
         align-items: stretch;
-        padding: 20px 0;
+
         gap: 0;
+        padding: 15px 0;
       }
 
       nav.aberto {
@@ -751,7 +760,7 @@
       nav button {
         text-align: left;
         padding: 14px 5px;
-        font-size: 12px;
+
         border-bottom: 1px solid var(--borda);
       }
 
@@ -759,21 +768,25 @@
         padding-top: 75px;
       }
 
-      .capa {
-        min-height: calc(100vh - 75px);
+      .capa,
+      .capa-conteudo {
+        min-height: calc(100svh - 75px);
+      }
+
+      .capa-conteudo {
+        padding: 70px 5% 100px;
       }
 
       .capa-titulo {
-        font-size: clamp(57px, 12vw, 100px);
+        font-size: clamp(48px, 11vw, 85px);
       }
 
       .capa-subtitulo {
-        letter-spacing: 2px;
+        font-size: clamp(17px, 4vw, 25px);
       }
 
-      .grade,
-      .galeria {
-        grid-template-columns: 1fr;
+      .capa-autoria {
+        font-size: 11px;
       }
 
       .conteudo {
@@ -784,12 +797,19 @@
         padding: 80px 7% 55px;
       }
 
+      .grade,
+      .galeria {
+        grid-template-columns: 1fr;
+      }
+
       .galeria-item img {
         height: 300px;
       }
+
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       *,
       *::before,
       *::after {
@@ -797,7 +817,9 @@
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
+
     }
+
   </style>
 </head>
 
@@ -805,11 +827,12 @@
 
   <div class="barra-progresso" id="barraProgresso"></div>
 
-  <!-- ========================================
-       CABEÇALHO
-  ======================================== -->
+  <!-- =====================================
+       MENU
+  ===================================== -->
 
   <header>
+
     <div class="cabecalho">
 
       <a href="#inicio" class="logo" data-pagina="inicio">
@@ -826,7 +849,7 @@
         ☰
       </button>
 
-      <nav id="menuPrincipal" aria-label="Navegação principal">
+      <nav id="menuPrincipal">
 
         <button type="button" data-pagina="inicio" class="ativo">
           Início
@@ -861,44 +884,49 @@
         </button>
 
       </nav>
+
     </div>
+
   </header>
 
-  <!-- ========================================
-       PÁGINA 1 — INÍCIO
-  ======================================== -->
-
   <main>
+
+    <!-- =====================================
+         PÁGINA INICIAL
+    ===================================== -->
 
     <section class="pagina ativa" id="inicio">
 
       <div class="capa">
 
+        <!-- IMAGEM GRANDE DE FUNDO -->
+
+        <div class="capa-ilustracao">
+
+          <img
+            src="./imagens/IMAGEM DA CAPA.PNG.png"
+            alt="Ilustração principal da Correnteza"
+          >
+
+        </div>
+
+        <!-- TEXTOS SOBRE A IMAGEM -->
+
         <div class="capa-conteudo">
 
-          <p class="capa-selo">
-            Uma travessia pelo Sertão
-          </p>
-
           <h1 class="capa-titulo">
+
             <span>ENTRE DUAS</span>
-            <span class="azul">MARGENS</span>
+            <span>MARGENS</span>
+
           </h1>
 
           <h2 class="capa-subtitulo">
             UMA SÓ CORRENTEZA
           </h2>
 
-          <!-- IMAGEM DA CAPA — CAMINHO CORRETO -->
-          <div class="capa-ilustracao">
-            <img
-              src="./imagens/IMAGEM DA CAPA.PNG.png"
-              alt="Ilustração principal da capa Correnteza"
-            >
-          </div>
-
           <p class="capa-autoria">
-            Por Cibelle Vieira
+            por CIBELLE VIEIRA
           </p>
 
           <button
@@ -912,25 +940,9 @@
 
         </div>
 
-        <div class="ondas" aria-hidden="true">
-
-          <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
-            <path
-              fill="#397db5"
-              d="M0,90 C180,20 360,160 540,90 C720,20 900,160 1080,90 C1260,20 1440,160 1620,90 L1620,180 L0,180 Z"
-            />
-          </svg>
-
-          <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
-            <path
-              fill="#9bcde9"
-              d="M0,110 C240,30 480,170 720,110 C960,30 1200,170 1440,110 L1440,180 L0,180 Z"
-            />
-          </svg>
-
-        </div>
-
       </div>
+
+      <!-- APRESENTAÇÃO -->
 
       <div class="conteudo" id="apresentacao">
 
@@ -974,6 +986,8 @@
 
       </div>
 
+      <!-- DESTAQUE -->
+
       <div class="destaque">
 
         <h2 class="destaque-frase revelar">
@@ -982,6 +996,8 @@
         </h2>
 
       </div>
+
+      <!-- NAVEGAÇÃO POR CARDS -->
 
       <div class="conteudo">
 
@@ -1043,9 +1059,9 @@
 
     </section>
 
-    <!-- ======================================
-         PÁGINA 2 — À MARGEM
-    ======================================= -->
+    <!-- =====================================
+         À MARGEM
+    ===================================== -->
 
     <section class="pagina" id="a-margem">
 
@@ -1107,9 +1123,9 @@
 
     </section>
 
-    <!-- ======================================
-         PÁGINA 3 — LINHA DO TEMPO
-    ======================================= -->
+    <!-- =====================================
+         LINHA DO TEMPO
+    ===================================== -->
 
     <section class="pagina" id="linha-do-tempo">
 
@@ -1137,39 +1153,59 @@
         </h2>
 
         <div class="texto revelar">
+
           <p>
             A história de um lugar pode ser contada por
             acontecimentos, lembranças, imagens e experiências.
+          </p>
+
+          <p>
             Esta linha do tempo será construída a partir dos
             marcos históricos e culturais selecionados para
             o projeto.
           </p>
+
         </div>
 
         <div class="linha-tempo">
 
           <div class="linha-tempo-item revelar">
-            <h3 class="linha-tempo-data">MEMÓRIAS</h3>
+
+            <h3 class="linha-tempo-data">
+              MEMÓRIAS
+            </h3>
+
             <p class="linha-tempo-texto">
               Narrativas que permanecem e ajudam a compreender
               as transformações do território.
             </p>
+
           </div>
 
           <div class="linha-tempo-item revelar">
-            <h3 class="linha-tempo-data">MOVIMENTOS</h3>
+
+            <h3 class="linha-tempo-data">
+              MOVIMENTOS
+            </h3>
+
             <p class="linha-tempo-texto">
               Experiências coletivas, manifestações culturais
               e formas de organização.
             </p>
+
           </div>
 
           <div class="linha-tempo-item revelar">
-            <h3 class="linha-tempo-data">PRESENTE</h3>
+
+            <h3 class="linha-tempo-data">
+              PRESENTE
+            </h3>
+
             <p class="linha-tempo-texto">
               As produções e os sujeitos que continuam
               construindo outras narrativas.
             </p>
+
           </div>
 
         </div>
@@ -1177,25 +1213,31 @@
         <div class="galeria">
 
           <div class="galeria-item revelar">
+
             <img
               src="./imagens/construção da Barragem.png.png"
               alt="Construção da Barragem"
               loading="lazy"
             >
+
             <p class="galeria-legenda">
               Construção da Barragem
             </p>
+
           </div>
 
           <div class="galeria-item revelar">
+
             <img
               src="./imagens/Círculo Operário de Juazeiro.png.png"
               alt="Círculo Operário de Juazeiro"
               loading="lazy"
             >
+
             <p class="galeria-legenda">
               Círculo Operário de Juazeiro
             </p>
+
           </div>
 
         </div>
@@ -1204,9 +1246,9 @@
 
     </section>
 
-    <!-- ======================================
-         PÁGINA 4 — NÚCLEO BIRUTA
-    ======================================= -->
+    <!-- =====================================
+         NÚCLEO BIRUTA
+    ===================================== -->
 
     <section class="pagina" id="nucleo-biruta">
 
@@ -1234,20 +1276,22 @@
         </h2>
 
         <div class="texto revelar">
+
           <p>
             Esta página reunirá a apresentação do Núcleo Biruta,
             sua trajetória e as produções selecionadas
             para integrar a Correnteza.
           </p>
+
         </div>
 
       </div>
 
     </section>
 
-    <!-- ======================================
-         PÁGINA 5 — COLETIVO ABDIAS
-    ======================================= -->
+    <!-- =====================================
+         COLETIVO ABDIAS
+    ===================================== -->
 
     <section class="pagina" id="coletivo-abdias">
 
@@ -1274,20 +1318,22 @@
         </h2>
 
         <div class="texto revelar">
+
           <p>
             Este espaço será dedicado à trajetória,
             às ações e às produções do Coletivo Abdias
             selecionadas para o projeto.
           </p>
+
         </div>
 
       </div>
 
     </section>
 
-    <!-- ======================================
-         PÁGINA 6 — CAATINGAYRO
-    ======================================= -->
+    <!-- =====================================
+         CAATINGAYRO
+    ===================================== -->
 
     <section class="pagina" id="caatingayro">
 
@@ -1315,20 +1361,22 @@
         </h2>
 
         <div class="texto revelar">
+
           <p>
             Esta página receberá as narrativas,
             os registros e as produções do Caatingayro
             que compõem a proposta da Correnteza.
           </p>
+
         </div>
 
       </div>
 
     </section>
 
-    <!-- ======================================
-         PÁGINA 7 — ARTISTAS
-    ======================================= -->
+    <!-- =====================================
+         ARTISTAS
+    ===================================== -->
 
     <section class="pagina" id="artistas">
 
@@ -1356,34 +1404,42 @@
         </h2>
 
         <div class="texto revelar">
+
           <p>
             Aqui serão apresentados os artistas participantes
             do projeto, suas trajetórias e produções.
           </p>
+
         </div>
 
         <div class="galeria">
 
           <div class="galeria-item revelar">
+
             <img
               src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
               alt="Ilustração de Cibs criança"
               loading="lazy"
             >
+
             <p class="galeria-legenda">
               Ilustração
             </p>
+
           </div>
 
           <div class="galeria-item revelar">
+
             <img
               src="./imagens/Coelhão.png.png"
               alt="Ilustração Coelhão"
               loading="lazy"
             >
+
             <p class="galeria-legenda">
               Coelhão
             </p>
+
           </div>
 
         </div>
@@ -1392,9 +1448,9 @@
 
     </section>
 
-    <!-- ======================================
-         PÁGINA 8 — LUGARES
-    ======================================= -->
+    <!-- =====================================
+         LUGARES
+    ===================================== -->
 
     <section class="pagina" id="lugares">
 
@@ -1422,6 +1478,7 @@
         </h2>
 
         <div class="texto revelar">
+
           <p>
             Os lugares guardam histórias que nem sempre
             aparecem nas representações mais conhecidas
@@ -1433,30 +1490,37 @@
             a construir outros olhares sobre os espaços
             que integram a Correnteza.
           </p>
+
         </div>
 
         <div class="galeria">
 
           <div class="galeria-item revelar">
+
             <img
               src="./imagens/ILHA DO FOGO.PNG.png"
               alt="Ilha do Fogo"
               loading="lazy"
             >
+
             <p class="galeria-legenda">
               Ilha do Fogo
             </p>
+
           </div>
 
           <div class="galeria-item revelar">
+
             <img
               src="./imagens/Comissão Pastoral da Terra.png.png"
               alt="Comissão Pastoral da Terra"
               loading="lazy"
             >
+
             <p class="galeria-legenda">
               Comissão Pastoral da Terra
             </p>
+
           </div>
 
         </div>
@@ -1467,9 +1531,9 @@
 
   </main>
 
-  <!-- ========================================
+  <!-- =====================================
        RODAPÉ
-  ======================================== -->
+  ===================================== -->
 
   <footer>
 
@@ -1484,7 +1548,7 @@
       </p>
 
       <p>
-        Por Cibelle Vieira
+        por CIBELLE VIEIRA
       </p>
 
       <p>
@@ -1495,15 +1559,17 @@
 
   </footer>
 
-  <!-- ========================================
-       ÁUDIO — CAMINHO CORRIGIDO
-  ======================================== -->
+  <!-- =====================================
+       SOM DO RIO
+  ===================================== -->
 
   <audio id="somRio" loop preload="none">
+
     <source
       src="./Sons/Som de Rio - Efeito Sonoro (HD).mp3"
       type="audio/mpeg"
     >
+
   </audio>
 
   <button
@@ -1513,21 +1579,22 @@
     aria-label="Ativar som do rio"
     aria-pressed="false"
   >
-    <span class="som-icone" id="iconeSom">♪</span>
+
+    <span id="iconeSom">♪</span>
     <span id="textoSom">ATIVAR SOM DO RIO</span>
+
   </button>
 
-  <!-- ========================================
+  <!-- =====================================
        JAVASCRIPT
-  ======================================== -->
+  ===================================== -->
 
   <script>
 
-    /* ========================================
-       ELEMENTOS
-    ======================================== */
+    /* ELEMENTOS */
 
-    const paginas = document.querySelectorAll(".pagina");
+    const paginas =
+      document.querySelectorAll(".pagina");
 
     const botoesNavegacao =
       document.querySelectorAll("[data-pagina]");
@@ -1558,9 +1625,9 @@
 
     let paginaAtual = "inicio";
 
-    /* ========================================
-       CONTROLE DE ÁUDIO
-    ======================================== */
+    /* =====================================
+       SOM
+    ===================================== */
 
     function atualizarBotaoSom() {
 
@@ -1607,7 +1674,7 @@
           await audio.play();
         } catch (erro) {
           console.error(
-            "Não foi possível reproduzir o áudio:",
+            "Erro ao reproduzir áudio:",
             erro
           );
         }
@@ -1625,19 +1692,22 @@
     audio.addEventListener("play", atualizarBotaoSom);
     audio.addEventListener("pause", atualizarBotaoSom);
 
-    /* ========================================
-       NAVEGAÇÃO ENTRE PÁGINAS
-    ======================================== */
+    /* =====================================
+       NAVEGAÇÃO
+    ===================================== */
 
     function abrirPagina(id, atualizarHistorico = true) {
 
-      const destino = document.getElementById(id);
+      const destino =
+        document.getElementById(id);
 
-      if (!destino || !destino.classList.contains("pagina")) {
+      if (
+        !destino ||
+        !destino.classList.contains("pagina")
+      ) {
         return;
       }
 
-      // O áudio para sempre que sai da página inicial.
       if (id !== "inicio") {
         pararSom();
       }
@@ -1645,10 +1715,12 @@
       paginaAtual = id;
 
       paginas.forEach(pagina => {
+
         pagina.classList.toggle(
           "ativa",
           pagina.id === id
         );
+
       });
 
       botoesMenu.forEach(botao => {
@@ -1659,7 +1731,10 @@
         botao.classList.toggle("ativo", ativo);
 
         if (ativo) {
-          botao.setAttribute("aria-current", "page");
+          botao.setAttribute(
+            "aria-current",
+            "page"
+          );
         } else {
           botao.removeAttribute("aria-current");
         }
@@ -1681,11 +1756,13 @@
       botaoMenu.textContent = "☰";
 
       if (atualizarHistorico) {
+
         history.pushState(
           { pagina: id },
           "",
           "#" + id
         );
+
       }
 
       window.scrollTo({
@@ -1704,17 +1781,17 @@
 
         evento.preventDefault();
 
-        const id = botao.dataset.pagina;
-
-        abrirPagina(id);
+        abrirPagina(
+          botao.dataset.pagina
+        );
 
       });
 
     });
 
-    /* ========================================
+    /* =====================================
        MENU MOBILE
-    ======================================== */
+    ===================================== */
 
     botaoMenu.addEventListener("click", () => {
 
@@ -1726,13 +1803,14 @@
         String(aberto)
       );
 
-      botaoMenu.textContent = aberto ? "✕" : "☰";
+      botaoMenu.textContent =
+        aberto ? "✕" : "☰";
 
     });
 
-    /* ========================================
-       BOTÃO DE DESCER NA CAPA
-    ======================================== */
+    /* =====================================
+       DESCER NA CAPA
+    ===================================== */
 
     document
       .getElementById("botaoDescer")
@@ -1746,9 +1824,9 @@
 
       });
 
-    /* ========================================
-       BARRA DE PROGRESSO
-    ======================================== */
+    /* =====================================
+       PROGRESSO
+    ===================================== */
 
     function atualizarBarraProgresso() {
 
@@ -1776,9 +1854,9 @@
       atualizarBarraProgresso
     );
 
-    /* ========================================
-       ANIMAÇÕES DE ENTRADA
-    ======================================== */
+    /* =====================================
+       ANIMAÇÕES
+    ===================================== */
 
     const observador = new IntersectionObserver(
       entradas => {
@@ -1804,9 +1882,10 @@
 
     function observarElementos() {
 
-      const elementos = document.querySelectorAll(
-        ".pagina.ativa .revelar:not(.visivel)"
-      );
+      const elementos =
+        document.querySelectorAll(
+          ".pagina.ativa .revelar:not(.visivel)"
+        );
 
       elementos.forEach(elemento => {
         observador.observe(elemento);
@@ -1814,9 +1893,9 @@
 
     }
 
-    /* ========================================
-       VOLTAR / AVANÇAR DO NAVEGADOR
-    ======================================== */
+    /* =====================================
+       HISTÓRICO DO NAVEGADOR
+    ===================================== */
 
     function verificarEndereco() {
 
@@ -1824,8 +1903,12 @@
         window.location.hash.replace("#", "")
       );
 
+      const elemento =
+        document.getElementById(id);
+
       const paginaValida =
-        document.getElementById(id)?.classList.contains("pagina");
+        elemento &&
+        elemento.classList.contains("pagina");
 
       abrirPagina(
         paginaValida ? id : "inicio",
@@ -1844,12 +1927,14 @@
       verificarEndereco
     );
 
-    /* ========================================
-       INICIALIZAÇÃO
-    ======================================== */
+    /* =====================================
+       INICIAR SITE
+    ===================================== */
 
     verificarEndereco();
+
     atualizarBotaoSom();
+
     atualizarBarraProgresso();
 
   </script>
