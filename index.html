@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +9,14 @@
   <title>Entre Duas Margens, Uma Só Correnteza</title>
 
   <style>
-
-    /* ==========================================
-       1. FONTES DO PROJETO
-    ========================================== */
+    /* ========================================
+       FONTES
+    ======================================== */
 
     @font-face {
       font-family: "Cubao";
       src: url("./fontes/cubao-free/Cubao_Free_Regular.otf") format("opentype");
       font-weight: 400;
-      font-style: normal;
       font-display: swap;
     }
 
@@ -27,7 +24,6 @@
       font-family: "Morisawa";
       src: url("./fontes/morisawa-otf-cufonfonts-webfont/MorisawaOtfRegular.woff") format("woff");
       font-weight: 400;
-      font-style: normal;
       font-display: swap;
     }
 
@@ -35,7 +31,6 @@
       font-family: "Gordita";
       src: url("./fontes/gordita-regular-maisfontes.80be/gordita-regular.otf") format("opentype");
       font-weight: 400;
-      font-style: normal;
       font-display: swap;
     }
 
@@ -43,23 +38,38 @@
       font-family: "Neue Montreal";
       src: url("./fontes/neue-montreal-regular-maisfontes.525c/neue-montreal-regular.otf") format("opentype");
       font-weight: 400;
-      font-style: normal;
       font-display: swap;
     }
 
-    /* ==========================================
-       2. CONFIGURAÇÕES GERAIS
-    ========================================== */
+    /* ========================================
+       CONFIGURAÇÕES GERAIS
+    ======================================== */
 
     :root {
       --preto: #050505;
       --branco: #ffffff;
       --azul: #394a8c;
       --azul-claro: #a6b7ef;
-      --cinza: #c5c5c5;
-
       --largura-texto: 740px;
       --altura-menu: 72px;
+
+      /*
+        CONTROLES VISUAIS
+
+        Aumente os valores de zoom se quiser
+        aproximar ainda mais as ilustrações.
+      */
+
+      --zoom-capa: 1.12;
+      --zoom-rodape: 1.16;
+
+      /*
+        Altura total da imagem da Ilha do Fogo
+        dividida entre capa e reportagem.
+      */
+
+      --ilha-altura: clamp(300px, 34vw, 500px);
+      --ilha-parte-capa: 46%;
     }
 
     * {
@@ -69,21 +79,15 @@
     }
 
     html {
-      width: 100%;
-      min-height: 100%;
       background: var(--preto);
-
       scroll-behavior: smooth;
       scroll-padding-top: var(--altura-menu);
     }
 
     body {
-      width: 100%;
       min-height: 100vh;
-
       background: var(--preto);
       color: var(--branco);
-
       font-family: "Neue Montreal", Arial, sans-serif;
       overflow-x: hidden;
     }
@@ -93,12 +97,8 @@
       font-family: inherit;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
     img {
+      display: block;
       max-width: 100%;
     }
 
@@ -108,32 +108,26 @@
       background: var(--preto);
     }
 
-    /* ==========================================
-       3. MENU CENTRALIZADO
-    ========================================== */
+    /* ========================================
+       MENU CENTRALIZADO
+    ======================================== */
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-
       width: 100%;
-
-      background: rgba(0, 0, 0, 0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-
+      background: rgba(0, 0, 0, 0.96);
+      border-bottom: 1px solid rgba(255,255,255,0.13);
       backdrop-filter: blur(12px);
     }
 
     .cabecalho {
-      width: 100%;
       min-height: var(--altura-menu);
-
-      padding: 14px 35px;
-
+      padding: 14px 30px;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
     }
 
     nav {
@@ -141,36 +135,27 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-
-      gap: clamp(13px, 2vw, 30px);
+      gap: clamp(12px, 1.8vw, 30px);
     }
 
     nav button {
       position: relative;
-
       padding: 9px 0;
-
       border: none;
       background: transparent;
-
-      color: #e1e1e1;
-
+      color: #e4e4e4;
       font-family: "Gordita", Arial, sans-serif;
       font-size: clamp(10px, 0.9vw, 13px);
-
       transition: color 0.3s;
     }
 
     nav button::after {
       content: "";
-
       position: absolute;
       bottom: 2px;
       left: 0;
-
       width: 0;
       height: 1px;
-
       background: var(--azul-claro);
       transition: width 0.3s;
     }
@@ -187,29 +172,25 @@
 
     .menu-mobile {
       display: none;
-
-      padding: 8px 13px;
-
       border: 1px solid #555;
       background: transparent;
       color: white;
-
+      padding: 8px 13px;
       font-size: 22px;
     }
 
-    /* ==========================================
-       4. PÁGINAS
-    ========================================== */
+    /* ========================================
+       PÁGINAS
+    ======================================== */
 
     .pagina {
       display: none;
-      width: 100%;
       min-height: calc(100vh - var(--altura-menu));
     }
 
     .pagina.ativa {
       display: block;
-      animation: aparecer 0.45s ease;
+      animation: aparecer 0.4s ease;
     }
 
     @keyframes aparecer {
@@ -217,67 +198,52 @@
       to { opacity: 1; }
     }
 
-    /* ==========================================
-       5. CAPA
-    ========================================== */
+    /* ========================================
+       CAPA COM ZOOM
+    ======================================== */
 
     .capa {
       position: relative;
       isolation: isolate;
-
       width: 100%;
       min-height: calc(100svh - var(--altura-menu));
-
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-
       overflow: hidden;
-      background: black;
+      background: #000;
     }
 
     .capa-imagem {
       position: absolute;
       inset: 0;
-      z-index: -1;
-
-      width: 100%;
-      height: 100%;
+      z-index: -2;
+      overflow: hidden;
     }
 
     .capa-imagem img {
-      display: block;
-
       width: 100%;
       height: 100%;
-
       object-fit: cover;
-      object-position: center;
+      object-position: center center;
+      transform: scale(var(--zoom-capa));
+      transform-origin: center;
     }
 
     .capa-conteudo {
       position: relative;
-      z-index: 2;
-
+      z-index: 4;
       width: 100%;
-      padding: clamp(90px, 12vh, 150px) 30px 100px;
-
+      padding: clamp(80px, 11vh, 140px) 25px 260px;
       display: flex;
       flex-direction: column;
       align-items: center;
-
       text-align: center;
     }
 
     .capa-titulo {
       font-family: "Cubao", Impact, sans-serif;
       font-weight: 400;
-
-      font-size: clamp(70px, 10vw, 160px);
+      font-size: clamp(64px, 10vw, 160px);
       line-height: 0.93;
-
       color: white;
-      text-align: center;
     }
 
     .capa-titulo span {
@@ -285,180 +251,156 @@
     }
 
     .capa-subtitulo {
-      font-family: "Morisawa", Georgia, serif;
-      font-weight: 400;
-
-      font-size: clamp(24px, 3vw, 42px);
-      line-height: 1.25;
-
       margin-top: 18px;
-      color: white;
+      font-family: "Morisawa", Georgia, serif;
+      font-size: clamp(23px, 3vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
     }
 
     .capa-autoria {
+      margin-top: 15px;
       font-family: "Gordita", Arial, sans-serif;
       font-size: 14px;
-
-      margin-top: 14px;
-      color: white;
     }
+
+    /* ========================================
+       ILHA DO FOGO: IMAGEM CONTÍNUA
+
+       A imagem é exibida em um único elemento,
+       que atravessa o limite da capa.
+
+       Isso evita cortes ou desalinhamentos
+       entre duas cópias diferentes.
+    ======================================== */
+
+    .transicao-ilha {
+      position: relative;
+      width: 100%;
+      height: var(--ilha-altura);
+      margin-top: calc(var(--ilha-altura) * -0.46);
+      z-index: 3;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .transicao-ilha img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /*
+      A parte superior da transição aparece
+      sobre a capa. A parte inferior continua
+      imediatamente antes do texto.
+
+      Como é uma única imagem, não existe
+      emenda entre os dois trechos.
+    */
 
     .capa-descer {
       position: absolute;
+      z-index: 6;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-
-      z-index: 3;
-
       padding: 12px 18px;
-
-      background: rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,255,255,0.55);
-
+      border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(0,0,0,0.75);
       color: white;
-
       font-family: "Gordita", sans-serif;
       font-size: 10px;
       letter-spacing: 1px;
-
       white-space: nowrap;
-      transition: background 0.3s;
     }
 
     .capa-descer:hover {
       background: var(--azul);
     }
 
-    /* ==========================================
-       6. TRANSIÇÃO DA CAPA PARA A REPORTAGEM
-    ========================================== */
+    /* ========================================
+       REPORTAGEM
+    ======================================== */
 
     .reportagem {
       position: relative;
-
       width: 100%;
+      padding: 0 0 100px;
       background: var(--preto);
-
-      padding-bottom: 110px;
     }
-
-    /*
-      A imagem da Ilha do Fogo fica imediatamente
-      abaixo da capa, sem espaço entre as seções.
-    */
-
-    .imagem-ponte {
-      width: 100%;
-      height: clamp(180px, 20vw, 310px);
-
-      margin: 0;
-      padding: 0;
-
-      overflow: hidden;
-      background: #080808;
-    }
-
-    .imagem-ponte img {
-      display: block;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /*
-      O texto começa próximo da imagem.
-    */
 
     .reportagem-conteudo {
       width: 100%;
-      max-width: none;
-
-      margin: 0;
-      padding: 30px 0 40px;
+      padding: 22px 0 30px;
     }
 
     .reportagem-titulo {
       width: calc(100% - 48px);
       max-width: var(--largura-texto);
-
-      margin: 0 auto 25px;
-
+      margin: 0 auto 30px;
       font-family: "Neue Montreal", Arial, sans-serif;
-      font-weight: 400;
-
       font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400;
       line-height: 1.12;
-
       text-align: left;
     }
 
-    /* ==========================================
-       7. TEXTO CORRIDO
-    ========================================== */
+    /* ========================================
+       TEXTO CORRIDO CENTRALIZADO
+    ======================================== */
 
     .corpo-reportagem {
       position: relative;
-      z-index: 2;
-
       width: calc(100% - 48px);
       max-width: var(--largura-texto);
-
       margin: 0 auto;
       text-align: left;
+      display: flow-root;
     }
 
     .corpo-reportagem p {
       font-family: "Neue Montreal", Arial, sans-serif;
-      font-weight: 400;
-
       font-size: clamp(18px, 1.65vw, 21px);
-      line-height: 1.42;
-
+      font-weight: 400;
+      line-height: 1.48;
       color: #f3f3f3;
-      text-align: left;
-
       margin-bottom: 28px;
     }
 
-    .corpo-reportagem p.primeiro-paragrafo::first-letter {
+    .primeiro-paragrafo::first-letter {
       float: left;
-
       font-family: "Neue Montreal", Arial, sans-serif;
-      font-weight: 700;
-
       font-size: 48px;
+      font-weight: bold;
       line-height: 0.9;
-
-      padding: 4px 3px 0 0;
+      padding: 4px 4px 0 0;
     }
 
-    /* ==========================================
-       8. ILUSTRAÇÃO CIBS CRIANÇA
-    ========================================== */
+    /* ========================================
+       CIBS CRIANÇA MAIOR E MAIS PRÓXIMA
+    ======================================== */
 
     .ilustracao-cibs {
-      position: relative;
-      z-index: 3;
-
       float: right;
+      position: relative;
+      z-index: 5;
 
-      width: clamp(260px, 31vw, 440px);
+      width: clamp(330px, 38vw, 560px);
 
-      margin: 15px -170px 15px 15px;
+      /*
+        Margem negativa coloca a ilustração
+        para fora da coluna sem empurrar
+        o texto para longe.
+      */
 
-      shape-outside: margin-box;
+      margin: 5px -230px 12px 12px;
     }
 
     .ilustracao-cibs img {
-      display: block;
-
       width: 100%;
       height: auto;
-
       object-fit: contain;
     }
 
@@ -466,111 +408,91 @@
       clear: both;
     }
 
-    /* ==========================================
-       9. PARÁGRAFO FINAL CENTRALIZADO
-    ========================================== */
+    /* ========================================
+       ÚLTIMO PARÁGRAFO
+    ======================================== */
 
-    .corpo-reportagem p.paragrafo-final {
+    .corpo-reportagem .paragrafo-final {
       clear: both;
-
-      max-width: 900px;
-      margin: 80px auto 30px;
-
+      max-width: 850px;
+      margin: 85px auto 25px;
       font-family: "Neue Montreal", Arial, sans-serif;
       font-size: clamp(22px, 2.5vw, 32px);
       font-weight: 700;
       line-height: 1.3;
-
       text-align: center;
       text-transform: uppercase;
-
       color: white;
     }
 
-    /* ==========================================
-       10. CONTEÚDO DAS OUTRAS PÁGINAS
-    ========================================== */
-
-    .conteudo {
-      width: 100%;
-      max-width: 1100px;
-
-      margin: 0 auto;
-      padding: 100px 45px;
-    }
+    /* ========================================
+       OUTRAS PÁGINAS
+    ======================================== */
 
     .pagina-abertura {
-      width: 100%;
-
-      padding: 110px max(45px, calc((100vw - 1100px) / 2)) 75px;
-
+      padding: 110px max(40px, calc((100vw - 1100px) / 2)) 75px;
       border-bottom: 1px solid #292929;
     }
 
     .pagina-numero {
       display: block;
-
+      margin-bottom: 25px;
       font-family: "Gordita", sans-serif;
       font-size: 11px;
       letter-spacing: 3px;
-
       color: var(--azul-claro);
-      margin-bottom: 25px;
     }
 
     .pagina-titulo {
       font-family: "Cubao", Impact, sans-serif;
-      font-weight: 400;
-
       font-size: clamp(60px, 9vw, 115px);
+      font-weight: 400;
       line-height: 1;
-
       margin-bottom: 30px;
     }
 
     .pagina-descricao {
       max-width: 700px;
-
       font-family: "Neue Montreal", Arial, sans-serif;
       font-size: 20px;
       line-height: 1.6;
-
       color: #c5c5c5;
     }
 
+    .conteudo {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 90px 45px;
+    }
+
     .titulo-secao {
-      font-family: "Cubao", Impact, sans-serif;
-      font-weight: 400;
-
-      font-size: clamp(40px, 6vw, 75px);
-      line-height: 1;
-
       margin-bottom: 35px;
+      font-family: "Cubao", Impact, sans-serif;
+      font-size: clamp(40px, 6vw, 75px);
+      font-weight: 400;
     }
 
     .texto {
       max-width: var(--largura-texto);
       margin: 0 auto;
-      text-align: left;
     }
 
     .texto p {
       font-family: "Neue Montreal", Arial, sans-serif;
       font-size: 19px;
       line-height: 1.7;
-
-      margin-bottom: 25px;
       color: #dedede;
+      margin-bottom: 25px;
     }
 
-    /* ==========================================
-       11. CARDS
-    ========================================== */
+    /* ========================================
+       CARDS
+    ======================================== */
 
     .grade {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-
       gap: 20px;
       margin-top: 50px;
     }
@@ -578,17 +500,13 @@
     .card {
       min-height: 190px;
       padding: 30px;
-
-      background: #101010;
-      border: 1px solid #333;
-
-      color: white;
-      text-align: left;
-
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
+      border: 1px solid #333;
+      background: #101010;
+      color: white;
+      text-align: left;
       transition: 0.3s;
     }
 
@@ -614,14 +532,13 @@
       font-size: 25px;
     }
 
-    /* ==========================================
-       12. GALERIA
-    ========================================== */
+    /* ========================================
+       GALERIA
+    ======================================== */
 
     .galeria {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-
       gap: 20px;
       margin-top: 50px;
     }
@@ -632,11 +549,8 @@
     }
 
     .galeria-item img {
-      display: block;
-
       width: 100%;
       height: 290px;
-
       object-fit: contain;
       padding: 15px;
     }
@@ -644,67 +558,66 @@
     .galeria-legenda {
       padding: 18px;
       border-top: 1px solid #292929;
-
       font-family: "Gordita", sans-serif;
       font-size: 12px;
       color: #c5c5c5;
     }
 
-    /* ==========================================
-       13. RODAPÉ ILUSTRADO
-    ========================================== */
+    /* ========================================
+       RODAPÉ COM ZOOM
+    ======================================== */
 
     .rodape {
       position: relative;
       isolation: isolate;
-
       width: 100%;
-      min-height: 420px;
-
+      min-height: 440px;
       overflow: hidden;
-
-      background: #050505;
+      background: black;
     }
-
-    /*
-      Fundo do rodapé usando a imagem final
-      já existente na pasta imagens.
-    */
 
     .rodape-fundo {
       position: absolute;
       inset: 0;
       z-index: -2;
+      overflow: hidden;
     }
 
     .rodape-fundo img {
-      display: block;
-
       width: 100%;
       height: 100%;
-
       object-fit: cover;
       object-position: center;
+      transform: scale(var(--zoom-rodape));
+      transform-origin: center;
     }
 
-    /*
-      Barquinho ilustrado.
-    */
+    .rodape-ilha {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      opacity: 0.38;
+    }
+
+    .rodape-ilha img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      mix-blend-mode: screen;
+    }
 
     .rodape-barco {
       position: absolute;
-
+      top: 0;
       left: 7%;
-      top: -5px;
-
-      width: clamp(130px, 19vw, 290px);
-
       z-index: 3;
+      width: clamp(160px, 20vw, 320px);
       transform: rotate(-8deg);
     }
 
     .rodape-barco img {
-      display: block;
       width: 100%;
       height: auto;
       object-fit: contain;
@@ -713,19 +626,14 @@
     .rodape-conteudo {
       position: relative;
       z-index: 2;
-
       width: 100%;
-      min-height: 420px;
-
+      min-height: 440px;
       display: grid;
       grid-template-columns: 1.3fr 1fr;
       align-items: end;
-
       gap: 50px;
-      padding: 115px 8% 65px;
+      padding: 130px 8% 65px;
     }
-
-    /* TÍTULO À ESQUERDA */
 
     .rodape-identidade {
       text-align: center;
@@ -733,33 +641,23 @@
 
     .rodape-titulo {
       font-family: "Cubao", Impact, sans-serif;
-      font-weight: 400;
-
       font-size: clamp(32px, 4.4vw, 75px);
+      font-weight: 400;
       line-height: 1;
-
-      color: white;
       white-space: nowrap;
     }
 
     .rodape-subtitulo {
+      margin-top: 10px;
       font-family: "Morisawa", Georgia, serif;
-      font-weight: 400;
-
       font-size: clamp(18px, 2.1vw, 31px);
       line-height: 1.3;
-
-      margin-top: 10px;
-      color: white;
     }
-
-    /* CRÉDITOS À DIREITA */
 
     .rodape-creditos {
       display: flex;
       flex-direction: column;
       align-items: center;
-
       gap: 20px;
       text-align: center;
     }
@@ -773,44 +671,32 @@
     .credito-label {
       font-family: "Neue Montreal", Arial, sans-serif;
       font-size: clamp(15px, 1.8vw, 24px);
-      font-weight: 400;
       line-height: 1.05;
-
       text-transform: uppercase;
-      color: white;
     }
 
     .credito-nome {
       font-family: "Morisawa", Georgia, serif;
       font-size: clamp(16px, 1.7vw, 24px);
-      font-weight: 400;
-
-      color: white;
     }
 
-    /* ==========================================
-       14. SOM DO RIO
-    ========================================== */
+    /* ========================================
+       CONTROLE DO SOM
+    ======================================== */
 
     .controle-som {
       position: fixed;
       right: 25px;
       bottom: 25px;
-
       z-index: 2000;
-
       display: none;
       align-items: center;
       gap: 10px;
-
       padding: 14px 18px;
-
-      background: rgba(0,0,0,0.9);
       border: 1px solid var(--azul-claro);
       border-radius: 30px;
-
+      background: rgba(0,0,0,0.9);
       color: white;
-
       font-family: "Gordita", sans-serif;
       font-size: 11px;
     }
@@ -819,14 +705,21 @@
       display: flex;
     }
 
-    /* ==========================================
-       15. RESPONSIVIDADE
-    ========================================== */
+    /* ========================================
+       RESPONSIVIDADE
+    ======================================== */
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
+      .ilustracao-cibs {
+        width: 380px;
+        margin-right: -100px;
+      }
+    }
 
+    @media (max-width: 900px) {
       .cabecalho {
         justify-content: flex-end;
+        flex-wrap: wrap;
       }
 
       .menu-mobile {
@@ -836,19 +729,13 @@
       nav {
         display: none;
         width: 100%;
-
         flex-direction: column;
         align-items: stretch;
-
         padding: 15px 0;
       }
 
       nav.aberto {
         display: flex;
-      }
-
-      .cabecalho:has(nav.aberto) {
-        flex-wrap: wrap;
       }
 
       nav button {
@@ -858,37 +745,40 @@
       }
 
       .ilustracao-cibs {
-        width: 300px;
-        margin-right: -65px;
+        width: 310px;
+        margin-right: -45px;
       }
-
-      .rodape-conteudo {
-        padding-left: 5%;
-        padding-right: 5%;
-      }
-
     }
 
     @media (max-width: 700px) {
+      :root {
+        --ilha-altura: 260px;
+        --zoom-capa: 1.17;
+        --zoom-rodape: 1.2;
+      }
+
+      .capa {
+        min-height: 75svh;
+      }
 
       .capa-conteudo {
-        padding: 80px 18px 100px;
+        padding: 75px 18px 170px;
       }
 
       .capa-titulo {
-        font-size: clamp(45px, 12vw, 80px);
+        font-size: clamp(43px, 12vw, 80px);
       }
 
       .capa-subtitulo {
         font-size: 21px;
       }
 
-      .imagem-ponte {
-        height: 190px;
+      .transicao-ilha {
+        margin-top: -120px;
       }
 
       .reportagem-conteudo {
-        padding-top: 25px;
+        padding-top: 20px;
       }
 
       .corpo-reportagem,
@@ -902,11 +792,11 @@
       }
 
       .ilustracao-cibs {
-        width: 190px;
-        margin: 10px -20px 15px 12px;
+        width: 220px;
+        margin: 5px -20px 12px 8px;
       }
 
-      .corpo-reportagem p.paragrafo-final {
+      .corpo-reportagem .paragrafo-final {
         margin-top: 55px;
         font-size: 21px;
       }
@@ -925,23 +815,21 @@
       }
 
       .rodape {
-        min-height: 600px;
+        min-height: 620px;
       }
 
       .rodape-conteudo {
-        min-height: 600px;
-
+        min-height: 620px;
         grid-template-columns: 1fr;
         align-items: center;
-
         gap: 35px;
-        padding: 140px 25px 45px;
+        padding: 150px 25px 45px;
       }
 
       .rodape-barco {
-        width: 145px;
+        width: 160px;
+        top: 10px;
         left: 5%;
-        top: 20px;
       }
 
       .rodape-titulo {
@@ -951,15 +839,9 @@
       .rodape-subtitulo {
         font-size: 21px;
       }
-
-      .rodape-creditos {
-        gap: 16px;
-      }
-
     }
 
     @media (prefers-reduced-motion: reduce) {
-
       *,
       *::before,
       *::after {
@@ -967,9 +849,7 @@
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
-
     }
-
   </style>
 </head>
 
@@ -977,12 +857,9 @@
 
 <div class="site">
 
-  <!-- ======================================
-       MENU
-  ====================================== -->
+  <!-- MENU -->
 
   <header>
-
     <div class="cabecalho">
 
       <button
@@ -996,50 +873,24 @@
       </button>
 
       <nav id="menuPrincipal" aria-label="Menu principal">
-
-        <button type="button" data-pagina="inicio" class="ativo">
-          Início
-        </button>
-
-        <button type="button" data-pagina="a-margem">
-          À Margem
-        </button>
-
-        <button type="button" data-pagina="linha-do-tempo">
-          Linha do Tempo
-        </button>
-
-        <button type="button" data-pagina="nucleo-biruta">
-          Núcleo Biruta
-        </button>
-
-        <button type="button" data-pagina="coletivo-abdias">
-          Coletivo Abdias
-        </button>
-
-        <button type="button" data-pagina="caatingayro">
-          Caatingayro
-        </button>
-
-        <button type="button" data-pagina="artistas">
-          Artistas
-        </button>
-
-        <button type="button" data-pagina="lugares">
-          Lugares
-        </button>
-
+        <button type="button" data-pagina="inicio" class="ativo">Início</button>
+        <button type="button" data-pagina="a-margem">À Margem</button>
+        <button type="button" data-pagina="linha-do-tempo">Linha do Tempo</button>
+        <button type="button" data-pagina="nucleo-biruta">Núcleo Biruta</button>
+        <button type="button" data-pagina="coletivo-abdias">Coletivo Abdias</button>
+        <button type="button" data-pagina="caatingayro">Caatingayro</button>
+        <button type="button" data-pagina="artistas">Artistas</button>
+        <button type="button" data-pagina="lugares">Lugares</button>
       </nav>
 
     </div>
-
   </header>
 
   <main>
 
-    <!-- ======================================
-         INÍCIO
-    ====================================== -->
+    <!-- =====================================
+         PÁGINA INICIAL
+    ===================================== -->
 
     <section class="pagina ativa" id="inicio">
 
@@ -1081,20 +932,22 @@
 
       </div>
 
-      <!-- ====================================
+      <!-- =====================================
+           CONTINUIDADE DA ILHA DO FOGO
+      ===================================== -->
+
+      <div class="transicao-ilha" aria-hidden="true">
+        <img
+          src="./imagens/ILHA DO FOGO.PNG.png"
+          alt=""
+        >
+      </div>
+
+      <!-- =====================================
            REPORTAGEM
-      ==================================== -->
+      ===================================== -->
 
       <article class="reportagem" id="reportagem">
-
-        <!-- ILHA DO FOGO -->
-
-        <div class="imagem-ponte">
-          <img
-            src="./imagens/ILHA DO FOGO.PNG.png"
-            alt="Ilustração da Ilha do Fogo"
-          >
-        </div>
 
         <div class="reportagem-conteudo">
 
@@ -1104,7 +957,7 @@
 
           <div class="corpo-reportagem">
 
-            <!-- CIBS CRIANÇA -->
+            <!-- ILUSTRAÇÃO CIBS CRIANÇA -->
 
             <figure class="ilustracao-cibs">
               <img
@@ -1229,8 +1082,6 @@
               experimenta e transforma o lugar que chama de casa.
             </p>
 
-            <!-- PARÁGRAFO FINAL EM DESTAQUE -->
-
             <p class="paragrafo-final">
               Esta é uma tentativa de acompanhar a correnteza
               dessas narrativas: reconhecer suas origens,
@@ -1245,7 +1096,7 @@
 
       </article>
 
-      <!-- LINKS PARA AS OUTRAS PÁGINAS -->
+      <!-- NAVEGAÇÃO PARA AS DEMAIS PÁGINAS -->
 
       <div class="conteudo">
 
@@ -1307,19 +1158,15 @@
 
     </section>
 
-    <!-- ======================================
+    <!-- =====================================
          À MARGEM
-    ====================================== -->
+    ===================================== -->
 
     <section class="pagina" id="a-margem">
 
       <div class="pagina-abertura">
         <span class="pagina-numero">02 / À MARGEM</span>
-
-        <h1 class="pagina-titulo">
-          À MARGEM
-        </h1>
-
+        <h1 class="pagina-titulo">À MARGEM</h1>
         <p class="pagina-descricao">
           Narrativas, experiências e representações
           que atravessam o território.
@@ -1327,34 +1174,25 @@
       </div>
 
       <div class="conteudo">
-
-        <h2 class="titulo-secao">
-          ENTRE MARGENS
-        </h2>
-
+        <h2 class="titulo-secao">ENTRE MARGENS</h2>
         <div class="texto">
           <p>
             Espaço reservado para o conteúdo da página À Margem.
           </p>
         </div>
-
       </div>
 
     </section>
 
-    <!-- ======================================
+    <!-- =====================================
          LINHA DO TEMPO
-    ====================================== -->
+    ===================================== -->
 
     <section class="pagina" id="linha-do-tempo">
 
       <div class="pagina-abertura">
         <span class="pagina-numero">03 / MEMÓRIAS</span>
-
-        <h1 class="pagina-titulo">
-          LINHA DO TEMPO
-        </h1>
-
+        <h1 class="pagina-titulo">LINHA DO TEMPO</h1>
         <p class="pagina-descricao">
           Percursos históricos, memórias e transformações
           culturais entre Petrolina e Juazeiro.
@@ -1363,9 +1201,7 @@
 
       <div class="conteudo">
 
-        <h2 class="titulo-secao">
-          MEMÓRIAS DO TERRITÓRIO
-        </h2>
+        <h2 class="titulo-secao">MEMÓRIAS DO TERRITÓRIO</h2>
 
         <div class="texto">
           <p>
@@ -1382,10 +1218,7 @@
               alt="Construção da Barragem"
               loading="lazy"
             >
-
-            <p class="galeria-legenda">
-              Construção da Barragem
-            </p>
+            <p class="galeria-legenda">Construção da Barragem</p>
           </div>
 
           <div class="galeria-item">
@@ -1394,10 +1227,7 @@
               alt="Círculo Operário de Juazeiro"
               loading="lazy"
             >
-
-            <p class="galeria-legenda">
-              Círculo Operário de Juazeiro
-            </p>
+            <p class="galeria-legenda">Círculo Operário de Juazeiro</p>
           </div>
 
         </div>
@@ -1406,19 +1236,15 @@
 
     </section>
 
-    <!-- ======================================
+    <!-- =====================================
          NÚCLEO BIRUTA
-    ====================================== -->
+    ===================================== -->
 
     <section class="pagina" id="nucleo-biruta">
 
       <div class="pagina-abertura">
         <span class="pagina-numero">04 / COLETIVOS</span>
-
-        <h1 class="pagina-titulo">
-          NÚCLEO BIRUTA
-        </h1>
-
+        <h1 class="pagina-titulo">NÚCLEO BIRUTA</h1>
         <p class="pagina-descricao">
           Trajetórias e produções culturais.
         </p>
@@ -1434,19 +1260,15 @@
 
     </section>
 
-    <!-- ======================================
+    <!-- =====================================
          COLETIVO ABDIAS
-    ====================================== -->
+    ===================================== -->
 
     <section class="pagina" id="coletivo-abdias">
 
       <div class="pagina-abertura">
         <span class="pagina-numero">05 / COLETIVOS</span>
-
-        <h1 class="pagina-titulo">
-          COLETIVO ABDIAS
-        </h1>
-
+        <h1 class="pagina-titulo">COLETIVO ABDIAS</h1>
         <p class="pagina-descricao">
           Arte, memória e experiências coletivas.
         </p>
@@ -1462,19 +1284,15 @@
 
     </section>
 
-    <!-- ======================================
+    <!-- =====================================
          CAATINGAYRO
-    ====================================== -->
+    ===================================== -->
 
     <section class="pagina" id="caatingayro">
 
       <div class="pagina-abertura">
         <span class="pagina-numero">06 / EXPRESSÕES CULTURAIS</span>
-
-        <h1 class="pagina-titulo">
-          CAATINGAYRO
-        </h1>
-
+        <h1 class="pagina-titulo">CAATINGAYRO</h1>
         <p class="pagina-descricao">
           Arte e outras formas de expressão do território.
         </p>
@@ -1490,19 +1308,15 @@
 
     </section>
 
-    <!-- ======================================
+    <!-- =====================================
          ARTISTAS
-    ====================================== -->
+    ===================================== -->
 
     <section class="pagina" id="artistas">
 
       <div class="pagina-abertura">
         <span class="pagina-numero">07 / CRIAÇÕES</span>
-
-        <h1 class="pagina-titulo">
-          ARTISTAS
-        </h1>
-
+        <h1 class="pagina-titulo">ARTISTAS</h1>
         <p class="pagina-descricao">
           Pessoas que criam e transformam as formas
           de representar o Sertão.
@@ -1520,19 +1334,15 @@
 
     </section>
 
-    <!-- ======================================
+    <!-- =====================================
          LUGARES
-    ====================================== -->
+    ===================================== -->
 
     <section class="pagina" id="lugares">
 
       <div class="pagina-abertura">
         <span class="pagina-numero">08 / TERRITÓRIOS</span>
-
-        <h1 class="pagina-titulo">
-          LUGARES
-        </h1>
-
+        <h1 class="pagina-titulo">LUGARES</h1>
         <p class="pagina-descricao">
           Espaços de memória, pertencimento e encontros.
         </p>
@@ -1555,10 +1365,7 @@
               alt="Ilha do Fogo"
               loading="lazy"
             >
-
-            <p class="galeria-legenda">
-              Ilha do Fogo
-            </p>
+            <p class="galeria-legenda">Ilha do Fogo</p>
           </div>
 
           <div class="galeria-item">
@@ -1567,10 +1374,7 @@
               alt="Comissão Pastoral da Terra"
               loading="lazy"
             >
-
-            <p class="galeria-legenda">
-              Comissão Pastoral da Terra
-            </p>
+            <p class="galeria-legenda">Comissão Pastoral da Terra</p>
           </div>
 
         </div>
@@ -1581,17 +1385,27 @@
 
   </main>
 
-  <!-- ======================================
-       RODAPÉ EM TODAS AS PÁGINAS
-  ====================================== -->
+  <!-- =====================================
+       RODAPÉ PRESENTE EM TODAS AS PÁGINAS
+  ===================================== -->
 
   <footer class="rodape">
 
-    <!-- FUNDO ILUSTRADO -->
+    <!-- FUNDO COM ZOOM -->
 
     <div class="rodape-fundo">
       <img
         src="./imagens/IMAGEM DO FINAL DO SITE.PNG.png"
+        alt=""
+        aria-hidden="true"
+      >
+    </div>
+
+    <!-- ILHA DO FOGO NO FUNDO DO RODAPÉ -->
+
+    <div class="rodape-ilha">
+      <img
+        src="./imagens/ILHA DO FOGO.PNG.png"
         alt=""
         aria-hidden="true"
       >
@@ -1607,9 +1421,9 @@
       >
     </div>
 
-    <div class="rodape-conteudo">
+    <!-- CRÉDITOS -->
 
-      <!-- TÍTULO -->
+    <div class="rodape-conteudo">
 
       <div class="rodape-identidade">
 
@@ -1623,28 +1437,16 @@
 
       </div>
 
-      <!-- CRÉDITOS -->
-
       <div class="rodape-creditos">
 
         <div class="credito-grupo">
-          <span class="credito-label">
-            REPORTAGEM
-          </span>
-
-          <span class="credito-nome">
-            Cibelle Vieira
-          </span>
+          <span class="credito-label">REPORTAGEM</span>
+          <span class="credito-nome">Cibelle Vieira</span>
         </div>
 
         <div class="credito-grupo">
-          <span class="credito-label">
-            ORIENTAÇÃO
-          </span>
-
-          <span class="credito-nome">
-            Raiane Sousa
-          </span>
+          <span class="credito-label">ORIENTAÇÃO</span>
+          <span class="credito-nome">Raiane Sousa</span>
         </div>
 
         <div class="credito-grupo">
@@ -1652,10 +1454,7 @@
             DESIGN E<br>
             DESENVOLVIMENTO DO SITE
           </span>
-
-          <span class="credito-nome">
-            Jenifer Silva
-          </span>
+          <span class="credito-nome">Jenifer Silva</span>
         </div>
 
       </div>
@@ -1666,9 +1465,9 @@
 
 </div>
 
-<!-- ======================================
-     ÁUDIO
-====================================== -->
+<!-- =====================================
+     SOM DO RIO
+===================================== -->
 
 <audio id="somRio" loop preload="none">
   <source
@@ -1688,50 +1487,29 @@
   <span id="textoSom">ATIVAR SOM DO RIO</span>
 </button>
 
-<!-- ======================================
+<!-- =====================================
      JAVASCRIPT
-====================================== -->
+===================================== -->
 
 <script>
 
   const paginas = document.querySelectorAll(".pagina");
-
   const botoes = document.querySelectorAll("[data-pagina]");
+  const botoesMenu = document.querySelectorAll("nav [data-pagina]");
 
-  const botoesMenu = document.querySelectorAll(
-    "nav [data-pagina]"
-  );
-
-  const menuPrincipal = document.getElementById(
-    "menuPrincipal"
-  );
-
-  const botaoMenu = document.getElementById(
-    "botaoMenu"
-  );
+  const menuPrincipal = document.getElementById("menuPrincipal");
+  const botaoMenu = document.getElementById("botaoMenu");
 
   const audio = document.getElementById("somRio");
-
-  const controleSom = document.getElementById(
-    "controleSom"
-  );
-
-  const textoSom = document.getElementById(
-    "textoSom"
-  );
-
-  const iconeSom = document.getElementById(
-    "iconeSom"
-  );
+  const controleSom = document.getElementById("controleSom");
+  const textoSom = document.getElementById("textoSom");
+  const iconeSom = document.getElementById("iconeSom");
 
   let paginaAtual = "inicio";
 
-  /* ======================================
-     SOM DO RIO
-  ====================================== */
+  /* SOM */
 
   function atualizarSom() {
-
     const tocando = !audio.paused;
 
     textoSom.textContent = tocando
@@ -1740,70 +1518,48 @@
 
     iconeSom.textContent = tocando ? "♫" : "♪";
 
-    controleSom.setAttribute(
-      "aria-pressed",
-      String(tocando)
-    );
+    controleSom.setAttribute("aria-pressed", String(tocando));
 
     controleSom.setAttribute(
       "aria-label",
-      tocando
-        ? "Desativar som do rio"
-        : "Ativar som do rio"
+      tocando ? "Desativar som do rio" : "Ativar som do rio"
     );
-
   }
 
   function pararSom() {
-
     audio.pause();
     audio.currentTime = 0;
-
     atualizarSom();
-
   }
 
   controleSom.addEventListener("click", async () => {
-
-    if (paginaAtual !== "inicio") {
-      return;
-    }
+    if (paginaAtual !== "inicio") return;
 
     if (audio.paused) {
-
       try {
         await audio.play();
       } catch (erro) {
         console.error("Erro ao reproduzir o áudio:", erro);
       }
-
     } else {
       audio.pause();
     }
 
     atualizarSom();
-
   });
 
   audio.addEventListener("play", atualizarSom);
   audio.addEventListener("pause", atualizarSom);
 
-  /* ======================================
-     NAVEGAÇÃO ENTRE PÁGINAS
-  ====================================== */
+  /* NAVEGAÇÃO */
 
   function abrirPagina(id, atualizarHistorico = true) {
 
     const destino = document.getElementById(id);
 
-    if (
-      !destino ||
-      !destino.classList.contains("pagina")
-    ) {
+    if (!destino || !destino.classList.contains("pagina")) {
       return;
     }
-
-    // O som para ao sair da página inicial.
 
     if (id !== "inicio") {
       pararSom();
@@ -1812,16 +1568,10 @@
     paginaAtual = id;
 
     paginas.forEach(pagina => {
-
-      pagina.classList.toggle(
-        "ativa",
-        pagina.id === id
-      );
-
+      pagina.classList.toggle("ativa", pagina.id === id);
     });
 
     botoesMenu.forEach(botao => {
-
       const ativo = botao.dataset.pagina === id;
 
       botao.classList.toggle("ativo", ativo);
@@ -1831,90 +1581,48 @@
       } else {
         botao.removeAttribute("aria-current");
       }
-
     });
 
-    controleSom.classList.toggle(
-      "visivel",
-      id === "inicio"
-    );
+    controleSom.classList.toggle("visivel", id === "inicio");
 
     menuPrincipal.classList.remove("aberto");
-
-    botaoMenu.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
+    botaoMenu.setAttribute("aria-expanded", "false");
     botaoMenu.textContent = "☰";
 
     if (atualizarHistorico) {
-
-      history.pushState(
-        { pagina: id },
-        "",
-        "#" + id
-      );
-
+      history.pushState({ pagina: id }, "", "#" + id);
     }
 
     window.scrollTo(0, 0);
-
   }
 
   botoes.forEach(botao => {
-
     botao.addEventListener("click", evento => {
-
       evento.preventDefault();
-
       abrirPagina(botao.dataset.pagina);
-
     });
-
   });
 
-  /* ======================================
-     MENU MOBILE
-  ====================================== */
+  /* MENU MOBILE */
 
   botaoMenu.addEventListener("click", () => {
+    const aberto = menuPrincipal.classList.toggle("aberto");
 
-    const aberto = menuPrincipal.classList.toggle(
-      "aberto"
-    );
-
-    botaoMenu.setAttribute(
-      "aria-expanded",
-      String(aberto)
-    );
-
+    botaoMenu.setAttribute("aria-expanded", String(aberto));
     botaoMenu.textContent = aberto ? "✕" : "☰";
-
   });
 
-  /* ======================================
-     BOTÃO DA CAPA
-  ====================================== */
+  /* BOTÃO DA CAPA */
 
-  document.getElementById(
-    "botaoDescer"
-  ).addEventListener("click", () => {
-
-    document.getElementById(
-      "reportagem"
-    ).scrollIntoView({
+  document.getElementById("botaoDescer").addEventListener("click", () => {
+    document.getElementById("reportagem").scrollIntoView({
       behavior: "smooth"
     });
-
   });
 
-  /* ======================================
-     HISTÓRICO
-  ====================================== */
+  /* HISTÓRICO */
 
   function verificarEndereco() {
-
     const id = decodeURIComponent(
       window.location.hash.replace("#", "")
     );
@@ -1922,25 +1630,13 @@
     const elemento = document.getElementById(id);
 
     const paginaValida =
-      elemento &&
-      elemento.classList.contains("pagina");
+      elemento && elemento.classList.contains("pagina");
 
-    abrirPagina(
-      paginaValida ? id : "inicio",
-      false
-    );
-
+    abrirPagina(paginaValida ? id : "inicio", false);
   }
 
-  window.addEventListener(
-    "popstate",
-    verificarEndereco
-  );
-
-  window.addEventListener(
-    "hashchange",
-    verificarEndereco
-  );
+  window.addEventListener("popstate", verificarEndereco);
+  window.addEventListener("hashchange", verificarEndereco);
 
   verificarEndereco();
   atualizarSom();
