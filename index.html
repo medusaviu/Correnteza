@@ -11,9 +11,9 @@
 
 <style>
 
-/* =========================================
-   FONTES DO PROJETO
-========================================= */
+/* ==========================================
+   FONTES
+========================================== */
 
 @font-face {
   font-family: "Cubao";
@@ -40,9 +40,9 @@
   font-display: swap;
 }
 
-/* =========================================
+/* ==========================================
    CONFIGURAÇÕES GERAIS
-========================================= */
+========================================== */
 
 :root {
   --preto: #050505;
@@ -59,9 +59,9 @@
 }
 
 html {
-  background: var(--preto);
   scroll-behavior: smooth;
   scroll-padding-top: var(--altura-menu);
+  background: var(--preto);
 }
 
 body {
@@ -93,16 +93,17 @@ img {
   background: var(--preto);
 }
 
-/* =========================================
+/* ==========================================
    MENU CENTRALIZADO
-========================================= */
+========================================== */
 
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
-  background: rgba(0, 0, 0, 0.96);
+
+  background: rgba(0,0,0,.96);
   border-bottom: 1px solid rgba(255,255,255,.13);
   backdrop-filter: blur(12px);
 }
@@ -121,18 +122,21 @@ nav {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: clamp(12px, 1.8vw, 30px);
+
+  gap: clamp(12px,1.8vw,30px);
 }
 
 nav button {
   position: relative;
+
   padding: 9px 0;
   border: none;
   background: transparent;
+
   color: #e4e4e4;
 
   font-family: "Gordita", Arial, sans-serif;
-  font-size: clamp(10px, .9vw, 13px);
+  font-size: clamp(10px,.9vw,13px);
 
   transition: color .25s;
 }
@@ -162,16 +166,18 @@ nav button.ativo::after {
 
 .menu-mobile {
   display: none;
+
   padding: 8px 13px;
   background: transparent;
   color: white;
+
   border: 1px solid #555;
   font-size: 22px;
 }
 
-/* =========================================
+/* ==========================================
    PÁGINAS
-========================================= */
+========================================== */
 
 .pagina {
   display: none;
@@ -184,30 +190,22 @@ nav button.ativo::after {
 }
 
 @keyframes aparecer {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* =========================================
+/* ==========================================
    CAPA
 
-   SEM A IMAGEM DA ILHA DO FOGO
-
-   Apenas a ilustração original
-   IMAGEM DA CAPA.PNG.png
-========================================= */
+   TÍTULO UM POUCO MAIS ABAIXO
+========================================== */
 
 .capa {
   position: relative;
   isolation: isolate;
 
   width: 100%;
-  min-height: min(780px, calc(100svh - var(--altura-menu)));
+  min-height: min(780px,calc(100svh - var(--altura-menu)));
 
   overflow: hidden;
   background: var(--preto);
@@ -232,8 +230,9 @@ nav button.ativo::after {
   z-index: 2;
 
   width: 100%;
+  min-height: inherit;
 
-  padding: clamp(85px, 11vh, 125px) 24px 185px;
+  padding: clamp(140px,20vh,215px) 24px 135px;
 
   display: flex;
   flex-direction: column;
@@ -243,7 +242,7 @@ nav button.ativo::after {
 
 .capa-titulo {
   font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(56px, 8vw, 125px);
+  font-size: clamp(56px,8vw,125px);
   font-weight: 400;
   line-height: .98;
 }
@@ -253,15 +252,15 @@ nav button.ativo::after {
 }
 
 .capa-subtitulo {
-  margin-top: 20px;
+  margin-top: 25px;
 
   font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(22px, 2.8vw, 36px);
+  font-size: clamp(22px,2.8vw,36px);
   font-weight: 400;
 }
 
 .capa-autoria {
-  margin-top: 15px;
+  margin-top: 18px;
 
   font-family: "Gordita", Arial, sans-serif;
   font-size: 13px;
@@ -292,26 +291,89 @@ nav button.ativo::after {
   background: #394a8c;
 }
 
-/* =========================================
-   REPORTAGEM
+/* ==========================================
+   CONTINUAÇÃO DA CAPA
 
-   Texto centralizado na página,
-   mas alinhado à esquerda.
-========================================= */
+   A IMAGEM COMEÇA IMEDIATAMENTE
+   ABAIXO DA CAPA, SEM ESPAÇO.
 
-.reportagem {
+   A ILHA DO FOGO FICA POR CIMA
+   DA CONTINUAÇÃO E ATRÁS DO TEXTO.
+========================================== */
+
+.continuacao-capa {
   position: relative;
+  isolation: isolate;
+
   width: 100%;
+  min-height: 660px;
+
   background: var(--preto);
 }
 
+.continuacao-fundo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+
+  overflow: hidden;
+}
+
+.continuacao-fundo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ILHA DO FOGO ATRÁS DO TEXTO */
+
+.ilha-sobreposta {
+  position: absolute;
+  z-index: -2;
+
+  top: -80px;
+  left: 0;
+
+  width: 100%;
+  height: 440px;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ilha-sobreposta img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* ==========================================
+   REPORTAGEM
+
+   O TEXTO COMEÇA DENTRO DA
+   CONTINUAÇÃO DA CAPA.
+========================================== */
+
+.reportagem {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  background: transparent;
+}
+
 .reportagem-conteudo {
-  padding: 48px 0 30px;
+  padding: 115px 0 30px;
 }
 
 .corpo-reportagem {
   width: calc(100% - 48px);
   max-width: var(--largura-texto);
+
   margin: 0 auto;
 
   display: flow-root;
@@ -321,7 +383,7 @@ nav button.ativo::after {
   margin-bottom: 28px;
 
   font-family: "Neue Montreal", Arial, sans-serif;
-  font-size: clamp(18px, 1.65vw, 21px);
+  font-size: clamp(18px,1.65vw,21px);
   font-weight: 400;
   line-height: 1.48;
 
@@ -338,26 +400,26 @@ nav button.ativo::after {
   padding: 4px 4px 0 0;
 }
 
-/* =========================================
+/* ==========================================
    ILUSTRAÇÃO CIBS CRIANÇA
 
-   Grande e próxima do texto.
-   Sem fundo.
-========================================= */
+   TAMANHO MAIS PRÓXIMO DO PRINT.
+========================================== */
 
 .ilustracao-cibs {
   float: right;
   position: relative;
   z-index: 5;
 
-  width: clamp(380px, 42vw, 630px);
+  width: clamp(290px,33vw,460px);
 
-  margin: 20px -290px 0 12px;
+  margin: 35px -210px 10px 15px;
 }
 
 .ilustracao-cibs img {
   width: 100%;
   height: auto;
+
   object-fit: contain;
 }
 
@@ -365,16 +427,14 @@ nav button.ativo::after {
   clear: both;
 }
 
-/* =========================================
-   OUTRAS ILUSTRAÇÕES FUTURAS
-========================================= */
+/* OUTRAS ILUSTRAÇÕES */
 
 .ilustracao-direita {
   float: right;
   position: relative;
   z-index: 4;
 
-  width: min(450px, 48vw);
+  width: min(450px,48vw);
 
   margin: 15px -150px 20px 25px;
 }
@@ -384,7 +444,7 @@ nav button.ativo::after {
   position: relative;
   z-index: 4;
 
-  width: min(450px, 48vw);
+  width: min(450px,48vw);
 
   margin: 15px 25px 20px -150px;
 }
@@ -396,9 +456,9 @@ nav button.ativo::after {
   object-fit: contain;
 }
 
-/* =========================================
+/* ==========================================
    PARÁGRAFO FINAL
-========================================= */
+========================================== */
 
 .corpo-reportagem .paragrafo-final {
   clear: both;
@@ -407,7 +467,7 @@ nav button.ativo::after {
   margin: 85px auto 55px;
 
   font-family: "Neue Montreal", Arial, sans-serif;
-  font-size: clamp(22px, 2.5vw, 32px);
+  font-size: clamp(22px,2.5vw,32px);
   font-weight: 700;
   line-height: 1.3;
 
@@ -415,11 +475,9 @@ nav button.ativo::after {
   text-transform: uppercase;
 }
 
-/* =========================================
+/* ==========================================
    BARQUINHOS ANTES DO RODAPÉ
-
-   LARGURA TOTAL DO SITE
-========================================= */
+========================================== */
 
 .barquinhos-final {
   width: 100%;
@@ -431,8 +489,6 @@ nav button.ativo::after {
 }
 
 .barquinhos-final img {
-  display: block;
-
   width: 100%;
   max-width: none;
   height: auto;
@@ -440,14 +496,14 @@ nav button.ativo::after {
   object-fit: contain;
 }
 
-/* =========================================
+/* ==========================================
    OUTRAS PÁGINAS
-========================================= */
+========================================== */
 
 .pagina-abertura {
   padding:
     110px
-    max(40px, calc((100vw - 1100px) / 2))
+    max(40px,calc((100vw - 1100px)/2))
     75px;
 
   border-bottom: 1px solid #292929;
@@ -468,7 +524,7 @@ nav button.ativo::after {
   margin-bottom: 30px;
 
   font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(60px, 9vw, 115px);
+  font-size: clamp(60px,9vw,115px);
   font-weight: 400;
   line-height: 1;
 }
@@ -492,7 +548,7 @@ nav button.ativo::after {
   margin-bottom: 35px;
 
   font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(40px, 6vw, 75px);
+  font-size: clamp(40px,6vw,75px);
   font-weight: 400;
 }
 
@@ -503,14 +559,17 @@ nav button.ativo::after {
 
 .texto p {
   margin-bottom: 25px;
+
   font-size: 19px;
   line-height: 1.7;
+
   color: #dedede;
 }
 
 .galeria {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr));
+
   gap: 20px;
   margin-top: 50px;
 }
@@ -523,6 +582,7 @@ nav button.ativo::after {
 .galeria-item img {
   width: 100%;
   height: 290px;
+
   object-fit: contain;
   padding: 15px;
 }
@@ -537,15 +597,13 @@ nav button.ativo::after {
   color: #c5c5c5;
 }
 
-/* =========================================
-   RODAPÉ ORIGINAL COMPACTO
+/* ==========================================
+   RODAPÉ
 
-   Imagem do final como fundo.
-   Título à esquerda.
-   Créditos à direita.
-
-   Sem barquinho sobre o rodapé.
-========================================= */
+   MESMA ALTURA.
+   IMAGEM DE FUNDO COM MAIS ZOOM.
+   BARQUINHO DO FINAL ACIMA.
+========================================== */
 
 .rodape {
   position: relative;
@@ -558,21 +616,48 @@ nav button.ativo::after {
   overflow: hidden;
 }
 
-/* FUNDO */
+/* FUNDO COM ZOOM SEM AUMENTAR ALTURA */
 
 .rodape-fundo {
   position: absolute;
   inset: 0;
   z-index: -2;
+
+  overflow: hidden;
 }
 
 .rodape-fundo img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.18);
+  transform-origin: center;
 }
 
-/* CONTEÚDO CENTRALIZADO */
+/* BARQUINHO DO FINAL */
+
+.rodape-barquinho {
+  position: absolute;
+  z-index: 3;
+
+  top: -15px;
+  left: 7%;
+
+  width: clamp(150px,18vw,270px);
+
+  transform: rotate(-8deg);
+}
+
+.rodape-barquinho img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* CONTEÚDO */
 
 .rodape-conteudo {
   position: relative;
@@ -583,13 +668,14 @@ nav button.ativo::after {
 
   display: grid;
   grid-template-columns: 1.3fr 1fr;
+
   align-items: center;
   gap: 40px;
 
   padding: 45px 8% 30px;
 }
 
-/* TÍTULO */
+/* TÍTULO À ESQUERDA */
 
 .rodape-identidade {
   text-align: center;
@@ -598,9 +684,10 @@ nav button.ativo::after {
 
 .rodape-titulo {
   font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(32px, 4.4vw, 75px);
+  font-size: clamp(32px,4.4vw,75px);
   font-weight: 400;
   line-height: 1;
+
   white-space: nowrap;
 }
 
@@ -608,15 +695,16 @@ nav button.ativo::after {
   margin-top: 10px;
 
   font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(18px, 2.1vw, 31px);
+  font-size: clamp(18px,2.1vw,31px);
   line-height: 1.3;
 }
 
-/* CRÉDITOS */
+/* CRÉDITOS À DIREITA */
 
 .rodape-creditos {
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
@@ -633,15 +721,16 @@ nav button.ativo::after {
 
 .credito-label {
   font-family: "Neue Montreal", Arial, sans-serif;
-  font-size: clamp(15px, 1.6vw, 22px);
+  font-size: clamp(15px,1.6vw,22px);
   font-weight: 400;
   line-height: 1.08;
+
   text-transform: uppercase;
 }
 
 .credito-nome {
   font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(16px, 1.5vw, 22px);
+  font-size: clamp(16px,1.5vw,22px);
   line-height: 1.3;
 }
 
@@ -650,10 +739,11 @@ nav button.ativo::after {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+
   gap: 5px;
 
   font-family: "Gordita", Arial, sans-serif;
-  font-size: clamp(10px, 1vw, 13px);
+  font-size: clamp(10px,1vw,13px);
   line-height: 1.5;
 }
 
@@ -667,21 +757,17 @@ nav button.ativo::after {
   text-underline-offset: 4px;
 }
 
-.rodape-creditos a:focus-visible {
-  outline: 2px solid var(--azul);
-  outline-offset: 4px;
-}
-
 .separador-perfil {
   color: #b5b5b5;
 }
 
-/* =========================================
+/* ==========================================
    SOM DO RIO
-========================================= */
+========================================== */
 
 .controle-som {
   position: fixed;
+
   right: 25px;
   bottom: 25px;
   z-index: 2000;
@@ -706,15 +792,15 @@ nav button.ativo::after {
   display: flex;
 }
 
-/* =========================================
+/* ==========================================
    RESPONSIVIDADE
-========================================= */
+========================================== */
 
 @media (max-width: 1100px) {
 
   .ilustracao-cibs {
-    width: 440px;
-    margin-right: -130px;
+    width: 390px;
+    margin-right: -125px;
   }
 
   .ilustracao-direita {
@@ -741,8 +827,10 @@ nav button.ativo::after {
   nav {
     display: none;
     width: 100%;
+
     flex-direction: column;
     align-items: stretch;
+
     padding: 15px 0;
   }
 
@@ -757,8 +845,8 @@ nav button.ativo::after {
   }
 
   .ilustracao-cibs {
-    width: 330px;
-    margin-right: -50px;
+    width: 310px;
+    margin-right: -45px;
   }
 
   .rodape-conteudo {
@@ -776,19 +864,28 @@ nav button.ativo::after {
   }
 
   .capa-conteudo {
-    padding: 75px 18px 170px;
+    padding: 125px 18px 140px;
   }
 
   .capa-titulo {
-    font-size: clamp(43px, 11vw, 75px);
+    font-size: clamp(43px,11vw,75px);
   }
 
   .capa-subtitulo {
     font-size: 21px;
   }
 
+  .continuacao-capa {
+    min-height: 520px;
+  }
+
+  .ilha-sobreposta {
+    top: -35px;
+    height: 260px;
+  }
+
   .reportagem-conteudo {
-    padding-top: 35px;
+    padding-top: 75px;
   }
 
   .corpo-reportagem {
@@ -801,8 +898,8 @@ nav button.ativo::after {
   }
 
   .ilustracao-cibs {
-    width: 245px;
-    margin: 10px -20px 10px 8px;
+    width: 235px;
+    margin: 15px -15px 10px 8px;
   }
 
   .ilustracao-direita,
@@ -836,11 +933,18 @@ nav button.ativo::after {
     height: 530px;
   }
 
+  .rodape-barquinho {
+    top: -10px;
+    left: 4%;
+    width: 145px;
+  }
+
   .rodape-conteudo {
     grid-template-columns: 1fr;
     align-content: center;
+
     gap: 28px;
-    padding: 80px 20px 25px;
+    padding: 100px 20px 25px;
   }
 
   .rodape-identidade {
@@ -848,7 +952,7 @@ nav button.ativo::after {
   }
 
   .rodape-titulo {
-    font-size: clamp(30px, 7vw, 52px);
+    font-size: clamp(30px,7vw,52px);
   }
 
   .rodape-subtitulo {
@@ -892,9 +996,9 @@ nav button.ativo::after {
 
 <div class="site">
 
-<!-- =========================================
+<!-- ==========================================
      MENU
-========================================= -->
+========================================== -->
 
 <header>
 
@@ -952,13 +1056,13 @@ nav button.ativo::after {
 
 <main>
 
-<!-- =========================================
-     PÁGINA INÍCIO
-========================================= -->
+<!-- ==========================================
+     INÍCIO
+========================================== -->
 
 <section class="pagina ativa" id="inicio">
 
-  <!-- CAPA ORIGINAL, SEM ILHA DO FOGO -->
+  <!-- CAPA -->
 
   <div class="capa">
 
@@ -998,163 +1102,193 @@ nav button.ativo::after {
 
   </div>
 
-  <!-- =====================================
-       REPORTAGEM
-  ===================================== -->
+  <!-- ======================================
+       CONTINUAÇÃO DA CAPA
 
-  <article class="reportagem" id="reportagem">
+       FUNDO + ILHA DO FOGO + TEXTO
+  ====================================== -->
 
-    <div class="reportagem-conteudo">
+  <div class="continuacao-capa">
 
-      <div class="corpo-reportagem">
+    <!-- IMAGEM DE CONTINUAÇÃO -->
 
-        <!-- ILUSTRAÇÃO CIBS CRIANÇA -->
+    <div class="continuacao-fundo">
 
-        <figure class="ilustracao-cibs">
-
-          <img
-            src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
-            alt="Ilustração de Cibelle criança"
-            loading="lazy"
-          >
-
-        </figure>
-
-        <p class="primeiro-paragrafo">
-          Nasci em Juazeiro, na Bahia, mas vivi a vida inteira em
-          Petrolina, Pernambuco. Certa vez, durante a apresentação
-          de um trabalho em Salvador, mencionei esse fato.
-          Com certa desconfiança, alguém me perguntou se aquilo
-          era uma piada. Respondi com outra pergunta: por que seria?
-        </p>
-
-        <p>
-          Petrolina e Juazeiro ficaram imortalizadas nos versos
-          da canção Petrolina-Juazeiro, composta por Jorge de
-          Altinho: “Petrolina, Juazeiro; Juazeiro, Petrolina.
-          Todas as duas eu acho uma coisa linda”. A música traduz,
-          em poucas palavras, a proximidade entre duas cidades que,
-          embora pertençam a estados diferentes, compartilham muito
-          mais do que uma paisagem. Ainda assim, para quem olha
-          de fora, essa relação nem sempre parece tão evidente.
-          Talvez porque as fronteiras políticas insistam em separar
-          aquilo que a vida cotidiana aproxima.
-        </p>
-
-        <p>
-          Minha história entre essas duas margens não tem nada de
-          extraordinário para quem cresceu por aqui. Meu nascimento,
-          assim como o de tantas outras pessoas da minha geração,
-          também atravessa um período de dificuldades na saúde
-          pública de Petrolina, quando nascer em uma cidade e
-          buscar atendimento na outra se tornou parte da realidade
-          de muitas famílias.
-        </p>
-
-        <div class="limpar"></div>
-
-        <p>
-          É assim que se vive entre Petrolina e Juazeiro:
-          cidades separadas por uma divisa estadual, mas aproximadas
-          pelo Rio Opará, também conhecido como São Francisco,
-          e por uma vida cotidiana que não cabe nas fronteiras
-          dos mapas. Quando falta algo de um lado, atravessa-se
-          a ponte para buscar do outro. Trabalha-se em uma cidade,
-          estuda-se na outra e constroem-se afetos, histórias
-          e pertencimentos que circulam entre as duas margens.
-          Somos pernambaianos, PEBA's, como gostamos de dizer.
-          E não há contradição nisso.
-        </p>
-
-        <p>
-          A arte produzida neste território também atravessa
-          pontes, margens e fronteiras. Artistas, coletivos,
-          grupos culturais e iniciativas independentes constroem
-          suas trajetórias em meio a essas trocas, criando formas
-          próprias de expressar o lugar onde vivem. Entre Petrolina
-          e Juazeiro, a produção artística não se limita aos
-          equipamentos culturais, aos palcos ou às galerias:
-          ela também ocupa ruas, escolas, bairros periféricos,
-          espaços comunitários e territórios onde a criação
-          se torna uma possibilidade de encontro, reconhecimento
-          e transformação.
-        </p>
-
-        <p>
-          Olhar para essa produção é também reconhecer que o
-          Semiárido não se resume à paisagem da seca, à escassez
-          ou às imagens historicamente associadas ao sertão.
-          Há outras narrativas sendo construídas por quem vive aqui.
-          Narrativas que passam pelo teatro, pela música,
-          pelas artes visuais, pela dança, pelo audiovisual,
-          pela literatura e por tantas outras linguagens.
-          São expressões que reivindicam o direito de contar
-          a própria história, questionar representações
-          estabelecidas e produzir imagens diferentes sobre
-          o Nordeste e sobre si mesmas.
-        </p>
-
-        <p>
-          Mas essas manifestações não surgiram de maneira isolada,
-          tampouco começaram a existir quando passaram a receber
-          reconhecimento institucional. Há uma trajetória de
-          artistas, mestres, grupos, movimentos e espaços culturais
-          que, em diferentes momentos, abriram caminhos para que
-          outras formas de criação encontrassem lugar neste território.
-        </p>
-
-        <p>
-          Como nenhuma história começa exatamente onde a gente
-          decide contá-la, compreender as expressões artísticas
-          que existem hoje entre essas duas margens exige reconhecer
-          os caminhos que vieram antes, as memórias que permanecem
-          e as histórias que nem sempre encontraram espaço para
-          serem narradas. É também uma oportunidade de questionar
-          quem teve o direito de representar o sertão, quais imagens
-          foram legitimadas e quais experiências permaneceram
-          à margem dessas narrativas.
-        </p>
-
-        <p>
-          Por isso, peço licença a quem veio antes de mim.
-          Esta reportagem nasce também da minha experiência de
-          viver entre essas duas cidades, de reconhecer neste
-          território parte da minha identidade e de compreender
-          a arte como uma das maneiras pelas quais construímos
-          nossas próprias formas de existir. Não se trata de
-          contar uma história definitiva sobre a cultura de
-          Petrolina e Juazeiro, mas de percorrer algumas das
-          muitas histórias que a constituem, dando espaço a quem
-          cria, resiste, experimenta e transforma o lugar
-          que chama de casa.
-        </p>
-
-        <!-- PARÁGRAFO FINAL EM NEGRITO -->
-
-        <p class="paragrafo-final">
-          Esta é uma tentativa de acompanhar a correnteza dessas
-          narrativas: reconhecer suas origens, encontrar seus
-          percursos e escutar as vozes que seguem movimentando
-          a arte e a identidade no Vale do São Francisco.
-        </p>
-
-      </div>
+      <img
+        src="./imagens/continuação da capa.PNG.png"
+        alt=""
+        aria-hidden="true"
+      >
 
     </div>
 
-  </article>
+    <!-- ILHA DO FOGO ATRÁS DO TEXTO -->
 
-  <!-- =====================================
-       BARQUINHOS EM LARGURA TOTAL
+    <div class="ilha-sobreposta">
 
-       ENTRE O TEXTO E O RODAPÉ
-  ===================================== -->
+      <img
+        src="./imagens/ILHA DO FOGO.PNG.png"
+        alt=""
+        aria-hidden="true"
+      >
+
+    </div>
+
+    <!-- REPORTAGEM -->
+
+    <article class="reportagem" id="reportagem">
+
+      <div class="reportagem-conteudo">
+
+        <div class="corpo-reportagem">
+
+          <!-- CIBS CRIANÇA -->
+
+          <figure class="ilustracao-cibs">
+
+            <img
+              src="./imagens/ILUSTRAÇÃO CIBS CRIANÇA.PNG.png"
+              alt="Ilustração de Cibelle criança"
+              loading="lazy"
+            >
+
+          </figure>
+
+          <p class="primeiro-paragrafo">
+            Nasci em Juazeiro, na Bahia, mas vivi a vida inteira em
+            Petrolina, Pernambuco. Certa vez, durante a apresentação
+            de um trabalho em Salvador, mencionei esse fato.
+            Com certa desconfiança, alguém me perguntou se aquilo
+            era uma piada. Respondi com outra pergunta: por que seria?
+          </p>
+
+          <p>
+            Petrolina e Juazeiro ficaram imortalizadas nos versos
+            da canção Petrolina-Juazeiro, composta por Jorge de
+            Altinho: “Petrolina, Juazeiro; Juazeiro, Petrolina.
+            Todas as duas eu acho uma coisa linda”. A música traduz,
+            em poucas palavras, a proximidade entre duas cidades que,
+            embora pertençam a estados diferentes, compartilham muito
+            mais do que uma paisagem. Ainda assim, para quem olha
+            de fora, essa relação nem sempre parece tão evidente.
+            Talvez porque as fronteiras políticas insistam em separar
+            aquilo que a vida cotidiana aproxima.
+          </p>
+
+          <p>
+            Minha história entre essas duas margens não tem nada de
+            extraordinário para quem cresceu por aqui. Meu nascimento,
+            assim como o de tantas outras pessoas da minha geração,
+            também atravessa um período de dificuldades na saúde
+            pública de Petrolina, quando nascer em uma cidade e
+            buscar atendimento na outra se tornou parte da realidade
+            de muitas famílias.
+          </p>
+
+          <div class="limpar"></div>
+
+          <p>
+            É assim que se vive entre Petrolina e Juazeiro:
+            cidades separadas por uma divisa estadual, mas aproximadas
+            pelo Rio Opará, também conhecido como São Francisco,
+            e por uma vida cotidiana que não cabe nas fronteiras
+            dos mapas. Quando falta algo de um lado, atravessa-se
+            a ponte para buscar do outro. Trabalha-se em uma cidade,
+            estuda-se na outra e constroem-se afetos, histórias
+            e pertencimentos que circulam entre as duas margens.
+            Somos pernambaianos, PEBA's, como gostamos de dizer.
+            E não há contradição nisso.
+          </p>
+
+          <p>
+            A arte produzida neste território também atravessa
+            pontes, margens e fronteiras. Artistas, coletivos,
+            grupos culturais e iniciativas independentes constroem
+            suas trajetórias em meio a essas trocas, criando formas
+            próprias de expressar o lugar onde vivem. Entre Petrolina
+            e Juazeiro, a produção artística não se limita aos
+            equipamentos culturais, aos palcos ou às galerias:
+            ela também ocupa ruas, escolas, bairros periféricos,
+            espaços comunitários e territórios onde a criação
+            se torna uma possibilidade de encontro, reconhecimento
+            e transformação.
+          </p>
+
+          <p>
+            Olhar para essa produção é também reconhecer que o
+            Semiárido não se resume à paisagem da seca, à escassez
+            ou às imagens historicamente associadas ao sertão.
+            Há outras narrativas sendo construídas por quem vive aqui.
+            Narrativas que passam pelo teatro, pela música,
+            pelas artes visuais, pela dança, pelo audiovisual,
+            pela literatura e por tantas outras linguagens.
+            São expressões que reivindicam o direito de contar
+            a própria história, questionar representações
+            estabelecidas e produzir imagens diferentes sobre
+            o Nordeste e sobre si mesmas.
+          </p>
+
+          <p>
+            Mas essas manifestações não surgiram de maneira isolada,
+            tampouco começaram a existir quando passaram a receber
+            reconhecimento institucional. Há uma trajetória de
+            artistas, mestres, grupos, movimentos e espaços culturais
+            que, em diferentes momentos, abriram caminhos para que
+            outras formas de criação encontrassem lugar neste território.
+          </p>
+
+          <p>
+            Como nenhuma história começa exatamente onde a gente
+            decide contá-la, compreender as expressões artísticas
+            que existem hoje entre essas duas margens exige reconhecer
+            os caminhos que vieram antes, as memórias que permanecem
+            e as histórias que nem sempre encontraram espaço para
+            serem narradas. É também uma oportunidade de questionar
+            quem teve o direito de representar o sertão, quais imagens
+            foram legitimadas e quais experiências permaneceram
+            à margem dessas narrativas.
+          </p>
+
+          <p>
+            Por isso, peço licença a quem veio antes de mim.
+            Esta reportagem nasce também da minha experiência de
+            viver entre essas duas cidades, de reconhecer neste
+            território parte da minha identidade e de compreender
+            a arte como uma das maneiras pelas quais construímos
+            nossas próprias formas de existir. Não se trata de
+            contar uma história definitiva sobre a cultura de
+            Petrolina e Juazeiro, mas de percorrer algumas das
+            muitas histórias que a constituem, dando espaço a quem
+            cria, resiste, experimenta e transforma o lugar
+            que chama de casa.
+          </p>
+
+          <!-- TEXTO FINAL EM NEGRITO -->
+
+          <p class="paragrafo-final">
+            Esta é uma tentativa de acompanhar a correnteza dessas
+            narrativas: reconhecer suas origens, encontrar seus
+            percursos e escutar as vozes que seguem movimentando
+            a arte e a identidade no Vale do São Francisco.
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+  <!-- ======================================
+       BARQUINHOS ANTES DO RODAPÉ
+  ====================================== -->
 
   <figure class="barquinhos-final">
 
     <img
       src="./imagens/barquinho.png.png"
-      alt="Ilustração de um barquinho"
+      alt="Ilustração de barquinhos"
       loading="lazy"
     >
 
@@ -1162,15 +1296,17 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =========================================
+<!-- ==========================================
      À MARGEM
-========================================= -->
+========================================== -->
 
 <section class="pagina" id="a-margem">
 
   <div class="pagina-abertura">
 
-    <span class="pagina-numero">02 / À MARGEM</span>
+    <span class="pagina-numero">
+      02 / À MARGEM
+    </span>
 
     <h1 class="pagina-titulo">
       À MARGEM
@@ -1201,15 +1337,17 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =========================================
+<!-- ==========================================
      LINHA DO TEMPO
-========================================= -->
+========================================== -->
 
 <section class="pagina" id="linha-do-tempo">
 
   <div class="pagina-abertura">
 
-    <span class="pagina-numero">03 / MEMÓRIAS</span>
+    <span class="pagina-numero">
+      03 / MEMÓRIAS
+    </span>
 
     <h1 class="pagina-titulo">
       LINHA DO TEMPO
@@ -1273,15 +1411,17 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =========================================
+<!-- ==========================================
      NÚCLEO BIRUTA
-========================================= -->
+========================================== -->
 
 <section class="pagina" id="nucleo-biruta">
 
   <div class="pagina-abertura">
 
-    <span class="pagina-numero">04 / COLETIVOS</span>
+    <span class="pagina-numero">
+      04 / COLETIVOS
+    </span>
 
     <h1 class="pagina-titulo">
       NÚCLEO BIRUTA
@@ -1307,15 +1447,17 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =========================================
+<!-- ==========================================
      COLETIVO ABDIAS
-========================================= -->
+========================================== -->
 
 <section class="pagina" id="coletivo-abdias">
 
   <div class="pagina-abertura">
 
-    <span class="pagina-numero">05 / COLETIVOS</span>
+    <span class="pagina-numero">
+      05 / COLETIVOS
+    </span>
 
     <h1 class="pagina-titulo">
       COLETIVO ABDIAS
@@ -1341,9 +1483,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =========================================
+<!-- ==========================================
      CAATINGAYRO
-========================================= -->
+========================================== -->
 
 <section class="pagina" id="caatingayro">
 
@@ -1377,9 +1519,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =========================================
+<!-- ==========================================
      ARTISTAS
-========================================= -->
+========================================== -->
 
 <section class="pagina" id="artistas">
 
@@ -1415,9 +1557,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =========================================
+<!-- ==========================================
      LUGARES
-========================================= -->
+========================================== -->
 
 <section class="pagina" id="lugares">
 
@@ -1486,15 +1628,13 @@ nav button.ativo::after {
 
 </main>
 
-<!-- =========================================
+<!-- ==========================================
      RODAPÉ EM TODAS AS PÁGINAS
-
-     SEM BARQUINHO SOBRE O RODAPÉ
-========================================= -->
+========================================== -->
 
 <footer class="rodape">
 
-  <!-- IMAGEM DE FUNDO ORIGINAL -->
+  <!-- FUNDO COM ZOOM -->
 
   <div class="rodape-fundo">
 
@@ -1506,9 +1646,21 @@ nav button.ativo::after {
 
   </div>
 
+  <!-- BARQUINHO DO FINAL -->
+
+  <div class="rodape-barquinho">
+
+    <img
+      src="./imagens/barquinho do final.PNG.png"
+      alt="Ilustração de um barco"
+      loading="lazy"
+    >
+
+  </div>
+
   <div class="rodape-conteudo">
 
-    <!-- TÍTULO À ESQUERDA -->
+    <!-- TÍTULO -->
 
     <div class="rodape-identidade">
 
@@ -1522,11 +1674,9 @@ nav button.ativo::after {
 
     </div>
 
-    <!-- CRÉDITOS À DIREITA -->
+    <!-- CRÉDITOS -->
 
     <div class="rodape-creditos">
-
-      <!-- REPORTAGEM -->
 
       <div class="credito-grupo">
 
@@ -1548,8 +1698,6 @@ nav button.ativo::after {
 
       </div>
 
-      <!-- ORIENTAÇÃO -->
-
       <div class="credito-grupo">
 
         <span class="credito-label">
@@ -1561,8 +1709,6 @@ nav button.ativo::after {
         </span>
 
       </div>
-
-      <!-- DESIGN -->
 
       <div class="credito-grupo">
 
@@ -1603,9 +1749,9 @@ nav button.ativo::after {
 
 </div>
 
-<!-- =========================================
-     ÁUDIO DO RIO
-========================================= -->
+<!-- ==========================================
+     SOM DO RIO
+========================================== -->
 
 <audio id="somRio" loop preload="none">
 
@@ -1632,13 +1778,11 @@ nav button.ativo::after {
 
 </button>
 
-<!-- =========================================
+<!-- ==========================================
      JAVASCRIPT
-========================================= -->
+========================================== -->
 
 <script>
-
-/* ELEMENTOS */
 
 const paginas = document.querySelectorAll(".pagina");
 
@@ -1674,9 +1818,9 @@ const iconeSom = document.getElementById(
 
 let paginaAtual = "inicio";
 
-/* =========================================
-   CONTROLE DO SOM
-========================================= */
+/* ==========================================
+   SOM
+========================================== */
 
 function atualizarSom() {
 
@@ -1686,9 +1830,7 @@ function atualizarSom() {
     ? "DESATIVAR SOM DO RIO"
     : "ATIVAR SOM DO RIO";
 
-  iconeSom.textContent = tocando
-    ? "♫"
-    : "♪";
+  iconeSom.textContent = tocando ? "♫" : "♪";
 
   controleSom.setAttribute(
     "aria-pressed",
@@ -1707,7 +1849,6 @@ function atualizarSom() {
 function pararSom() {
 
   audio.pause();
-
   audio.currentTime = 0;
 
   atualizarSom();
@@ -1748,19 +1889,12 @@ controleSom.addEventListener(
   }
 );
 
-audio.addEventListener(
-  "play",
-  atualizarSom
-);
+audio.addEventListener("play", atualizarSom);
+audio.addEventListener("pause", atualizarSom);
 
-audio.addEventListener(
-  "pause",
-  atualizarSom
-);
-
-/* =========================================
-   NAVEGAÇÃO ENTRE PÁGINAS
-========================================= */
+/* ==========================================
+   NAVEGAÇÃO
+========================================== */
 
 function abrirPagina(
   id,
@@ -1776,15 +1910,11 @@ function abrirPagina(
     return;
   }
 
-  /* PARAR O SOM AO SAIR DO INÍCIO */
-
   if (id !== "inicio") {
     pararSom();
   }
 
   paginaAtual = id;
-
-  /* MOSTRAR APENAS A PÁGINA ESCOLHIDA */
 
   paginas.forEach(pagina => {
 
@@ -1794,8 +1924,6 @@ function abrirPagina(
     );
 
   });
-
-  /* ATUALIZAR MENU */
 
   botoesMenu.forEach(botao => {
 
@@ -1823,14 +1951,10 @@ function abrirPagina(
 
   });
 
-  /* SOM APENAS NA PÁGINA INÍCIO */
-
   controleSom.classList.toggle(
     "visivel",
     id === "inicio"
   );
-
-  /* FECHAR MENU MOBILE */
 
   menuPrincipal.classList.remove("aberto");
 
@@ -1840,8 +1964,6 @@ function abrirPagina(
   );
 
   botaoMenu.textContent = "☰";
-
-  /* ATUALIZAR ENDEREÇO */
 
   if (atualizarHistorico) {
 
@@ -1853,13 +1975,9 @@ function abrirPagina(
 
   }
 
-  /* VOLTAR AO TOPO */
-
   window.scrollTo(0, 0);
 
 }
-
-/* CLIQUES DO MENU */
 
 botoes.forEach(botao => {
 
@@ -1878,9 +1996,9 @@ botoes.forEach(botao => {
 
 });
 
-/* =========================================
+/* ==========================================
    MENU MOBILE
-========================================= */
+========================================== */
 
 botaoMenu.addEventListener(
   "click",
@@ -1902,9 +2020,9 @@ botaoMenu.addEventListener(
   }
 );
 
-/* =========================================
+/* ==========================================
    BOTÃO DA CAPA
-========================================= */
+========================================== */
 
 document.getElementById(
   "botaoDescer"
@@ -1921,9 +2039,9 @@ document.getElementById(
   }
 );
 
-/* =========================================
-   HISTÓRICO DO NAVEGADOR
-========================================= */
+/* ==========================================
+   HISTÓRICO
+========================================== */
 
 function verificarEndereco() {
 
@@ -1954,10 +2072,7 @@ window.addEventListener(
   verificarEndereco
 );
 
-/* INICIALIZAÇÃO */
-
 verificarEndereco();
-
 atualizarSom();
 
 </script>
