@@ -4,16 +4,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Correnteza — Outras formas de representar o Sertão</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
+<style>
 :root {
-    --preto: #050505;
-    --branco: #f5f5f5;
-    --azul: #5966a8;
-    --cinza: #bdbdbd;
+    --black: #08090b;
+    --black-soft: #101116;
+    --white: #f3f1ed;
+    --blue: #5665ae;
+    --blue-light: #8d99d2;
+    --gray: #aaaab2;
+    --line: rgba(255,255,255,.16);
+    --header-height: 62px;
 }
 
 * {
@@ -24,485 +31,822 @@
 
 html {
     scroll-behavior: smooth;
+    background: var(--black);
 }
 
 body {
-    background: var(--preto);
-    color: var(--branco);
+    background: var(--black);
+    color: var(--white);
     font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* PROGRESSO DE LEITURA */
+
+.progress-track {
+    position: fixed;
+    z-index: 300;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--blue-light);
 }
 
 /* MENU */
 
-header {
-    height: 48px;
+.header {
+    height: var(--header-height);
     width: 100%;
-    background: #fff;
-    color: #171717;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
+    padding: 0 4%;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 200;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(247,247,245,.97);
+    color: #171717;
+    backdrop-filter: blur(12px);
 }
 
 .logo {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: -1px;
-    text-decoration: none;
-    color: #111;
 }
 
-nav {
+.logo span {
+    color: var(--blue);
+}
+
+.menu {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: clamp(12px, 1.6vw, 25px);
 }
 
-nav a {
-    color: #171717;
-    text-decoration: none;
-    font-size: 12px;
+.menu a {
+    font-size: 11px;
+    font-weight: 600;
     white-space: nowrap;
+    transition: color .25s ease;
 }
 
-nav a:hover {
-    opacity: .55;
+.menu a:hover {
+    color: var(--blue);
 }
 
-.menu-mobile {
+.menu-toggle {
     display: none;
-    background: none;
     border: none;
-    font-size: 25px;
+    background: none;
+    font-size: 26px;
     cursor: pointer;
+    color: #111;
 }
 
 /* CAPA */
 
-.capa {
-    min-height: 560px;
-    height: 75vh;
+.hero {
+    min-height: min(850px, calc(100svh - var(--header-height)));
+    height: 760px;
     max-height: 850px;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
-    background: #050505;
+    isolation: isolate;
+    background: var(--black);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.capa-conteudo {
+.hero-content {
     position: relative;
-    z-index: 3;
-    width: 90%;
+    z-index: 5;
+    width: 92%;
+    max-width: 1400px;
+    margin: auto;
     text-align: center;
 }
 
-.capa h1 {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(65px, 11vw, 155px);
-    line-height: .82;
-    text-transform: uppercase;
-    letter-spacing: -7px;
-    position: relative;
-    z-index: 3;
-}
-
-.capa h2 {
-    font-size: clamp(16px, 2.4vw, 29px);
-    font-weight: 500;
+.hero-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    color: var(--blue-light);
+    font-size: 10px;
     letter-spacing: 4px;
-    margin-top: 30px;
+    text-transform: uppercase;
 }
 
-.assinatura {
-    margin-top: 15px;
-    font-size: 11px;
+.hero-location::before,
+.hero-location::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--blue-light);
+}
+
+.hero-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(68px, 12.5vw, 175px);
+    line-height: .78;
+    letter-spacing: -.085em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 5;
+}
+
+.hero-title span {
+    display: block;
+}
+
+.hero-title .second-line {
+    margin-top: 12px;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--white);
+}
+
+.hero-subtitle {
+    margin-top: 38px;
+    font-size: clamp(12px, 1.6vw, 19px);
+    letter-spacing: .32em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.hero-author {
+    margin-top: 13px;
+    color: var(--gray);
+    font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-/* ELEMENTO AZUL DA CAPA */
+/* ONDAS AZUIS */
 
-.onda {
+.river {
     position: absolute;
-    width: 120%;
-    height: 210px;
-    left: -10%;
-    top: 48%;
-    background: var(--azul);
-    transform: rotate(-8deg);
-    border-radius: 48% 52% 35% 45%;
-    opacity: .9;
-    z-index: 1;
+    z-index: 2;
+    width: 130%;
+    height: 290px;
+    left: -15%;
+    top: 46%;
+    transform: rotate(-10deg);
+    pointer-events: none;
 }
 
-.onda::before {
-    content: "";
-    position: absolute;
+.river svg {
     width: 100%;
     height: 100%;
-    background: #7c85b9;
-    border-radius: 50%;
-    top: -32px;
-    left: 0;
-    opacity: .55;
+    overflow: visible;
 }
 
-/* ILUSTRAÇÃO DA CAPA */
+.river path {
+    transform-origin: center;
+}
 
-.personagem {
+.river path:nth-child(1) {
+    fill: #38477f;
+    opacity: .92;
+}
+
+.river path:nth-child(2) {
+    fill: #5665ae;
+    opacity: .88;
+}
+
+.river path:nth-child(3) {
+    fill: #8b95c9;
+    opacity: .65;
+}
+
+/* PERSONAGEM */
+
+.character {
     position: absolute;
+    z-index: 6;
     right: 7%;
     bottom: 5%;
-    width: 190px;
-    height: 260px;
-    z-index: 4;
+    width: clamp(110px, 16vw, 205px);
+    height: clamp(145px, 21vw, 270px);
+
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.personagem .placeholder {
+.character img {
     width: 100%;
     height: 100%;
-    border: 1px dashed #777;
-    color: #aaa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    object-fit: contain;
+}
+
+.character-placeholder {
+    border: 1px dashed rgba(255,255,255,.35);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: var(--gray);
+    font-size: 10px;
     text-align: center;
-    font-size: 12px;
+    padding: 12px;
 }
 
-/* ABERTURA */
+/* INDICAÇÃO DE ROLAGEM */
 
-.abertura {
-    width: min(1100px, 86%);
-    margin: auto;
-    padding: 90px 0;
-}
-
-.titulo-abertura {
-    font-size: clamp(28px, 4vw, 50px);
-    line-height: 1.05;
+.scroll-invite {
+    position: absolute;
+    z-index: 8;
+    left: 4%;
+    bottom: 38px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: var(--gray);
+    font-size: 9px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: 40px;
-    max-width: 850px;
 }
 
-.texto {
-    max-width: 790px;
-    margin: 0 auto 35px;
-    font-size: 16px;
+.scroll-line {
+    width: 48px;
+    height: 1px;
+    background: var(--blue-light);
+}
+
+/* ABERTURA EDITORIAL */
+
+.opening {
+    width: min(1180px, 88%);
+    margin: auto;
+    padding: 125px 0 100px;
+}
+
+.eyebrow {
+    color: var(--blue-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.opening-title {
+    margin-top: 24px;
+    max-width: 920px;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(43px, 7vw, 88px);
+    font-weight: 400;
+    line-height: .99;
+    letter-spacing: -2px;
+}
+
+.opening-title em {
+    color: var(--blue-light);
+    font-weight: 400;
+}
+
+.opening-intro {
+    margin-top: 45px;
+    max-width: 650px;
+    margin-left: auto;
+    font-size: 17px;
     line-height: 1.8;
-    text-align: justify;
-    color: #ededed;
+    color: #c7c6c6;
 }
 
-.texto p {
-    margin-bottom: 22px;
+.opening-intro p + p {
+    margin-top: 22px;
 }
 
-/* IMAGENS */
+/* TEXTO DA REPORTAGEM */
 
-.imagem-grande {
-    width: 100%;
-    margin: 55px auto;
+.story {
+    width: min(100%, 1180px);
+    margin: auto;
+    padding: 30px 5% 110px;
 }
 
-.imagem-grande .placeholder {
-    width: 100%;
-    aspect-ratio: 16/7;
+.story-block {
+    max-width: 690px;
+    margin: 0 auto 65px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #d4d3d0;
 }
 
-.placeholder {
-    background: #151515;
-    border: 1px dashed #555;
-    color: #999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.story-block p + p {
+    margin-top: 24px;
+}
+
+.story-block strong {
+    color: white;
+    font-weight: 700;
+}
+
+.story-block a {
+    color: var(--blue-light);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* FRASES DE DESTAQUE */
+
+.quote {
+    padding: 95px 5%;
+    margin: 80px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     text-align: center;
-    padding: 15px;
-    font-size: 12px;
 }
 
-.galeria {
+.quote p {
+    max-width: 1000px;
+    margin: auto;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(26px, 5.5vw, 68px);
+    line-height: 1.08;
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+}
+
+.quote span {
+    color: var(--blue-light);
+}
+
+/* ESPAÇOS DE IMAGEM */
+
+.media {
+    position: relative;
+    background: #171922;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.media-placeholder {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    padding: 20px;
+    color: #a7a9b9;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    background:
+        radial-gradient(ellipse at 70% 40%, rgba(86,101,174,.22), transparent 60%),
+        #171922;
+}
+
+.media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.media-wide {
+    width: 100%;
+    aspect-ratio: 16 / 8;
+    margin: 85px 0;
+}
+
+.media-caption {
+    padding: 12px 0 0;
+    color: #8e8e98;
+    font-size: 10px;
+    letter-spacing: .5px;
+}
+
+/* GALERIA */
+
+.gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin: 55px 0;
-}
-
-.galeria figure {
-    width: 100%;
-}
-
-.galeria .placeholder {
-    width: 100%;
-    aspect-ratio: 4/5;
-}
-
-figcaption {
-    font-size: 12px;
-    color: var(--cinza);
-    margin-top: 10px;
-}
-
-/* IMAGENS HORIZONTAIS */
-
-.faixa-imagens {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 15px;
-    margin: 50px 0;
+    margin: 75px 0;
 }
 
-.faixa-imagens .placeholder {
-    aspect-ratio: 16/9;
+.gallery-item {
+    min-width: 0;
 }
 
-/* FRASE EM DESTAQUE */
-
-.frase-destaque {
-    width: 100%;
-    padding: 100px 5%;
-    margin: 80px 0;
-    text-align: center;
+.gallery-item .media {
+    aspect-ratio: 4 / 5;
 }
 
-.frase-destaque p {
+.gallery-item:nth-child(2) {
+    margin-top: 40px;
+}
+
+.gallery-item:nth-child(3) {
+    margin-top: 80px;
+}
+
+/* CHAMADA PARA OUTRAS SEÇÕES */
+
+.next-section {
+    position: relative;
+    min-height: 420px;
+    padding: 85px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--blue);
+}
+
+.next-section::after {
+    content: "";
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    right: -180px;
+    bottom: -300px;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 35px rgba(255,255,255,.04),
+        0 0 0 70px rgba(255,255,255,.04),
+        0 0 0 105px rgba(255,255,255,.04);
+}
+
+.next-section .eyebrow {
+    color: #e1e4fa;
+}
+
+.next-section h2 {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin-top: 25px;
     font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(25px, 5vw, 65px);
-    line-height: 1.1;
-    text-transform: uppercase;
-}
-
-/* SEÇÕES EDITORIAIS */
-
-.secao {
-    min-height: 100vh;
-    padding: 100px 7%;
-    border-top: 1px solid #252525;
-    scroll-margin-top: 48px;
-}
-
-.secao-titulo {
-    max-width: 1000px;
-    margin: 0 auto 70px;
-}
-
-.secao-titulo h2 {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(40px, 8vw, 105px);
+    font-size: clamp(45px, 8vw, 100px);
     line-height: .95;
     text-transform: uppercase;
 }
 
-.secao-titulo p {
-    margin-top: 20px;
-    font-size: 13px;
-    letter-spacing: 3px;
+.next-section a {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+    margin-top: 40px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-.secao-conteudo {
-    max-width: 1100px;
-    margin: auto;
+/* SEÇÕES INTERNAS */
+
+.section {
+    min-height: 80vh;
+    padding: 120px 7%;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: var(--header-height);
 }
 
-/* LINHA DO TEMPO */
-
-.linha-tempo {
-    max-width: 900px;
-    margin: auto;
-    border-left: 2px solid var(--azul);
-    padding-left: 35px;
+.section-header {
+    max-width: 1150px;
+    margin: 0 auto 75px;
 }
 
-.evento {
-    margin-bottom: 60px;
+.section-number {
+    color: var(--blue-light);
+    font-size: 12px;
+    letter-spacing: 4px;
 }
 
-.evento h3 {
+.section-header h2 {
+    margin-top: 25px;
     font-family: 'Archivo Black', sans-serif;
-    font-size: 35px;
-    margin-bottom: 12px;
+    font-size: clamp(45px, 9vw, 115px);
+    line-height: .9;
+    letter-spacing: -.06em;
+    text-transform: uppercase;
 }
 
-.evento p {
-    line-height: 1.7;
-    max-width: 650px;
+.section-content {
+    max-width: 1050px;
+    margin: auto;
 }
 
 /* RODAPÉ */
 
-.rodape {
-    min-height: 300px;
-    padding: 70px 7%;
-    background: #080808;
-    border-top: 1px solid #333;
+.footer {
+    padding: 90px 7% 45px;
+    background: #050608;
+    border-top: 1px solid var(--line);
 }
 
-.rodape-conteudo {
-    max-width: 1100px;
-    margin: auto;
+.footer-top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1200px;
+    margin: auto;
 }
 
-.rodape h2 {
+.footer-title {
     font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(35px, 6vw, 75px);
+    font-size: clamp(45px, 8vw, 100px);
+    line-height: .85;
+    letter-spacing: -.06em;
 }
 
-.rodape p {
-    color: #ccc;
-    font-size: 13px;
-    line-height: 1.8;
+.footer-subtitle {
+    margin-top: 20px;
+    color: var(--blue-light);
+    font-size: 11px;
+    letter-spacing: 3px;
 }
 
-.creditos {
-    text-align: right;
-}
-
-.rodape-final {
-    padding: 25px 15px;
-    background: #050505;
-    border-top: 1px solid #292929;
-    text-align: center;
+.footer-credits {
+    color: #aaaab2;
     font-size: 12px;
-    line-height: 1.8;
-    color: #bdbdbd;
+    line-height: 2;
 }
 
-.rodape-final strong {
+.footer-credits strong {
     color: white;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 75px auto 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    color: #888891;
+    font-size: 10px;
+    line-height: 1.9;
+}
+
+/* ANIMAÇÕES DE ENTRADA */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* RESPONSIVIDADE */
 
-@media (max-width: 850px) {
-
-    header {
-        padding: 0 18px;
+@media (max-width: 1000px) {
+    .menu {
+        gap: 12px;
     }
 
-    .menu-mobile {
+    .menu a {
+        font-size: 10px;
+    }
+
+    .hero-title {
+        font-size: clamp(65px, 13vw, 125px);
+    }
+}
+
+@media (max-width: 760px) {
+    :root {
+        --header-height: 58px;
+    }
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .menu-toggle {
         display: block;
     }
 
-    nav {
-        display: none;
+    .menu {
         position: absolute;
-        top: 48px;
+        top: var(--header-height);
         left: 0;
-        width: 100%;
-        background: white;
-        padding: 20px;
+        right: 0;
+        display: none;
         flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+        gap: 0;
+        padding: 12px 25px 22px;
+        background: #f7f7f5;
+        box-shadow: 0 12px 20px rgba(0,0,0,.15);
     }
 
-    nav.aberto {
+    .menu.open {
         display: flex;
     }
 
-    .capa {
-        height: 600px;
+    .menu a {
+        width: 100%;
+        padding: 13px 0;
+        border-bottom: 1px solid #ddd;
+        font-size: 13px;
     }
 
-    .capa h1 {
-        letter-spacing: -3px;
+    .hero {
+        height: 720px;
+        min-height: calc(100svh - var(--header-height));
     }
 
-    .personagem {
+    .hero-title {
+        font-size: clamp(55px, 12vw, 100px);
+        letter-spacing: -.07em;
+    }
+
+    .hero-title .second-line {
+        -webkit-text-stroke-width: 1px;
+    }
+
+    .river {
+        top: 48%;
+        height: 190px;
+    }
+
+    .character {
+        right: 4%;
+        bottom: 4%;
         width: 110px;
-        height: 160px;
-        right: 3%;
-        bottom: 3%;
-    }
-
-    .onda {
         height: 150px;
     }
 
-    .galeria {
+    .opening {
+        padding-top: 85px;
+    }
+
+    .opening-intro {
+        font-size: 15px;
+        margin-top: 30px;
+    }
+
+    .story-block {
+        font-size: 15px;
+    }
+
+    .gallery {
         grid-template-columns: 1fr 1fr;
+        gap: 12px;
     }
 
-    .rodape-conteudo {
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3) {
+        margin-top: 0;
+    }
+
+    .gallery-item:last-child {
+        display: none;
+    }
+
+    .footer-top {
         flex-direction: column;
-        align-items: flex-start;
     }
 
-    .creditos {
+    .footer-credits {
         text-align: left;
     }
 }
 
-@media (max-width: 500px) {
-
-    .capa {
-        min-height: 530px;
-        height: 80vh;
+@media (max-width: 480px) {
+    .hero {
+        height: 660px;
     }
 
-    .capa h1 {
-        font-size: 59px;
+    .hero-content {
+        width: 94%;
     }
 
-    .capa h2 {
-        font-size: 14px;
+    .hero-location {
+        font-size: 8px;
         letter-spacing: 2px;
+        margin-bottom: 30px;
     }
 
-    .abertura {
+    .hero-title {
+        font-size: clamp(49px, 12.3vw, 70px);
+    }
+
+    .hero-subtitle {
+        font-size: 11px;
+        letter-spacing: 2px;
+        margin-top: 25px;
+    }
+
+    .scroll-invite {
+        bottom: 25px;
+        font-size: 8px;
+    }
+
+    .opening {
         width: 88%;
-        padding: 60px 0;
+        padding-top: 75px;
     }
 
-    .texto {
-        font-size: 14px;
+    .opening-title {
+        font-size: 47px;
     }
 
-    .galeria {
+    .story {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    .gallery {
         grid-template-columns: 1fr;
     }
 
-    .faixa-imagens {
-        grid-template-columns: 1fr;
+    .gallery-item .media {
+        aspect-ratio: 16/10;
     }
 
-    .secao {
-        padding: 75px 7%;
+    .quote {
+        padding: 65px 7%;
     }
 
-    .rodape {
-        padding: 55px 7%;
+    .next-section {
+        min-height: 380px;
+    }
+
+    .section {
+        padding: 85px 7%;
+    }
+
+    .footer {
+        padding: 70px 7% 35px;
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<header>
-    <a href="#inicio" class="logo">CORRENTEZA</a>
+<!-- PROGRESSO DA LEITURA -->
+<div class="progress-track">
+    <div class="progress-bar" id="progress"></div>
+</div>
 
-    <button class="menu-mobile" aria-label="Abrir menu"
-        aria-expanded="false">☰</button>
+<!-- MENU -->
+<header class="header">
 
-    <nav id="menu">
+    <a href="#inicio" class="logo">CORRENTEZA<span>.</span></a>
+
+    <button class="menu-toggle" id="menuToggle"
+        aria-label="Abrir menu" aria-expanded="false">
+        ☰
+    </button>
+
+    <nav class="menu" id="menu">
         <a href="#inicio">Início</a>
         <a href="#margem">À Margem do Palco</a>
         <a href="#linha">Linha do Tempo</a>
@@ -512,240 +856,320 @@ figcaption {
         <a href="#artistas">Artistas</a>
         <a href="#lugares">Lugares</a>
     </nav>
+
 </header>
+
 
 <main>
 
-    <!-- CAPA -->
+<!-- CAPA -->
+<section class="hero" id="inicio">
 
-    <section class="capa" id="inicio">
+    <div class="river">
+        <svg viewBox="0 0 1400 300" preserveAspectRatio="none"
+             aria-hidden="true">
+            <path d="M-100 130 C180 20 300 220 560 110 S980 10 1500 125 L1500 300 L-100 300 Z"/>
+            <path d="M-100 160 C160 60 360 250 620 150 S1080 40 1500 160 L1500 300 L-100 300 Z"/>
+            <path d="M-100 190 C180 100 400 280 700 190 S1100 90 1500 190 L1500 300 L-100 300 Z"/>
+        </svg>
+    </div>
 
-        <div class="onda"></div>
+    <div class="hero-content">
 
-        <div class="capa-conteudo">
-            <h1>ENTRE DUAS<br>MARGENS</h1>
-            <h2>UMA SÓ CORRENTEZA</h2>
-            <p class="assinatura">Por Cibelle Vieira</p>
+        <div class="hero-location">
+            PETROLINA · JUAZEIRO · VALE DO SÃO FRANCISCO
         </div>
 
-        <div class="personagem">
-            <div class="placeholder">
-                Ilustração da personagem
+        <h1 class="hero-title">
+            <span>ENTRE DUAS</span>
+            <span class="second-line">MARGENS</span>
+        </h1>
+
+        <p class="hero-subtitle">UMA SÓ CORRENTEZA</p>
+
+        <p class="hero-author">POR CIBELLE VIEIRA</p>
+
+    </div>
+
+    <!-- SUBSTITUIR PELO ARQUIVO ORIGINAL DA PERSONAGEM -->
+    <div class="character">
+        <div class="character-placeholder">
+            ILUSTRAÇÃO<br>DA PERSONAGEM
+        </div>
+    </div>
+
+    <div class="scroll-invite">
+        <span class="scroll-line"></span>
+        ROLE PARA ATRAVESSAR
+    </div>
+
+</section>
+
+
+<!-- ABERTURA -->
+<section class="opening reveal">
+
+    <span class="eyebrow">UMA REPORTAGEM SOBRE TERRITÓRIO E CULTURA</span>
+
+    <h2 class="opening-title">
+        Entre duas margens,<br>
+        <em>uma só correnteza.</em>
+    </h2>
+
+    <div class="opening-intro">
+        <p>
+            Este é o espaço para o texto de abertura da reportagem.
+            A proposta é apresentar a narrativa em blocos menores,
+            preservando integralmente o texto original e criando
+            pausas visuais para acompanhar a leitura.
+        </p>
+    </div>
+
+</section>
+
+
+<!-- CORPO DA REPORTAGEM -->
+<section class="story">
+
+    <div class="story-block reveal">
+        <p>
+            Insira aqui o primeiro trecho da reportagem.
+            A largura reduzida do texto permite uma leitura
+            mais confortável e cria uma relação entre palavra,
+            imagem e espaço.
+        </p>
+
+        <p>
+            Insira aqui a continuação do texto original,
+            sem alterar seu conteúdo.
+        </p>
+    </div>
+
+
+    <!-- IMAGEM DE DESTAQUE -->
+    <figure class="media media-wide reveal">
+        <div class="media-placeholder">
+            IMAGEM PRINCIPAL DA REPORTAGEM
+        </div>
+    </figure>
+
+
+    <div class="story-block reveal">
+        <p>
+            Continue aqui a narrativa. Neste ponto, podemos
+            inserir uma fotografia histórica, uma memória
+            ou um registro que dialogue com o conteúdo.
+        </p>
+
+        <p>
+            Os parágrafos devem manter o texto original,
+            sem serem fragmentados artificialmente.
+        </p>
+    </div>
+
+
+    <!-- GALERIA -->
+    <div class="gallery reveal">
+
+        <figure class="gallery-item">
+            <div class="media">
+                <div class="media-placeholder">FOTOGRAFIA 01</div>
             </div>
-        </div>
+            <figcaption class="media-caption">
+                Legenda e crédito da fotografia.
+            </figcaption>
+        </figure>
 
-    </section>
+        <figure class="gallery-item">
+            <div class="media">
+                <div class="media-placeholder">FOTOGRAFIA 02</div>
+            </div>
+            <figcaption class="media-caption">
+                Legenda e crédito da fotografia.
+            </figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+            <div class="media">
+                <div class="media-placeholder">FOTOGRAFIA 03</div>
+            </div>
+            <figcaption class="media-caption">
+                Legenda e crédito da fotografia.
+            </figcaption>
+        </figure>
+
+    </div>
 
 
-    <!-- ABERTURA -->
+    <div class="story-block reveal">
+        <p>
+            Mais um bloco de texto da reportagem.
+            A alternância entre texto e fotografia
+            ajuda a construir o ritmo da leitura.
+        </p>
+    </div>
 
-    <section class="abertura">
 
-        <h2 class="titulo-abertura">
-            Entre duas margens,
-            uma só correnteza
-        </h2>
+    <!-- DESTAQUE -->
+    <div class="quote reveal">
+        <p>
+            O TERRITÓRIO TAMBÉM É FEITO
+            DE <span>HISTÓRIAS.</span>
+        </p>
+    </div>
 
-        <div class="texto">
+
+    <div class="story-block reveal">
+        <p>
+            Continuação da reportagem. Aqui podemos inserir
+            outro trecho do texto, acompanhado de uma imagem
+            ou de uma legenda contextual.
+        </p>
+    </div>
+
+</section>
+
+
+<!-- CHAMADA PARA A PRÓXIMA SEÇÃO -->
+<section class="next-section reveal" id="margem">
+
+    <span class="eyebrow">01 — OUTRAS FORMAS DE OCUPAR</span>
+
+    <h2>À margem<br>do palco.</h2>
+
+    <a href="#linha">
+        CONTINUE A TRAVESSIA
+        <span>↗</span>
+    </a>
+
+</section>
+
+
+<!-- LINHA DO TEMPO -->
+<section class="section" id="linha">
+
+    <div class="section-header reveal">
+        <span class="section-number">02 — MEMÓRIA</span>
+        <h2>Linha do<br>tempo.</h2>
+    </div>
+
+    <div class="section-content">
+        <div class="story-block">
             <p>
-                Insira aqui o texto de abertura da reportagem,
-                respeitando os parágrafos e a organização do
-                projeto original.
+                Conteúdo da linha do tempo conforme a reportagem.
+                Os acontecimentos, datas e imagens serão inseridos
+                a partir do material original.
             </p>
+        </div>
+    </div>
 
+</section>
+
+
+<!-- NÚCLEO BIRUTA -->
+<section class="section" id="biruta">
+
+    <div class="section-header reveal">
+        <span class="section-number">03 — COLETIVOS E EXPRESSÕES</span>
+        <h2>Núcleo<br>Biruta.</h2>
+    </div>
+
+    <div class="section-content">
+        <div class="media media-wide">
+            <div class="media-placeholder">IMAGEM DO NÚCLEO BIRUTA</div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- COLETIVO ABDIAS -->
+<section class="section" id="abdias">
+
+    <div class="section-header reveal">
+        <span class="section-number">04 — COLETIVOS E EXPRESSÕES</span>
+        <h2>Coletivo<br>Abdias.</h2>
+    </div>
+
+    <div class="section-content">
+        <div class="media media-wide">
+            <div class="media-placeholder">IMAGEM DO COLETIVO ABDIAS</div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- CAATINGAYRO -->
+<section class="section" id="caatingayro">
+
+    <div class="section-header reveal">
+        <span class="section-number">05 — COLETIVOS E EXPRESSÕES</span>
+        <h2>Caatingayro.</h2>
+    </div>
+
+    <div class="section-content">
+        <div class="media media-wide">
+            <div class="media-placeholder">IMAGEM CAATINGAYRO</div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ARTISTAS -->
+<section class="section" id="artistas">
+
+    <div class="section-header reveal">
+        <span class="section-number">06 — QUEM FAZ</span>
+        <h2>Artistas.</h2>
+    </div>
+
+    <div class="section-content">
+        <div class="story-block">
             <p>
-                Este espaço foi pensado para manter a largura
-                estreita dos blocos de texto, o alinhamento e
-                o espaçamento observados no projeto visual.
+                Espaço para apresentação dos artistas e de suas
+                trajetórias, conforme o conteúdo da reportagem.
             </p>
         </div>
+    </div>
 
-        <div class="imagem-grande">
-            <div class="placeholder">
-                Fotografia ou ilustração principal
-            </div>
+</section>
+
+
+<!-- LUGARES -->
+<section class="section" id="lugares">
+
+    <div class="section-header reveal">
+        <span class="section-number">07 — TERRITÓRIO</span>
+        <h2>Lugares.</h2>
+    </div>
+
+    <div class="section-content">
+        <div class="media media-wide">
+            <div class="media-placeholder">IMAGENS DOS LUGARES</div>
         </div>
+    </div>
 
-        <div class="texto">
-            <p>
-                Continue aqui o texto da reportagem. As imagens
-                podem aparecer intercaladas aos parágrafos,
-                preservando o ritmo visual do long-form.
-            </p>
-        </div>
-
-        <div class="galeria">
-
-            <figure>
-                <div class="placeholder">Fotografia 01</div>
-                <figcaption>Legenda da fotografia</figcaption>
-            </figure>
-
-            <figure>
-                <div class="placeholder">Fotografia 02</div>
-                <figcaption>Legenda da fotografia</figcaption>
-            </figure>
-
-            <figure>
-                <div class="placeholder">Fotografia 03</div>
-                <figcaption>Legenda da fotografia</figcaption>
-            </figure>
-
-        </div>
-
-        <div class="texto">
-            <p>
-                Espaço destinado à continuação do conteúdo
-                jornalístico, mantendo a leitura vertical e
-                a composição editorial.
-            </p>
-        </div>
-
-        <div class="faixa-imagens">
-            <div class="placeholder">Imagem histórica</div>
-            <div class="placeholder">Imagem histórica</div>
-        </div>
-
-        <div class="frase-destaque">
-            <p>
-                Entre duas margens,
-                muitas histórias.
-                Uma só correnteza.
-            </p>
-        </div>
-
-    </section>
-
-
-    <!-- À MARGEM DO PALCO -->
-
-    <section class="secao" id="margem">
-
-        <div class="secao-titulo">
-            <h2>À margem do palco</h2>
-            <p>OUTRAS FORMAS DE OCUPAR E PRODUZIR CULTURA</p>
-        </div>
-
-        <div class="secao-conteudo">
-            <div class="texto">
-                <p>
-                    Conteúdo da reportagem correspondente
-                    a esta seção.
-                </p>
-            </div>
-
-            <div class="imagem-grande">
-                <div class="placeholder">Imagem da seção</div>
-            </div>
-        </div>
-
-    </section>
-
-
-    <!-- LINHA DO TEMPO -->
-
-    <section class="secao" id="linha">
-
-        <div class="secao-titulo">
-            <h2>Linha do tempo</h2>
-        </div>
-
-        <div class="linha-tempo">
-
-            <div class="evento">
-                <h3>01</h3>
-                <p>Conteúdo histórico e memória cultural.</p>
-            </div>
-
-            <div class="evento">
-                <h3>02</h3>
-                <p>Continuação da trajetória cultural.</p>
-            </div>
-
-            <div class="evento">
-                <h3>03</h3>
-                <p>Outros acontecimentos e registros.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- NÚCLEO BIRUTA -->
-
-    <section class="secao" id="biruta">
-        <div class="secao-titulo">
-            <h2>Núcleo Biruta</h2>
-        </div>
-        <div class="secao-conteudo">
-            <div class="placeholder">Imagem ou conteúdo da seção</div>
-        </div>
-    </section>
-
-
-    <!-- COLETIVO ABDIAS -->
-
-    <section class="secao" id="abdias">
-        <div class="secao-titulo">
-            <h2>Coletivo Abdias</h2>
-        </div>
-        <div class="secao-conteudo">
-            <div class="placeholder">Imagem ou conteúdo da seção</div>
-        </div>
-    </section>
-
-
-    <!-- CAATINGAYRO -->
-
-    <section class="secao" id="caatingayro">
-        <div class="secao-titulo">
-            <h2>Caatingayro</h2>
-        </div>
-        <div class="secao-conteudo">
-            <div class="placeholder">Imagem ou conteúdo da seção</div>
-        </div>
-    </section>
-
-
-    <!-- ARTISTAS -->
-
-    <section class="secao" id="artistas">
-        <div class="secao-titulo">
-            <h2>Artistas</h2>
-        </div>
-        <div class="secao-conteudo">
-            <div class="placeholder">Galeria de artistas</div>
-        </div>
-    </section>
-
-
-    <!-- LUGARES -->
-
-    <section class="secao" id="lugares">
-        <div class="secao-titulo">
-            <h2>Lugares</h2>
-        </div>
-        <div class="secao-conteudo">
-            <div class="placeholder">Galeria de lugares</div>
-        </div>
-    </section>
+</section>
 
 </main>
 
 
 <!-- ENCERRAMENTO -->
+<footer class="footer">
 
-<footer class="rodape">
-
-    <div class="rodape-conteudo">
+    <div class="footer-top">
 
         <div>
-            <h2>CORRENTEZA</h2>
-            <p>OUTRAS FORMAS DE REPRESENTAR O SERTÃO</p>
+            <h2 class="footer-title">CORRENTEZA.</h2>
+
+            <p class="footer-subtitle">
+                OUTRAS FORMAS DE REPRESENTAR O SERTÃO
+            </p>
         </div>
 
-        <div class="creditos">
+        <div class="footer-credits">
             <p><strong>Autora:</strong> Cibelle Vieira</p>
             <p><strong>Orientação:</strong> Raiane Sousa</p>
             <p><strong>Design e desenvolvimento do site:</strong> Jenifer Silva</p>
@@ -753,31 +1177,81 @@ figcaption {
 
     </div>
 
-</footer>
+    <div class="footer-bottom">
+        <p>
+            Long-form jornalístico | Trabalho de Conclusão de Curso
+            — Graduação em Jornalismo, Universidade do Estado da Bahia (UNEB).
+        </p>
+        <p>© 2026 — CORRENTEZA</p>
+    </div>
 
-<div class="rodape-final">
-    <p><strong>Correnteza — Outras formas de representar o Sertão</strong></p>
-    <p>Long-form jornalístico | Trabalho de Conclusão de Curso — Graduação em Jornalismo, Universidade do Estado da Bahia (UNEB)</p>
-    <p>© 2026</p>
-</div>
+</footer>
 
 
 <script>
-const botao = document.querySelector('.menu-mobile');
-const menu = document.querySelector('#menu');
 
-botao.addEventListener('click', () => {
-    const aberto = menu.classList.toggle('aberto');
-    botao.setAttribute('aria-expanded', aberto);
-    botao.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+// MENU MOBILE
+
+const menuToggle = document.getElementById('menuToggle');
+const menu = document.getElementById('menu');
+
+menuToggle.addEventListener('click', () => {
+    const aberto = menu.classList.toggle('open');
+
+    menuToggle.setAttribute('aria-expanded', aberto);
+    menuToggle.setAttribute(
+        'aria-label',
+        aberto ? 'Fechar menu' : 'Abrir menu'
+    );
+
+    menuToggle.textContent = aberto ? '×' : '☰';
 });
 
 menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-        menu.classList.remove('aberto');
-        botao.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+        menuToggle.textContent = '☰';
     });
 });
+
+
+// PROGRESSO DE LEITURA
+
+const progress = document.getElementById('progress');
+
+function updateProgress() {
+    const altura = document.documentElement.scrollHeight - window.innerHeight;
+    const porcentagem = altura > 0
+        ? (window.scrollY / altura) * 100
+        : 0;
+
+    progress.style.width = porcentagem + '%';
+}
+
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+
+// ANIMAÇÕES AO ROLAR
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll('.reveal').forEach(element => {
+    observer.observe(element);
+});
+
 </script>
 
 </body>
