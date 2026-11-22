@@ -9,10 +9,9 @@
 <title>Entre Duas Margens, Uma Só Correnteza</title>
 
 <style>
-
-/* =========================================================
+/* =====================================================
    FONTES
-========================================================= */
+===================================================== */
 
 @font-face {
   font-family: "Cubao";
@@ -38,22 +37,22 @@
   font-display: swap;
 }
 
-/* =========================================================
+/* =====================================================
    CONFIGURAÇÕES GERAIS
-========================================================= */
+===================================================== */
 
 :root {
   --preto: #050505;
   --azul: #a6b7ef;
+  --texto: #f3f3f3;
   --largura-texto: 740px;
   --altura-menu: 72px;
-  --altura-rodape: 380px;
 }
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -63,14 +62,14 @@ html {
 
 body {
   background: var(--preto);
-  color: #fff;
+  color: white;
   font-family: "Neue Montreal", Arial, sans-serif;
   overflow-x: hidden;
 }
 
 button {
-  font-family: inherit;
   cursor: pointer;
+  font-family: inherit;
 }
 
 a {
@@ -89,25 +88,24 @@ img {
   background: var(--preto);
 }
 
-/* =========================================================
+/* =====================================================
    MENU
-========================================================= */
+===================================================== */
 
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.96);
+  background: rgba(0, 0, 0, 0.97);
   backdrop-filter: blur(12px);
 }
 
 .cabecalho {
   min-height: var(--altura-menu);
   padding: 12px 25px;
-
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 nav {
@@ -119,13 +117,11 @@ nav {
 }
 
 nav button {
-  background: transparent;
-  border: 0;
+  background: none;
+  border: none;
   color: #eee;
-
   font-family: "Gordita", Arial, sans-serif;
   font-size: clamp(10px, 0.9vw, 13px);
-
   padding: 9px 0;
   position: relative;
 }
@@ -135,10 +131,8 @@ nav button::after {
   position: absolute;
   bottom: 1px;
   left: 0;
-
-  height: 1px;
   width: 0;
-
+  height: 1px;
   background: var(--azul);
   transition: width 0.3s;
 }
@@ -156,15 +150,15 @@ nav button.ativo::after {
 .menu-mobile {
   display: none;
   background: transparent;
-  border: 1px solid #555;
   color: white;
-  font-size: 22px;
+  border: 1px solid #555;
   padding: 8px 13px;
+  font-size: 22px;
 }
 
-/* =========================================================
+/* =====================================================
    PÁGINAS
-========================================================= */
+===================================================== */
 
 .pagina {
   display: none;
@@ -173,24 +167,24 @@ nav button.ativo::after {
 
 .pagina.ativa {
   display: block;
-  animation: entrada 0.5s ease;
+  animation: aparecer 0.45s ease;
 }
 
-@keyframes entrada {
+@keyframes aparecer {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* =========================================================
-   CAPA
-========================================================= */
+/* =====================================================
+   CAPA INICIAL
+===================================================== */
 
 .capa {
   position: relative;
   width: 100%;
   min-height: min(780px, calc(100svh - var(--altura-menu)));
+  background: black;
   overflow: hidden;
-  background: #000;
   isolation: isolate;
 }
 
@@ -210,19 +204,17 @@ nav button.ativo::after {
 
 .capa-conteudo {
   min-height: inherit;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-
   padding: clamp(155px, 22vh, 230px) 22px 130px;
 }
 
 .capa-titulo {
   font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(56px, 8vw, 125px);
   font-weight: normal;
+  font-size: clamp(56px, 8vw, 125px);
   line-height: 0.98;
 }
 
@@ -232,8 +224,8 @@ nav button.ativo::after {
 
 .capa-subtitulo {
   font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(22px, 2.8vw, 36px);
   font-weight: normal;
+  font-size: clamp(22px, 2.8vw, 36px);
   margin-top: 25px;
 }
 
@@ -248,39 +240,33 @@ nav button.ativo::after {
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-
   padding: 13px 18px;
   border: 1px solid #777;
-
-  background: rgba(0, 0, 0, 0.78);
-  color: #fff;
-
+  background: rgba(0,0,0,0.8);
+  color: white;
   font-family: "Gordita", Arial, sans-serif;
   font-size: 11px;
   white-space: nowrap;
-
-  transition: background 0.3s;
 }
 
 .capa-descer:hover {
   background: #34437e;
 }
 
-/* =========================================================
+/* =====================================================
    CONTINUAÇÃO DA CAPA
-========================================================= */
+===================================================== */
 
 .continuacao-capa {
   position: relative;
   width: 100%;
-  background: #050505;
+  background: var(--preto);
   isolation: isolate;
 }
 
 .continuacao-arte {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0 auto auto 0;
   width: 100%;
   height: 640px;
   z-index: -2;
@@ -302,8 +288,8 @@ nav button.ativo::after {
   width: 100%;
   height: 460px;
   z-index: -1;
-  pointer-events: none;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .ilha-sobreposta img {
@@ -314,9 +300,9 @@ nav button.ativo::after {
   transform: scale(1.08);
 }
 
-/* =========================================================
+/* =====================================================
    REPORTAGEM INICIAL
-========================================================= */
+===================================================== */
 
 .reportagem {
   position: relative;
@@ -324,7 +310,8 @@ nav button.ativo::after {
   padding: 255px 0 30px;
 }
 
-.corpo-reportagem {
+.corpo-reportagem,
+.texto-margem {
   width: calc(100% - 48px);
   max-width: var(--largura-texto);
   margin: 0 auto;
@@ -337,7 +324,7 @@ nav button.ativo::after {
   font-size: clamp(18px, 1.65vw, 21px);
   line-height: 1.48;
   margin-bottom: 28px;
-  color: #f3f3f3;
+  color: var(--texto);
 }
 
 .primeiro-paragrafo::first-letter {
@@ -366,11 +353,12 @@ nav button.ativo::after {
   clear: both;
 }
 
+/* Somente o último parágrafo da PRIMEIRA reportagem */
+
 .corpo-reportagem .paragrafo-final {
   clear: both;
   max-width: 850px;
   margin: 85px auto 55px;
-
   font-size: clamp(22px, 2.5vw, 32px);
   font-weight: 700;
   text-transform: uppercase;
@@ -378,14 +366,13 @@ nav button.ativo::after {
   line-height: 1.3;
 }
 
-/* =========================================================
+/* =====================================================
    BARQUINHOS
-========================================================= */
+===================================================== */
 
 .barquinhos-final {
   width: 100%;
-  background: #050505;
-
+  background: var(--preto);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -394,17 +381,15 @@ nav button.ativo::after {
 
 .barquinhos-final img {
   width: 100%;
-  max-height: 240px;
   height: auto;
+  max-height: 240px;
   object-fit: contain;
-  object-position: center;
 }
 
 .margem-separador {
   clear: both;
   width: 100%;
   margin: 65px 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -420,13 +405,12 @@ nav button.ativo::after {
 
 .respiro-rodape {
   height: 110px;
-  width: 100%;
-  background: #050505;
+  background: var(--preto);
 }
 
-/* =========================================================
+/* =====================================================
    À MARGEM — ABERTURA
-========================================================= */
+===================================================== */
 
 .margem-cabecalho {
   max-width: 1120px;
@@ -445,7 +429,7 @@ nav button.ativo::after {
 .margem-titulo {
   font-family: "Cubao", Impact, sans-serif;
   font-size: clamp(56px, 7vw, 105px);
-  font-weight: 400;
+  font-weight: normal;
   line-height: 1;
   margin-bottom: 24px;
 }
@@ -453,55 +437,35 @@ nav button.ativo::after {
 .margem-subtitulo {
   font-family: "Neue Montreal", Arial, sans-serif;
   font-size: clamp(20px, 2.5vw, 32px);
-  font-weight: 400;
+  font-weight: normal;
   line-height: 1.25;
   max-width: 800px;
 }
 
-/* =========================================================
-   NOVA GALERIA DE ABERTURA — 1.PNG, 2.PNG, 3.PNG
+/* =====================================================
+   NOVA CAPA DA PÁGINA À MARGEM
 
-   Três fotografias verticais lado a lado.
-   Mesma disposição da referência enviada.
-========================================================= */
+   Usa somente a imagem 123.png.
+   Ocupa de uma ponta a outra do site.
+===================================================== */
 
-.margem-colagem {
+.margem-capa {
   width: 100%;
-  max-width: 1120px;
-  margin: 35px auto 75px;
-  padding: 0 30px;
-
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
-  gap: 8px;
-}
-
-.margem-colagem .colagem-quadro {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-  background: transparent;
+  margin: 25px 0 75px;
+  background: #050505;
   overflow: hidden;
 }
 
-.margem-colagem .colagem-quadro img {
+.margem-capa img {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
+  max-width: none;
 }
 
-/* =========================================================
-   À MARGEM — TEXTO
-========================================================= */
-
-.texto-margem {
-  width: calc(100% - 48px);
-  max-width: var(--largura-texto);
-  margin: 0 auto;
-  display: flow-root;
-}
+/* =====================================================
+   TEXTO À MARGEM
+===================================================== */
 
 .margem-foto-direita {
   float: right;
@@ -534,7 +498,6 @@ nav button.ativo::after {
 .margem-intertitulo {
   clear: both;
   margin: 85px 0 30px;
-
   font-family: "Cubao", Impact, sans-serif;
   font-size: clamp(32px, 4.5vw, 55px);
   font-weight: normal;
@@ -546,7 +509,6 @@ nav button.ativo::after {
   border-left: 3px solid var(--azul);
   padding: 10px 0 10px 25px;
   margin: 40px 0;
-
   font-size: clamp(21px, 2.6vw, 31px);
   line-height: 1.35;
 }
@@ -558,17 +520,22 @@ nav button.ativo::after {
   font-size: 13px;
 }
 
-.margem-final {
+/* Final da segunda reportagem: TEXTO NORMAL */
+
+.texto-margem p.margem-final {
   clear: both;
-  font-size: clamp(22px, 2.3vw, 30px) !important;
-  text-align: center;
-  font-weight: 700;
-  margin: 85px 0 70px !important;
+  font-family: "Neue Montreal", Arial, sans-serif;
+  font-size: clamp(18px, 1.65vw, 21px);
+  font-weight: 400;
+  line-height: 1.48;
+  text-align: left;
+  text-transform: none;
+  margin: 0 0 28px;
 }
 
-/* =========================================================
-   VÍDEO DO CORTEJO
-========================================================= */
+/* =====================================================
+   VÍDEOS
+===================================================== */
 
 .video-reportagem {
   clear: both;
@@ -597,30 +564,28 @@ nav button.ativo::after {
   display: block;
   width: 100%;
   height: 100%;
-  border: none;
+  border: 0;
 }
 
 .video-reportagem figcaption {
   font-family: "Gordita", Arial, sans-serif;
   font-size: 12px;
-  color: #aaa;
   line-height: 1.6;
+  color: #aaa;
   margin-top: 14px;
 }
 
-.video-reportagem-link {
-  display: inline-block;
-  margin-top: 12px;
+/* Vídeo ao final de À Margem */
 
-  font-family: "Gordita", Arial, sans-serif;
-  font-size: 12px;
-  color: var(--azul);
-  text-decoration: underline;
+.video-final-margem {
+  width: calc(100% - 48px);
+  max-width: 1000px;
+  margin: 70px auto 90px;
 }
 
-/* =========================================================
+/* =====================================================
    DEMAIS PÁGINAS
-========================================================= */
+===================================================== */
 
 .pagina-abertura {
   padding: 110px max(40px, calc((100vw - 1100px) / 2)) 75px;
@@ -629,7 +594,6 @@ nav button.ativo::after {
 .pagina-numero {
   display: block;
   margin-bottom: 25px;
-
   font-family: "Gordita", Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 3px;
@@ -693,16 +657,15 @@ nav button.ativo::after {
   color: #ccc;
 }
 
-/* =========================================================
+/* =====================================================
    RODAPÉ
-========================================================= */
+===================================================== */
 
 .rodape {
   position: relative;
   isolation: isolate;
-
-  height: var(--altura-rodape);
   width: 100%;
+  height: 380px;
   overflow: hidden;
   background: #000;
 }
@@ -740,12 +703,10 @@ nav button.ativo::after {
   position: relative;
   z-index: 2;
   height: 100%;
-
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   align-items: center;
   gap: 40px;
-
   padding: 45px 8% 30px;
 }
 
@@ -800,7 +761,6 @@ nav button.ativo::after {
   flex-wrap: wrap;
   justify-content: center;
   gap: 5px;
-
   font-family: "Gordita", Arial, sans-serif;
   font-size: clamp(10px, 1vw, 13px);
 }
@@ -814,27 +774,23 @@ nav button.ativo::after {
   color: #bbb;
 }
 
-/* =========================================================
+/* =====================================================
    ÁUDIO
-========================================================= */
+===================================================== */
 
 .controle-som {
   position: fixed;
   z-index: 2000;
   right: 25px;
   bottom: 25px;
-
   display: none;
   align-items: center;
   gap: 10px;
-
   padding: 14px 18px;
   border: 1px solid var(--azul);
   border-radius: 30px;
-
-  background: rgba(0, 0, 0, 0.9);
-  color: #fff;
-
+  background: rgba(0,0,0,0.9);
+  color: white;
   font-family: "Gordita", Arial, sans-serif;
   font-size: 11px;
 }
@@ -843,14 +799,13 @@ nav button.ativo::after {
   display: flex;
 }
 
-/* =========================================================
-   ANIMAÇÃO DE ROLAGEM
-========================================================= */
+/* =====================================================
+   ANIMAÇÕES DE ROLAGEM
+===================================================== */
 
 .revelar {
   opacity: 0;
   transform: translateY(32px);
-
   transition:
     opacity 0.85s ease,
     transform 0.85s ease;
@@ -861,9 +816,9 @@ nav button.ativo::after {
   transform: translateY(0);
 }
 
-/* =========================================================
+/* =====================================================
    RESPONSIVIDADE
-========================================================= */
+===================================================== */
 
 @media (max-width: 1100px) {
   .ilustracao-cibs {
@@ -954,7 +909,8 @@ nav button.ativo::after {
   }
 
   .corpo-reportagem p,
-  .texto-margem p {
+  .texto-margem p,
+  .texto-margem p.margem-final {
     font-size: 17px;
     line-height: 1.55;
   }
@@ -973,11 +929,8 @@ nav button.ativo::after {
     padding: 70px 22px 25px;
   }
 
-  /* Mantém as três fotografias lado a lado */
-  .margem-colagem {
-    padding: 0 12px;
-    gap: 5px;
-    margin-bottom: 45px;
+  .margem-capa {
+    margin: 15px 0 45px;
   }
 
   .margem-foto-direita,
@@ -1076,7 +1029,6 @@ nav button.ativo::after {
     transform: none;
   }
 }
-
 </style>
 </head>
 
@@ -1084,9 +1036,9 @@ nav button.ativo::after {
 
 <div class="site">
 
-<!-- =======================================================
-     MENU PRINCIPAL
-======================================================= -->
+<!-- =====================================================
+     MENU
+===================================================== -->
 
 <header>
   <div class="cabecalho">
@@ -1115,9 +1067,9 @@ nav button.ativo::after {
 
 <main>
 
-<!-- =======================================================
+<!-- =====================================================
      PÁGINA 1 — INÍCIO
-======================================================= -->
+===================================================== -->
 
 <section class="pagina ativa" id="inicio">
 
@@ -1147,11 +1099,7 @@ nav button.ativo::after {
 
     </div>
 
-    <button
-      class="capa-descer"
-      id="botaoDescer"
-      type="button"
-    >
+    <button class="capa-descer" id="botaoDescer" type="button">
       CONTINUE A TRAVESSIA ↓
     </button>
 
@@ -1247,9 +1195,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =======================================================
+<!-- =====================================================
      PÁGINA 2 — À MARGEM
-======================================================= -->
+===================================================== -->
 
 <section class="pagina" id="a-margem">
 
@@ -1269,37 +1217,16 @@ nav button.ativo::after {
 
   </div>
 
-  <!-- NOVA GALERIA COM AS TRÊS FOTOGRAFIAS -->
+  <!-- NOVA CAPA 123.PNG -->
 
-  <div class="margem-colagem revelar">
+  <figure class="margem-capa revelar">
+    <img
+      src="./imagens/123.png"
+      alt="Composição fotográfica sobre a produção artística e cultural no Vale do São Francisco"
+    >
+  </figure>
 
-    <figure class="colagem-quadro">
-      <img
-        src="./imagens/1.png"
-        alt="Apresentação artística em um palco"
-        loading="lazy"
-      >
-    </figure>
-
-    <figure class="colagem-quadro">
-      <img
-        src="./imagens/2.png"
-        alt="Pessoa desenhando e pintando"
-        loading="lazy"
-      >
-    </figure>
-
-    <figure class="colagem-quadro">
-      <img
-        src="./imagens/3.png"
-        alt="Apresentação cultural em frente ao espaço Biruta"
-        loading="lazy"
-      >
-    </figure>
-
-  </div>
-
-  <!-- TEXTO DA REPORTAGEM -->
+  <!-- REPORTAGEM À MARGEM -->
 
   <article class="texto-margem">
 
@@ -1360,7 +1287,7 @@ nav button.ativo::after {
     <figure class="margem-foto-esquerda revelar">
       <img
         src="./imagens/Comissão Pastoral da Terra.png.png"
-        alt="Registro relacionado à Comissão Pastoral da Terra"
+        alt="Comissão Pastoral da Terra"
       >
       <figcaption>Memórias das mobilizações sociais na região.</figcaption>
     </figure>
@@ -1620,39 +1547,23 @@ nav button.ativo::after {
       Na manhã de 12 de novembro de 2026, artistas, produtores culturais e conselheiros ocuparam a Praça da Bandeira, no centro de Juazeiro (BA), e seguiram em cortejo até a sede da Secretaria de Cultura, Esporte e Lazer (Seculte), no Paço Municipal. O protesto ocorreu um dia depois de integrantes do Fórum Permanente de Cultura de Juazeiro e conselheiros da sociedade civil denunciarem, por meio de notas públicas e vídeos nas redes sociais, a paralisia administrativa na execução das políticas culturais do município.
     </p>
 
-    <!-- VÍDEO DO CORTEJO -->
+    <!-- VÍDEO 1 — CORTEJO -->
 
     <figure class="video-reportagem revelar">
 
       <div class="video-reportagem-titulo">
-        REGISTRO AUDIOVISUAL / 12 DE NOVEMBRO DE 2026
+        REGISTRO DO CORTEJO / 12 DE NOVEMBRO DE 2026
       </div>
 
       <div class="video-reportagem-player">
-
         <iframe
           src="https://drive.google.com/file/d/1FgzavNdO0LM0KQ08PAKqvCw5Lak3FL2M/preview"
-          title="Vídeo do cortejo de artistas em Juazeiro em 12 de novembro de 2026"
+          title="Vídeo do cortejo em Juazeiro"
           allow="autoplay; fullscreen"
           allowfullscreen
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin">
+          loading="lazy">
         </iframe>
-
       </div>
-
-      <figcaption>
-        Registro da mobilização de artistas, produtores culturais e conselheiros em Juazeiro (BA), em 12 de novembro de 2026.
-      </figcaption>
-
-      <a
-        class="video-reportagem-link"
-        href="https://drive.google.com/file/d/1FgzavNdO0LM0KQ08PAKqvCw5Lak3FL2M/view?usp=drive_link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Abrir vídeo no Google Drive
-      </a>
 
     </figure>
 
@@ -1672,6 +1583,26 @@ nav button.ativo::after {
     <p class="revelar">
       Além do ato público no Paço Municipal, os coletivos lançaram um abaixo-assinado digital para reunir apoio da comunidade regional às reivindicações.
     </p>
+
+    <!-- VÍDEO 2 — FALAS DOS MANIFESTANTES -->
+
+    <figure class="video-reportagem revelar">
+
+      <div class="video-reportagem-titulo">
+        FALAS DOS MANIFESTANTES
+      </div>
+
+      <div class="video-reportagem-player">
+        <iframe
+          src="https://drive.google.com/file/d/17177brpXBfht9FcSVJqTRFJsGtGtjnk4/preview"
+          title="Vídeo com falas dos manifestantes"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+
+    </figure>
 
     <p class="revelar">
       Sem um Conselho com autonomia deliberativa e capacidade de fiscalização, o controle social sobre os recursos da cultura fica comprometido. A instância, prevista no Sistema Nacional de Cultura, deveria garantir a participação da sociedade civil nas decisões e no acompanhamento das políticas públicas. Quando esses mecanismos não funcionam plenamente, as decisões correm o risco de voltar a ser tomadas de cima para baixo, distantes das necessidades de quem produz cultura nos bairros.
@@ -1757,11 +1688,30 @@ nav button.ativo::after {
       Antes de existir uma estrutura capaz de reconhecer, financiar e documentar essas produções, já havia gente criando. E, enquanto novos espaços são inaugurados, outros continuam sendo inventados.
     </p>
 
+    <!-- FINAL EM TEXTO NORMAL -->
+
     <p class="margem-final revelar">
       A história cultural do Vale do São Francisco não está somente naquilo que foi construído. Está, sobretudo, nas pessoas que fizeram da criação uma maneira de ocupar o território e imaginar outras possibilidades de existência.
     </p>
 
   </article>
+
+  <!-- VÍDEO DO YOUTUBE NO FINAL DA REPORTAGEM -->
+
+  <figure class="video-reportagem video-final-margem revelar">
+
+    <div class="video-reportagem-player">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/xZpd-ePQszg"
+        title="Vídeo de encerramento da reportagem À Margem"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+
+  </figure>
 
   <figure class="barquinhos-final">
     <img
@@ -1774,9 +1724,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =======================================================
+<!-- =====================================================
      PÁGINA 3 — LINHA DO TEMPO
-======================================================= -->
+===================================================== -->
 
 <section class="pagina" id="linha-do-tempo">
 
@@ -1824,9 +1774,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =======================================================
+<!-- =====================================================
      PÁGINA 4 — NÚCLEO BIRUTA
-======================================================= -->
+===================================================== -->
 
 <section class="pagina" id="nucleo-biruta">
 
@@ -1846,9 +1796,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =======================================================
+<!-- =====================================================
      PÁGINA 5 — COLETIVO ABDIAS
-======================================================= -->
+===================================================== -->
 
 <section class="pagina" id="coletivo-abdias">
 
@@ -1870,9 +1820,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =======================================================
+<!-- =====================================================
      PÁGINA 6 — CAATINGAYRO
-======================================================= -->
+===================================================== -->
 
 <section class="pagina" id="caatingayro">
 
@@ -1894,9 +1844,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =======================================================
+<!-- =====================================================
      PÁGINA 7 — ARTISTAS
-======================================================= -->
+===================================================== -->
 
 <section class="pagina" id="artistas">
 
@@ -1918,9 +1868,9 @@ nav button.ativo::after {
 
 </section>
 
-<!-- =======================================================
+<!-- =====================================================
      PÁGINA 8 — LUGARES
-======================================================= -->
+===================================================== -->
 
 <section class="pagina" id="lugares">
 
@@ -1965,9 +1915,9 @@ nav button.ativo::after {
 
 </main>
 
-<!-- =======================================================
-     RODAPÉ — PRESENTE EM TODAS AS PÁGINAS
-======================================================= -->
+<!-- =====================================================
+     RODAPÉ EM TODAS AS PÁGINAS
+===================================================== -->
 
 <footer class="rodape">
 
@@ -2060,9 +2010,9 @@ nav button.ativo::after {
 
 </div>
 
-<!-- =======================================================
+<!-- =====================================================
      ÁUDIO DO RIO
-======================================================= -->
+===================================================== -->
 
 <audio id="somRio" loop preload="none">
   <source
@@ -2081,16 +2031,15 @@ nav button.ativo::after {
   <span id="textoSom">ATIVAR SOM DO RIO</span>
 </button>
 
-<!-- =======================================================
+<!-- =====================================================
      JAVASCRIPT
-======================================================= -->
+===================================================== -->
 
 <script>
 
-/* ELEMENTOS PRINCIPAIS */
+/* ELEMENTOS */
 
 const paginas = document.querySelectorAll(".pagina");
-const botoes = document.querySelectorAll("[data-pagina]");
 const botoesMenu = document.querySelectorAll("nav [data-pagina]");
 
 const menuPrincipal = document.getElementById("menuPrincipal");
@@ -2103,9 +2052,9 @@ const iconeSom = document.getElementById("iconeSom");
 
 let paginaAtual = "inicio";
 
-/* =========================================================
-   CONTROLE DO SOM
-========================================================= */
+/* =====================================================
+   SOM
+===================================================== */
 
 function atualizarSom() {
 
@@ -2118,16 +2067,12 @@ function atualizarSom() {
   iconeSom.textContent = tocando ? "♫" : "♪";
 
   controleSom.setAttribute("aria-pressed", String(tocando));
-
 }
 
 function pararSom() {
-
   audio.pause();
   audio.currentTime = 0;
-
   atualizarSom();
-
 }
 
 controleSom.addEventListener("click", async () => {
@@ -2135,39 +2080,32 @@ controleSom.addEventListener("click", async () => {
   if (paginaAtual !== "inicio") return;
 
   if (audio.paused) {
-
     try {
       await audio.play();
     } catch (erro) {
       console.error("Não foi possível reproduzir o áudio:", erro);
     }
-
   } else {
-
     audio.pause();
-
   }
 
   atualizarSom();
-
 });
 
 audio.addEventListener("play", atualizarSom);
 audio.addEventListener("pause", atualizarSom);
 
-/* =========================================================
-   ROLAGEM DINÂMICA
-========================================================= */
+/* =====================================================
+   ANIMAÇÕES NA ROLAGEM
+===================================================== */
 
 const observador = new IntersectionObserver(entradas => {
 
   entradas.forEach(entrada => {
 
     if (entrada.isIntersecting) {
-
       entrada.target.classList.add("visivel");
       observador.unobserve(entrada.target);
-
     }
 
   });
@@ -2181,9 +2119,27 @@ document.querySelectorAll(".revelar").forEach(elemento => {
   observador.observe(elemento);
 });
 
-/* =========================================================
-   NAVEGAÇÃO ENTRE AS PÁGINAS
-========================================================= */
+/* =====================================================
+   PARAR VÍDEOS AO MUDAR DE PÁGINA
+===================================================== */
+
+function pararVideos(pagina) {
+
+  pagina.querySelectorAll("iframe").forEach(iframe => {
+
+    const endereco = iframe.getAttribute("src");
+
+    if (endereco) {
+      iframe.setAttribute("src", endereco);
+    }
+
+  });
+
+}
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
 
 function abrirPagina(id, atualizarHistorico = true) {
 
@@ -2195,6 +2151,14 @@ function abrirPagina(id, atualizarHistorico = true) {
 
   if (id !== "inicio") {
     pararSom();
+  }
+
+  if (paginaAtual !== id) {
+    const paginaAnterior = document.getElementById(paginaAtual);
+
+    if (paginaAnterior) {
+      pararVideos(paginaAnterior);
+    }
   }
 
   paginaAtual = id;
@@ -2232,10 +2196,9 @@ function abrirPagina(id, atualizarHistorico = true) {
     top: 0,
     behavior: "instant"
   });
-
 }
 
-botoes.forEach(botao => {
+botoesMenu.forEach(botao => {
 
   botao.addEventListener("click", () => {
     abrirPagina(botao.dataset.pagina);
@@ -2243,9 +2206,9 @@ botoes.forEach(botao => {
 
 });
 
-/* =========================================================
+/* =====================================================
    MENU MOBILE
-========================================================= */
+===================================================== */
 
 botaoMenu.addEventListener("click", () => {
 
@@ -2256,9 +2219,9 @@ botaoMenu.addEventListener("click", () => {
 
 });
 
-/* =========================================================
-   BOTÃO CONTINUE A TRAVESSIA
-========================================================= */
+/* =====================================================
+   BOTÃO DA CAPA
+===================================================== */
 
 document.getElementById("botaoDescer").addEventListener("click", () => {
 
@@ -2269,9 +2232,9 @@ document.getElementById("botaoDescer").addEventListener("click", () => {
 
 });
 
-/* =========================================================
-   ENDEREÇO E HISTÓRICO DO NAVEGADOR
-========================================================= */
+/* =====================================================
+   ENDEREÇO E HISTÓRICO
+===================================================== */
 
 function verificarEndereco() {
 
@@ -2284,7 +2247,6 @@ function verificarEndereco() {
       : "inicio",
     false
   );
-
 }
 
 window.addEventListener("popstate", verificarEndereco);
