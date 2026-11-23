@@ -2,7 +2,9 @@
 
 <html lang="pt-BR">
 
+
 <head>
+
 
 <meta charset="UTF-8">
 
@@ -10,15 +12,19 @@
 
 <meta name="theme-color" content="#050505">
 
+
 <title>Entre Duas Margens, Uma Só Correnteza</title>
 
+
 <style>
+
 
 /* ==================================================
 
    FONTES
 
 ================================================== */
+
 
 @font-face {
 
@@ -30,6 +36,7 @@
 
 }
 
+
 @font-face {
 
   font-family: "Morisawa";
@@ -39,6 +46,7 @@
   font-display: swap;
 
 }
+
 
 @font-face {
 
@@ -50,6 +58,7 @@
 
 }
 
+
 @font-face {
 
   font-family: "Neue Montreal";
@@ -60,11 +69,13 @@
 
 }
 
+
 /* ==================================================
 
    CONFIGURAÇÕES GERAIS
 
 ================================================== */
+
 
 :root {
 
@@ -86,6 +97,7 @@
 
 }
 
+
 * {
 
   box-sizing: border-box;
@@ -96,6 +108,7 @@
 
 }
 
+
 html {
 
   scroll-behavior: smooth;
@@ -103,6 +116,7 @@ html {
   scroll-padding-top: 72px;
 
 }
+
 
 body {
 
@@ -116,6 +130,7 @@ body {
 
 }
 
+
 button {
 
   cursor: pointer;
@@ -123,6 +138,7 @@ button {
   font-family: inherit;
 
 }
+
 
 a {
 
@@ -132,6 +148,7 @@ a {
 
 }
 
+
 img {
 
   display: block;
@@ -139,6 +156,7 @@ img {
   max-width: 100%;
 
 }
+
 
 .site {
 
@@ -152,11 +170,13 @@ img {
 
 }
 
+
 /* ==================================================
 
    MENU
 
 ================================================== */
+
 
 header {
 
@@ -172,6 +192,7 @@ header {
 
 }
 
+
 .cabecalho {
 
   min-height: var(--altura-menu);
@@ -186,6 +207,7 @@ header {
 
 }
 
+
 nav {
 
   display: flex;
@@ -199,6 +221,7 @@ nav {
   gap: clamp(12px,1.8vw,30px);
 
 }
+
 
 nav button {
 
@@ -217,6 +240,7 @@ nav button {
   font-size: clamp(10px,.9vw,13px);
 
 }
+
 
 nav button::after {
 
@@ -238,6 +262,7 @@ nav button::after {
 
 }
 
+
 nav button:hover,
 
 nav button.ativo {
@@ -246,6 +271,7 @@ nav button.ativo {
 
 }
 
+
 nav button:hover::after,
 
 nav button.ativo::after {
@@ -253,6 +279,7 @@ nav button.ativo::after {
   width: 100%;
 
 }
+
 
 .menu-mobile {
 
@@ -270,11 +297,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    PÁGINAS
 
 ================================================== */
+
 
 .pagina {
 
@@ -284,6 +313,7 @@ nav button.ativo::after {
 
 }
 
+
 .pagina.ativa {
 
   display: block;
@@ -291,6 +321,7 @@ nav button.ativo::after {
   animation: aparecer .45s ease;
 
 }
+
 
 @keyframes aparecer {
 
@@ -300,11 +331,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    CAPA
 
 ================================================== */
+
 
 .capa {
 
@@ -320,6 +353,7 @@ nav button.ativo::after {
 
 }
 
+
 .capa-imagem {
 
   position: absolute;
@@ -329,6 +363,7 @@ nav button.ativo::after {
   z-index: -1;
 
 }
+
 
 .capa-imagem img {
 
@@ -343,6 +378,7 @@ nav button.ativo::after {
   transform: scale(1.025);
 
 }
+
 
 .capa-conteudo {
 
@@ -360,6 +396,7 @@ nav button.ativo::after {
 
 }
 
+
 .capa-titulo {
 
   font-family: "Cubao", Impact, sans-serif;
@@ -372,11 +409,13 @@ nav button.ativo::after {
 
 }
 
+
 .capa-titulo span {
 
   display: block;
 
 }
+
 
 .capa-subtitulo {
 
@@ -390,6 +429,7 @@ nav button.ativo::after {
 
 }
 
+
 .capa-autoria {
 
   font-family: "Gordita", Arial, sans-serif;
@@ -399,6 +439,7 @@ nav button.ativo::after {
   margin-top: 18px;
 
 }
+
 
 .capa-descer {
 
@@ -426,17 +467,20 @@ nav button.ativo::after {
 
 }
 
+
 .capa-descer:hover {
 
   background: var(--azul-escuro);
 
 }
 
+
 /* ==================================================
 
    PRIMEIRA PÁGINA
 
 ================================================== */
+
 
 .continuacao-capa {
 
@@ -447,6 +491,7 @@ nav button.ativo::after {
   background: var(--preto);
 
 }
+
 
 .ilha-sobreposta {
 
@@ -468,6 +513,7 @@ nav button.ativo::after {
 
 }
 
+
 .ilha-sobreposta img {
 
   width: 100%;
@@ -484,6 +530,7 @@ nav button.ativo::after {
 
 }
 
+
 .reportagem {
 
   position: relative;
@@ -493,6 +540,7 @@ nav button.ativo::after {
   padding: 155px 0 30px;
 
 }
+
 
 .corpo-reportagem,
 
@@ -507,6 +555,7 @@ nav button.ativo::after {
   display: flow-root;
 
 }
+
 
 .corpo-reportagem p,
 
@@ -530,6 +579,7 @@ nav button.ativo::after {
 
 }
 
+
 .primeiro-paragrafo::first-letter {
 
   float: left;
@@ -542,13 +592,16 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    ILUSTRAÇÃO CIBS CRIANÇA
 
+
    AUMENTADA PARA SE APROXIMAR DO PRINT
 
 ================================================== */
+
 
 .ilustracao-cibs {
 
@@ -558,9 +611,11 @@ nav button.ativo::after {
 
   float: right;
 
+
   width: 610px;
 
   max-width: none;
+
 
   margin:
 
@@ -574,6 +629,7 @@ nav button.ativo::after {
 
 }
 
+
 .ilustracao-cibs img {
 
   width: 100%;
@@ -584,11 +640,13 @@ nav button.ativo::after {
 
 }
 
+
 .limpar {
 
   clear: both;
 
 }
+
 
 .corpo-reportagem .paragrafo-final {
 
@@ -610,11 +668,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    BARQUINHOS
 
 ================================================== */
+
 
 .margem-separador,
 
@@ -634,6 +694,7 @@ nav button.ativo::after {
 
 }
 
+
 .margem-separador {
 
   clear: both;
@@ -652,6 +713,7 @@ nav button.ativo::after {
 
 }
 
+
 .margem-separador.revelar {
 
   transform: none;
@@ -662,6 +724,7 @@ nav button.ativo::after {
 
 }
 
+
 .margem-separador.revelar.visivel {
 
   transform: none;
@@ -669,6 +732,7 @@ nav button.ativo::after {
   opacity: 1;
 
 }
+
 
 .barquinhos-final {
 
@@ -678,6 +742,7 @@ nav button.ativo::after {
 
 }
 
+
 .respiro-rodape {
 
   height: 110px;
@@ -686,11 +751,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    À MARGEM
 
 ================================================== */
+
 
 .margem-cabecalho {
 
@@ -701,6 +768,7 @@ nav button.ativo::after {
   padding: 95px 30px 40px;
 
 }
+
 
 .margem-titulo {
 
@@ -716,6 +784,7 @@ nav button.ativo::after {
 
 }
 
+
 .margem-subtitulo {
 
   font-family: "Morisawa", Georgia, serif;
@@ -730,6 +799,7 @@ nav button.ativo::after {
 
 }
 
+
 .margem-capa {
 
   width: 100%;
@@ -740,6 +810,7 @@ nav button.ativo::after {
 
 }
 
+
 .margem-capa img {
 
   width: 100%;
@@ -747,6 +818,7 @@ nav button.ativo::after {
   height: auto;
 
 }
+
 
 .margem-foto-direita {
 
@@ -758,6 +830,7 @@ nav button.ativo::after {
 
 }
 
+
 .margem-foto-esquerda {
 
   float: left;
@@ -767,6 +840,7 @@ nav button.ativo::after {
   margin: 10px 24px 25px -145px;
 
 }
+
 
 .margem-foto-direita img,
 
@@ -779,6 +853,7 @@ nav button.ativo::after {
   object-fit: contain;
 
 }
+
 
 .margem-foto-direita figcaption,
 
@@ -796,6 +871,7 @@ nav button.ativo::after {
 
 }
 
+
 .margem-intertitulo {
 
   clear: both;
@@ -811,6 +887,7 @@ nav button.ativo::after {
   line-height: 1.1;
 
 }
+
 
 .margem-citacao {
 
@@ -828,6 +905,7 @@ nav button.ativo::after {
 
 }
 
+
 .margem-citacao small {
 
   display: block;
@@ -839,6 +917,7 @@ nav button.ativo::after {
   font-size: 13px;
 
 }
+
 
 .texto-margem p.margem-final {
 
@@ -858,11 +937,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    VÍDEOS
 
 ================================================== */
+
 
 .video-reportagem {
 
@@ -873,6 +954,7 @@ nav button.ativo::after {
   margin: 55px auto;
 
 }
+
 
 .video-reportagem-titulo {
 
@@ -890,6 +972,7 @@ nav button.ativo::after {
 
 }
 
+
 .video-reportagem-player {
 
   width: 100%;
@@ -901,6 +984,7 @@ nav button.ativo::after {
   overflow: hidden;
 
 }
+
 
 .video-reportagem-player iframe {
 
@@ -914,6 +998,7 @@ nav button.ativo::after {
 
 }
 
+
 .video-final-margem {
 
   width: calc(100% - 48px);
@@ -924,9 +1009,11 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    LINHA DO TEMPO
+
 
    TÍTULO MENOR
 
@@ -938,6 +1025,7 @@ nav button.ativo::after {
 
 ================================================== */
 
+
 #linha-do-tempo {
 
   background: var(--preto);
@@ -946,7 +1034,9 @@ nav button.ativo::after {
 
 }
 
+
 /* ABERTURA */
+
 
 .tempo-abertura {
 
@@ -960,15 +1050,18 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-titulo {
 
   max-width: 900px;
 
   margin: 0 auto;
 
+
   font-family: "Cubao", Impact, sans-serif;
 
   font-size: clamp(42px,5.3vw,75px);
+
 
   font-weight: 400;
 
@@ -980,15 +1073,18 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-subtitulo {
 
   max-width: 850px;
 
   margin: 28px auto 0;
 
+
   font-family: "Morisawa", Georgia, serif;
 
   font-size: clamp(19px,2.1vw,29px);
+
 
   font-weight: 400;
 
@@ -997,6 +1093,7 @@ nav button.ativo::after {
   color: var(--azul);
 
 }
+
 
 .tempo-instrucao {
 
@@ -1007,6 +1104,7 @@ nav button.ativo::after {
   gap: 10px;
 
   margin-top: 35px;
+
 
   font-family: "Gordita", Arial, sans-serif;
 
@@ -1020,6 +1118,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-instrucao span {
 
   font-size: 18px;
@@ -1027,6 +1126,7 @@ nav button.ativo::after {
   animation: setaDescer 2s ease-in-out infinite;
 
 }
+
 
 @keyframes setaDescer {
 
@@ -1036,11 +1136,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    RIO COM MEANDROS
 
 ================================================== */
+
 
 .tempo-percurso {
 
@@ -1055,6 +1157,7 @@ nav button.ativo::after {
   isolation: isolate;
 
 }
+
 
 .tempo-rio {
 
@@ -1076,7 +1179,9 @@ nav button.ativo::after {
 
 }
 
+
 /* MARGEM DISCRETA */
+
 
 .rio-margem {
 
@@ -1092,7 +1197,9 @@ nav button.ativo::after {
 
 }
 
+
 /* CURSO PRINCIPAL */
+
 
 .rio-agua {
 
@@ -1108,7 +1215,9 @@ nav button.ativo::after {
 
 }
 
+
 /* LEVE VARIAÇÃO DE TOM, SEM TRACEJADO */
+
 
 .rio-brilho {
 
@@ -1124,11 +1233,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    EVENTOS — CAIXINHAS MENORES
 
 ================================================== */
+
 
 .tempo-evento {
 
@@ -1146,6 +1257,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-evento.esquerda .tempo-cartao {
 
   grid-column: 1;
@@ -1153,6 +1265,7 @@ nav button.ativo::after {
   margin-right: 25%;
 
 }
+
 
 .tempo-evento.direita .tempo-cartao {
 
@@ -1162,23 +1275,29 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-cartao {
 
   position: relative;
 
   z-index: 3;
 
+
   max-width: 285px;
 
   padding: 15px 16px 14px;
+
 
   border: 1px solid rgba(166,183,239,.28);
 
   border-radius: 3px 19px 3px 19px;
 
+
   background: rgba(15,17,27,.96);
 
+
   box-shadow: 0 12px 35px rgba(0,0,0,.25);
+
 
   transition:
 
@@ -1188,6 +1307,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-cartao:hover {
 
   transform: translateY(-4px);
@@ -1195,6 +1315,7 @@ nav button.ativo::after {
   box-shadow: 0 20px 45px rgba(0,0,0,.5);
 
 }
+
 
 .tempo-ano {
 
@@ -1211,6 +1332,7 @@ nav button.ativo::after {
   margin-bottom: 11px;
 
 }
+
 
 .tempo-categoria {
 
@@ -1230,6 +1352,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-evento-titulo {
 
   font-family: "Morisawa", Georgia, serif;
@@ -1246,6 +1369,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-evento-resumo {
 
   font-family: "Neue Montreal", Arial, sans-serif;
@@ -1257,6 +1381,7 @@ nav button.ativo::after {
   color: #dedede;
 
 }
+
 
 .tempo-botao {
 
@@ -1270,13 +1395,16 @@ nav button.ativo::after {
 
   padding: 0 0 5px;
 
+
   border: none;
 
   border-bottom: 1px solid var(--azul);
 
+
   background: transparent;
 
   color: var(--azul);
+
 
   font-family: "Gordita", Arial, sans-serif;
 
@@ -1288,6 +1416,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-botao span {
 
   display: inline-block;
@@ -1296,11 +1425,13 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-botao[aria-expanded="true"] span {
 
   transform: rotate(45deg);
 
 }
+
 
 .tempo-detalhe {
 
@@ -1314,6 +1445,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-detalhe.aberto {
 
   display: block;
@@ -1321,6 +1453,7 @@ nav button.ativo::after {
   animation: aparecer .35s ease;
 
 }
+
 
 .tempo-detalhe p {
 
@@ -1334,17 +1467,20 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-detalhe p:last-child {
 
   margin-bottom: 0;
 
 }
 
+
 /* ==================================================
 
    IMAGENS DA LINHA DO TEMPO
 
 ================================================== */
+
 
 .tempo-visual {
 
@@ -1358,6 +1494,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-evento.esquerda .tempo-visual {
 
   left: 60%;
@@ -1365,6 +1502,7 @@ nav button.ativo::after {
   top: 15%;
 
 }
+
 
 .tempo-evento.direita .tempo-visual {
 
@@ -1374,11 +1512,13 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-visual figure {
 
   position: relative;
 
 }
+
 
 .tempo-visual img {
 
@@ -1396,6 +1536,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-visual figcaption {
 
   font-family: "Gordita", Arial, sans-serif;
@@ -1412,11 +1553,13 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-evento.direita .tempo-visual {
 
   transform: rotate(-5deg);
 
 }
+
 
 .tempo-evento.esquerda .tempo-visual {
 
@@ -1424,11 +1567,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    ILUSTRAÇÕES DE PEIXES
 
 ================================================== */
+
 
 .tempo-peixe {
 
@@ -1446,6 +1591,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-peixe img {
 
   display: block;
@@ -1458,6 +1604,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-peixe.peixe-esquerda {
 
   left: 13%;
@@ -1465,6 +1612,7 @@ nav button.ativo::after {
   transform: rotate(-12deg);
 
 }
+
 
 .tempo-peixe.peixe-direita {
 
@@ -1474,11 +1622,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    FONTES DA LINHA DO TEMPO
 
 ================================================== */
+
 
 .tempo-fontes {
 
@@ -1492,6 +1642,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-fontes p {
 
   font-size: 13px;
@@ -1504,6 +1655,7 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-fontes a {
 
   text-decoration: underline;
@@ -1512,11 +1664,13 @@ nav button.ativo::after {
 
 }
 
+
 .tempo-fontes a:hover {
 
   color: white;
 
 }
+
 
 /* ==================================================
 
@@ -1524,11 +1678,13 @@ nav button.ativo::after {
 
 ================================================== */
 
+
 .pagina-abertura {
 
   padding: 110px max(40px,calc((100vw - 1100px)/2)) 75px;
 
 }
+
 
 .pagina-titulo {
 
@@ -1544,6 +1700,7 @@ nav button.ativo::after {
 
 }
 
+
 .pagina-descricao {
 
   max-width: 700px;
@@ -1556,6 +1713,7 @@ nav button.ativo::after {
 
 }
 
+
 .conteudo {
 
   max-width: 1100px;
@@ -1566,6 +1724,7 @@ nav button.ativo::after {
 
 }
 
+
 .texto {
 
   max-width: var(--largura-texto);
@@ -1573,6 +1732,7 @@ nav button.ativo::after {
   margin: 0 auto;
 
 }
+
 
 .texto p {
 
@@ -1583,6 +1743,7 @@ nav button.ativo::after {
   margin-bottom: 25px;
 
 }
+
 
 .galeria {
 
@@ -1596,11 +1757,13 @@ nav button.ativo::after {
 
 }
 
+
 .galeria-item {
 
   background: #111;
 
 }
+
 
 .galeria-item img {
 
@@ -1614,6 +1777,7 @@ nav button.ativo::after {
 
 }
 
+
 .galeria-legenda {
 
   padding: 18px;
@@ -1626,11 +1790,13 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    RODAPÉ
 
 ================================================== */
+
 
 .rodape {
 
@@ -1648,6 +1814,7 @@ nav button.ativo::after {
 
 }
 
+
 .rodape-fundo {
 
   position: absolute;
@@ -1659,6 +1826,7 @@ nav button.ativo::after {
   overflow: hidden;
 
 }
+
 
 .rodape-fundo img {
 
@@ -1673,6 +1841,7 @@ nav button.ativo::after {
   transform: scale(1.28);
 
 }
+
 
 .rodape-barquinho {
 
@@ -1690,6 +1859,7 @@ nav button.ativo::after {
 
 }
 
+
 .rodape-barquinho img {
 
   width: 100%;
@@ -1697,6 +1867,7 @@ nav button.ativo::after {
   height: auto;
 
 }
+
 
 .rodape-conteudo {
 
@@ -1718,6 +1889,7 @@ nav button.ativo::after {
 
 }
 
+
 .rodape-identidade {
 
   text-align: center;
@@ -1725,6 +1897,7 @@ nav button.ativo::after {
   padding-top: 65px;
 
 }
+
 
 .rodape-titulo {
 
@@ -1740,6 +1913,7 @@ nav button.ativo::after {
 
 }
 
+
 .rodape-subtitulo {
 
   font-family: "Morisawa", Georgia, serif;
@@ -1749,6 +1923,7 @@ nav button.ativo::after {
   margin-top: 10px;
 
 }
+
 
 .rodape-creditos {
 
@@ -1766,6 +1941,7 @@ nav button.ativo::after {
 
 }
 
+
 .credito-grupo {
 
   display: flex;
@@ -1778,6 +1954,7 @@ nav button.ativo::after {
 
 }
 
+
 .credito-label {
 
   font-size: clamp(15px,1.6vw,22px);
@@ -1788,6 +1965,7 @@ nav button.ativo::after {
 
 }
 
+
 .credito-nome {
 
   font-family: "Morisawa", Georgia, serif;
@@ -1795,6 +1973,7 @@ nav button.ativo::after {
   font-size: clamp(16px,1.5vw,22px);
 
 }
+
 
 .credito-perfis {
 
@@ -1812,6 +1991,7 @@ nav button.ativo::after {
 
 }
 
+
 .rodape-creditos a:hover {
 
   color: var(--azul);
@@ -1820,17 +2000,20 @@ nav button.ativo::after {
 
 }
 
+
 .separador-perfil {
 
   color: #bbb;
 
 }
 
+
 /* ==================================================
 
    SOM
 
 ================================================== */
+
 
 .controle-som {
 
@@ -1864,17 +2047,20 @@ nav button.ativo::after {
 
 }
 
+
 .controle-som.visivel {
 
   display: flex;
 
 }
 
+
 /* ==================================================
 
    ANIMAÇÕES
 
 ================================================== */
+
 
 .revelar {
 
@@ -1886,6 +2072,7 @@ nav button.ativo::after {
 
 }
 
+
 .revelar.visivel {
 
   opacity: 1;
@@ -1894,13 +2081,16 @@ nav button.ativo::after {
 
 }
 
+
 /* ==================================================
 
    RESPONSIVIDADE
 
 ================================================== */
 
+
 @media (max-width:1100px) {
+
 
   .ilustracao-cibs {
 
@@ -1910,11 +2100,13 @@ nav button.ativo::after {
 
   }
 
+
   .margem-foto-direita {
 
     margin-right: -60px;
 
   }
+
 
   .margem-foto-esquerda {
 
@@ -1922,9 +2114,12 @@ nav button.ativo::after {
 
   }
 
+
 }
 
+
 @media (max-width:900px) {
+
 
   .cabecalho {
 
@@ -1934,11 +2129,13 @@ nav button.ativo::after {
 
   }
 
+
   .menu-mobile {
 
     display: block;
 
   }
+
 
   nav {
 
@@ -1954,11 +2151,13 @@ nav button.ativo::after {
 
   }
 
+
   nav.aberto {
 
     display: flex;
 
   }
+
 
   nav button {
 
@@ -1968,6 +2167,7 @@ nav button.ativo::after {
 
   }
 
+
   .ilustracao-cibs {
 
     width: 410px;
@@ -1975,6 +2175,7 @@ nav button.ativo::after {
     margin-right: -95px;
 
   }
+
 
   .rodape-conteudo {
 
@@ -1986,11 +2187,13 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-evento.esquerda .tempo-cartao {
 
     margin-right: 18%;
 
   }
+
 
   .tempo-evento.direita .tempo-cartao {
 
@@ -1998,15 +2201,19 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-visual {
 
     width: 150px;
 
   }
 
+
 }
 
+
 @media (max-width:700px) {
+
 
   .capa {
 
@@ -2014,11 +2221,13 @@ nav button.ativo::after {
 
   }
 
+
   .capa-conteudo {
 
     padding: 130px 18px 135px;
 
   }
+
 
   .capa-titulo {
 
@@ -2026,11 +2235,13 @@ nav button.ativo::after {
 
   }
 
+
   .capa-subtitulo {
 
     font-size: 21px;
 
   }
+
 
   .ilha-sobreposta {
 
@@ -2038,11 +2249,13 @@ nav button.ativo::after {
 
   }
 
+
   .reportagem {
 
     padding-top: 110px;
 
   }
+
 
   .corpo-reportagem,
 
@@ -2051,6 +2264,7 @@ nav button.ativo::after {
     width: calc(100% - 40px);
 
   }
+
 
   .corpo-reportagem p,
 
@@ -2064,6 +2278,7 @@ nav button.ativo::after {
 
   }
 
+
   .primeiro-paragrafo::first-letter {
 
     font-size: 43px;
@@ -2071,6 +2286,7 @@ nav button.ativo::after {
     padding-top: 6px;
 
   }
+
 
   .ilustracao-cibs {
 
@@ -2080,6 +2296,7 @@ nav button.ativo::after {
 
   }
 
+
   .corpo-reportagem .paragrafo-final {
 
     font-size: 21px;
@@ -2088,11 +2305,13 @@ nav button.ativo::after {
 
   }
 
+
   .margem-cabecalho {
 
     padding: 70px 22px 25px;
 
   }
+
 
   .margem-titulo {
 
@@ -2100,17 +2319,20 @@ nav button.ativo::after {
 
   }
 
+
   .margem-subtitulo {
 
     font-size: clamp(22px,5vw,29px);
 
   }
 
+
   .margem-capa {
 
     margin: 15px 0 45px;
 
   }
+
 
   .margem-foto-direita,
 
@@ -2124,6 +2346,7 @@ nav button.ativo::after {
 
   }
 
+
   .margem-foto-esquerda {
 
     margin-left: 0;
@@ -2131,6 +2354,7 @@ nav button.ativo::after {
     margin-right: 12px;
 
   }
+
 
   .margem-separador,
 
@@ -2142,6 +2366,7 @@ nav button.ativo::after {
 
   }
 
+
   .margem-separador {
 
     margin-top: 45px;
@@ -2150,13 +2375,16 @@ nav button.ativo::after {
 
   }
 
+
   .respiro-rodape {
 
     height: 75px;
 
   }
 
+
   /* LINHA DO TEMPO NO CELULAR */
+
 
   .tempo-abertura {
 
@@ -2164,11 +2392,13 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-titulo {
 
     font-size: clamp(37px,8vw,56px);
 
   }
+
 
   .tempo-subtitulo {
 
@@ -2176,11 +2406,13 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-percurso {
 
     padding: 15px 15px 60px;
 
   }
+
 
   .rio-margem {
 
@@ -2188,17 +2420,20 @@ nav button.ativo::after {
 
   }
 
+
   .rio-agua {
 
     stroke-width: 14;
 
   }
 
+
   .rio-brilho {
 
     stroke-width: 4;
 
   }
+
 
   .tempo-evento {
 
@@ -2216,6 +2451,7 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-evento.esquerda .tempo-cartao,
 
   .tempo-evento.direita .tempo-cartao {
@@ -2225,6 +2461,7 @@ nav button.ativo::after {
     width: min(76%,285px);
 
   }
+
 
   .tempo-evento.direita {
 
@@ -2236,11 +2473,13 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-cartao {
 
     padding: 15px 14px;
 
   }
+
 
   .tempo-ano {
 
@@ -2248,17 +2487,20 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-evento-titulo {
 
     font-size: 18px;
 
   }
 
+
   .tempo-evento-resumo {
 
     font-size: 11px;
 
   }
+
 
   .tempo-visual {
 
@@ -2267,6 +2509,7 @@ nav button.ativo::after {
     opacity: .9;
 
   }
+
 
   .tempo-evento.esquerda .tempo-visual {
 
@@ -2278,6 +2521,7 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-evento.direita .tempo-visual {
 
     right: auto;
@@ -2288,11 +2532,13 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-visual img {
 
     max-height: 110px;
 
   }
+
 
   .tempo-visual figcaption {
 
@@ -2300,11 +2546,13 @@ nav button.ativo::after {
 
   }
 
+
   .tempo-peixe {
 
     width: 80px;
 
   }
+
 
   .pagina-abertura {
 
@@ -2312,11 +2560,13 @@ nav button.ativo::after {
 
   }
 
+
   .conteudo {
 
     padding: 70px 30px;
 
   }
+
 
   .galeria {
 
@@ -2324,11 +2574,13 @@ nav button.ativo::after {
 
   }
 
+
   .rodape {
 
     height: 530px;
 
   }
+
 
   .rodape-barquinho {
 
@@ -2339,6 +2591,7 @@ nav button.ativo::after {
     top: -10px;
 
   }
+
 
   .rodape-conteudo {
 
@@ -2352,11 +2605,13 @@ nav button.ativo::after {
 
   }
 
+
   .rodape-identidade {
 
     padding-top: 0;
 
   }
+
 
   .rodape-titulo {
 
@@ -2364,11 +2619,13 @@ nav button.ativo::after {
 
   }
 
+
   .rodape-subtitulo {
 
     font-size: 21px;
 
   }
+
 
   .credito-label {
 
@@ -2376,11 +2633,13 @@ nav button.ativo::after {
 
   }
 
+
   .credito-nome {
 
     font-size: 18px;
 
   }
+
 
   .credito-perfis {
 
@@ -2388,9 +2647,12 @@ nav button.ativo::after {
 
   }
 
+
 }
 
+
 @media (prefers-reduced-motion:reduce) {
+
 
   *,
 
@@ -2406,6 +2668,7 @@ nav button.ativo::after {
 
   }
 
+
   .revelar {
 
     opacity: 1;
@@ -2414,7 +2677,10 @@ nav button.ativo::after {
 
   }
 
+
 }
+
+
 
 /* NÚCLEO BIRUTA — diagramação conforme o PDF */
 
@@ -2460,6 +2726,8 @@ nav button.ativo::after {
 
 }
 
+
+
 /* GALERIA NÚCLEO BIRUTA — FOTOS EM MOVIMENTO AUTOMÁTICO */
 
 .biruta-galeria {width:100vw;max-width:none;margin:70px 0 90px calc(50% - 50vw);padding:0;overflow:hidden;}
@@ -2494,6 +2762,8 @@ nav button.ativo::after {
 
 }
 
+
+
 /* AJUSTES: TITULO À MARGEM APÓS FOTO, COMO NO NBT */
 
 #a-margem .margem-capa {margin:0 auto 0; width:100%;}
@@ -2513,6 +2783,8 @@ nav button.ativo::after {
 #nucleo-biruta .biruta-artigo a.livro-link {color:var(--azul); text-decoration:underline; text-underline-offset:3px;}
 
 #nucleo-biruta .biruta-artigo a.livro-link:hover {color:#fff;}
+
+
 
 /* COLETIVO ABDIAS — reportagem visual baseada no PDF */
 
@@ -2557,6 +2829,8 @@ nav button.ativo::after {
 .abdias-separador {height:66px;background-size:auto 66px;}
 
 }
+
+
 
 /* AJUSTES ABDIAS — TIPOGRAFIA, BARQUINHOS E GALERIA AUTOMATICA */
 
@@ -2697,6 +2971,8 @@ nav button.ativo::after {
   #coletivo-abdias .abdias-galeria-trilho {animation:none;}
 
 }
+
+
 
 /* ABDIAS: GALERIA DE PONTA A PONTA, SEM DESLOCAMENTO HORIZONTAL */
 
@@ -2846,6 +3122,8 @@ nav button.ativo::after {
 
 }
 
+
+
 /* CAATINGAYRO: reportagem, fotografias e galeria em movimento */
 
 .caatingayro-capa { width:100%;margin:0 0 40px; }
@@ -2898,19 +3176,360 @@ nav button.ativo::after {
 
 @media(prefers-reduced-motion:reduce){.caatingayro-galeria-trilho{animation:none;}}
 
+
 @media (max-width:700px){.caatingayro-artigo p,.biruta-artigo p,.abdias-artigo p{font-size:17px;line-height:1.55;}}
+
+
+/* ============================================================
+
+   LINHA DO TEMPO — ANOS MONUMENTAIS E RIO VERTICAL
+
+   Inspirado na referência, preservando os 13 textos originais.
+
+   ============================================================ */
+
+#linha-do-tempo {
+
+  background: #050505;
+
+}
+
+#linha-do-tempo .tempo-abertura {
+
+  padding: clamp(76px,8vw,140px) 24px 80px;
+
+}
+
+#linha-do-tempo .tempo-subtitulo {
+
+  color: #f4f4f4;
+
+  font-family: "Morisawa", Georgia, serif;
+
+}
+
+#linha-do-tempo .tempo-percurso {
+
+  max-width: 1600px;
+
+  padding: 70px clamp(18px,4vw,75px) 130px;
+
+  overflow: visible;
+
+  isolation: isolate;
+
+}
+
+#linha-do-tempo .tempo-rio {
+
+  z-index: -1;
+
+  opacity: .94;
+
+}
+
+#linha-do-tempo .rio-margem {
+
+  stroke: rgba(83,105,142,.19);
+
+  stroke-width: 58;
+
+}
+
+#linha-do-tempo .rio-agua {
+
+  stroke: #3d567e;
+
+  stroke-width: 33;
+
+}
+
+#linha-do-tempo .rio-brilho {
+
+  stroke: rgba(174,204,248,.17);
+
+  stroke-width: 9;
+
+}
+
+#linha-do-tempo .tempo-evento,
+
+#linha-do-tempo .tempo-evento.esquerda,
+
+#linha-do-tempo .tempo-evento.direita {
+
+  position: relative;
+
+  display: block;
+
+  min-height: clamp(345px,35vw,470px);
+
+  padding: clamp(40px,6vw,80px) 0;
+
+}
+
+#linha-do-tempo .tempo-evento.esquerda .tempo-cartao,
+
+#linha-do-tempo .tempo-evento.direita .tempo-cartao,
+
+#linha-do-tempo .tempo-cartao {
+
+  display: grid;
+
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+
+  align-items: center;
+
+  gap: clamp(24px,3vw,55px);
+
+  width: 75%;
+
+  max-width: none;
+
+  margin: 0 0 0 auto;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 0;
+
+  box-shadow: none;
+
+  background: transparent;
+
+  transition: none;
+
+}
+
+#linha-do-tempo .tempo-cartao:hover {
+
+  transform: none;
+
+  box-shadow: none;
+
+}
+
+#linha-do-tempo .tempo-cartao::before {
+
+  content: "";
+
+  position: absolute;
+
+  right: 100%;
+
+  top: 50%;
+
+  width: clamp(25px,5vw,65px);
+
+  border-top: 2px solid rgba(246,247,249,.8);
+
+}
+
+#linha-do-tempo .tempo-ano {
+
+  display: block;
+
+  grid-column: 1;
+
+  font-family: "Cubao", Impact, sans-serif;
+
+  font-weight: 400;
+
+  font-size: clamp(71px,10vw,160px);
+
+  line-height: .84;
+
+  letter-spacing: -.028em;
+
+  color: #f5f5f5;
+
+  margin: 0;
+
+  overflow-wrap: anywhere;
+
+}
+
+#linha-do-tempo .tempo-informacoes {
+
+  grid-column: 2;
+
+  min-width: 0;
+
+  border-left: 1px solid rgba(180,195,226,.32);
+
+  padding-left: clamp(18px,2vw,35px);
+
+}
+
+#linha-do-tempo .tempo-categoria {
+
+  color: #abbce8;
+
+  font-size: 10px;
+
+}
+
+#linha-do-tempo .tempo-evento-titulo {
+
+  font-family: "Morisawa", Georgia, serif;
+
+  font-size: clamp(23px,2.45vw,39px);
+
+  line-height: 1.13;
+
+  margin-bottom: 18px;
+
+}
+
+#linha-do-tempo .tempo-evento-resumo {
+
+  font-family: "Neue Montreal", Arial, sans-serif;
+
+  font-size: clamp(16px,1.3vw,19px);
+
+  line-height: 1.56;
+
+  color: #dedede;
+
+}
+
+#linha-do-tempo .tempo-detalhe p {
+
+  font-family: "Neue Montreal", Arial, sans-serif;
+
+  font-size: clamp(14px,1.2vw,17px);
+
+  line-height: 1.64;
+
+}
+
+#linha-do-tempo .tempo-visual {
+
+  position: absolute;
+
+  top: auto;
+
+  left: 0;
+
+  right: auto;
+
+  bottom: -15px;
+
+  width: clamp(90px,13vw,170px);
+
+  opacity: .6;
+
+}
+
+#linha-do-tempo .tempo-evento.direita .tempo-visual,
+
+#linha-do-tempo .tempo-evento.esquerda .tempo-visual {
+
+  left: 1%; right: auto; top: auto;
+
+  transform: rotate(-3deg);
+
+}
+
+@media(max-width: 1000px) {
+
+  #linha-do-tempo .tempo-evento.esquerda .tempo-cartao,
+
+  #linha-do-tempo .tempo-evento.direita .tempo-cartao,
+
+  #linha-do-tempo .tempo-cartao {width: 77%; grid-template-columns: 1fr; gap: 16px;}
+
+  #linha-do-tempo .tempo-ano {font-size: clamp(76px,12vw,125px);}
+
+  #linha-do-tempo .tempo-informacoes {grid-column: 1;}
+
+  #linha-do-tempo .tempo-evento {min-height: 380px;}
+
+}
+
+@media(max-width:700px) {
+
+  #linha-do-tempo .tempo-percurso {padding: 30px 16px 65px;}
+
+  #linha-do-tempo .tempo-evento,
+
+  #linha-do-tempo .tempo-evento.esquerda,
+
+  #linha-do-tempo .tempo-evento.direita {
+
+    display: block;
+
+    min-height: 350px;
+
+    padding: 36px 0 48px;
+
+  }
+
+  #linha-do-tempo .tempo-evento.esquerda .tempo-cartao,
+
+  #linha-do-tempo .tempo-evento.direita .tempo-cartao,
+
+  #linha-do-tempo .tempo-cartao {
+
+    width: 79%;
+
+    margin: 0 0 0 auto;
+
+    padding: 0 4px 0 0;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+
+  }
+
+  #linha-do-tempo .tempo-ano {
+
+    font-size: clamp(62px,12vw,100px);
+
+    line-height: .92;
+
+  }
+
+  #linha-do-tempo .tempo-informacoes {padding-left: 14px;}
+
+  #linha-do-tempo .tempo-evento-titulo {font-size: 23px;}
+
+  #linha-do-tempo .tempo-evento-resumo {font-size: 15px;}
+
+  #linha-do-tempo .tempo-visual {display:none;}
+
+  #linha-do-tempo .rio-margem {stroke-width: 34;}
+
+  #linha-do-tempo .rio-agua {stroke-width: 20;}
+
+  #linha-do-tempo .rio-brilho {stroke-width: 6;}
+
+  #linha-do-tempo .tempo-cartao::before {width: 22px;}
+
+}
+
 
 </style>
 
+
 </head>
+
 
 <body>
 
+
 <div class="site">
+
 
 <header>
 
+
   <div class="cabecalho">
+
 
     <button
 
@@ -2924,7 +3543,9 @@ nav button.ativo::after {
 
       aria-label="Abrir menu">☰</button>
 
+
     <nav id="menuPrincipal" aria-label="Menu principal">
+
 
       <button type="button" data-pagina="inicio" class="ativo">Início</button>
 
@@ -2942,13 +3563,18 @@ nav button.ativo::after {
 
       <button type="button" data-pagina="lugares">Lugares</button>
 
+
     </nav>
+
 
   </div>
 
+
 </header>
 
+
 <main>
+
 
 <!-- ==================================================
 
@@ -2956,11 +3582,15 @@ nav button.ativo::after {
 
 ================================================== -->
 
+
 <section class="pagina ativa" id="inicio">
+
 
   <div class="capa">
 
+
     <div class="capa-imagem">
+
 
       <img
 
@@ -2968,9 +3598,12 @@ nav button.ativo::after {
 
         alt="Ilustração da capa Correnteza">
 
+
     </div>
 
+
     <div class="capa-conteudo">
+
 
       <h1 class="capa-titulo">
 
@@ -2980,11 +3613,13 @@ nav button.ativo::after {
 
       </h1>
 
+
       <h2 class="capa-subtitulo">
 
         UMA SÓ CORRENTEZA
 
       </h2>
+
 
       <p class="capa-autoria">
 
@@ -2992,7 +3627,9 @@ nav button.ativo::after {
 
       </p>
 
+
     </div>
+
 
     <button
 
@@ -3006,11 +3643,15 @@ nav button.ativo::after {
 
     </button>
 
+
   </div>
+
 
   <div class="continuacao-capa">
 
+
     <div class="ilha-sobreposta">
+
 
       <img
 
@@ -3020,13 +3661,18 @@ nav button.ativo::after {
 
         aria-hidden="true">
 
+
     </div>
+
 
     <article class="reportagem" id="reportagem">
 
+
       <div class="corpo-reportagem">
 
+
         <figure class="ilustracao-cibs">
+
 
           <img
 
@@ -3034,41 +3680,60 @@ nav button.ativo::after {
 
             alt="Ilustração de Cibelle criança">
 
+
         </figure>
+
 
         <p class="primeiro-paragrafo revelar">Nasci em Juazeiro, na Bahia, mas vivi a vida inteira em Petrolina, Pernambuco. Certa vez, durante a apresentação de um trabalho em Salvador, mencionei esse fato. Com certa desconfiança, alguém me perguntou se aquilo era uma piada. Respondi com outra pergunta: por que seria?</p>
 
+
         <p class="revelar">Petrolina e Juazeiro ficaram imortalizadas nos versos da canção Petrolina-Juazeiro, composta por Jorge de Altinho: “Petrolina, Juazeiro; Juazeiro, Petrolina. Todas as duas eu acho uma coisa linda”. A música traduz, em poucas palavras, a proximidade entre duas cidades que, embora pertençam a estados diferentes, compartilham muito mais do que uma paisagem. Ainda assim, para quem olha de fora, essa relação nem sempre parece tão evidente. Talvez porque as fronteiras políticas insistam em separar aquilo que a vida cotidiana aproxima.</p>
+
 
         <p class="revelar">Minha história entre essas duas margens não tem nada de extraordinário para quem cresceu por aqui. Meu nascimento, assim como o de tantas outras pessoas da minha geração, também atravessa um período de dificuldades na saúde pública de Petrolina, quando nascer em uma cidade e buscar atendimento na outra se tornou parte da realidade de muitas famílias.</p>
 
+
         <div class="limpar"></div>
+
 
         <p class="revelar">É assim que se vive entre Petrolina e Juazeiro: cidades separadas por uma divisa estadual, mas aproximadas pelo Rio Opará, também conhecido como São Francisco, e por uma vida cotidiana que não cabe nas fronteiras dos mapas. Quando falta algo de um lado, atravessa-se a ponte para buscar do outro. Trabalha-se em uma cidade, estuda-se na outra e constroem-se afetos, histórias e pertencimentos que circulam entre as duas margens. Somos pernambaianos, PEBA's, como gostamos de dizer. E não há contradição nisso.</p>
 
+
         <p class="revelar">A arte produzida neste território também atravessa pontes, margens e fronteiras. Artistas, coletivos, grupos culturais e iniciativas independentes constroem suas trajetórias em meio a essas trocas, criando formas próprias de expressar o lugar onde vivem. Entre Petrolina e Juazeiro, a produção artística não se limita aos equipamentos culturais, aos palcos ou às galerias: ela também ocupa ruas, escolas, bairros periféricos, espaços comunitários e territórios onde a criação se torna uma possibilidade de encontro, reconhecimento e transformação.</p>
+
 
         <p class="revelar">Olhar para essa produção é também reconhecer que o Semiárido não se resume à paisagem da seca, à escassez ou às imagens historicamente associadas ao sertão. Há outras narrativas sendo construídas por quem vive aqui. Narrativas que passam pelo teatro, pela música, pelas artes visuais, pela dança, pelo audiovisual, pela literatura e por tantas outras linguagens. São expressões que reivindicam o direito de contar a própria história, questionar representações estabelecidas e produzir imagens diferentes sobre o Nordeste e sobre si mesmas.</p>
 
+
         <p class="revelar">Mas essas manifestações não surgiram de maneira isolada, tampouco começaram a existir quando passaram a receber reconhecimento institucional. Há uma trajetória de artistas, mestres, grupos, movimentos e espaços culturais que, em diferentes momentos, abriram caminhos para que outras formas de criação encontrassem lugar neste território.</p>
+
 
         <p class="revelar">Como nenhuma história começa exatamente onde a gente decide contá-la, compreender as expressões artísticas que existem hoje entre essas duas margens exige reconhecer os caminhos que vieram antes, as memórias que permanecem e as histórias que nem sempre encontraram espaço para serem narradas. É também uma oportunidade de questionar quem teve o direito de representar o sertão, quais imagens foram legitimadas e quais experiências permaneceram à margem dessas narrativas.</p>
 
+
         <p class="revelar">Por isso, peço licença a quem veio antes de mim. Esta reportagem nasce também da minha experiência de viver entre essas duas cidades, de reconhecer neste território parte da minha identidade e de compreender a arte como uma das maneiras pelas quais construímos nossas próprias formas de existir. Não se trata de contar uma história definitiva sobre a cultura de Petrolina e Juazeiro, mas de percorrer algumas das muitas histórias que a constituem, dando espaço a quem cria, resiste, experimenta e transforma o lugar que chama de casa.</p>
+
 
         <p class="paragrafo-final revelar">Esta é uma tentativa de acompanhar a correnteza dessas narrativas: reconhecer suas origens, encontrar seus percursos e escutar as vozes que seguem movimentando a arte e a identidade no Vale do São Francisco.</p>
 
+
       </div>
+
 
     </article>
 
+
   </div>
+
 
   <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
 
+
   <div class="respiro-rodape"></div>
 
+
 </section>
+
 
 <!-- ==================================================
 
@@ -3076,9 +3741,12 @@ nav button.ativo::after {
 
 ================================================== -->
 
+
 <section class="pagina" id="a-margem">
 
+
   <figure class="margem-capa revelar">
+
 
     <img
 
@@ -3086,9 +3754,13 @@ nav button.ativo::after {
 
       alt="Produção cultural no Vale do São Francisco">
 
+
   </figure>
 
+
+
   <div class="margem-cabecalho">
+
 
     <h1 class="margem-titulo">
 
@@ -3096,23 +3768,31 @@ nav button.ativo::after {
 
     </h1>
 
+
     <h2 class="margem-subtitulo">
 
       as histórias que nem sempre encontraram espaço para serem narradas
 
     </h2>
 
+
   </div>
+
 
   <article class="texto-margem">
 
+
     <p class="primeiro-paragrafo revelar">A história cultural de Petrolina e Juazeiro não começa com a inauguração de um teatro, a criação de uma secretaria de governo ou a publicação de um edital. Antes que os equipamentos culturais passassem a integrar a paisagem das duas cidades, já existiam pessoas organizando festivais, montando espetáculos, criando cineclubes, promovendo encontros e inventando maneiras de fazer a arte circular pelo Sertão.</p>
+
 
     <p class="revelar">Parte dessa história não está nos prédios. Está nas lembranças de quem participou dos movimentos, nas fotografias guardadas, nos jornais antigos, nos documentos que sobreviveram ao tempo e nas narrativas transmitidas entre diferentes gerações de artistas.</p>
 
+
     <p class="revelar">Reconstruir essa trajetória exige olhar para além das instituições. É preciso compreender também as transformações de um território atravessado por disputas econômicas, mudanças políticas e diferentes formas de organização social. Afinal, enquanto o Vale do São Francisco era apresentado como uma região de potencial desenvolvimento, seus habitantes também construíam outras maneiras de interpretar, ocupar e representar o lugar onde viviam.</p>
 
+
     <div class="margem-separador revelar"></div>
+
 
     <h3 class="margem-intertitulo revelar">
 
@@ -3120,13 +3800,18 @@ nav button.ativo::after {
 
     </h3>
 
+
     <p class="revelar">Nos anos 1970, Petrolina, em Pernambuco, e Juazeiro, na Bahia, passaram por transformações importantes. Durante a Ditadura Militar (1964–1985), o governo brasileiro intensificou projetos de modernização econômica, e o Vale do São Francisco passou a ocupar posição estratégica nas políticas de desenvolvimento nacional.</p>
+
 
     <p class="revelar">A irrigação e a expansão agrícola modificaram a paisagem, as relações de trabalho e a economia regional. Em 16 de julho de 1974, foi criada a Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba (Codevasf), que sucedeu à Superintendência do Vale do São Francisco (Suvale). A instituição tinha como uma de suas principais frentes o aproveitamento econômico dos recursos hídricos e o desenvolvimento de projetos de irrigação.</p>
 
+
     <p class="revelar">O rio, que há gerações sustentava atividades como pesca, navegação e agricultura, também passou a ser compreendido como infraestrutura estratégica para a expansão econômica. Essa transformação, entretanto, não aconteceu sem conflitos.</p>
 
+
     <figure class="margem-foto-direita revelar">
+
 
       <img
 
@@ -3134,23 +3819,31 @@ nav button.ativo::after {
 
         alt="Construção da Barragem">
 
+
       <figcaption>
 
         Construção da Barragem de Sobradinho.
 
       </figcaption>
 
+
     </figure>
+
 
     <p class="revelar">A construção da Barragem de Sobradinho, iniciada em 1971 e concluída em 1978, provocou o deslocamento compulsório de mais de 72 mil pessoas e a desapropriação de aproximadamente 26 mil propriedades. As antigas sedes de Casa Nova, Sento Sé, Remanso e Pilão Arcado foram atingidas pela formação do lago.</p>
 
+
     <p class="revelar">Para milhares de famílias, o desenvolvimento significou deixar para trás casas, terras, relações comunitárias e referências afetivas. A modernização que redesenhava o território também produzia rupturas que nem sempre apareciam nas narrativas oficiais sobre o progresso.</p>
+
 
     <p class="revelar">É nesse contexto que a memória se torna uma questão política. Preservar histórias, registrar experiências e garantir que diferentes grupos pudessem narrar suas próprias vivências era também uma forma de enfrentar o apagamento.</p>
 
+
     <div class="limpar"></div>
 
+
     <figure class="margem-foto-esquerda revelar">
+
 
       <img
 
@@ -3158,21 +3851,28 @@ nav button.ativo::after {
 
         alt="Comissão Pastoral da Terra">
 
+
       <figcaption>
 
         Memórias das mobilizações sociais na região.
 
       </figcaption>
 
+
     </figure>
+
 
     <p class="revelar">A atuação de Dom José Rodrigues à frente da Diocese de Juazeiro e a organização de trabalhadores rurais, com a participação da Comissão Pastoral da Terra, criada em 1975 em âmbito nacional, integraram esse processo de mobilização social. As lutas pelo território, pela terra e pelos direitos das comunidades atravessavam a vida regional.</p>
 
+
     <p class="revelar">A cultura também estava inserida nesse cenário de disputas. Em um país submetido à censura e à vigilância política, artistas, estudantes e intelectuais precisavam encontrar caminhos para produzir, circular e compartilhar suas ideias.</p>
+
 
     <div class="limpar"></div>
 
+
     <div class="margem-separador revelar"></div>
+
 
     <h3 class="margem-intertitulo revelar">
 
@@ -3180,9 +3880,12 @@ nav button.ativo::after {
 
     </h3>
 
+
     <p class="revelar">Em Juazeiro, parte dessa movimentação pode ser recuperada por meio das memórias de Antônio Carlos Coêlho de Assis, conhecido como Coelhão, reunidas no livro <em>Juazeiro de perto: uma mistura de arte, cultura e política</em>, publicado em 2021.</p>
 
+
     <figure class="margem-foto-direita revelar">
+
 
       <img
 
@@ -3190,27 +3893,37 @@ nav button.ativo::after {
 
         alt="Coelhão">
 
+
       <figcaption>
 
         Antônio Carlos Coêlho de Assis, conhecido como Coelhão.
 
       </figcaption>
 
+
     </figure>
+
 
     <p class="revelar">Segundo Coelhão, a cultura em Juazeiro foi construída através das experiências de grupos, associações e movimentos que atuaram a partir da década de 1970. Entre eles está a Associação dos Universitários de Juazeiro (AUJ), cuja primeira formação surgiu em 1970.</p>
 
+
     <p class="revelar">A associação reunia estudantes juazeirenses que cursavam o ensino superior em cidades como Salvador, capital baiana. A proposta era fazer retornar à comunidade parte do conhecimento adquirido fora do município, por meio de projetos sociais, culturais e artísticos.</p>
+
 
     <p class="revelar">Festivais de música, exposições e gincanas e iniciativas que faziam parte desse esforço. O Festival São Franciscano da Canção, que hoje se chama Festival Edesio Santos e está na 28° edição e o Salão de Artes Plásticas PRO-ARTE, ambos realizados em 1972, também integraram essa movimentação.</p>
 
+
     <p class="revelar">No mesmo período, o Grupo Êxodus reuniu artistas de diferentes linguagens, entre atores, músicos, poetas e artistas plásticos. Mais do que produzir apresentações, essas iniciativas procuravam estabelecer relações entre a arte e os acontecimentos que atravessavam a cidade.</p>
+
 
     <p class="revelar">A movimentação não se limitava à realização de eventos. Tratava-se de construir um circuito cultural próprio, em uma época em que as oportunidades de formação e circulação artística no interior eram mais restritas.</p>
 
+
     <div class="limpar"></div>
 
+
     <figure class="margem-foto-esquerda revelar">
+
 
       <img
 
@@ -3218,29 +3931,40 @@ nav button.ativo::after {
 
         alt="Círculo Operário de Juazeiro">
 
+
       <figcaption>
 
         Círculo Operário de Juazeiro.
 
       </figcaption>
 
+
     </figure>
+
 
     <p class="revelar">Em março de 1980, o Círculo de Convivência Cultural lançou um manifesto que defendia a pesquisa, a experimentação, a troca de informações e o incentivo à produção literária. A iniciativa procurava aproximar diferentes áreas do conhecimento e criar um ambiente de convivência entre artistas e intelectuais.</p>
 
+
     <p class="revelar">Na década seguinte, a articulação entre cultura e participação política ganhou novas expressões. Em 1983, o Centro de Cultura e Debate passou a reunir artistas, professores e produtores culturais no Círculo Operário de Juazeiro. O espaço recebeu ensaios teatrais, exposições e discussões sobre os rumos da cidade.</p>
+
 
     <p class="revelar">Em 1984, a mobilização em defesa do Rio São Francisco também aproximou diferentes grupos. Depois de um episódio de mortandade de peixes associado ao lançamento de resíduos industriais no rio, o Movimento de Defesa do São Francisco organizou atividades de mobilização e conscientização ambiental.</p>
 
+
     <div class="limpar"></div>
+
 
     <p class="revelar">Naquele mesmo período, o Cineclube Angarís ampliou as possibilidades de acesso ao audiovisual, promovendo sessões de filmes fora da programação comercial. O cinema se tornava também um espaço de encontro, formação de público e discussão.</p>
 
+
     <p class="revelar">A segunda formação da AUJ, entre 1983 e 1984, assumiu uma atuação mais explicitamente política e participou da articulação de um comitê suprapartidário pelas Diretas Já.</p>
+
 
     <p class="revelar">A cultura não estava isolada das questões que atravessavam a população. O teatro, a música, a literatura e o cinema também são formas de discutir a cidade, defender o território e construir espaços de participação.</p>
 
+
     <div class="margem-separador revelar"></div>
+
 
     <h3 class="margem-intertitulo revelar">
 
@@ -3248,9 +3972,12 @@ nav button.ativo::after {
 
     </h3>
 
+
     <p class="revelar">A história das artes cênicas de Petrolina e Juazeiro possui uma característica particular: ela não respeita os limites administrativos que separam Pernambuco e Bahia. Artistas, grupos, professores e espectadores circulam entre as duas cidades, construindo uma cena que tem o rio como elemento de aproximação.</p>
 
+
     <figure class="margem-foto-direita revelar">
+
 
       <img
 
@@ -3258,37 +3985,52 @@ nav button.ativo::after {
 
         alt="Thom Galiano">
 
+
       <figcaption>
 
         Thom Galiano.
 
       </figcaption>
 
+
     </figure>
+
 
     <p class="revelar">Uma das pessoas que se dedica a investigar e preservar essa trajetória é Thom Galiano, diretor teatral, professor e integrante da Trup Errante. Sua atuação está ligada à formação de artistas e à pesquisa das artes cênicas no Vale do São Francisco.</p>
 
+
     <p class="revelar">Recentemente Thom desenvolveu um livro em torno do projeto <em>Memórias do Vale em Cena</em> onde reuniu vestígios dessa história: documentos, fotografias, entrevistas, cronologias e relatos de pessoas que participaram da construção do teatro regional.</p>
+
 
     <p class="revelar">Existem experiências que sobreviveram principalmente porque alguém guardou uma fotografia, registrou uma apresentação ou se dispôs a contar o que aconteceu.</p>
 
+
     <p class="revelar">Thom Galiano fala sobre a dimensão política presente em parte das experiências de formação teatral desenvolvidas na cidade. Ao falar sobre o espetáculo <em>Andamos Todos Iguais</em>, adaptação de <em>Bailei na Curva</em>, de Júlio Conte, ele lembra uma montagem que abordava a Ditadura Militar, desde o golpe até a redemocratização.</p>
+
 
     <p class="revelar">A memória política também atravessou outros trabalhos dirigidos por Galiano. Em <em>Procura-se um corpo: Ação nº 3</em>, desenvolvido pelo Núcleo de Teatro do Sesc Petrolina, histórias de pessoas perseguidas pela Ditadura Militar foram transformadas em experiência cênica e posteriormente reunidas em publicação.</p>
 
+
     <blockquote class="margem-citacao revelar">
+
 
       “Acredito que a gente vive hoje uma guerra, inclusive em relação à narrativa”.
 
+
       <small>Thom Galiano</small>
+
 
     </blockquote>
 
+
     <p class="revelar">A observação ajuda a compreender por que recuperar a história cultural de uma região é também uma forma de intervenção no presente. Aquilo que se escolhe registrar, preservar ou deixar de fora interfere diretamente na maneira como uma sociedade reconhece sua própria trajetória.</p>
+
 
     <div class="limpar"></div>
 
+
     <div class="margem-separador revelar"></div>
+
 
     <h3 class="margem-intertitulo revelar">
 
@@ -3296,41 +4038,60 @@ nav button.ativo::after {
 
     </h3>
 
+
     <p class="revelar">Em novembro de 1986, Juazeiro ganhou um equipamento que se tornaria uma referência para a produção artística regional: o Centro de Cultura João Gilberto, inaugurado pelo Governo da Bahia.</p>
+
 
     <p class="revelar">A implantação do espaço representou um avanço na estrutura cultural do município. Ao longo dos anos, o Centro passou a receber diferentes linguagens artísticas e se tornou lugar de encontro para artistas de várias gerações.</p>
 
+
     <p class="revelar">Mas a existência de um equipamento público não significa, automaticamente, que todas as pessoas consigam acessá-lo ou se reconhecer nele. Localizado na região central de Juazeiro, o Centro impõe dificuldades de deslocamento para artistas e jovens que vivem em bairros mais distantes.</p>
+
 
     <p class="revelar">Para Odilon Neto, que integra o coletivo Abdias, formado majoritariamente por pessoas da periferia de Juazeiro, essa distância revela um problema que vai além do transporte: a concentração dos equipamentos culturais em determinadas áreas da cidade limita as possibilidades de criação e participação de quem vive em outros territórios.</p>
 
+
     <p class="revelar">O Centro de Cultura João Gilberto acaba sendo uma das poucas referências com uma infraestrutura mais completa. Por isso, Odilon defende que a política cultural também precisa chegar aos bairros, com a criação de espaços físicos equipados onde os jovens possam se reunir, desenvolver suas produções e construir suas próprias experiências artísticas sem depender exclusivamente do deslocamento até o centro da cidade.</p>
+
 
     <p class="revelar">Em Petrolina, essa questão também atravessou a relação entre artistas e espaços de apresentação. Para quem vivia em bairros distantes do centro, frequentar um teatro poderia envolver dificuldades de transporte, dinheiro e acesso à programação.</p>
 
+
     <p class="revelar">A distância não era apenas geográfica. Também envolvia a percepção de quem tinha o direito de ocupar determinados espaços e de quais manifestações eram reconhecidas como parte da vida cultural da cidade.</p>
+
 
     <p class="revelar">É uma questão que aparece na trajetória de Antônio Veronaldo, ator, diretor, dramaturgo e cofundador da Cia. Biruta de Teatro. Natural de Picos, no Piauí, o artista construiu em Petrolina uma trajetória diretamente relacionada à produção cultural nas periferias.</p>
 
+
     <p class="revelar">Em 2008, junto a Cristiane Crispim, participou da criação da Cia. Biruta, que estabeleceu suas atividades no bairro São Gonçalo, na zona oeste de Petrolina.</p>
+
 
     <p class="revelar">Antes de contar com um equipamento cultural de referência nas proximidades, o grupo precisou construir suas próprias condições de funcionamento. A Budega, um ponto comercial alugado e utilizado como primeira sede, tornou-se um lugar de ensaio, criação e convivência.</p>
 
+
     <p class="revelar">A decisão de desenvolver atividades no próprio bairro também significava questionar a ideia de que a produção artística precisava estar concentrada no centro da cidade.</p>
+
 
     <p class="revelar">Veronaldo conta que, durante uma audição para um dos primeiros espetáculos da companhia, perceberam que muitos dos interessados em participar eram moradores da mesma região periférica que os integrantes.</p>
 
+
     <p class="revelar">A percepção provocou uma mudança na maneira como o grupo compreendia sua própria produção. Uma das bases da investigação artística da Cia Biruta é que “a maior característica da cultura popular é ser local, de fazer parte de uma vivência comunitária”, afirma Veronaldo.</p>
+
 
     <p class="revelar">A partir dessa compreensão, a companhia passou a investigar referências culturais presentes no cotidiano do território: os corpos, as tradições populares, as histórias ribeirinhas e as experiências de quem vive às margens do São Francisco.</p>
 
+
     <p class="revelar">Essa pesquisa aparece em trabalhos como <em>Chico e Flor contra os monstros da Ilha do Fogo</em>, espetáculo criado a partir das lendas e tradições orais relacionadas ao rio. Ao falar sobre a montagem, Veronaldo explicou que as lendas serviam como ponto de partida para construir uma poética ribeirinha e estabelecer relações com questões contemporâneas, como a degradação ambiental e o desenvolvimento não sustentável.</p>
+
 
     <p class="revelar">A experiência da companhia fala sobre a periferia sertaneja como um lugar de criação, pesquisa, elaboração estética e produção de conhecimento.</p>
 
+
     <p class="revelar">A reivindicação por espaços culturais nas periferias também passa pela possibilidade de criar, manter e financiar iniciativas que nascem nesses territórios. Afinal, não basta que os artistas consigam chegar aos espaços existentes: é preciso que tenham condições de produzir, circular e dar continuidade ao próprio trabalho.</p>
 
+
     <div class="margem-separador revelar"></div>
+
 
     <h3 class="margem-intertitulo revelar">
 
@@ -3338,23 +4099,33 @@ nav button.ativo::after {
 
     </h3>
 
+
     <p class="revelar">A partir dos anos 1990, os mecanismos de financiamento cultural passaram por mudanças importantes no Brasil. A criação de programas estaduais de incentivo e fundos específicos ampliou as possibilidades de apoio a projetos artísticos, embora o acesso aos recursos continuasse condicionado a exigências administrativas e técnicas.</p>
+
 
     <p class="revelar">Na Bahia, o Fazcultura foi instituído em 1996, por meio de incentivo fiscal vinculado ao ICMS. Em Pernambuco, o Sistema de Incentivo à Cultura, que inclui o Funcultura, foi instituído pela Lei nº 12.310, de 19 de dezembro de 2002. Já o Fundo de Cultura do Estado da Bahia foi criado pela Lei nº 9.431, de 11 de fevereiro de 2005.</p>
 
+
     <p class="revelar">Esses mecanismos estabeleceram diferentes formas de participação do poder público no financiamento da produção cultural.</p>
+
 
     <p class="revelar">Entretanto, a existência de recursos não significa que todos os agentes culturais tenham as mesmas condições de disputá-los. Elaborar projetos, reunir documentação, manter uma estrutura administrativa e prestar contas exige conhecimentos e tempo que nem sempre estão disponíveis para coletivos independentes e grupos periféricos.</p>
 
+
     <p class="revelar">A profissionalização da gestão passou a integrar o cotidiano de quem desejava garantir a continuidade de suas atividades. Para muitos artistas, produzir cultura significava também aprender a lidar com formulários, inscrições, contrapartidas e processos burocráticos.</p>
+
 
     <p class="revelar">A institucionalização, contudo, não substituiu as práticas independentes. Muitos grupos continuaram produzindo com recursos próprios, parcerias, trabalho voluntário e ocupação de espaços comunitários.</p>
 
+
     <p class="revelar">O financiamento público tornou-se uma possibilidade de ampliação, mas não a origem de toda a produção artística regional.</p>
+
 
     <p class="revelar">Em Juazeiro, essa disputa também acontece no campo das políticas públicas. Se, de um lado, os coletivos reivindicam espaços onde possam desenvolver suas atividades, de outro, enfrentam entraves para acessar os recursos que deveriam fortalecer a produção cultural do município.</p>
 
+
     <div class="margem-separador revelar"></div>
+
 
     <h3 class="margem-intertitulo revelar">
 
@@ -3362,9 +4133,12 @@ nav button.ativo::after {
 
     </h3>
 
+
     <p class="revelar">Na manhã de 12 de novembro de 2026, artistas, produtores culturais e conselheiros ocuparam a Praça da Bandeira, no centro de Juazeiro (BA), e seguiram em cortejo até a sede da Secretaria de Cultura, Esporte e Lazer (Seculte), no Paço Municipal. O protesto ocorreu um dia depois de integrantes do Fórum Permanente de Cultura de Juazeiro e conselheiros da sociedade civil denunciarem, por meio de notas públicas e vídeos nas redes sociais, a paralisia administrativa na execução das políticas culturais do município.</p>
 
+
     <figure class="video-reportagem revelar">
+
 
       <div class="video-reportagem-titulo">
 
@@ -3372,7 +4146,9 @@ nav button.ativo::after {
 
       </div>
 
+
       <div class="video-reportagem-player">
+
 
         <iframe
 
@@ -3386,17 +4162,24 @@ nav button.ativo::after {
 
           loading="lazy"></iframe>
 
+
       </div>
+
 
     </figure>
 
+
     <p class="revelar">A mobilização expôs um paradoxo enfrentado por quem produz arte no Vale do São Francisco: os recursos federais de fomento existem, mas podem encontrar obstáculos nos trâmites burocráticos locais antes de chegar aos coletivos. Se, nos anos 1970, o desafio era criar circuitos próprios diante da inexistência de estruturas municipais, em 2026 a disputa dos trabalhadores da cultura também passa por destravar a máquina pública, garantir a execução dos editais e fortalecer os espaços de participação social.</p>
+
 
     <p class="revelar">Na margem baiana do rio, o impasse institucional esbarra em dois entraves estruturais: o esvaziamento prático do Conselho Municipal de Política Cultural (CMPC) e a falta de operacionalização do Fundo Municipal de Cultura. Embora exista formalmente, o colegiado teve sua capacidade de atuação reduzida após a sanção da Lei Municipal nº 3.240/2024, especialmente em seu artigo 39, que deixou de assegurar expressamente o caráter deliberativo pleno do Conselho sobre o orçamento da pasta. Somam-se a isso o atraso na convocação de eleições para preencher cadeiras vagas da sociedade civil e a ausência de um Fundo Municipal de Cultura ativo e com CNPJ próprio — requisito apontado pelos representantes do movimento como necessário à adequação plena ao Sistema Nacional de Cultura e à gestão dos repasses federais, como os da Política Nacional Aldir Blanc (PNAB).</p>
 
+
     <blockquote class="margem-citacao revelar">
 
+
       “Vamos estar mobilizados reivindicando a criação do Fundo de Cultura e do CNPJ para que possamos receber essas verbas da PNAB, cobrando que o Conselho de Cultura tenha autonomia para deliberar e fiscalizar o orçamento. E queremos eleições para o Conselho, para que os trabalhadores da cultura possam se eleger e ocupar esses espaços.”
+
 
       <small>
 
@@ -3404,11 +4187,15 @@ nav button.ativo::after {
 
       </small>
 
+
     </blockquote>
+
 
     <p class="revelar">Além do ato público no Paço Municipal, os coletivos lançaram um abaixo-assinado digital para reunir apoio da comunidade regional às reivindicações.</p>
 
+
     <figure class="video-reportagem revelar">
+
 
       <div class="video-reportagem-titulo">
 
@@ -3416,7 +4203,9 @@ nav button.ativo::after {
 
       </div>
 
+
       <div class="video-reportagem-player">
+
 
         <iframe
 
@@ -3430,13 +4219,18 @@ nav button.ativo::after {
 
           loading="lazy"></iframe>
 
+
       </div>
+
 
     </figure>
 
+
     <p class="revelar">Sem um Conselho com autonomia deliberativa e capacidade de fiscalização, o controle social sobre os recursos da cultura fica comprometido. A instância, prevista no Sistema Nacional de Cultura, deveria garantir a participação da sociedade civil nas decisões e no acompanhamento das políticas públicas. Quando esses mecanismos não funcionam plenamente, as decisões correm o risco de voltar a ser tomadas de cima para baixo, distantes das necessidades de quem produz cultura nos bairros.</p>
 
+
     <div class="margem-separador revelar"></div>
+
 
     <h3 class="margem-intertitulo revelar">
 
@@ -3444,11 +4238,15 @@ nav button.ativo::after {
 
     </h3>
 
+
     <p class="revelar">Em nota oficial divulgada à imprensa na tarde de 12 de novembro de 2026 — mesmo dia do cortejo —, a Prefeitura de Juazeiro afirmou que está adotando providências administrativas para "garantir que o município não perderá recursos destinados ao setor". A reportagem confirmou que, naquela mesma quinta-feira (12), a Casa dos Conselhos publicou no Diário Oficial do Município o edital para a eleição complementar destinada a preencher as cadeiras vagas do Conselho Municipal de Política Cultural (CMPC) no biênio 2026/2028.</p>
+
 
     <p class="revelar">Por outro lado, duas reivindicações estruturais dos coletivos permaneceram sem solução imediata: segundo a administração, o pedido de alteração da Lei Municipal nº 3.240/2024 para assegurar o caráter deliberativo do colegiado ainda estava em análise na Procuradoria do Município. A nota também não apresentou prazos para a abertura do CNPJ próprio do Fundo Municipal de Cultura. No comunicado, a gestão citou eventos como o Festival Edésio Santos da Canção e a retomada do Festival Nacional de Teatro Wellington Monteclaro como demonstrações de investimento no setor.</p>
 
+
     <div class="margem-separador revelar"></div>
+
 
     <h3 class="margem-intertitulo revelar">
 
@@ -3456,21 +4254,30 @@ nav button.ativo::after {
 
     </h3>
 
+
     <p class="revelar">Em Juazeiro, o Coletivo Abdias integra uma geração de iniciativas que colocam no centro da criação questões relacionadas à raça, à identidade e à presença negra nas artes cênicas.</p>
+
 
     <p class="revelar">Em Petrolina, a Cia. Biruta segue desenvolvendo atividades de criação e formação, tendo a periferia como parte fundamental de sua identidade artística.</p>
 
+
     <p class="revelar">Entre as experiências contemporâneas está também o Coletivo Caatingayro, formado por estudantes de Licenciatura em Artes Visuais da Universidade Federal do Vale do São Francisco. Sem uma sede fixa, o grupo desenvolve atividades nas duas margens do São Francisco, aproximando arte-educação, produção independente e vivências LGBTQIAPN+.</p>
+
 
     <p class="revelar">Encontros de desenho urbano, oficinas, feiras e exibições audiovisuais transformam ruas, praças e outros espaços públicos em lugares de aprendizagem e criação.</p>
 
+
     <p class="revelar">Essas experiências não representam uma ruptura completa com os movimentos das décadas anteriores. Existe uma continuidade entre os grupos que organizavam festivais, cineclubes e encontros culturais sem estruturas permanentes e os coletivos que hoje constroem suas próprias redes de colaboração.</p>
+
 
     <p class="revelar">O que muda são as linguagens, as pautas e as formas de organização. Se em outros momentos a articulação cultural esteve fortemente relacionada à redemocratização, à defesa do rio e às lutas sociais, as experiências contemporâneas também incorporam discussões sobre raça, gênero, sexualidade, identidade e direito à cidade.</p>
 
+
     <p class="revelar">Uma cartografia cultural do Vale do São Francisco precisa, portanto, ultrapassar os limites dos teatros, museus e centros culturais. Precisa localizar também os espaços independentes, as sedes improvisadas, os bairros onde acontecem as oficinas e os lugares que se transformam em palco por iniciativa de seus moradores.</p>
 
+
     <div class="margem-separador revelar"></div>
+
 
     <h3 class="margem-intertitulo revelar">
 
@@ -3478,23 +4285,33 @@ nav button.ativo::after {
 
     </h3>
 
+
     <p class="revelar">Olhar para a trajetória cultural de Petrolina e Juazeiro permite perceber que ela não se desenvolveu em uma linha contínua de conquistas institucionais. Sua história é feita de avanços, interrupções, disputas e reinvenções.</p>
+
 
     <p class="revelar">Entre os equipamentos públicos e os espaços improvisados, entre os projetos financiados e as produções independentes, existe uma rede de pessoas que sustentou a criação artística mesmo quando as condições eram insuficientes.</p>
 
+
     <p class="revelar">O trabalho de pesquisadores, artistas e memorialistas como Thom Galiano, as experiências de formação e criação conduzidas por Antônio Veronaldo e a memória preservada por pessoas como Coelhão ajudam a reconstruir partes dessa trajetória. São diferentes formas de registrar uma história que não cabe em uma única versão.</p>
+
 
     <p class="revelar">Talvez seja justamente por isso que ela precise ser contada a partir de muitas vozes: das pessoas que organizaram encontros sem saber se teriam público, dos artistas que produziram nos próprios bairros, dos grupos que precisaram inventar seus espaços e daqueles que encontraram na arte uma maneira de permanecer no território.</p>
 
+
     <p class="revelar">Antes de existir uma estrutura capaz de reconhecer, financiar e documentar essas produções, já havia gente criando. E, enquanto novos espaços são inaugurados, outros continuam sendo inventados.</p>
+
 
     <p class="margem-final revelar">A história cultural do Vale do São Francisco não está somente naquilo que foi construído. Está, sobretudo, nas pessoas que fizeram da criação uma maneira de ocupar o território e imaginar outras possibilidades de existência.</p>
 
+
   </article>
+
 
   <figure class="video-reportagem video-final-margem revelar">
 
+
     <div class="video-reportagem-player">
+
 
       <iframe
 
@@ -3510,15 +4327,21 @@ nav button.ativo::after {
 
         loading="lazy"></iframe>
 
+
     </div>
+
 
   </figure>
 
+
   <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
+
 
   <div class="respiro-rodape"></div>
 
+
 </section>
+
 
 <!-- ==================================================
 
@@ -3526,17 +4349,18 @@ nav button.ativo::after {
 
 ================================================== -->
 
+
 <section class="pagina" id="linha-do-tempo">
 
-  <div class="tempo-abertura">
+<div class="tempo-abertura">
 
-    <h1 class="tempo-titulo">
+<h1 class="tempo-titulo">
 
       Fomento Cultural nas Margens do Velho Chico
 
     </h1>
 
-    <h2 class="tempo-subtitulo">
+<h2 class="tempo-subtitulo">
 
       Uma linha do tempo histórica e comparativa das políticas públicas,
 
@@ -3546,431 +4370,412 @@ nav button.ativo::after {
 
     </h2>
 
-    <p class="tempo-instrucao">
+<p class="tempo-instrucao">
 
       ACOMPANHE A CORRENTEZA
 
       <span aria-hidden="true">↓</span>
 
-    </p>
+</p>
 
-  </div>
+</div>
 
-  <div class="tempo-percurso" id="tempoPercurso">
+<div class="tempo-percurso" id="tempoPercurso">
 
-    <!-- RIO COM MEANDROS -->
+<!-- RIO COM MEANDROS -->
 
-    <svg
+<svg aria-hidden="true" class="tempo-rio" id="rioLinhaTempo" preserveaspectratio="none">
 
-      class="tempo-rio"
+<!-- MARGENS DO CURSO PRINCIPAL -->
 
-      id="rioLinhaTempo"
+<path class="rio-margem" id="rioMargem"></path>
 
-      aria-hidden="true"
+<!-- ÁGUA -->
 
-      preserveAspectRatio="none">
+<path class="rio-agua" id="rioAgua"></path>
 
-      <!-- MARGENS DO CURSO PRINCIPAL -->
+<!-- VARIAÇÃO SUAVE DE TOM -->
 
-      <path class="rio-margem" id="rioMargem"></path>
+<path class="rio-brilho" id="rioBrilho"></path>
 
-      <!-- ÁGUA -->
+</svg>
 
-      <path class="rio-agua" id="rioAgua"></path>
+<!-- 1975 -->
 
-      <!-- VARIAÇÃO SUAVE DE TOM -->
+<div class="tempo-evento esquerda revelar">
 
-      <path class="rio-brilho" id="rioBrilho"></path>
+<div class="tempo-cartao"><span aria-label="Ano: 1975" class="tempo-ano">1975</span><div class="tempo-informacoes">
 
-    </svg>
 
-    <!-- 1975 -->
+<h3 class="tempo-evento-titulo">Descentralização Estadual em Pernambuco (Fundarpe)</h3>
 
-    <div class="tempo-evento esquerda revelar">
+<p class="tempo-evento-resumo">Governo: Eraldo Gueiros / Moura Cavalcanti (Pernambuco)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">1975</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">Descentralização Estadual em Pernambuco (Fundarpe)</h3>
+<p>Contexto &amp; Mecanismo: Criação da Fundação do Patrimônio Histórico e Artístico de Pernambuco (Fundarpe). Foi o marco inicial para organizar a descentralização dos recursos estaduais de cultura, tentando romper com a concentração na Região Metropolitana do Recife para alcançar o interior.</p>
 
-        <p class="tempo-evento-resumo">Governo: Eraldo Gueiros / Moura Cavalcanti (Pernambuco)</p>
+<p>Chão da Cidade: Em 1975, o Sertão do São Francisco vivia as grandes transformações da infraestrutura hídrica e agrícola (construção de Sobradinho e projetos da Codevasf). A arte local existia sem formalização jurídica ou verba pública continuada, operando em grêmios, igrejas e manifestações comunitárias (reisados, quadrilhas e rodas de sanfona).</p>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div>
 
-        <div class="tempo-detalhe">
+</div></div>
 
-          <p>Contexto &amp; Mecanismo: Criação da Fundação do Patrimônio Histórico e Artístico de Pernambuco (Fundarpe). Foi o marco inicial para organizar a descentralização dos recursos estaduais de cultura, tentando romper com a concentração na Região Metropolitana do Recife para alcançar o interior.</p>
+<div class="tempo-visual">
 
-          <p>Chão da Cidade: Em 1975, o Sertão do São Francisco vivia as grandes transformações da infraestrutura hídrica e agrícola (construção de Sobradinho e projetos da Codevasf). A arte local existia sem formalização jurídica ou verba pública continuada, operando em grêmios, igrejas e manifestações comunitárias (reisados, quadrilhas e rodas de sanfona).</p>
+<figure>
 
-        </div>
+<img alt="Construção da Barragem de Sobradinho" src="./imagens/construção da Barragem.png.png"/>
 
-      </div>
+<figcaption>Transformações do território nos anos 1970</figcaption>
 
-      <div class="tempo-visual">
+</figure>
 
-        <figure>
+</div>
 
-          <img src="./imagens/construção da Barragem.png.png" alt="Construção da Barragem de Sobradinho">
+</div>
 
-          <figcaption>Transformações do território nos anos 1970</figcaption>
+<!-- 1986 -->
 
-        </figure>
+<div class="tempo-evento direita revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 1986" class="tempo-ano">1986</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 1986 -->
+<h3 class="tempo-evento-titulo">O Primeiro Palco Oficial em Juazeiro</h3>
 
-    <div class="tempo-evento direita revelar">
+<p class="tempo-evento-resumo">Governo: João Durval Carneiro (Bahia)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">1986</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">O Primeiro Palco Oficial em Juazeiro</h3>
+<p>Equipamento: Inauguração do Centro de Cultura João Gilberto no bairro Santo Antônio (Rua da Stela), em Juazeiro.</p>
 
-        <p class="tempo-evento-resumo">Governo: João Durval Carneiro (Bahia)</p>
+<p>Impacto: Juazeiro ganha seu primeiro grande equipamento público de difusão mantido pelo Governo da Bahia, tornando-se o coração da produção teatral e musical da margem baiana.</p>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div>
 
-        <div class="tempo-detalhe">
+</div></div>
 
-          <p>Equipamento: Inauguração do Centro de Cultura João Gilberto no bairro Santo Antônio (Rua da Stela), em Juazeiro.</p>
+</div>
 
-          <p>Impacto: Juazeiro ganha seu primeiro grande equipamento público de difusão mantido pelo Governo da Bahia, tornando-se o coração da produção teatral e musical da margem baiana.</p>
+<!-- 1991 -->
 
-        </div>
+<div class="tempo-evento esquerda revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 1991" class="tempo-ano">1991</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 1991 -->
+<h3 class="tempo-evento-titulo">A Lei Rouanet e o Mecenato Federal</h3>
 
-    <div class="tempo-evento esquerda revelar">
+<p class="tempo-evento-resumo">Governo: Fernando Collor de Mello</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">1991</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">A Lei Rouanet e o Mecenato Federal</h3>
+<p>Mecanismo: Instituição da Lei Federal nº 8.313/91 (Lei Rouanet), abrindo a via de captação por renúncia fiscal e pelo Fundo Nacional da Cultura (FNC) para empresas da região.</p>
 
-        <p class="tempo-evento-resumo">Governo: Fernando Collor de Mello</p>
+</div>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div></div>
 
-        <div class="tempo-detalhe">
+</div>
 
-          <p>Mecanismo: Instituição da Lei Federal nº 8.313/91 (Lei Rouanet), abrindo a via de captação por renúncia fiscal e pelo Fundo Nacional da Cultura (FNC) para empresas da região.</p>
+<!-- 1995 -->
 
-        </div>
+<div class="tempo-evento direita revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 1995" class="tempo-ano">1995</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 1995 -->
+<h3 class="tempo-evento-titulo">O Teatro Dona Amélia em Petrolina</h3>
 
-    <div class="tempo-evento direita revelar">
+<p class="tempo-evento-resumo">Governo: Fernando Henrique Cardoso (Federal) / Miguel Arraes (Pernambuco)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">1995</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">O Teatro Dona Amélia em Petrolina</h3>
+<p>Equipamento: Inauguração do Teatro Dona Amélia no Sesc Centro, em Petrolina.</p>
 
-        <p class="tempo-evento-resumo">Governo: Fernando Henrique Cardoso (Federal) / Miguel Arraes (Pernambuco)</p>
+<p>Impacto: Torna-se o polo central de difusão das artes cênicas e de formação técnica em elaboração de projetos no Sertão de Pernambuco.</p>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div>
 
-        <div class="tempo-detalhe">
+</div></div>
 
-          <p>Equipamento: Inauguração do Teatro Dona Amélia no Sesc Centro, em Petrolina.</p>
+</div>
 
-          <p>Impacto: Torna-se o polo central de difusão das artes cênicas e de formação técnica em elaboração de projetos no Sertão de Pernambuco.</p>
+<!-- 1996 -->
 
-        </div>
+<div class="tempo-evento esquerda revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 1996" class="tempo-ano">1996</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 1996 -->
+<h3 class="tempo-evento-titulo">O Primeiro Mecanismo da Bahia (Fazcultura)</h3>
 
-    <div class="tempo-evento esquerda revelar">
+<p class="tempo-evento-resumo">Governo: Paulo Souto (Bahia)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">1996</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">O Primeiro Mecanismo da Bahia (Fazcultura)</h3>
+<p>Mecanismo: Criação do Programa Estadual de Incentivo ao Patrocínio Cultural (Fazcultura - Lei nº 7.015/96) via abatimento no ICMS.</p>
 
-        <p class="tempo-evento-resumo">Governo: Paulo Souto (Bahia)</p>
+<p>Gargalo: Por exigir captação direta com empresas, o recurso concentrava-se majoritariamente na capital baiana.</p>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div>
 
-        <div class="tempo-detalhe">
+</div></div>
 
-          <p>Mecanismo: Criação do Programa Estadual de Incentivo ao Patrocínio Cultural (Fazcultura - Lei nº 7.015/96) via abatimento no ICMS.</p>
+</div>
 
-          <p>Gargalo: Por exigir captação direta com empresas, o recurso concentrava-se majoritariamente na capital baiana.</p>
+<!-- 2002 -->
 
-        </div>
+<div class="tempo-evento direita revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 2002" class="tempo-ano">2002</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 2002 -->
+<h3 class="tempo-evento-titulo">A Revolução do Repasse Direto (Funcultura-PE)</h3>
 
-    <div class="tempo-evento direita revelar">
+<p class="tempo-evento-resumo">Governo: Jarbas Vasconcelos (Pernambuco)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">2002</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">A Revolução do Repasse Direto (Funcultura-PE)</h3>
+<p>Mecanismo: Instituição do Fundo Pernambucano de Incentivo à Cultura (Funcultura - Lei nº 12.300/02).</p>
 
-        <p class="tempo-evento-resumo">Governo: Jarbas Vasconcelos (Pernambuco)</p>
+<p>Impacto em Petrolina: Mudança de chave histórica: o fundo passa a repassar recursos diretos do ICMS via editais públicos sem exigir intermediação privada nem busca de patrocínio empresarial, impulsionando a formalização dos grupos locais com CNPJ.</p>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div>
 
-        <div class="tempo-detalhe">
+</div></div>
 
-          <p>Mecanismo: Instituição do Fundo Pernambucano de Incentivo à Cultura (Funcultura - Lei nº 12.300/02).</p>
+</div>
 
-          <p>Impacto em Petrolina: Mudança de chave histórica: o fundo passa a repassar recursos diretos do ICMS via editais públicos sem exigir intermediação privada nem busca de patrocínio empresarial, impulsionando a formalização dos grupos locais com CNPJ.</p>
+<!-- 2005 -->
 
-        </div>
+<div class="tempo-evento esquerda revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 2005" class="tempo-ano">2005</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 2005 -->
+<h3 class="tempo-evento-titulo">O Fundo de Cultura da Bahia (FCBA) e os Editais Territoriais</h3>
 
-    <div class="tempo-evento esquerda revelar">
+<p class="tempo-evento-resumo">Governo: Paulo Souto / consolidação na gestão Jaques Wagner (Bahia)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">2005</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">O Fundo de Cultura da Bahia (FCBA) e os Editais Territoriais</h3>
+<p>Mecanismo: Criação do FCBA (Lei nº 9.431/05), permitindo a injeção de verba direta via editais públicos e garantindo cotas específicas para o Território de Identidade do Sertão do São Francisco.</p>
 
-        <p class="tempo-evento-resumo">Governo: Paulo Souto / consolidação na gestão Jaques Wagner (Bahia)</p>
+</div>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div></div>
 
-        <div class="tempo-detalhe">
+</div>
 
-          <p>Mecanismo: Criação do FCBA (Lei nº 9.431/05), permitindo a injeção de verba direta via editais públicos e garantindo cotas específicas para o Território de Identidade do Sertão do São Francisco.</p>
+<!-- 2005 - 2010 -->
 
-        </div>
+<div class="tempo-evento direita revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 2005 - 2010" class="tempo-ano">2005 - 2010</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 2005 - 2010 -->
+<h3 class="tempo-evento-titulo">Cultura Viva, Pontos de Cultura e Editais Funarte</h3>
 
-    <div class="tempo-evento direita revelar">
+<p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">2005 - 2010</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">Cultura Viva, Pontos de Cultura e Editais Funarte</h3>
+<p>Mecanismo: Consolidação da Política Nacional Cultura Viva e difusão dos prêmios federais da Funarte (Myriam Muniz, Klauss Vianna, Pixinguinha).</p>
 
-        <p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal)</p>
+<p>Impacto no Território: Coletivos das periferias e da zona rural de Petrolina e Juazeiro passam a ser reconhecidos como Pontos de Cultura, recebendo convênios diretos para manutenção de sedes e equipamentos.</p>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div>
 
-        <div class="tempo-detalhe">
+</div></div>
 
-          <p>Mecanismo: Consolidação da Política Nacional Cultura Viva e difusão dos prêmios federais da Funarte (Myriam Muniz, Klauss Vianna, Pixinguinha).</p>
+</div>
 
-          <p>Impacto no Território: Coletivos das periferias e da zona rural de Petrolina e Juazeiro passam a ser reconhecidos como Pontos de Cultura, recebendo convênios diretos para manutenção de sedes e equipamentos.</p>
+<!-- 2010 -->
 
-        </div>
+<div class="tempo-evento esquerda revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 2010" class="tempo-ano">2010</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 2010 -->
+<h3 class="tempo-evento-titulo">Legislação Municipal em Juazeiro</h3>
 
-    <div class="tempo-evento esquerda revelar">
+<p class="tempo-evento-resumo">Governo: Isaac Carvalho (Juazeiro)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">2010</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">Legislação Municipal em Juazeiro</h3>
+<p>Mecanismo: Regulamentação da Lei Municipal de Incentivo à Cultura (Lei nº 2.158/10), estruturando editais locais para feiras literárias, manifestações tradicionais e quadrilhas.</p>
 
-        <p class="tempo-evento-resumo">Governo: Isaac Carvalho (Juazeiro)</p>
+</div>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div></div>
 
-        <div class="tempo-detalhe">
+</div>
 
-          <p>Mecanismo: Regulamentação da Lei Municipal de Incentivo à Cultura (Lei nº 2.158/10), estruturando editais locais para feiras literárias, manifestações tradicionais e quadrilhas.</p>
+<!-- 2013 - 2015 -->
 
-        </div>
+<div class="tempo-evento direita revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 2013 - 2015" class="tempo-ano">2013 - 2015</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 2013 - 2015 -->
+<h3 class="tempo-evento-titulo">Fundo de Petrolina e a Entrega do CEU das Águas</h3>
 
-    <div class="tempo-evento direita revelar">
+<p class="tempo-evento-resumo">Governo: Julio Lóssio (Petrolina) / Isaac Carvalho (Juazeiro) / Dilma Rousseff (Federal)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">2013 - 2015</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">Fundo de Petrolina e a Entrega do CEU das Águas</h3>
+<p>Equipamentos: Entrega dos Centros de Artes e Esportes Unificados (CEUs das Águas), programa de infraestrutura do Governo Federal (PAC 2) que viabilizou equipamentos culturais nas periferias de ambas as cidades:</p>
 
-        <p class="tempo-evento-resumo">Governo: Julio Lóssio (Petrolina) / Isaac Carvalho (Juazeiro) / Dilma Rousseff (Federal)</p>
+<p>Em Petrolina: Erguido no bairro Rio Corrente (zona oeste), abrigando o Cineteatro Massangano.</p>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+<p>Em Juazeiro: Erguido no bairro Tabuleiro, estruturando a Praça CEU.</p>
 
-        <div class="tempo-detalhe">
+<p>Impacto: Ocupação contínua por grupos independentes (como a Cia Biruta, que passou a gestar e realizar suas formações no Cineteatro Massangano), além da descentralização de oficinas, percussão, artes visuais e difusão artística para fora dos eixos centrais de Petrolina e Juazeiro.</p>
 
-          <p>Equipamentos: Entrega dos Centros de Artes e Esportes Unificados (CEUs das Águas), programa de infraestrutura do Governo Federal (PAC 2) que viabilizou equipamentos culturais nas periferias de ambas as cidades:</p>
+</div>
 
-          <p>Em Petrolina: Erguido no bairro Rio Corrente (zona oeste), abrigando o Cineteatro Massangano.</p>
+</div></div>
 
-          <p>Em Juazeiro: Erguido no bairro Tabuleiro, estruturando a Praça CEU.</p>
+</div>
 
-          <p>Impacto: Ocupação contínua por grupos independentes (como a Cia Biruta, que passou a gestar e realizar suas formações no Cineteatro Massangano), além da descentralização de oficinas, percussão, artes visuais e difusão artística para fora dos eixos centrais de Petrolina e Juazeiro.</p>
+<!-- 2020 -->
 
-        </div>
+<div class="tempo-evento esquerda revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 2020" class="tempo-ano">2020</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 2020 -->
+<h3 class="tempo-evento-titulo">Lei Emergencial Aldir Blanc (LAB 1)</h3>
 
-    <div class="tempo-evento esquerda revelar">
+<p class="tempo-evento-resumo">Governo: Jair Bolsonaro (Federal) / Gestões Municipais</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">2020</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">Lei Emergencial Aldir Blanc (LAB 1)</h3>
+<p>Mecanismo: Injeção direta de recursos emergenciais federais repassados a estados e municípios para manutenção de espaços e prêmios a artistas durante a pandemia.</p>
 
-        <p class="tempo-evento-resumo">Governo: Jair Bolsonaro (Federal) / Gestões Municipais</p>
+</div>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div></div>
 
-        <div class="tempo-detalhe">
+</div>
 
-          <p>Mecanismo: Injeção direta de recursos emergenciais federais repassados a estados e municípios para manutenção de espaços e prêmios a artistas durante a pandemia.</p>
+<!-- 2023 -->
 
-        </div>
+<div class="tempo-evento direita revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 2023" class="tempo-ano">2023</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 2023 -->
+<h3 class="tempo-evento-titulo">Lei Paulo Gustavo (LPG)</h3>
 
-    <div class="tempo-evento direita revelar">
+<p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal) / Simão Durando (Petrolina) / Suzana Ramos (Juazeiro)</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">2023</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">Lei Paulo Gustavo (LPG)</h3>
+<p>Mecanismo: Maior aporte direto da história cultural do país (Lei Complementar nº 195/2022). Petrolina recebeu cerca de R$ 2,8 milhões e Juazeiro aproximadamente R$ 1,9 milhão, priorizando o audiovisual e cotas étnico-raciais/periféricas.</p>
 
-        <p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal) / Simão Durando (Petrolina) / Suzana Ramos (Juazeiro)</p>
+</div>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div></div>
 
-        <div class="tempo-detalhe">
+</div>
 
-          <p>Mecanismo: Maior aporte direto da história cultural do país (Lei Complementar nº 195/2022). Petrolina recebeu cerca de R$ 2,8 milhões e Juazeiro aproximadamente R$ 1,9 milhão, priorizando o audiovisual e cotas étnico-raciais/periféricas.</p>
+<!-- 2024 - 2026 -->
 
-        </div>
+<div class="tempo-evento esquerda revelar">
 
-      </div>
+<div class="tempo-cartao"><span aria-label="Ano: 2024 - 2026" class="tempo-ano">2024 - 2026</span><div class="tempo-informacoes">
 
-    </div>
 
-    <!-- 2024 - 2026 -->
+<h3 class="tempo-evento-titulo">Política Nacional Aldir Blanc (PNAB)</h3>
 
-    <div class="tempo-evento esquerda revelar">
+<p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal) / Gestões Estaduais e Municipais</p>
 
-      <div class="tempo-cartao">
+<button aria-expanded="false" class="tempo-botao" type="button">CONHEÇA ESSE MARCO <span>+</span></button>
 
-        <span class="tempo-ano">2024 - 2026</span>
+<div class="tempo-detalhe">
 
-        <h3 class="tempo-evento-titulo">Política Nacional Aldir Blanc (PNAB)</h3>
+<p>Mecanismo: Garantia de repasses anuais contínuos até 2027 para editais locais, reformas de equipamentos e fortalecimento da Rede de Pontos de Cultura.</p>
 
-        <p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal) / Gestões Estaduais e Municipais</p>
+</div>
 
-        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
+</div></div>
 
-        <div class="tempo-detalhe">
+</div>
 
-          <p>Mecanismo: Garantia de repasses anuais contínuos até 2027 para editais locais, reformas de equipamentos e fortalecimento da Rede de Pontos de Cultura.</p>
+</div>
 
-        </div>
+<!-- FONTES -->
 
-      </div>
+<div class="tempo-fontes">
 
-    </div>
+<h3>Links Oficiais e Fontes de Informação</h3>
 
-  </div>
+<p>Para consulta, checagem de editais e acervo de dados sobre o fomento em Pernambuco, Bahia e âmbito Federal:</p>
 
-  <!-- FONTES -->
+<p><strong>1. Pernambuco &amp; Petrolina:</strong></p>
 
-  <div class="tempo-fontes">
+<p>Portal Fundarpe / Funcultura: <a href="https://www.fundarpe.pe.gov.br" rel="noopener noreferrer" target="_blank">https://www.fundarpe.pe.gov.br</a> (Informações sobre a legislação do Funcultura, resultados de editais e acervo histórico de Pernambuco)</p>
 
-    <h3>Links Oficiais e Fontes de Informação</h3>
+<p>Mapa Cultural de Pernambuco: <a href="https://www.mapacultural.pe.gov.br" rel="noopener noreferrer" target="_blank">https://www.mapacultural.pe.gov.br</a> (Mapeamento georreferenciado de coletivos, Pontos de Cultura e projetos aprovados em Petrolina)</p>
 
-    <p>Para consulta, checagem de editais e acervo de dados sobre o fomento em Pernambuco, Bahia e âmbito Federal:</p>
+<p>Prefeitura Municipal de Petrolina (Cultura): <a href="https://petrolina.pe.gov.br" rel="noopener noreferrer" target="_blank">https://petrolina.pe.gov.br</a> (Publicações dos editais locais da Lei Paulo Gustavo, PNAB e editais municipais)</p>
 
-    <p><strong>1. Pernambuco &amp; Petrolina:</strong></p>
+<p><strong>2. Bahia &amp; Juazeiro:</strong></p>
 
-    <p>Portal Fundarpe / Funcultura: <a href="https://www.fundarpe.pe.gov.br" target="_blank" rel="noopener noreferrer">https://www.fundarpe.pe.gov.br</a> (Informações sobre a legislação do Funcultura, resultados de editais e acervo histórico de Pernambuco)</p>
+<p>Secretaria de Cultura do Estado da Bahia (Secult-BA): <a href="http://www.cultura.ba.gov.br" rel="noopener noreferrer" target="_blank">http://www.cultura.ba.gov.br</a> (Diretrizes do Fazcultura, do Fundo de Cultura da Bahia - FCBA e Editais Territoriais)</p>
 
-    <p>Mapa Cultural de Pernambuco: <a href="https://www.mapacultural.pe.gov.br" target="_blank" rel="noopener noreferrer">https://www.mapacultural.pe.gov.br</a> (Mapeamento georreferenciado de coletivos, Pontos de Cultura e projetos aprovados em Petrolina)</p>
+<p>SIIC - Sistema de Informações Culturais da Bahia: <a href="http://siic.cultura.ba.gov.br" rel="noopener noreferrer" target="_blank">http://siic.cultura.ba.gov.br</a> (Dados sobre os proponentes e projetos contemplados no Território Sertão do São Francisco)</p>
 
-    <p>Prefeitura Municipal de Petrolina (Cultura): <a href="https://petrolina.pe.gov.br" target="_blank" rel="noopener noreferrer">https://petrolina.pe.gov.br</a> (Publicações dos editais locais da Lei Paulo Gustavo, PNAB e editais municipais)</p>
+<p>Prefeitura Municipal de Juazeiro (Cultura): <a href="https://www.juazeiro.ba.gov.br" rel="noopener noreferrer" target="_blank">https://www.juazeiro.ba.gov.br</a> (Editais municipais, publicações da Lei Paulo Gustavo e conselho local)</p>
 
-    <p><strong>2. Bahia &amp; Juazeiro:</strong></p>
+<p><strong>3. Âmbito Federal:</strong></p>
 
-    <p>Secretaria de Cultura do Estado da Bahia (Secult-BA): <a href="http://www.cultura.ba.gov.br" target="_blank" rel="noopener noreferrer">http://www.cultura.ba.gov.br</a> (Diretrizes do Fazcultura, do Fundo de Cultura da Bahia - FCBA e Editais Territoriais)</p>
+<p>Ministério da Cultura (MinC) / PNAB / Paulo Gustavo: <a href="https://www.gov.br/cultura" rel="noopener noreferrer" target="_blank">https://www.gov.br/cultura</a> (Painéis de dados sobre os repasses das leis federais e Política Nacional Cultura Viva)</p>
 
-    <p>SIIC - Sistema de Informações Culturais da Bahia: <a href="http://siic.cultura.ba.gov.br" target="_blank" rel="noopener noreferrer">http://siic.cultura.ba.gov.br</a> (Dados sobre os proponentes e projetos contemplados no Território Sertão do São Francisco)</p>
+<p>Fundação Nacional de Artes (Funarte): <a href="https://www.gov.br/funarte" rel="noopener noreferrer" target="_blank">https://www.gov.br/funarte</a> (Editais nacionais, prêmios históricos e programas de apoio a ações continuadas)</p>
 
-    <p>Prefeitura Municipal de Juazeiro (Cultura): <a href="https://www.juazeiro.ba.gov.br" target="_blank" rel="noopener noreferrer">https://www.juazeiro.ba.gov.br</a> (Editais municipais, publicações da Lei Paulo Gustavo e conselho local)</p>
+</div>
 
-    <p><strong>3. Âmbito Federal:</strong></p>
+<div class="barquinhos-final"></div>
 
-    <p>Ministério da Cultura (MinC) / PNAB / Paulo Gustavo: <a href="https://www.gov.br/cultura" target="_blank" rel="noopener noreferrer">https://www.gov.br/cultura</a> (Painéis de dados sobre os repasses das leis federais e Política Nacional Cultura Viva)</p>
-
-    <p>Fundação Nacional de Artes (Funarte): <a href="https://www.gov.br/funarte" target="_blank" rel="noopener noreferrer">https://www.gov.br/funarte</a> (Editais nacionais, prêmios históricos e programas de apoio a ações continuadas)</p>
-
-  </div>
-
-  <div class="barquinhos-final"></div>
-
-  <div class="respiro-rodape"></div>
+<div class="respiro-rodape"></div>
 
 </section>
+
 
 <!-- ==================================================
 
      NÚCLEO BIRUTA
 
 ================================================== -->
+
 
 <section class="pagina" id="nucleo-biruta">
 
@@ -4054,13 +4859,16 @@ nav button.ativo::after {
 
 <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
 
+
   <div class="respiro-rodape"></div></section>
+
 
 <!-- ==================================================
 
      COLETIVO ABDIAS
 
 ================================================== -->
+
 
 <section class="pagina" id="coletivo-abdias">
 
@@ -4240,11 +5048,13 @@ nav button.ativo::after {
 
 </section>
 
+
 <!-- ==================================================
 
      CAATINGAYRO
 
 ================================================== -->
+
 
 <section class="pagina" id="caatingayro">
 
@@ -4386,15 +5196,19 @@ nav button.ativo::after {
 
 </section>
 
+
 <!-- ==================================================
 
      ARTISTAS
 
 ================================================== -->
 
+
 <section class="pagina" id="artistas">
 
+
   <div class="pagina-abertura">
+
 
     <h1 class="pagina-titulo">
 
@@ -4402,17 +5216,22 @@ nav button.ativo::after {
 
     </h1>
 
+
     <p class="pagina-descricao">
 
       Pessoas que criam e transformam as formas de representar o Sertão.
 
     </p>
 
+
   </div>
+
 
   <div class="conteudo">
 
+
     <div class="texto">
+
 
       <p>
 
@@ -4420,15 +5239,21 @@ nav button.ativo::after {
 
       </p>
 
+
     </div>
+
 
   </div>
 
+
   <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
+
 
   <div class="respiro-rodape"></div>
 
+
 </section>
+
 
 <!-- ==================================================
 
@@ -4436,9 +5261,12 @@ nav button.ativo::after {
 
 ================================================== -->
 
+
 <section class="pagina" id="lugares">
 
+
   <div class="pagina-abertura">
+
 
     <h1 class="pagina-titulo">
 
@@ -4446,17 +5274,22 @@ nav button.ativo::after {
 
     </h1>
 
+
     <p class="pagina-descricao">
 
       Espaços de memória, pertencimento e encontros.
 
     </p>
 
+
   </div>
+
 
   <div class="conteudo">
 
+
     <div class="texto">
+
 
       <p>
 
@@ -4464,11 +5297,15 @@ nav button.ativo::after {
 
       </p>
 
+
     </div>
+
 
     <div class="galeria">
 
+
       <figure class="galeria-item">
+
 
         <img
 
@@ -4476,15 +5313,19 @@ nav button.ativo::after {
 
           alt="Ilha do Fogo">
 
+
         <figcaption class="galeria-legenda">
 
           Ilha do Fogo
 
         </figcaption>
 
+
       </figure>
 
+
       <figure class="galeria-item">
+
 
         <img
 
@@ -4492,25 +5333,34 @@ nav button.ativo::after {
 
           alt="Comissão Pastoral da Terra">
 
+
         <figcaption class="galeria-legenda">
 
           Comissão Pastoral da Terra
 
         </figcaption>
 
+
       </figure>
+
 
     </div>
 
+
   </div>
+
 
   <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
 
+
   <div class="respiro-rodape"></div>
+
 
 </section>
 
+
 </main>
+
 
 <!-- ==================================================
 
@@ -4518,9 +5368,12 @@ nav button.ativo::after {
 
 ================================================== -->
 
+
 <footer class="rodape">
 
+
   <div class="rodape-fundo">
+
 
     <img
 
@@ -4530,9 +5383,12 @@ nav button.ativo::after {
 
       aria-hidden="true">
 
+
   </div>
 
+
   <div class="rodape-barquinho">
+
 
     <img
 
@@ -4540,11 +5396,15 @@ nav button.ativo::after {
 
       alt="Ilustração de barco">
 
+
   </div>
+
 
   <div class="rodape-conteudo">
 
+
     <div class="rodape-identidade">
+
 
       <h2 class="rodape-titulo">
 
@@ -4552,17 +5412,22 @@ nav button.ativo::after {
 
       </h2>
 
+
       <p class="rodape-subtitulo">
 
         UMA SÓ CORRENTEZA
 
       </p>
 
+
     </div>
+
 
     <div class="rodape-creditos">
 
+
       <div class="credito-grupo">
+
 
         <span class="credito-label">
 
@@ -4570,7 +5435,9 @@ nav button.ativo::after {
 
         </span>
 
+
         <span class="credito-nome">
+
 
           <a
 
@@ -4584,11 +5451,15 @@ nav button.ativo::after {
 
           </a>
 
+
         </span>
+
 
       </div>
 
+
       <div class="credito-grupo">
+
 
         <span class="credito-label">
 
@@ -4596,15 +5467,19 @@ nav button.ativo::after {
 
         </span>
 
+
         <span class="credito-nome">
 
           Raiane Sousa
 
         </span>
 
+
       </div>
 
+
       <div class="credito-grupo">
+
 
         <span class="credito-label">
 
@@ -4614,15 +5489,19 @@ nav button.ativo::after {
 
         </span>
 
+
         <span class="credito-nome">
 
           Jenifer Silva
 
         </span>
 
+
         <div class="credito-perfis">
 
+
           <span class="separador-perfil">|</span>
+
 
           <a
 
@@ -4636,21 +5515,30 @@ nav button.ativo::after {
 
           </a>
 
+
           <span class="separador-perfil">|</span>
+
 
           <span>@labmap.s</span>
 
+
         </div>
+
 
       </div>
 
+
     </div>
+
 
   </div>
 
+
 </footer>
 
+
 </div>
+
 
 <!-- ==================================================
 
@@ -4658,7 +5546,9 @@ nav button.ativo::after {
 
 ================================================== -->
 
+
 <audio id="somRio" autoplay loop preload="auto">
+
 
   <source
 
@@ -4666,7 +5556,9 @@ nav button.ativo::after {
 
     type="audio/mpeg">
 
+
 </audio>
+
 
 <button
 
@@ -4678,13 +5570,17 @@ nav button.ativo::after {
 
   aria-pressed="false">
 
+
   <span id="iconeSom">♪</span>
 
   <span id="textoSom">ATIVAR SOM DO RIO</span>
 
+
 </button>
 
+
 <script>
+
 
 /* ==================================================
 
@@ -4692,7 +5588,9 @@ nav button.ativo::after {
 
 ================================================== */
 
+
 const paginas = document.querySelectorAll(".pagina");
+
 
 const botoesMenu = document.querySelectorAll(
 
@@ -4700,11 +5598,13 @@ const botoesMenu = document.querySelectorAll(
 
 );
 
+
 const menuPrincipal = document.getElementById(
 
   "menuPrincipal"
 
 );
+
 
 const botaoMenu = document.getElementById(
 
@@ -4712,7 +5612,9 @@ const botaoMenu = document.getElementById(
 
 );
 
+
 const audio = document.getElementById("somRio");
+
 
 const controleSom = document.getElementById(
 
@@ -4720,11 +5622,13 @@ const controleSom = document.getElementById(
 
 );
 
+
 const textoSom = document.getElementById(
 
   "textoSom"
 
 );
+
 
 const iconeSom = document.getElementById(
 
@@ -4732,9 +5636,11 @@ const iconeSom = document.getElementById(
 
 );
 
+
 let paginaAtual = "inicio";
 
 let usuarioDesativouSom = false;
+
 
 /* ==================================================
 
@@ -4742,11 +5648,15 @@ let usuarioDesativouSom = false;
 
 ================================================== */
 
+
 audio.volume = 0.45;
+
 
 function atualizarSom() {
 
+
   const tocando = !audio.paused;
+
 
   textoSom.textContent = tocando
 
@@ -4754,7 +5664,9 @@ function atualizarSom() {
 
     : "ATIVAR SOM DO RIO";
 
+
   iconeSom.textContent = tocando ? "♫" : "♪";
+
 
   controleSom.setAttribute(
 
@@ -4764,9 +5676,12 @@ function atualizarSom() {
 
   );
 
+
 }
 
+
 async function iniciarSom() {
+
 
   if (
 
@@ -4780,6 +5695,7 @@ async function iniciarSom() {
 
   }
 
+
   try {
 
     await audio.play();
@@ -4790,21 +5706,29 @@ async function iniciarSom() {
 
   }
 
+
   atualizarSom();
+
 
 }
 
+
 function pararSom() {
+
 
   audio.pause();
 
   audio.currentTime = 0;
 
+
   atualizarSom();
+
 
 }
 
+
 controleSom.addEventListener("click", async () => {
+
 
   if (paginaAtual !== "inicio") {
 
@@ -4812,27 +5736,36 @@ controleSom.addEventListener("click", async () => {
 
   }
 
+
   if (audio.paused) {
+
 
     usuarioDesativouSom = false;
 
     await iniciarSom();
 
+
   } else {
+
 
     usuarioDesativouSom = true;
 
     audio.pause();
 
+
   }
+
 
   atualizarSom();
 
+
 });
+
 
 audio.addEventListener("play", atualizarSom);
 
 audio.addEventListener("pause", atualizarSom);
+
 
 window.addEventListener(
 
@@ -4842,6 +5775,7 @@ window.addEventListener(
 
 );
 
+
 window.addEventListener(
 
   "load",
@@ -4850,7 +5784,9 @@ window.addEventListener(
 
 );
 
+
 function iniciarNaPrimeiraInteracao() {
+
 
   if (
 
@@ -4866,7 +5802,9 @@ function iniciarNaPrimeiraInteracao() {
 
   }
 
+
 }
+
 
 document.addEventListener(
 
@@ -4878,6 +5816,7 @@ document.addEventListener(
 
 );
 
+
 document.addEventListener(
 
   "keydown",
@@ -4886,27 +5825,35 @@ document.addEventListener(
 
 );
 
+
 /* ==================================================
 
    ANIMAÇÕES
 
 ================================================== */
 
+
 const observador = new IntersectionObserver(
 
   entradas => {
 
+
     entradas.forEach(entrada => {
 
+
       if (entrada.isIntersecting) {
+
 
         entrada.target.classList.add("visivel");
 
         observador.unobserve(entrada.target);
 
+
       }
 
+
     });
+
 
   },
 
@@ -4920,6 +5867,7 @@ const observador = new IntersectionObserver(
 
 );
 
+
 document.querySelectorAll(".revelar").forEach(
 
   elemento => {
@@ -4930,19 +5878,24 @@ document.querySelectorAll(".revelar").forEach(
 
 );
 
+
 /* ==================================================
 
    LINHA DO TEMPO INTERATIVA
 
 ================================================== */
 
+
 document.querySelectorAll(".tempo-botao").forEach(
 
   botao => {
 
+
     botao.addEventListener("click", () => {
 
+
       const cartao = botao.closest(".tempo-cartao");
+
 
       const detalhe = cartao.querySelector(
 
@@ -4950,11 +5903,13 @@ document.querySelectorAll(".tempo-botao").forEach(
 
       );
 
+
       const aberto = detalhe.classList.toggle(
 
         "aberto"
 
       );
+
 
       botao.setAttribute(
 
@@ -4964,23 +5919,29 @@ document.querySelectorAll(".tempo-botao").forEach(
 
       );
 
+
       botao.firstChild.textContent = aberto
 
         ? "FECHAR HISTÓRIA "
 
         : "CONHEÇA ESSE MARCO ";
 
+
       solicitarDesenhoRio();
 
+
     });
+
 
   }
 
 );
 
+
 /* ==================================================
 
    DESENHO DO RIO
+
 
    MEANDROS MAIS ACENTUADOS
 
@@ -4988,11 +5949,13 @@ document.querySelectorAll(".tempo-botao").forEach(
 
 ================================================== */
 
+
 const tempoPercurso = document.getElementById(
 
   "tempoPercurso"
 
 );
+
 
 const rioSvg = document.getElementById(
 
@@ -5000,11 +5963,13 @@ const rioSvg = document.getElementById(
 
 );
 
+
 const rioMargem = document.getElementById(
 
   "rioMargem"
 
 );
+
 
 const rioAgua = document.getElementById(
 
@@ -5012,15 +5977,19 @@ const rioAgua = document.getElementById(
 
 );
 
+
 const rioBrilho = document.getElementById(
 
   "rioBrilho"
 
 );
 
+
 let desenhoRioPendente = false;
 
+
 function solicitarDesenhoRio() {
+
 
   if (desenhoRioPendente) {
 
@@ -5028,19 +5997,26 @@ function solicitarDesenhoRio() {
 
   }
 
+
   desenhoRioPendente = true;
 
+
   requestAnimationFrame(() => {
+
 
     desenhoRioPendente = false;
 
     desenharRio();
 
+
   });
+
 
 }
 
+
 function desenharRio() {
+
 
   if (!tempoPercurso || !rioSvg) {
 
@@ -5048,15 +6024,18 @@ function desenharRio() {
 
   }
 
+
   const largura = tempoPercurso.clientWidth;
 
   const altura = tempoPercurso.scrollHeight;
+
 
   if (!largura || !altura) {
 
     return;
 
   }
+
 
   rioSvg.setAttribute(
 
@@ -5066,21 +6045,32 @@ function desenharRio() {
 
   );
 
+
   const eventos = Array.from(
 
     tempoPercurso.querySelectorAll(".tempo-evento")
 
   );
 
-  const centro = largura / 2;
+
+  /* O rio permanece à esquerda dos anos e acompanha os marcos. */
+
+  const centro = largura < 700
+
+    ? largura * .085
+
+    : largura * .16;
+
 
   const amplitude = largura < 700
 
-    ? largura * .25
+    ? largura * .045
 
-    : largura * .23;
+    : largura * .095;
+
 
   const pontos = [];
+
 
   pontos.push({
 
@@ -5090,7 +6080,9 @@ function desenharRio() {
 
   });
 
+
   eventos.forEach((evento, indice) => {
+
 
     const y =
 
@@ -5098,7 +6090,9 @@ function desenharRio() {
 
       evento.offsetHeight / 2;
 
+
     const direcao = indice % 2 === 0 ? 1 : -1;
+
 
     const variacao =
 
@@ -5112,6 +6106,7 @@ function desenharRio() {
 
           : 1.12;
 
+
     pontos.push({
 
       x: centro + direcao * amplitude * variacao,
@@ -5120,7 +6115,9 @@ function desenharRio() {
 
     });
 
+
   });
+
 
   pontos.push({
 
@@ -5130,31 +6127,40 @@ function desenharRio() {
 
   });
 
+
   if (pontos.length < 2) {
 
     return;
 
   }
 
+
   /* CURSO PRINCIPAL */
+
 
   let caminho = `M ${pontos[0].x} ${pontos[0].y}`;
 
+
   for (let i = 1; i < pontos.length; i++) {
+
 
     const anterior = pontos[i - 1];
 
     const atual = pontos[i];
 
+
     const distanciaY = atual.y - anterior.y;
+
 
     const controle1Y =
 
       anterior.y + distanciaY * .18;
 
+
     const controle2Y =
 
       atual.y - distanciaY * .18;
+
 
     caminho += `
 
@@ -5168,7 +6174,9 @@ function desenharRio() {
 
     `;
 
+
   }
+
 
   rioMargem.setAttribute("d", caminho);
 
@@ -5176,13 +6184,17 @@ function desenharRio() {
 
   rioBrilho.setAttribute("d", caminho);
 
+
+
 }
+
 
 /* ==================================================
 
    ATUALIZAR RIO
 
 ================================================== */
+
 
 window.addEventListener(
 
@@ -5192,7 +6204,9 @@ window.addEventListener(
 
 );
 
+
 if ("ResizeObserver" in window) {
+
 
   const observadorTamanho = new ResizeObserver(
 
@@ -5200,9 +6214,12 @@ if ("ResizeObserver" in window) {
 
   );
 
+
   observadorTamanho.observe(tempoPercurso);
 
+
 }
+
 
 window.addEventListener(
 
@@ -5212,19 +6229,24 @@ window.addEventListener(
 
 );
 
+
 /* ==================================================
 
    PARAR VÍDEOS
 
 ================================================== */
 
+
 function pararVideos(pagina) {
+
 
   pagina.querySelectorAll("iframe").forEach(
 
     iframe => {
 
+
       const endereco = iframe.getAttribute("src");
+
 
       if (endereco) {
 
@@ -5232,17 +6254,21 @@ function pararVideos(pagina) {
 
       }
 
+
     }
 
   );
 
+
 }
+
 
 /* ==================================================
 
    NAVEGAÇÃO
 
 ================================================== */
+
 
 function abrirPagina(
 
@@ -5252,7 +6278,9 @@ function abrirPagina(
 
 ) {
 
+
   const destino = document.getElementById(id);
+
 
   if (
 
@@ -5266,13 +6294,16 @@ function abrirPagina(
 
   }
 
+
   if (id !== "inicio") {
 
     pararSom();
 
   }
 
+
   if (paginaAtual !== id) {
+
 
     const anterior = document.getElementById(
 
@@ -5280,17 +6311,22 @@ function abrirPagina(
 
     );
 
+
     if (anterior) {
 
       pararVideos(anterior);
 
     }
 
+
   }
+
 
   paginaAtual = id;
 
+
   paginas.forEach(pagina => {
+
 
     pagina.classList.toggle(
 
@@ -5300,15 +6336,21 @@ function abrirPagina(
 
     );
 
+
   });
+
 
   botoesMenu.forEach(botao => {
 
+
     const ativo = botao.dataset.pagina === id;
+
 
     botao.classList.toggle("ativo", ativo);
 
+
     if (ativo) {
+
 
       botao.setAttribute(
 
@@ -5318,13 +6360,18 @@ function abrirPagina(
 
       );
 
+
     } else {
+
 
       botao.removeAttribute("aria-current");
 
+
     }
 
+
   });
+
 
   controleSom.classList.toggle(
 
@@ -5334,7 +6381,9 @@ function abrirPagina(
 
   );
 
+
   menuPrincipal.classList.remove("aberto");
+
 
   botaoMenu.setAttribute(
 
@@ -5344,9 +6393,12 @@ function abrirPagina(
 
   );
 
+
   botaoMenu.textContent = "☰";
 
+
   if (atualizarHistorico) {
+
 
     history.pushState(
 
@@ -5358,7 +6410,9 @@ function abrirPagina(
 
     );
 
+
   }
+
 
   window.scrollTo({
 
@@ -5367,6 +6421,7 @@ function abrirPagina(
     behavior: "instant"
 
   });
+
 
   if (
 
@@ -5380,9 +6435,12 @@ function abrirPagina(
 
   }
 
+
   if (id === "linha-do-tempo") {
 
+
     solicitarDesenhoRio();
+
 
     requestAnimationFrame(
 
@@ -5390,9 +6448,12 @@ function abrirPagina(
 
     );
 
+
   }
 
+
 }
+
 
 /* ==================================================
 
@@ -5400,15 +6461,21 @@ function abrirPagina(
 
 ================================================== */
 
+
 botoesMenu.forEach(botao => {
+
 
   botao.addEventListener("click", () => {
 
+
     abrirPagina(botao.dataset.pagina);
+
 
   });
 
+
 });
+
 
 /* ==================================================
 
@@ -5416,13 +6483,16 @@ botoesMenu.forEach(botao => {
 
 ================================================== */
 
+
 botaoMenu.addEventListener("click", () => {
+
 
   const aberto = menuPrincipal.classList.toggle(
 
     "aberto"
 
   );
+
 
   botaoMenu.setAttribute(
 
@@ -5432,9 +6502,12 @@ botaoMenu.addEventListener("click", () => {
 
   );
 
+
   botaoMenu.textContent = aberto ? "✕" : "☰";
 
+
 });
+
 
 /* ==================================================
 
@@ -5442,11 +6515,13 @@ botaoMenu.addEventListener("click", () => {
 
 ================================================== */
 
+
 document.getElementById(
 
   "botaoDescer"
 
 ).addEventListener("click", () => {
+
 
   document.getElementById(
 
@@ -5454,13 +6529,17 @@ document.getElementById(
 
   ).scrollIntoView({
 
+
     behavior: "smooth",
 
     block: "start"
 
+
   });
 
+
 });
+
 
 /* ==================================================
 
@@ -5468,7 +6547,9 @@ document.getElementById(
 
 ================================================== */
 
+
 function verificarEndereco() {
+
 
   const id = decodeURIComponent(
 
@@ -5476,9 +6557,12 @@ function verificarEndereco() {
 
   );
 
+
   const elemento = document.getElementById(id);
 
+
   abrirPagina(
+
 
     elemento &&
 
@@ -5488,11 +6572,15 @@ function verificarEndereco() {
 
       : "inicio",
 
+
     false
+
 
   );
 
+
 }
+
 
 window.addEventListener(
 
@@ -5502,6 +6590,7 @@ window.addEventListener(
 
 );
 
+
 window.addEventListener(
 
   "hashchange",
@@ -5510,12 +6599,17 @@ window.addEventListener(
 
 );
 
+
 verificarEndereco();
+
 
 atualizarSom();
 
+
 </script>
 
+
 </body>
+
 
 </html>
