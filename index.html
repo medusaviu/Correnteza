@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="pt-BR">
@@ -3513,6 +3514,455 @@ nav button.ativo::after {
 }
 
 
+ 
+
+/* ===========================================================
+
+   AJUSTES FINAIS — RIO, DOCUMENTAÇÃO E GALERIAS COM PROFUNDIDADE
+
+   =========================================================== */
+
+#linha-do-tempo .tempo-visual {display:none!important;}
+
+#linha-do-tempo .tempo-ano {
+
+  font-size:clamp(48px,6.4vw,98px)!important;
+
+  line-height:1.04!important;
+
+  letter-spacing:-.012em!important;
+
+  overflow-wrap:normal!important;
+
+  white-space:nowrap;
+
+}
+
+#linha-do-tempo .tempo-ano.intervalo {font-size:clamp(42px,4.6vw,72px)!important;}
+
+#linha-do-tempo .tempo-evento,
+
+#linha-do-tempo .tempo-evento.esquerda,
+
+#linha-do-tempo .tempo-evento.direita {
+
+  min-height:clamp(275px,29vw,390px);
+
+  padding:46px 0;
+
+}
+
+#linha-do-tempo .tempo-evento.esquerda .tempo-cartao,
+
+#linha-do-tempo .tempo-evento.direita .tempo-cartao,
+
+#linha-do-tempo .tempo-cartao {
+
+  grid-template-columns:minmax(175px,.86fr) minmax(300px,1.25fr);
+
+  gap:clamp(20px,2.6vw,42px);
+
+  width:79%;
+
+}
+
+#linha-do-tempo .tempo-titulo {
+
+  font-family:"Cubao",Impact,sans-serif;
+
+  font-size:clamp(42px,5.3vw,75px);
+
+}
+
+#linha-do-tempo .tempo-subtitulo {
+
+  font-family:"Morisawa",Georgia,serif;
+
+  color:#f5f5f5;
+
+}
+
+#linha-do-tempo .tempo-evento-titulo {
+
+  font-family:"Morisawa",Georgia,serif;
+
+  font-size:clamp(24px,2.3vw,32px);
+
+  line-height:1.18;
+
+}
+
+#linha-do-tempo .tempo-evento-resumo,
+
+#linha-do-tempo .tempo-detalhe p {
+
+  font-family:"Neue Montreal",Arial,sans-serif;
+
+  font-size:clamp(17px,1.4vw,20px);
+
+  line-height:1.55;
+
+}
+
+#linha-do-tempo .tempo-categoria,
+
+#linha-do-tempo .tempo-botao {font-family:"Gordita",Arial,sans-serif;}
+
+#linha-do-tempo .tempo-rio {opacity:1;}
+
+#linha-do-tempo .rio-margem,
+
+#linha-do-tempo .rio-brilho {display:none!important;}
+
+#linha-do-tempo .rio-agua {
+
+  stroke:#4e719f!important;
+
+  stroke-width:clamp(18px,2.4vw,29px);
+
+  fill:none;
+
+  stroke-linecap:round;
+
+  stroke-linejoin:round;
+
+}
+
+#linha-do-tempo .tempo-fontes {
+
+  max-width:1220px;
+
+  padding:70px 24px 110px;
+
+  text-align:left;
+
+}
+
+#linha-do-tempo .tempo-fontes > h3 {
+
+  text-align:center;
+
+  font-family:"Morisawa",Georgia,serif;
+
+  font-size:clamp(29px,3.2vw,46px);
+
+  font-weight:400;
+
+  color:#fff;
+
+  margin-bottom:18px;
+
+}
+
+#linha-do-tempo .tempo-fontes > p {
+
+  text-align:center;
+
+  max-width:760px;
+
+  margin:0 auto 38px;
+
+  font-size:17px;
+
+  line-height:1.55;
+
+}
+
+#linha-do-tempo .tempo-fontes-grade {
+
+  display:grid;
+
+  grid-template-columns:repeat(3,minmax(0,1fr));
+
+  gap:18px;
+
+}
+
+#linha-do-tempo .tempo-fonte-quadro {
+
+  padding:29px 23px;
+
+  background:#101520;
+
+  border:1px solid rgba(151,176,216,.34);
+
+  border-radius:16px;
+
+  overflow-wrap:anywhere;
+
+}
+
+#linha-do-tempo .tempo-fonte-quadro h4 {
+
+  font-family:"Morisawa",Georgia,serif;
+
+  font-size:clamp(22px,2.2vw,28px);
+
+  line-height:1.2;
+
+  font-weight:400;
+
+  margin-bottom:22px;
+
+}
+
+#linha-do-tempo .tempo-fonte-quadro p {
+
+  color:#d5d9e0;
+
+  font-family:"Neue Montreal",Arial,sans-serif;
+
+  font-size:15px;
+
+  line-height:1.55;
+
+  text-align:left;
+
+  margin-bottom:20px;
+
+}
+
+#linha-do-tempo .tempo-fonte-quadro p:last-child {margin-bottom:0;}
+
+#linha-do-tempo .tempo-fonte-quadro a {
+
+  color:#b5caec;
+
+  text-decoration:underline;
+
+  text-underline-offset:3px;
+
+}
+
+/* Gallery layout: centered artwork with angled neighboring works */
+
+.biruta-galeria[data-galeria-3d],
+
+.abdias-galeria[data-galeria-3d],
+
+.caatingayro-galeria[data-galeria-3d] {
+
+  position:relative!important;
+
+  left:50%!important;
+
+  transform:translateX(-50%)!important;
+
+  margin:75px 0 90px!important;
+
+  padding:15px 0 0!important;
+
+  width:100vw!important;
+
+  max-width:none!important;
+
+  overflow:hidden!important;
+
+}
+
+[data-galeria-3d] h2, [data-galeria-3d] h3 {
+
+  text-align:center!important;
+
+  font-family:"Morisawa",Georgia,serif!important;
+
+  font-size:clamp(27px,3.1vw,42px)!important;
+
+  font-weight:400!important;
+
+  margin:0 22px 16px!important;
+
+  padding:0!important;
+
+}
+
+[data-galeria-3d] .biruta-galeria-janela,
+
+[data-galeria-3d] .abdias-galeria-janela,
+
+[data-galeria-3d] .caatingayro-galeria-janela {
+
+  width:100vw!important;
+
+  overflow:hidden!important;
+
+  perspective:1300px;
+
+  height:clamp(295px,37vw,510px)!important;
+
+  margin:0!important;
+
+  padding:0!important;
+
+}
+
+[data-galeria-3d] .biruta-galeria-trilho,
+
+[data-galeria-3d] .abdias-galeria-trilho,
+
+[data-galeria-3d] .caatingayro-galeria-trilho {
+
+  position:relative!important;
+
+  display:block!important;
+
+  width:100%!important;
+
+  height:100%!important;
+
+  transform:none!important;
+
+  animation:none!important;
+
+  padding:0!important;
+
+  margin:0!important;
+
+}
+
+[data-galeria-3d] figure,
+
+[data-galeria-3d] .biruta-galeria-item,
+
+[data-galeria-3d] .abdias-galeria-item,
+
+[data-galeria-3d] .caatingayro-galeria-item {
+
+  position:absolute!important;
+
+  top:8%!important;
+
+  left:50%!important;
+
+  width:clamp(170px,22vw,340px)!important;
+
+  height:84%!important;
+
+  padding:0!important;
+
+  margin:0!important;
+
+  flex:none!important;
+
+  background:#111!important;
+
+  overflow:hidden!important;
+
+  transform-origin:center!important;
+
+  transform:translateX(-50%) translateX(calc(var(--pos,0) * clamp(150px,23vw,380px)))
+
+    translateZ(calc(-1 * var(--abs,0) * 105px)) rotateY(calc(var(--pos,0) * -16deg))
+
+    scale(calc(1 - var(--abs,0) * .075))!important;
+
+  opacity:calc(1 - var(--abs,0) * .13)!important;
+
+  z-index:var(--depth,5)!important;
+
+  visibility:var(--show,visible)!important;
+
+  box-shadow:0 18px 38px rgba(0,0,0,.43);
+
+  transition:transform .85s cubic-bezier(.2,.7,.18,1),opacity .85s ease,visibility .85s ease!important;
+
+  will-change:transform;
+
+}
+
+[data-galeria-3d] figure img,
+
+[data-galeria-3d] .biruta-galeria-item img,
+
+[data-galeria-3d] .abdias-galeria-item img,
+
+[data-galeria-3d] .caatingayro-galeria-item img {
+
+  display:block;
+
+  width:100%!important;
+
+  height:100%!important;
+
+  min-height:0!important;
+
+  object-fit:cover!important;
+
+  max-width:none!important;
+
+  max-height:none!important;
+
+  border-radius:0!important;
+
+  padding:0!important;
+
+}
+
+.galeria-3d-indicador {
+
+  font-family:"Gordita",Arial,sans-serif;
+
+  font-size:11px;
+
+  color:#adb4c1;
+
+  text-align:center;
+
+  letter-spacing:.13em;
+
+  padding:6px 0 20px;
+
+}
+
+@media(max-width:1040px) {
+
+  #linha-do-tempo .tempo-evento.esquerda .tempo-cartao,
+
+  #linha-do-tempo .tempo-evento.direita .tempo-cartao,
+
+  #linha-do-tempo .tempo-cartao {grid-template-columns:1fr;gap:16px;}
+
+  #linha-do-tempo .tempo-fontes-grade {grid-template-columns:1fr 1fr;}
+
+}
+
+@media(max-width:700px) {
+
+  #linha-do-tempo .tempo-fontes-grade {grid-template-columns:1fr;}
+
+  #linha-do-tempo .tempo-evento.esquerda .tempo-cartao,
+
+  #linha-do-tempo .tempo-evento.direita .tempo-cartao,
+
+  #linha-do-tempo .tempo-cartao {width:80%;grid-template-columns:1fr;}
+
+  #linha-do-tempo .tempo-ano {font-size:clamp(43px,10vw,75px)!important;}
+
+  #linha-do-tempo .tempo-evento-titulo {font-size:23px;}
+
+  #linha-do-tempo .tempo-evento-resumo,
+
+  #linha-do-tempo .tempo-detalhe p {font-size:17px;}
+
+  #linha-do-tempo .rio-agua {stroke-width:17px;}
+
+  [data-galeria-3d] figure {width:clamp(165px,52vw,260px)!important;
+
+    transform:translateX(-50%) translateX(calc(var(--pos,0) * 57vw))
+
+      translateZ(calc(-1 * var(--abs,0) * 85px)) rotateY(calc(var(--pos,0) * -15deg))
+
+      scale(calc(1 - var(--abs,0) * .09))!important;}
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+  [data-galeria-3d] figure {transition:none!important;}
+
+}
+
+
 </style>
 
 
@@ -4406,7 +4856,6 @@ nav button.ativo::after {
 
 <div class="tempo-cartao"><span aria-label="Ano: 1975" class="tempo-ano">1975</span><div class="tempo-informacoes">
 
-
 <h3 class="tempo-evento-titulo">Descentralização Estadual em Pernambuco (Fundarpe)</h3>
 
 <p class="tempo-evento-resumo">Governo: Eraldo Gueiros / Moura Cavalcanti (Pernambuco)</p>
@@ -4423,17 +4872,6 @@ nav button.ativo::after {
 
 </div></div>
 
-<div class="tempo-visual">
-
-<figure>
-
-<img alt="Construção da Barragem de Sobradinho" src="./imagens/construção da Barragem.png.png"/>
-
-<figcaption>Transformações do território nos anos 1970</figcaption>
-
-</figure>
-
-</div>
 
 </div>
 
@@ -4442,7 +4880,6 @@ nav button.ativo::after {
 <div class="tempo-evento direita revelar">
 
 <div class="tempo-cartao"><span aria-label="Ano: 1986" class="tempo-ano">1986</span><div class="tempo-informacoes">
-
 
 <h3 class="tempo-evento-titulo">O Primeiro Palco Oficial em Juazeiro</h3>
 
@@ -4468,7 +4905,6 @@ nav button.ativo::after {
 
 <div class="tempo-cartao"><span aria-label="Ano: 1991" class="tempo-ano">1991</span><div class="tempo-informacoes">
 
-
 <h3 class="tempo-evento-titulo">A Lei Rouanet e o Mecenato Federal</h3>
 
 <p class="tempo-evento-resumo">Governo: Fernando Collor de Mello</p>
@@ -4490,7 +4926,6 @@ nav button.ativo::after {
 <div class="tempo-evento direita revelar">
 
 <div class="tempo-cartao"><span aria-label="Ano: 1995" class="tempo-ano">1995</span><div class="tempo-informacoes">
-
 
 <h3 class="tempo-evento-titulo">O Teatro Dona Amélia em Petrolina</h3>
 
@@ -4516,7 +4951,6 @@ nav button.ativo::after {
 
 <div class="tempo-cartao"><span aria-label="Ano: 1996" class="tempo-ano">1996</span><div class="tempo-informacoes">
 
-
 <h3 class="tempo-evento-titulo">O Primeiro Mecanismo da Bahia (Fazcultura)</h3>
 
 <p class="tempo-evento-resumo">Governo: Paulo Souto (Bahia)</p>
@@ -4540,7 +4974,6 @@ nav button.ativo::after {
 <div class="tempo-evento direita revelar">
 
 <div class="tempo-cartao"><span aria-label="Ano: 2002" class="tempo-ano">2002</span><div class="tempo-informacoes">
-
 
 <h3 class="tempo-evento-titulo">A Revolução do Repasse Direto (Funcultura-PE)</h3>
 
@@ -4566,7 +4999,6 @@ nav button.ativo::after {
 
 <div class="tempo-cartao"><span aria-label="Ano: 2005" class="tempo-ano">2005</span><div class="tempo-informacoes">
 
-
 <h3 class="tempo-evento-titulo">O Fundo de Cultura da Bahia (FCBA) e os Editais Territoriais</h3>
 
 <p class="tempo-evento-resumo">Governo: Paulo Souto / consolidação na gestão Jaques Wagner (Bahia)</p>
@@ -4587,8 +5019,7 @@ nav button.ativo::after {
 
 <div class="tempo-evento direita revelar">
 
-<div class="tempo-cartao"><span aria-label="Ano: 2005 - 2010" class="tempo-ano">2005 - 2010</span><div class="tempo-informacoes">
-
+<div class="tempo-cartao"><span aria-label="Ano: 2005 - 2010" class="tempo-ano intervalo">2005 - 2010</span><div class="tempo-informacoes">
 
 <h3 class="tempo-evento-titulo">Cultura Viva, Pontos de Cultura e Editais Funarte</h3>
 
@@ -4614,7 +5045,6 @@ nav button.ativo::after {
 
 <div class="tempo-cartao"><span aria-label="Ano: 2010" class="tempo-ano">2010</span><div class="tempo-informacoes">
 
-
 <h3 class="tempo-evento-titulo">Legislação Municipal em Juazeiro</h3>
 
 <p class="tempo-evento-resumo">Governo: Isaac Carvalho (Juazeiro)</p>
@@ -4635,8 +5065,7 @@ nav button.ativo::after {
 
 <div class="tempo-evento direita revelar">
 
-<div class="tempo-cartao"><span aria-label="Ano: 2013 - 2015" class="tempo-ano">2013 - 2015</span><div class="tempo-informacoes">
-
+<div class="tempo-cartao"><span aria-label="Ano: 2013 - 2015" class="tempo-ano intervalo">2013 - 2015</span><div class="tempo-informacoes">
 
 <h3 class="tempo-evento-titulo">Fundo de Petrolina e a Entrega do CEU das Águas</h3>
 
@@ -4666,7 +5095,6 @@ nav button.ativo::after {
 
 <div class="tempo-cartao"><span aria-label="Ano: 2020" class="tempo-ano">2020</span><div class="tempo-informacoes">
 
-
 <h3 class="tempo-evento-titulo">Lei Emergencial Aldir Blanc (LAB 1)</h3>
 
 <p class="tempo-evento-resumo">Governo: Jair Bolsonaro (Federal) / Gestões Municipais</p>
@@ -4689,7 +5117,6 @@ nav button.ativo::after {
 
 <div class="tempo-cartao"><span aria-label="Ano: 2023" class="tempo-ano">2023</span><div class="tempo-informacoes">
 
-
 <h3 class="tempo-evento-titulo">Lei Paulo Gustavo (LPG)</h3>
 
 <p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal) / Simão Durando (Petrolina) / Suzana Ramos (Juazeiro)</p>
@@ -4710,8 +5137,7 @@ nav button.ativo::after {
 
 <div class="tempo-evento esquerda revelar">
 
-<div class="tempo-cartao"><span aria-label="Ano: 2024 - 2026" class="tempo-ano">2024 - 2026</span><div class="tempo-informacoes">
-
+<div class="tempo-cartao"><span aria-label="Ano: 2024 - 2026" class="tempo-ano intervalo">2024 - 2026</span><div class="tempo-informacoes">
 
 <h3 class="tempo-evento-titulo">Política Nacional Aldir Blanc (PNAB)</h3>
 
@@ -4733,35 +5159,7 @@ nav button.ativo::after {
 
 <!-- FONTES -->
 
-<div class="tempo-fontes">
-
-<h3>Links Oficiais e Fontes de Informação</h3>
-
-<p>Para consulta, checagem de editais e acervo de dados sobre o fomento em Pernambuco, Bahia e âmbito Federal:</p>
-
-<p><strong>1. Pernambuco &amp; Petrolina:</strong></p>
-
-<p>Portal Fundarpe / Funcultura: <a href="https://www.fundarpe.pe.gov.br" rel="noopener noreferrer" target="_blank">https://www.fundarpe.pe.gov.br</a> (Informações sobre a legislação do Funcultura, resultados de editais e acervo histórico de Pernambuco)</p>
-
-<p>Mapa Cultural de Pernambuco: <a href="https://www.mapacultural.pe.gov.br" rel="noopener noreferrer" target="_blank">https://www.mapacultural.pe.gov.br</a> (Mapeamento georreferenciado de coletivos, Pontos de Cultura e projetos aprovados em Petrolina)</p>
-
-<p>Prefeitura Municipal de Petrolina (Cultura): <a href="https://petrolina.pe.gov.br" rel="noopener noreferrer" target="_blank">https://petrolina.pe.gov.br</a> (Publicações dos editais locais da Lei Paulo Gustavo, PNAB e editais municipais)</p>
-
-<p><strong>2. Bahia &amp; Juazeiro:</strong></p>
-
-<p>Secretaria de Cultura do Estado da Bahia (Secult-BA): <a href="http://www.cultura.ba.gov.br" rel="noopener noreferrer" target="_blank">http://www.cultura.ba.gov.br</a> (Diretrizes do Fazcultura, do Fundo de Cultura da Bahia - FCBA e Editais Territoriais)</p>
-
-<p>SIIC - Sistema de Informações Culturais da Bahia: <a href="http://siic.cultura.ba.gov.br" rel="noopener noreferrer" target="_blank">http://siic.cultura.ba.gov.br</a> (Dados sobre os proponentes e projetos contemplados no Território Sertão do São Francisco)</p>
-
-<p>Prefeitura Municipal de Juazeiro (Cultura): <a href="https://www.juazeiro.ba.gov.br" rel="noopener noreferrer" target="_blank">https://www.juazeiro.ba.gov.br</a> (Editais municipais, publicações da Lei Paulo Gustavo e conselho local)</p>
-
-<p><strong>3. Âmbito Federal:</strong></p>
-
-<p>Ministério da Cultura (MinC) / PNAB / Paulo Gustavo: <a href="https://www.gov.br/cultura" rel="noopener noreferrer" target="_blank">https://www.gov.br/cultura</a> (Painéis de dados sobre os repasses das leis federais e Política Nacional Cultura Viva)</p>
-
-<p>Fundação Nacional de Artes (Funarte): <a href="https://www.gov.br/funarte" rel="noopener noreferrer" target="_blank">https://www.gov.br/funarte</a> (Editais nacionais, prêmios históricos e programas de apoio a ações continuadas)</p>
-
-</div>
+<div class="tempo-fontes"><h3>Links Oficiais e Fontes de Informação</h3><p>Para consulta, checagem de editais e acervo de dados sobre o fomento em Pernambuco, Bahia e âmbito Federal:</p><div class="tempo-fontes-grade"><section class="tempo-fonte-quadro"><h4>Pernambuco &amp; Petrolina</h4><p>Portal Fundarpe / Funcultura: <a href="https://www.fundarpe.pe.gov.br" rel="noopener noreferrer" target="_blank">https://www.fundarpe.pe.gov.br</a> (Informações sobre a legislação do Funcultura, resultados de editais e acervo histórico de Pernambuco)</p><p>Mapa Cultural de Pernambuco: <a href="https://www.mapacultural.pe.gov.br" rel="noopener noreferrer" target="_blank">https://www.mapacultural.pe.gov.br</a> (Mapeamento georreferenciado de coletivos, Pontos de Cultura e projetos aprovados em Petrolina)</p><p>Prefeitura Municipal de Petrolina (Cultura): <a href="https://petrolina.pe.gov.br" rel="noopener noreferrer" target="_blank">https://petrolina.pe.gov.br</a> (Publicações dos editais locais da Lei Paulo Gustavo, PNAB e editais municipais)</p></section><section class="tempo-fonte-quadro"><h4>Bahia &amp; Juazeiro</h4><p>Secretaria de Cultura do Estado da Bahia (Secult-BA): <a href="http://www.cultura.ba.gov.br" rel="noopener noreferrer" target="_blank">http://www.cultura.ba.gov.br</a> (Diretrizes do Fazcultura, do Fundo de Cultura da Bahia - FCBA e Editais Territoriais)</p><p>SIIC - Sistema de Informações Culturais da Bahia: <a href="http://siic.cultura.ba.gov.br" rel="noopener noreferrer" target="_blank">http://siic.cultura.ba.gov.br</a> (Dados sobre os proponentes e projetos contemplados no Território Sertão do São Francisco)</p><p>Prefeitura Municipal de Juazeiro (Cultura): <a href="https://www.juazeiro.ba.gov.br" rel="noopener noreferrer" target="_blank">https://www.juazeiro.ba.gov.br</a> (Editais municipais, publicações da Lei Paulo Gustavo e conselho local)</p></section><section class="tempo-fonte-quadro"><h4>Âmbito Federal</h4><p>Ministério da Cultura (MinC) / PNAB / Paulo Gustavo: <a href="https://www.gov.br/cultura" rel="noopener noreferrer" target="_blank">https://www.gov.br/cultura</a> (Painéis de dados sobre os repasses das leis federais e Política Nacional Cultura Viva)</p><p>Fundação Nacional de Artes (Funarte): <a href="https://www.gov.br/funarte" rel="noopener noreferrer" target="_blank">https://www.gov.br/funarte</a> (Editais nacionais, prêmios históricos e programas de apoio a ações continuadas)</p></section></div></div>
 
 <div class="barquinhos-final"></div>
 
@@ -4823,37 +5221,32 @@ nav button.ativo::after {
 
 <div class="biruta-video revelar"><h3>Leituras dramatizadas 2024 — Fernando de Souza</h3><iframe src="https://www.youtube-nocookie.com/embed/Bwyzng45_a8" title="Leituras dramatizadas 2024 — Fernando de Souza" loading="lazy" allowfullscreen></iframe></div>
 
-<section class="biruta-galeria revelar" aria-label="Galeria de fotos do Núcleo Biruta">
+<section aria-label="Galeria de fotos do Núcleo Biruta" class="biruta-galeria revelar" data-galeria-3d="biruta" tabindex="0">
 
-  <h3>Galeria — NBT</h3>
+<h3>Galeria — NBT</h3>
 
-  <div class="biruta-galeria-janela">
+<div class="biruta-galeria-janela">
 
-    <div class="biruta-galeria-trilho">
+<div aria-roledescription="carrossel de fotografias" class="biruta-galeria-trilho" role="group">
 
-    <figure class="biruta-galeria-item"><img src="./imagens/DSC00055NBT.JPG.jpeg" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
+<figure class="biruta-galeria-item"><img alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" src="./imagens/DSC00055NBT.JPG.jpeg"/></figure>
 
-    <figure class="biruta-galeria-item"><img src="./imagens/FOTO 1 NBT.JPG" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
+<figure class="biruta-galeria-item"><img alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" src="./imagens/FOTO 1 NBT.JPG"/></figure>
 
-    <figure class="biruta-galeria-item"><img src="./imagens/Mostra Biruta 5 anos - 2013.JPG.jpeg" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
+<figure class="biruta-galeria-item"><img alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" src="./imagens/Mostra Biruta 5 anos - 2013.JPG.jpeg"/></figure>
 
-    <figure class="biruta-galeria-item"><img src="./imagens/FERNANDO.PNG.png" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
+<figure class="biruta-galeria-item"><img alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" src="./imagens/FERNANDO.PNG.png"/></figure>
 
-    <figure class="biruta-galeria-item"><img src="./imagens/CAPABIRUTA.PNG.png" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
+<figure class="biruta-galeria-item"><img alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" src="./imagens/CAPABIRUTA.PNG.png"/></figure>
 
-    <figure class="biruta-galeria-item"><img src="./imagens/DSC00055NBT.JPG.jpeg" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
 
-    <figure class="biruta-galeria-item"><img src="./imagens/FOTO 1 NBT.JPG" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
 
-    <figure class="biruta-galeria-item"><img src="./imagens/Mostra Biruta 5 anos - 2013.JPG.jpeg" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
 
-    <figure class="biruta-galeria-item"><img src="./imagens/FERNANDO.PNG.png" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
 
-    <figure class="biruta-galeria-item"><img src="./imagens/CAPABIRUTA.PNG.png" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
@@ -4940,59 +5333,49 @@ nav button.ativo::after {
 
   </article>
 
-  <section class="abdias-galeria revelar" aria-label="Galeria da II Mostra Abdias">
+  <section aria-label="Galeria da II Mostra Abdias" class="abdias-galeria revelar" data-galeria-3d="abdias" tabindex="0">
 
-    <h2>Galeria — II Mostra Abdias</h2>
+<h2>Galeria — II Mostra Abdias</h2>
 
-    <div class="abdias-galeria-janela">
+<div class="abdias-galeria-janela">
 
-      <div class="abdias-galeria-trilho">
+<div aria-roledescription="carrossel de fotografias" class="abdias-galeria-trilho" role="group">
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085913.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/Captura de tela 2026-11-21 085913.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085925.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/Captura de tela 2026-11-21 085925.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085932.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/Captura de tela 2026-11-21 085932.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085941.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/Captura de tela 2026-11-21 085941.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085948.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/Captura de tela 2026-11-21 085948.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085957.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/Captura de tela 2026-11-21 085957.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 090016.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/Captura de tela 2026-11-21 090016.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 100509.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/Captura de tela 2026-11-21 100509.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 102137.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/Captura de tela 2026-11-21 102137.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/II MOSTRA ABDIAS.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure>
+<figure class="abdias-galeria-item"><img alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" onerror="this.closest('figure').style.display='none'" src="./imagens/II MOSTRA ABDIAS.png"/></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085913.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085925.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085932.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085941.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085948.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 085957.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 090016.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 100509.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/Captura de tela 2026-11-21 102137.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      <figure class="abdias-galeria-item"><img src="./imagens/II MOSTRA ABDIAS.png" alt="Registro fotográfico da II Mostra Abdias de Teatro" loading="lazy" aria-hidden="true" onerror="this.closest('figure').style.display='none'"></figure>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
-  </section>
+</section>
 
   <article class="abdias-artigo">
 
@@ -5162,29 +5545,24 @@ nav button.ativo::after {
 
 </article>
 
-<section class="caatingayro-galeria revelar" aria-label="Galeria de imagens do Coletivo Caatingayro"><h2>GALERIA — CAATINGAYRO</h2>
+<section aria-label="Galeria de imagens do Coletivo Caatingayro" class="caatingayro-galeria revelar" data-galeria-3d="caatingayro" tabindex="0"><h2>GALERIA — CAATINGAYRO</h2>
 
-<div class="caatingayro-galeria-janela"><div class="caatingayro-galeria-trilho">
+<div class="caatingayro-galeria-janela"><div aria-roledescription="carrossel de fotografias" class="caatingayro-galeria-trilho" role="group">
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/CapaCaatingayro.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+<figure class="caatingayro-galeria-item"><img alt="Registro do Coletivo Caatingayro" loading="lazy" src="./imagens/CapaCaatingayro.png"/></figure>
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/A ideia de coletivo.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+<figure class="caatingayro-galeria-item"><img alt="Registro do Coletivo Caatingayro" loading="lazy" src="./imagens/A ideia de coletivo.png"/></figure>
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/O sucesso de público.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+<figure class="caatingayro-galeria-item"><img alt="Registro do Coletivo Caatingayro" loading="lazy" src="./imagens/O sucesso de público.png"/></figure>
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/Na Praça da Catedral.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+<figure class="caatingayro-galeria-item"><img alt="Registro do Coletivo Caatingayro" loading="lazy" src="./imagens/Na Praça da Catedral.png"/></figure>
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/Crisálida.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+<figure class="caatingayro-galeria-item"><img alt="Registro do Coletivo Caatingayro" loading="lazy" src="./imagens/Crisálida.png"/></figure>
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/CapaCaatingayro.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/A ideia de coletivo.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/O sucesso de público.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/Na Praça da Catedral.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
 
-<figure class="caatingayro-galeria-item"><img src="./imagens/Crisálida.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
 
 </div></div></section>
 
@@ -6604,6 +6982,100 @@ verificarEndereco();
 
 
 atualizarSom();
+
+
+
+/* GALERIAS: carrossel 3D automático, com pausa durante interação */
+
+(function inicializarGalerias3D(){
+
+  document.querySelectorAll('[data-galeria-3d]').forEach(galeria=>{
+
+    const fotos=Array.from(galeria.querySelectorAll('figure'));
+
+    if(!fotos.length) return;
+
+    const contador=document.createElement('p');
+
+    contador.className='galeria-3d-indicador';
+
+    contador.setAttribute('aria-live','off');
+
+    galeria.appendChild(contador);
+
+    let atual=0;
+
+    let pausado=false;
+
+    let intervalo=null;
+
+    function desenhar(){
+
+      fotos.forEach((foto,i)=>{
+
+        let pos=(i-atual+fotos.length)%fotos.length;
+
+        if(pos>fotos.length/2) pos-=fotos.length;
+
+        const distancia=Math.abs(pos);
+
+        foto.style.setProperty('--pos',String(pos));
+
+        foto.style.setProperty('--abs',String(distancia));
+
+        foto.style.setProperty('--depth',String(10-distancia));
+
+        foto.style.setProperty('--show',distancia>2?'hidden':'visible');
+
+        foto.setAttribute('aria-hidden',String(distancia>2));
+
+      });
+
+      contador.textContent=`${atual+1} / ${fotos.length}`;
+
+    }
+
+    function avancar(direcao){atual=(atual+direcao+fotos.length)%fotos.length;desenhar();}
+
+    function comecar(){
+
+      if(intervalo!==null || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      intervalo=setInterval(()=>{if(!pausado && galeria.closest('.pagina.ativa')) avancar(1);},3300);
+
+    }
+
+    function pausar(){pausado=true;}
+
+    function retomar(){pausado=false;}
+
+    galeria.addEventListener('mouseenter',pausar);
+
+    galeria.addEventListener('mouseleave',retomar);
+
+    galeria.addEventListener('focusin',pausar);
+
+    galeria.addEventListener('focusout',retomar);
+
+    galeria.addEventListener('keydown',e=>{
+
+      if(e.key==='ArrowRight'){avancar(1);e.preventDefault();}
+
+      if(e.key==='ArrowLeft'){avancar(-1);e.preventDefault();}
+
+    });
+
+    let x0=null;
+
+    galeria.addEventListener('touchstart',e=>{x0=e.changedTouches[0].screenX;pausar();},{passive:true});
+
+    galeria.addEventListener('touchend',e=>{if(x0!==null){const delta=e.changedTouches[0].screenX-x0;if(Math.abs(delta)>35)avancar(delta<0?1:-1);}x0=null;retomar();},{passive:true});
+
+    desenhar();comecar();
+
+  });
+
+})();
 
 
 </script>
