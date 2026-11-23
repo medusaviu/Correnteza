@@ -2699,6 +2699,154 @@ nav button.ativo::after {
 
 }
 
+/* ABDIAS: GALERIA DE PONTA A PONTA, SEM DESLOCAMENTO HORIZONTAL */
+
+#coletivo-abdias .abdias-galeria {
+
+  position: relative;
+
+  left: 0;
+
+  right: auto;
+
+  width: 100%;
+
+  max-width: none;
+
+  margin: 56px 0 76px;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+}
+
+#coletivo-abdias .abdias-galeria-janela {
+
+  position:relative;
+
+  display:block;
+
+  width:100%;
+
+  max-width:none;
+
+  margin:0;
+
+  overflow:hidden;
+
+}
+
+#coletivo-abdias .abdias-galeria-trilho {
+
+  display:flex;
+
+  align-items:stretch;
+
+  gap:0;
+
+  width:max-content;
+
+  margin:0;
+
+  padding:0;
+
+  animation: abdiasDeslizar 65s linear infinite;
+
+}
+
+#coletivo-abdias .abdias-galeria-trilho .abdias-galeria-item {
+
+  float:none;
+
+  display:block;
+
+  position:relative;
+
+  width:44vw;
+
+  min-width:44vw;
+
+  max-width:none;
+
+  flex:0 0 44vw;
+
+  height:clamp(260px,35vw,520px);
+
+  margin:0;
+
+  padding:0;
+
+  overflow:hidden;
+
+}
+
+#coletivo-abdias .abdias-galeria-item img {
+
+  width:100%; height:100%; object-fit:cover;
+
+  max-height:none;
+
+}
+
+#coletivo-abdias .abdias-audio-reserva {
+
+  width:calc(100% - 48px);
+
+  max-width:850px;
+
+  margin:55px auto 65px;
+
+  padding:26px 28px;
+
+  border:1px solid rgba(166,183,239,.35);
+
+  background:#101018;
+
+  border-radius:16px;
+
+}
+
+#coletivo-abdias .abdias-audio-reserva h3 {
+
+  font-family:"Morisawa",Georgia,serif;
+
+  font-weight:400;
+
+  font-size:clamp(22px,2.6vw,32px);
+
+  margin:0 0 12px;
+
+}
+
+#coletivo-abdias .abdias-audio-reserva p {
+
+  font-family:"Neue Montreal",Arial,sans-serif;
+
+  font-size:15px;
+
+  line-height:1.5;
+
+  color:#c6c6cd;
+
+  margin:0;
+
+}
+
+@media(max-width:700px) {
+
+  #coletivo-abdias .abdias-galeria-trilho .abdias-galeria-item {
+
+    width:85vw;min-width:85vw;flex-basis:85vw;height:310px;
+
+  }
+
+  #coletivo-abdias .abdias-audio-reserva {padding:22px 20px;}
+
+}
+
 </style>
 
 </head>
@@ -4022,6 +4170,16 @@ nav button.ativo::after {
     <p class="revelar">O teatro do Abdias disputa o acesso à cultura e disputa a autoria das narrativas sobre o Vale. Quando corpos negros e periféricos ocupam a cena para contar a própria história, o Sertão deixa de ser paisagem ou cenário de representações feitas de fora. Vira lugar de criação, de memória e de elaboração de futuros.</p>
 
   </article>
+
+  <!-- Espaço reservado para a futura entrevista em áudio com Odilon Neto. -->
+
+  <section class="abdias-audio-reserva revelar" aria-label="Entrevista em áudio com Odilon Neto">
+
+    <h3>Entrevista com Odilon Neto</h3>
+
+    <p>O áudio da entrevista será disponibilizado aqui em breve.</p>
+
+  </section>
 
   <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
 
