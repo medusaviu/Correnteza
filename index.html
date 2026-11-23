@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -620,7 +619,7 @@ nav button.ativo::after {
 }
 
 /* ==================================================
-   RIO COM MEANDROS E BRAÇOS
+   RIO COM MEANDROS
 ================================================== */
 
 .tempo-percurso {
@@ -672,24 +671,6 @@ nav button.ativo::after {
   stroke-linejoin: round;
 }
 
-/* BRAÇOS SECUNDÁRIOS */
-
-.rio-braco {
-  fill: none;
-  stroke: #344a72;
-  stroke-width: 8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.rio-braco-margem {
-  fill: none;
-  stroke: rgba(64,87,133,.12);
-  stroke-width: 13;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
 /* ==================================================
    EVENTOS — CAIXINHAS MENORES
 ================================================== */
@@ -698,9 +679,9 @@ nav button.ativo::after {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-  min-height: 320px;
+  min-height: 255px;
   align-items: center;
-  padding: 25px 0;
+  padding: 18px 0;
 }
 
 .tempo-evento.esquerda .tempo-cartao {
@@ -717,8 +698,8 @@ nav button.ativo::after {
   position: relative;
   z-index: 3;
 
-  max-width: 350px;
-  padding: 20px 20px 19px;
+  max-width: 285px;
+  padding: 15px 16px 14px;
 
   border: 1px solid rgba(166,183,239,.28);
   border-radius: 3px 19px 3px 19px;
@@ -740,7 +721,7 @@ nav button.ativo::after {
 .tempo-ano {
   display: block;
   font-family: "Cubao", Impact, sans-serif;
-  font-size: clamp(39px,4.7vw,61px);
+  font-size: clamp(34px,3.9vw,49px);
   line-height: .95;
   color: var(--azul);
   margin-bottom: 11px;
@@ -758,7 +739,7 @@ nav button.ativo::after {
 
 .tempo-evento-titulo {
   font-family: "Morisawa", Georgia, serif;
-  font-size: clamp(20px,2vw,26px);
+  font-size: clamp(17px,1.65vw,21px);
   line-height: 1.15;
   font-weight: 400;
   margin-bottom: 12px;
@@ -767,8 +748,8 @@ nav button.ativo::after {
 
 .tempo-evento-resumo {
   font-family: "Neue Montreal", Arial, sans-serif;
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 12px;
+  line-height: 1.45;
   color: #dedede;
 }
 
@@ -919,6 +900,7 @@ nav button.ativo::after {
   font-size: 13px;
   line-height: 1.7;
   color: #aaa;
+  margin-bottom: 12px;
 }
 
 .tempo-fontes a {
@@ -1352,27 +1334,19 @@ nav button.ativo::after {
     stroke-width: 4;
   }
 
-  .rio-braco {
-    stroke-width: 6;
-  }
-
-  .rio-braco-margem {
-    stroke-width: 10;
-  }
-
   .tempo-evento {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    min-height: 310px;
-    padding: 30px 0 30px 20px;
+    min-height: 265px;
+    padding: 24px 0 24px 20px;
   }
 
   .tempo-evento.esquerda .tempo-cartao,
   .tempo-evento.direita .tempo-cartao {
     margin: 0;
-    width: min(78%,320px);
+    width: min(76%,285px);
   }
 
   .tempo-evento.direita {
@@ -1382,19 +1356,19 @@ nav button.ativo::after {
   }
 
   .tempo-cartao {
-    padding: 18px 16px;
+    padding: 15px 14px;
   }
 
   .tempo-ano {
-    font-size: 45px;
+    font-size: 38px;
   }
 
   .tempo-evento-titulo {
-    font-size: 21px;
+    font-size: 18px;
   }
 
   .tempo-evento-resumo {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .tempo-visual {
@@ -2044,7 +2018,7 @@ nav button.ativo::after {
 
   <div class="tempo-percurso" id="tempoPercurso">
 
-    <!-- RIO COM MEANDROS E BRAÇOS -->
+    <!-- RIO COM MEANDROS -->
 
     <svg
       class="tempo-rio"
@@ -2064,771 +2038,222 @@ nav button.ativo::after {
 
       <path class="rio-brilho" id="rioBrilho"></path>
 
-      <!-- BRAÇOS SECUNDÁRIOS -->
-
-      <g id="rioBracos"></g>
-
     </svg>
 
-    <!-- ==================================================
-         1975
-    ================================================== -->
-
+    <!-- 1975 -->
     <div class="tempo-evento esquerda revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">1975</span>
-
-        <span class="tempo-categoria">
-          PERNAMBUCO / POLÍTICA CULTURAL
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          A criação da Fundarpe
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          Pernambuco cria a Fundação do Patrimônio Histórico
-          e Artístico de Pernambuco, marco na organização
-          das políticas estaduais de cultura.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">Descentralização Estadual em Pernambuco (Fundarpe)</h3>
+        <p class="tempo-evento-resumo">Governo: Eraldo Gueiros / Moura Cavalcanti (Pernambuco)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            A Fundarpe surge como parte de um esforço de
-            estruturação e descentralização da política cultural,
-            historicamente concentrada na Região Metropolitana
-            do Recife.
-          </p>
-
-          <p>
-            No Sertão do São Francisco, a produção artística
-            continuava fortemente ligada às manifestações
-            comunitárias, aos grêmios, às igrejas e aos
-            encontros organizados pelos próprios moradores.
-          </p>
-
+          <p>Contexto &amp; Mecanismo: Criação da Fundação do Patrimônio Histórico e Artístico de Pernambuco (Fundarpe). Foi o marco inicial para organizar a descentralização dos recursos estaduais de cultura, tentando romper com a concentração na Região Metropolitana do Recife para alcançar o interior.</p>
+          <p>Chão da Cidade: Em 1975, o Sertão do São Francisco vivia as grandes transformações da infraestrutura hídrica e agrícola (construção de Sobradinho e projetos da Codevasf). A arte local existia sem formalização jurídica ou verba pública continuada, operando em grêmios, igrejas e manifestações comunitárias (reisados, quadrilhas e rodas de sanfona).</p>
         </div>
-
       </div>
 
       <div class="tempo-visual">
-
         <figure>
-
-          <img
-            src="./imagens/construção da Barragem.png.png"
-            alt="Construção da Barragem de Sobradinho">
-
-          <figcaption>
-            Transformações do território nos anos 1970
-          </figcaption>
-
+          <img src="./imagens/construção da Barragem.png.png" alt="Construção da Barragem de Sobradinho">
+          <figcaption>Transformações do território nos anos 1970</figcaption>
         </figure>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         1986
-    ================================================== -->
-
+    <!-- 1986 -->
     <div class="tempo-evento direita revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">1986</span>
-
-        <span class="tempo-categoria">
-          JUAZEIRO / EQUIPAMENTO CULTURAL
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          O Centro de Cultura João Gilberto
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          Juazeiro ganha um importante equipamento público
-          para apresentações, encontros e circulação
-          da produção artística regional.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">O Primeiro Palco Oficial em Juazeiro</h3>
+        <p class="tempo-evento-resumo">Governo: João Durval Carneiro (Bahia)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            Inaugurado em novembro de 1986, o Centro de Cultura
-            João Gilberto passou a integrar a estrutura pública
-            de difusão cultural mantida pelo Governo da Bahia.
-          </p>
-
-          <p>
-            Sua existência ampliou as possibilidades de
-            apresentação e encontro, mas também colocou
-            em discussão a concentração dos equipamentos
-            culturais na região central da cidade.
-          </p>
-
+          <p>Equipamento: Inauguração do Centro de Cultura João Gilberto no bairro Santo Antônio (Rua da Stela), em Juazeiro.</p>
+          <p>Impacto: Juazeiro ganha seu primeiro grande equipamento público de difusão mantido pelo Governo da Bahia, tornando-se o coração da produção teatral e musical da margem baiana.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         1991
-    ================================================== -->
-
+    <!-- 1991 -->
     <div class="tempo-evento esquerda revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">1991</span>
-
-        <span class="tempo-categoria">
-          BRASIL / LEGISLAÇÃO FEDERAL
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          A Lei Rouanet
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          A Lei Federal nº 8.313 estabelece mecanismos
-          nacionais de financiamento e incentivo à cultura.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">A Lei Rouanet e o Mecenato Federal</h3>
+        <p class="tempo-evento-resumo">Governo: Fernando Collor de Mello</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            A legislação instituiu o Programa Nacional de Apoio
-            à Cultura, incluindo o Fundo Nacional da Cultura
-            e mecanismos de incentivo fiscal.
-          </p>
-
-          <p>
-            A possibilidade de captar recursos por meio
-            de patrocinadores ampliou caminhos de financiamento,
-            mas também tornou importante a capacidade
-            de elaborar projetos e estabelecer relações
-            com empresas apoiadoras.
-          </p>
-
+          <p>Mecanismo: Instituição da Lei Federal nº 8.313/91 (Lei Rouanet), abrindo a via de captação por renúncia fiscal e pelo Fundo Nacional da Cultura (FNC) para empresas da região.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         1995
-    ================================================== -->
-
+    <!-- 1995 -->
     <div class="tempo-evento direita revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">1995</span>
-
-        <span class="tempo-categoria">
-          PETROLINA / ARTES CÊNICAS
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          O Teatro Dona Amélia
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          O Teatro Dona Amélia, no Sesc Petrolina,
-          passa a integrar a infraestrutura de
-          apresentações e formação artística da cidade.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">O Teatro Dona Amélia em Petrolina</h3>
+        <p class="tempo-evento-resumo">Governo: Fernando Henrique Cardoso (Federal) / Miguel Arraes (Pernambuco)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            O equipamento se tornou uma referência
-            para a circulação de espetáculos e para
-            atividades de formação no Sertão pernambucano.
-          </p>
-
-          <p>
-            A presença de espaços de apresentação
-            estruturados ampliou possibilidades para
-            grupos locais, embora o acesso a eles
-            permanecesse atravessado por desigualdades
-            territoriais.
-          </p>
-
+          <p>Equipamento: Inauguração do Teatro Dona Amélia no Sesc Centro, em Petrolina.</p>
+          <p>Impacto: Torna-se o polo central de difusão das artes cênicas e de formação técnica em elaboração de projetos no Sertão de Pernambuco.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         1996
-    ================================================== -->
-
+    <!-- 1996 -->
     <div class="tempo-evento esquerda revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">1996</span>
-
-        <span class="tempo-categoria">
-          BAHIA / INCENTIVO FISCAL
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          Nasce o Fazcultura
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          A Bahia institui o Programa Estadual de Incentivo
-          ao Patrocínio Cultural, baseado no mecanismo
-          de incentivo fiscal do ICMS.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">O Primeiro Mecanismo da Bahia (Fazcultura)</h3>
+        <p class="tempo-evento-resumo">Governo: Paulo Souto (Bahia)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            Instituído pela Lei nº 7.015/1996,
-            o Fazcultura abriu uma via estadual
-            de financiamento por patrocínio.
-          </p>
-
-          <p>
-            Como o modelo dependia da captação junto
-            às empresas, a distribuição dos recursos
-            encontrava obstáculos para alcançar
-            produtores e grupos do interior.
-          </p>
-
+          <p>Mecanismo: Criação do Programa Estadual de Incentivo ao Patrocínio Cultural (Fazcultura - Lei nº 7.015/96) via abatimento no ICMS.</p>
+          <p>Gargalo: Por exigir captação direta com empresas, o recurso concentrava-se majoritariamente na capital baiana.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         2002
-    ================================================== -->
-
+    <!-- 2002 -->
     <div class="tempo-evento direita revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">2002</span>
-
-        <span class="tempo-categoria">
-          PERNAMBUCO / FOMENTO DIRETO
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          O Funcultura em Pernambuco
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          O fundo estadual amplia a possibilidade
-          de financiamento direto da produção
-          artística por meio de editais públicos.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">A Revolução do Repasse Direto (Funcultura-PE)</h3>
+        <p class="tempo-evento-resumo">Governo: Jarbas Vasconcelos (Pernambuco)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            O Funcultura representa uma mudança
-            na estrutura do fomento pernambucano,
-            permitindo a seleção de projetos
-            por mecanismos públicos.
-          </p>
-
-          <p>
-            Para artistas do Sertão, os editais
-            abriram novas possibilidades de apoio,
-            ao mesmo tempo que trouxeram exigências
-            de documentação, planejamento e
-            prestação de contas.
-          </p>
-
+          <p>Mecanismo: Instituição do Fundo Pernambucano de Incentivo à Cultura (Funcultura - Lei nº 12.300/02).</p>
+          <p>Impacto em Petrolina: Mudança de chave histórica: o fundo passa a repassar recursos diretos do ICMS via editais públicos sem exigir intermediação privada nem busca de patrocínio empresarial, impulsionando a formalização dos grupos locais com CNPJ.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         2005
-    ================================================== -->
-
+    <!-- 2005 -->
     <div class="tempo-evento esquerda revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">2005</span>
-
-        <span class="tempo-categoria">
-          BAHIA / FUNDO ESTADUAL
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          O Fundo de Cultura da Bahia
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          A criação do Fundo de Cultura da Bahia
-          fortalece os mecanismos de financiamento
-          público de projetos culturais.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">O Fundo de Cultura da Bahia (FCBA) e os Editais Territoriais</h3>
+        <p class="tempo-evento-resumo">Governo: Paulo Souto / consolidação na gestão Jaques Wagner (Bahia)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            Criado pela Lei nº 9.431/2005,
-            o Fundo de Cultura da Bahia passou
-            a integrar a estrutura de apoio
-            à produção cultural do estado.
-          </p>
-
-          <p>
-            Os editais territoriais representam
-            uma possibilidade de descentralizar
-            recursos e contemplar iniciativas
-            do Sertão do São Francisco.
-          </p>
-
+          <p>Mecanismo: Criação do FCBA (Lei nº 9.431/05), permitindo a injeção de verba direta via editais públicos e garantindo cotas específicas para o Território de Identidade do Sertão do São Francisco.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         2005–2010
-    ================================================== -->
-
+    <!-- 2005 - 2010 -->
     <div class="tempo-evento direita revelar">
-
       <div class="tempo-cartao">
-
-        <span class="tempo-ano">2005–2010</span>
-
-        <span class="tempo-categoria">
-          BRASIL / CULTURA COMUNITÁRIA
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          Cultura Viva e Pontos de Cultura
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          Iniciativas comunitárias passam a encontrar
-          novas possibilidades de reconhecimento
-          e apoio nas políticas federais de cultura.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <span class="tempo-ano">2005 - 2010</span>
+        <h3 class="tempo-evento-titulo">Cultura Viva, Pontos de Cultura e Editais Funarte</h3>
+        <p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            O Programa Cultura Viva e os Pontos de Cultura
-            ampliaram o reconhecimento de práticas
-            culturais desenvolvidas por grupos comunitários.
-          </p>
-
-          <p>
-            No mesmo período, prêmios e editais da
-            Funarte, como Myriam Muniz, Klauss Vianna
-            e Pixinguinha, integraram as oportunidades
-            nacionais de fomento às artes.
-          </p>
-
-          <p>
-            O material de referência destaca o impacto
-            dessas políticas sobre iniciativas de
-            periferias e áreas rurais de Petrolina
-            e Juazeiro.
-          </p>
-
+          <p>Mecanismo: Consolidação da Política Nacional Cultura Viva e difusão dos prêmios federais da Funarte (Myriam Muniz, Klauss Vianna, Pixinguinha).</p>
+          <p>Impacto no Território: Coletivos das periferias e da zona rural de Petrolina e Juazeiro passam a ser reconhecidos como Pontos de Cultura, recebendo convênios diretos para manutenção de sedes e equipamentos.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         2010
-    ================================================== -->
-
+    <!-- 2010 -->
     <div class="tempo-evento esquerda revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">2010</span>
-
-        <span class="tempo-categoria">
-          JUAZEIRO / LEGISLAÇÃO MUNICIPAL
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          Incentivo municipal à cultura
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          Juazeiro avança na regulamentação
-          de mecanismos locais de incentivo
-          e apoio à produção cultural.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">Legislação Municipal em Juazeiro</h3>
+        <p class="tempo-evento-resumo">Governo: Isaac Carvalho (Juazeiro)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            O documento de referência identifica
-            a Lei Municipal nº 2.158/2010
-            como parte da estruturação do
-            incentivo cultural em Juazeiro.
-          </p>
-
-          <p>
-            Entre as atividades mencionadas estão
-            feiras literárias, manifestações
-            tradicionais e quadrilhas.
-          </p>
-
+          <p>Mecanismo: Regulamentação da Lei Municipal de Incentivo à Cultura (Lei nº 2.158/10), estruturando editais locais para feiras literárias, manifestações tradicionais e quadrilhas.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         2013–2015
-    ================================================== -->
-
+    <!-- 2013 - 2015 -->
     <div class="tempo-evento direita revelar">
-
       <div class="tempo-cartao">
-
-        <span class="tempo-ano">2013–2015</span>
-
-        <span class="tempo-categoria">
-          PETROLINA E JUAZEIRO / TERRITÓRIO
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          Os CEUs das Águas
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          Equipamentos culturais e esportivos
-          ampliam a infraestrutura disponível
-          em bairros fora dos centros tradicionais.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <span class="tempo-ano">2013 - 2015</span>
+        <h3 class="tempo-evento-titulo">Fundo de Petrolina e a Entrega do CEU das Águas</h3>
+        <p class="tempo-evento-resumo">Governo: Julio Lóssio (Petrolina) / Isaac Carvalho (Juazeiro) / Dilma Rousseff (Federal)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            O documento situa nesse período
-            a entrega de equipamentos do programa
-            Centros de Artes e Esportes Unificados.
-          </p>
-
-          <p>
-            Em Petrolina, destaca o equipamento
-            do bairro Rio Corrente, que abriga
-            o Cineteatro Massangano.
-          </p>
-
-          <p>
-            Em Juazeiro, menciona a Praça CEU
-            no bairro Tabuleiro.
-          </p>
-
-          <p>
-            A ampliação desses espaços contribuiu
-            para descentralizar oficinas,
-            apresentações e atividades
-            de formação cultural.
-          </p>
-
+          <p>Equipamentos: Entrega dos Centros de Artes e Esportes Unificados (CEUs das Águas), programa de infraestrutura do Governo Federal (PAC 2) que viabilizou equipamentos culturais nas periferias de ambas as cidades:</p>
+          <p>Em Petrolina: Erguido no bairro Rio Corrente (zona oeste), abrigando o Cineteatro Massangano.</p>
+          <p>Em Juazeiro: Erguido no bairro Tabuleiro, estruturando a Praça CEU.</p>
+          <p>Impacto: Ocupação contínua por grupos independentes (como a Cia Biruta, que passou a gestar e realizar suas formações no Cineteatro Massangano), além da descentralização de oficinas, percussão, artes visuais e difusão artística para fora dos eixos centrais de Petrolina e Juazeiro.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         2020
-    ================================================== -->
-
+    <!-- 2020 -->
     <div class="tempo-evento esquerda revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">2020</span>
-
-        <span class="tempo-categoria">
-          BRASIL / EMERGÊNCIA CULTURAL
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          A Lei Aldir Blanc
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          Durante a pandemia, recursos emergenciais
-          passam a apoiar trabalhadores e espaços
-          culturais afetados pela paralisação
-          das atividades presenciais.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">Lei Emergencial Aldir Blanc (LAB 1)</h3>
+        <p class="tempo-evento-resumo">Governo: Jair Bolsonaro (Federal) / Gestões Municipais</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            A Lei Aldir Blanc estabeleceu medidas
-            emergenciais de apoio ao setor cultural
-            durante a pandemia de Covid-19.
-          </p>
-
-          <p>
-            Os repasses federais para estados
-            e municípios permitiram ações
-            de manutenção de espaços culturais
-            e apoio a artistas e coletivos.
-          </p>
-
+          <p>Mecanismo: Injeção direta de recursos emergenciais federais repassados a estados e municípios para manutenção de espaços e prêmios a artistas durante a pandemia.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         2023
-    ================================================== -->
-
+    <!-- 2023 -->
     <div class="tempo-evento direita revelar">
-
       <div class="tempo-cartao">
-
         <span class="tempo-ano">2023</span>
-
-        <span class="tempo-categoria">
-          BRASIL / RECURSOS FEDERAIS
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          A Lei Paulo Gustavo
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          Os recursos federais ampliam o financiamento
-          cultural, com destaque para o audiovisual
-          e para ações afirmativas.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <h3 class="tempo-evento-titulo">Lei Paulo Gustavo (LPG)</h3>
+        <p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal) / Simão Durando (Petrolina) / Suzana Ramos (Juazeiro)</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            A Lei Complementar nº 195/2022,
-            conhecida como Lei Paulo Gustavo,
-            viabilizou repasses para o setor cultural.
-          </p>
-
-          <p>
-            Segundo o documento utilizado nesta
-            linha do tempo, Petrolina recebeu
-            aproximadamente R$ 2,8 milhões
-            e Juazeiro cerca de R$ 1,9 milhão.
-          </p>
-
-          <p>
-            Os valores apresentados são aproximados
-            e devem ser conferidos nos painéis
-            oficiais antes da publicação definitiva.
-          </p>
-
+          <p>Mecanismo: Maior aporte direto da história cultural do país (Lei Complementar nº 195/2022). Petrolina recebeu cerca de R$ 2,8 milhões e Juazeiro aproximadamente R$ 1,9 milhão, priorizando o audiovisual e cotas étnico-raciais/periféricas.</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- ==================================================
-         2024–2026
-    ================================================== -->
-
+    <!-- 2024 - 2026 -->
     <div class="tempo-evento esquerda revelar">
-
       <div class="tempo-cartao">
-
-        <span class="tempo-ano">2024–2026</span>
-
-        <span class="tempo-categoria">
-          BRASIL / CONTINUIDADE DO FOMENTO
-        </span>
-
-        <h3 class="tempo-evento-titulo">
-          Política Nacional Aldir Blanc
-        </h3>
-
-        <p class="tempo-evento-resumo">
-          A PNAB passa a estruturar repasses
-          continuados para políticas culturais,
-          editais, equipamentos e iniciativas
-          comunitárias.
-        </p>
-
-        <button
-          class="tempo-botao"
-          type="button"
-          aria-expanded="false">
-          CONHEÇA ESSE MARCO <span>+</span>
-        </button>
-
+        <span class="tempo-ano">2024 - 2026</span>
+        <h3 class="tempo-evento-titulo">Política Nacional Aldir Blanc (PNAB)</h3>
+        <p class="tempo-evento-resumo">Governo: Luiz Inácio Lula da Silva (Federal) / Gestões Estaduais e Municipais</p>
+        <button class="tempo-botao" type="button" aria-expanded="false">CONHEÇA ESSE MARCO <span>+</span></button>
         <div class="tempo-detalhe">
-
-          <p>
-            A Política Nacional Aldir Blanc
-            representa uma nova etapa na organização
-            dos repasses federais para a cultura.
-          </p>
-
-          <p>
-            O material destaca a continuidade
-            do financiamento de editais,
-            reformas de equipamentos e ações
-            ligadas à Rede de Pontos de Cultura.
-          </p>
-
-          <p>
-            Em Juazeiro, a execução dos recursos
-            e o funcionamento dos mecanismos
-            municipais de participação e controle
-            social também se tornaram objeto
-            de mobilização de trabalhadores
-            da cultura em novembro de 2026.
-          </p>
-
+          <p>Mecanismo: Garantia de repasses anuais contínuos até 2027 para editais locais, reformas de equipamentos e fortalecimento da Rede de Pontos de Cultura.</p>
         </div>
-
       </div>
 
     </div>
-
   </div>
 
   <!-- FONTES -->
-
   <div class="tempo-fontes">
-
-    <p>
-      Linha do tempo elaborada a partir do documento
-      <em>Fomento Cultural nas Margens do Velho Chico</em>.
-      Para consulta e conferência dos marcos,
-      visite os portais da
-      <a
-        href="https://www.fundarpe.pe.gov.br"
-        target="_blank"
-        rel="noopener noreferrer">Fundarpe</a>,
-      da
-      <a
-        href="https://www.gov.br/cultura"
-        target="_blank"
-        rel="noopener noreferrer">Ministério da Cultura</a>
-      e da
-      <a
-        href="https://www.gov.br/funarte"
-        target="_blank"
-        rel="noopener noreferrer">Funarte</a>.
-    </p>
-
+    <h3>Links Oficiais e Fontes de Informação</h3>
+    <p>Para consulta, checagem de editais e acervo de dados sobre o fomento em Pernambuco, Bahia e âmbito Federal:</p>
+    <p><strong>1. Pernambuco &amp; Petrolina:</strong></p>
+    <p>Portal Fundarpe / Funcultura: <a href="https://www.fundarpe.pe.gov.br" target="_blank" rel="noopener noreferrer">https://www.fundarpe.pe.gov.br</a> (Informações sobre a legislação do Funcultura, resultados de editais e acervo histórico de Pernambuco)</p>
+    <p>Mapa Cultural de Pernambuco: <a href="https://www.mapacultural.pe.gov.br" target="_blank" rel="noopener noreferrer">https://www.mapacultural.pe.gov.br</a> (Mapeamento georreferenciado de coletivos, Pontos de Cultura e projetos aprovados em Petrolina)</p>
+    <p>Prefeitura Municipal de Petrolina (Cultura): <a href="https://petrolina.pe.gov.br" target="_blank" rel="noopener noreferrer">https://petrolina.pe.gov.br</a> (Publicações dos editais locais da Lei Paulo Gustavo, PNAB e editais municipais)</p>
+    <p><strong>2. Bahia &amp; Juazeiro:</strong></p>
+    <p>Secretaria de Cultura do Estado da Bahia (Secult-BA): <a href="http://www.cultura.ba.gov.br" target="_blank" rel="noopener noreferrer">http://www.cultura.ba.gov.br</a> (Diretrizes do Fazcultura, do Fundo de Cultura da Bahia - FCBA e Editais Territoriais)</p>
+    <p>SIIC - Sistema de Informações Culturais da Bahia: <a href="http://siic.cultura.ba.gov.br" target="_blank" rel="noopener noreferrer">http://siic.cultura.ba.gov.br</a> (Dados sobre os proponentes e projetos contemplados no Território Sertão do São Francisco)</p>
+    <p>Prefeitura Municipal de Juazeiro (Cultura): <a href="https://www.juazeiro.ba.gov.br" target="_blank" rel="noopener noreferrer">https://www.juazeiro.ba.gov.br</a> (Editais municipais, publicações da Lei Paulo Gustavo e conselho local)</p>
+    <p><strong>3. Âmbito Federal:</strong></p>
+    <p>Ministério da Cultura (MinC) / PNAB / Paulo Gustavo: <a href="https://www.gov.br/cultura" target="_blank" rel="noopener noreferrer">https://www.gov.br/cultura</a> (Painéis de dados sobre os repasses das leis federais e Política Nacional Cultura Viva)</p>
+    <p>Fundação Nacional de Artes (Funarte): <a href="https://www.gov.br/funarte" target="_blank" rel="noopener noreferrer">https://www.gov.br/funarte</a> (Editais nacionais, prêmios históricos e programas de apoio a ações continuadas)</p>
   </div>
 
   <div class="barquinhos-final"></div>
@@ -3384,7 +2809,6 @@ document.querySelectorAll(".tempo-botao").forEach(
    DESENHO DO RIO
 
    MEANDROS MAIS ACENTUADOS
-   BRAÇOS SECUNDÁRIOS
    SEM TRACEJADO
 ================================================== */
 
@@ -3406,10 +2830,6 @@ const rioAgua = document.getElementById(
 
 const rioBrilho = document.getElementById(
   "rioBrilho"
-);
-
-const rioBracos = document.getElementById(
-  "rioBracos"
 );
 
 let desenhoRioPendente = false;
@@ -3527,90 +2947,6 @@ function desenharRio() {
   rioAgua.setAttribute("d", caminho);
   rioBrilho.setAttribute("d", caminho);
 
-  /* BRAÇOS DO RIO */
-
-  rioBracos.innerHTML = "";
-
-  const svgNS = "http://www.w3.org/2000/svg";
-
-  const indicesBracos = [2, 4, 6, 8, 10, 12];
-
-  indicesBracos.forEach((indice, ordem) => {
-
-    if (!pontos[indice]) {
-      return;
-    }
-
-    const ponto = pontos[indice];
-
-    const direcao = ordem % 2 === 0 ? -1 : 1;
-
-    const alcance = largura < 700
-      ? largura * .12
-      : largura * .17;
-
-    const subida = 85 + (ordem % 3) * 30;
-
-    const xFinal =
-      ponto.x + direcao * alcance;
-
-    const yFinal =
-      ponto.y - subida;
-
-    const xControle1 =
-      ponto.x + direcao * alcance * .20;
-
-    const yControle1 =
-      ponto.y - subida * .30;
-
-    const xControle2 =
-      ponto.x + direcao * alcance * .85;
-
-    const yControle2 =
-      ponto.y - subida * .60;
-
-    const caminhoBraco = `
-      M ${ponto.x} ${ponto.y}
-      C
-      ${xControle1} ${yControle1},
-      ${xControle2} ${yControle2},
-      ${xFinal} ${yFinal}
-    `;
-
-    const margem = document.createElementNS(
-      svgNS,
-      "path"
-    );
-
-    margem.setAttribute(
-      "class",
-      "rio-braco-margem"
-    );
-
-    margem.setAttribute(
-      "d",
-      caminhoBraco
-    );
-
-    const agua = document.createElementNS(
-      svgNS,
-      "path"
-    );
-
-    agua.setAttribute(
-      "class",
-      "rio-braco"
-    );
-
-    agua.setAttribute(
-      "d",
-      caminhoBraco
-    );
-
-    rioBracos.appendChild(margem);
-    rioBracos.appendChild(agua);
-
-  });
 
 }
 
