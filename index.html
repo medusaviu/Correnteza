@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="pt-BR">
@@ -3547,6 +3546,24 @@ nav button.ativo::after {
 
 @media(max-width:700px){#voltarTopo {right:13px;bottom:75px;width:35px;height:35px;}}
 
+/* AJUSTES FINAIS: capa, ilustração e término do rio */
+
+.capa-imagem img {
+
+  transform: scale(1.13) rotate(-3deg);
+
+  transform-origin: center center;
+
+}
+
+.ilustracao-cibs {width:330px;margin-right:-105px;}
+
+@media(max-width:1100px) {.ilustracao-cibs {width:290px;margin-right:-75px;}}
+
+@media(max-width:900px) {.ilustracao-cibs {width:255px;margin-right:-40px;}}
+
+@media(max-width:700px) {.ilustracao-cibs {width:185px;margin:12px -18px 10px 8px;}}
+
 </style>
 
 </head>
@@ -5665,11 +5682,21 @@ function desenharRio() {
 
   });
 
+  // Encerrar a correnteza antes do quadro de fontes.
+
+  const quadroFontes = secaoTempo.querySelector('.tempo-fontes');
+
+  const fimDoRio = quadroFontes
+
+    ? quadroFontes.offsetTop - 45
+
+    : altura - 145;
+
   pontos.push({
 
     x: centro,
 
-    y: Math.max(1, altura - 38)
+    y: Math.max(pontos[pontos.length - 1].y + 30, fimDoRio)
 
   });
 
