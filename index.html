@@ -2847,6 +2847,60 @@ nav button.ativo::after {
 
 }
 
+/* CAATINGAYRO: reportagem, fotografias e galeria em movimento */
+
+.caatingayro-capa { width:100%;margin:0 0 40px; }
+
+.caatingayro-capa img { width:100%;max-height:490px;object-fit:cover;object-position:center; }
+
+.caatingayro-cabecalho {max-width:1050px;margin:0 auto;padding:18px 24px 60px;text-align:center;}
+
+.caatingayro-cabecalho h1 {font-family:"Cubao",Impact,sans-serif;font-size:clamp(45px,6vw,85px);font-weight:400;line-height:1.02;}
+
+.caatingayro-cabecalho h2 {font-family:"Morisawa",Georgia,serif;font-size:clamp(22px,3vw,39px);font-weight:400;margin-top:18px;line-height:1.2;}
+
+.caatingayro-artigo {max-width:850px;width:calc(100% - 48px);margin:0 auto;display:flow-root;}
+
+.caatingayro-artigo p {font-family:"Neue Montreal",Arial,sans-serif;font-size:clamp(17px,1.6vw,20px);line-height:1.65;margin:0 0 28px;}
+
+.caatingayro-figura {float:right;width:min(42%,350px);margin:8px 0 24px 25px;}
+
+.caatingayro-figura.esquerda {float:left;margin:8px 25px 24px 0;}
+
+.caatingayro-figura img {width:100%;height:auto;object-fit:contain;}
+
+.caatingayro-figura figcaption {font-family:"Gordita",sans-serif;font-size:11px;color:#bbb;margin-top:8px;}
+
+.caatingayro-barquinhos {clear:both;width:100%;height:76px;margin:48px auto;background:url("./imagens/barquinho.png.png") center/auto 76px repeat-x;}
+
+.caatingayro-artigo blockquote.margem-citacao {clear:both;margin:44px 0 48px;font-family:"Morisawa",Georgia,serif;}
+
+.caatingayro-galeria {clear:both;position:relative;left:0;width:100%;max-width:none;overflow:hidden;padding:0;margin:64px 0 90px;}
+
+.caatingayro-galeria h2 {font-family:"Morisawa",Georgia,serif;font-size:clamp(27px,3.7vw,46px);font-weight:400;text-align:center;margin:0 20px 28px;}
+
+.caatingayro-galeria-janela {overflow:hidden;width:100%;}
+
+.caatingayro-galeria-trilho {display:flex;width:max-content;align-items:stretch;gap:0;animation:caatingayroDeslizar 42s linear infinite;}
+
+.caatingayro-galeria-janela:hover .caatingayro-galeria-trilho {animation-play-state:paused;}
+
+.caatingayro-galeria-item {flex:0 0 42vw;width:42vw;height:clamp(255px,34vw,490px);margin:0;overflow:hidden;}
+
+.caatingayro-galeria-item img {width:100%;height:100%;object-fit:cover;}
+
+@keyframes caatingayroDeslizar {from {transform:translateX(0);} to {transform:translateX(-50%);}}
+
+.caatingayro-audio-reserva {max-width:850px;width:calc(100% - 48px);margin:50px auto 85px;padding:26px;border:1px solid rgba(166,183,239,.35);border-radius:16px;background:#101018;}
+
+.caatingayro-audio-reserva h3 {font-family:"Morisawa",Georgia,serif;font-size:clamp(24px,3vw,34px);font-weight:400;margin:0 0 13px;}
+
+.caatingayro-audio-reserva p {font-family:"Neue Montreal",Arial,sans-serif;color:#c7c7d0;font-size:15px;}
+
+@media(max-width:700px){.caatingayro-figura,.caatingayro-figura.esquerda{float:right;width:48%;margin:8px 0 18px 14px;}.caatingayro-barquinhos{height:58px;background-size:auto 58px;}.caatingayro-galeria-item{width:85vw;flex-basis:85vw;height:310px;}}
+
+@media(prefers-reduced-motion:reduce){.caatingayro-galeria-trilho{animation:none;}}
+
 </style>
 
 </head>
@@ -4195,39 +4249,141 @@ nav button.ativo::after {
 
 <section class="pagina" id="caatingayro">
 
-  <div class="pagina-abertura">
+<figure class="caatingayro-capa revelar"><img src="./imagens/CapaCaatingayro.png" alt="Capa do Coletivo Caatingayro, com Caroles e Yanglit"></figure>
 
-    <h1 class="pagina-titulo">
+<div class="caatingayro-cabecalho revelar"><h1>COLETIVO CAATINGAYRO</h1><h2>YANGLIT, CAROLES E A ARTE DOS ENCONTROS</h2></div>
 
-      CAATINGAYRO
+<article class="caatingayro-artigo">
 
-    </h1>
+<p class="revelar">Eram 27 cadeiras. Quem organizou a sessão fez a conta com otimismo e chegou a esse número: as pessoas que já tinham confirmado presença, mais cinco, no máximo, que aparecessem de última hora. Era noite de 5 de setembro, e a Casa Cores, um ponto de cultura que fica no centro de Petrolina, estava preparada para exibir Crisálida, um curta-metragem independente feito por dois estudantes de Artes Visuais. Do lado de fora, na orla, havia um samba de graça marcado para o mesmo horário. Qualquer pessoa que já tenha tentado encher uma sala em Petrolina, com música ao ar livre competindo, sabe que 27 cadeiras eram uma aposta razoável.</p>
 
-    <p class="pagina-descricao">
+<p class="revelar">Vinte minutos antes de abrir as portas, o público começou a chegar. Não pararam mais. Caroles, uma das responsáveis pela sessão, recorda que foi preciso entrar no escritório da própria casa para trazer as cadeiras de lá. Não bastou. Parte da plateia assistiu ao filme em pé, outra parte sentou no corredor. A conta final varia: entre 50 e 70 pessoas, “quase 70”, diz Caroles, que não parece interessada em acertar o número, e sim em registrar o espanto.</p>
 
-      Arte e outras formas de expressão do território.
+<blockquote class="margem-citacao revelar">“Eu olhava para o Felipe e pensava: ‘meu Deus, o que é que tá acontecendo?’”</blockquote>
 
-    </p>
+<p class="revelar">O Felipe é Yanglit, o outro lado da dupla. Os dois tocam o dia a dia do Coletivo Caatingayro, e se chamam, de brincadeira, de Cris e Greg, em referência ao seriado americano. A sessão não tinha patrocínio, edital nem estrutura. O filme saiu do trabalho voluntário dos dois e da ajuda de amigos. Na semana anterior, com medo do esvaziamento, mandaram um recado pela rede de contatos, bem-humorado e sem margem para negociação: quem for, tem que levar mais três pessoas.</p>
 
-  </div>
+<p class="revelar">Funcionou. Mas o que a cena das cadeiras mostra não é só que um pedido deu certo. Mostra que existia, em Petrolina e Juazeiro, gente disposta a ocupar uma sala para ver um filme feito ali, por gente dali, sobre coisas que raramente chegam a uma tela. A pergunta que esta reportagem tenta responder é de onde saiu essa gente, e o que acontece quando alguém se dá ao trabalho de chamá-la.</p>
 
-  <div class="conteudo">
+<div class="caatingayro-barquinhos revelar" role="img" aria-label="Barquinhos separando os trechos da reportagem"></div>
 
-    <div class="texto">
+<p class="revelar">Em 2023, nos corredores do curso de Licenciatura em Artes Visuais da Universidade Federal do Vale do São Francisco (Univasf), um grupo de estudantes começou a conversar sobre uma sensação comum. A cena artística da região, diziam, girava em circuitos fechados. As mesmas pessoas produziam, circulavam e ocupavam os espaços de reconhecimento. Quem estava fora desse circuito não encontrava a porta, e nem sempre sabia que ela existia.</p>
 
-      <p>
+<p class="revelar">Não houve planejamento institucional, projeto de pesquisa nem um grande plano. Houve, nas palavras do próprio grupo, a vontade de abrir portas, aproximar pessoas e criar outros caminhos para a arte no Vale do São Francisco. Só depois, conversando, perceberam outra coisa que os unia: todos os integrantes daquele núcleo inicial eram LGBTQIAPN+. O interesse comum pela produção artística ganhou então um segundo objetivo, o de construir um lugar onde aquelas vivências pudessem existir, circular e encontrar outras pessoas.</p>
 
-        Espaço reservado para o conteúdo do Caatingayro.
+<p class="revelar">Assim nasceu o Coletivo Caatingayro. O nome junta caatinga, o bioma que domina o Semiárido e com o veado-catingueiro, e brinca com uma sonoridade que dispensa explicação para quem entende.</p>
 
-      </p>
+<p class="revelar">A rotina universitária acabou atravessando os planos do coletivo. Envolvidos em outros projetos acadêmicos, os integrantes precisaram direcionar suas atenções a diferentes atividades da graduação. Depois de uma interrupção e de um processo de reorganização, o coletivo retomou as atividades em 2025, com Caroles e Yanglit à frente da articulação cotidiana.</p>
 
-    </div>
+<figure class="caatingayro-figura revelar"><img src="./imagens/A ideia de coletivo.png" alt="A ideia de coletivo"></figure>
 
-  </div>
+<p class="revelar">A ideia de coletivo, porém, não se limita aos dois que respondem pelo trabalho. O Caatingayro se constrói, dizem, nas parcerias, nas pessoas que chegam, nas conversas iniciadas durante os encontros e nas relações que continuam depois que eles terminam. É uma definição generosa, e que, como toda definição generosa, só se verifica no concreto. O primeiro concreto foi um caderninho.</p>
 
-  <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
+<div class="caatingayro-barquinhos revelar" role="img" aria-label="Barquinhos separando os trechos da reportagem"></div>
 
-  <div class="respiro-rodape"></div>
+<p class="revelar">Yanglit tinha participado de uma oficina rápida com um artista estrangeiro que passava pela região. A proposta era simples e vinha de uma prática conhecida internacionalmente, o urban sketching: escolher um lugar da cidade, olhar devagar, anotar os detalhes (o contorno de um prédio antigo, o vento nas copas das árvores, a conversa de quem passa) e traduzir a cena no papel. Ele voltou encantado e levou a ideia para Caroles. Se o exercício fazia sentido para os dois, estudantes de Artes Visuais, por que não abrir o convite?</p>
+
+<p class="revelar">Batizaram o encontro de Desenho Urbano, tradução direta do termo em inglês. Espalharam cartazes com QR Code pela cidade, divulgaram nas redes sociais e marcaram a estreia para um domingo à tarde, na Orla de Juazeiro. À medida que o horário se aproximava, a dupla foi tomada pela apreensão clássica de quem organiza um evento que ninguém pediu: será que vai aparecer alguém?</p>
+
+<p class="revelar">Apareceu. Quando chegaram ao ponto de encontro, havia um grupo grande esperando, e era diverso. Estudantes de Biologia e Psicologia, artistas experientes e gente que avisava, sem cerimônia, que não sabia desenhar e estava ali por curiosidade.</p>
+
+<figure class="caatingayro-figura revelar"><img src="./imagens/O sucesso de público.png" alt="O sucesso de público"></figure>
+
+<p class="revelar">O sucesso de público trouxe o problema seguinte. A Orla de Juazeiro estava lotada, barulhenta e sob o sol intenso do Sertão num domingo. Não havia um canto tranquilo onde acomodar todo mundo. Caroles e Yanglit tomaram uma decisão de última hora: levar o grupo a pé até a Praça da Catedral.</p>
+
+<p class="revelar">Muitos dos que atenderam ao chamado eram de fora de Juazeiro e não conheciam o caminho. A dupla teve de seguir à frente, indicando o percurso, numa caminhada coletiva debaixo de sol forte. Caroles guarda a cena com um misto de vergonha e riso:</p>
+
+<blockquote class="margem-citacao revelar">“A gente descendo naquele sol e eu olhava para o Felipe e pensava: ‘Meu Deus, que vergonha, a gente fazendo metade dos LGBTs andarem aqui pela orla nesse sol!’. Tinha gente que a gente nem conhecia e conheceu lá na hora. Eu olhava para ele e falava: ‘Amigo, o que é que a gente inventou para a nossa vida?’”</blockquote>
+
+<p class="revelar">A frase tem a graça de uma confissão e a precisão de um diagnóstico. O que aqueles dois “inventaram” era, afinal, uma forma de reunir desconhecidos e pô-los a caminhar juntos pela cidade, rumo a um lugar que ninguém tinha escolhido de antemão. A travessia, que na hora parecia um desastre de organização, virou o primeiro momento de cumplicidade do grupo.</p>
+
+<figure class="caatingayro-figura revelar"><img src="./imagens/Na Praça da Catedral.png" alt="Na Praça da Catedral"></figure>
+
+<p class="revelar">Na Praça da Catedral, as pessoas se espalharam pelos bancos, pelo chão sob as árvores, pelos degraus. Cada uma tirou da bolsa seu papel, sua caneta, sua aquarela, e começou a registrar o que via. Caroles e Yanglit circulavam entre os participantes e perceberam que o encontro tinha virado outra coisa. Quem não queria desenhar fotografava, ou conversava. No fim da tarde, houve um piquenique improvisado, com troca de cadernos: cada um via a praça pelo traço do outro.</p>
+
+<p class="revelar">É fácil descrever essa tarde como “simpática”. A descrição perde o ponto. O que a dupla propunha, ali, era uma arte-educação que não se resume a ensinar técnica de desenho. Era outra relação com o espaço urbano, em que desenhar significa observar, permanecer, compartilhar e reivindicar o direito de ocupar. Que esse direito precise ser reivindicado por um grupo de jovens, boa parte deles LGBTQIAPN+, numa praça central de uma cidade do interior da Bahia, diz algo sobre a cidade, e algo sobre o que o Caatingayro entendeu desde o início sobre o lugar onde atua.</p>
+
+<div class="caatingayro-barquinhos revelar" role="img" aria-label="Barquinhos separando os trechos da reportagem"></div>
+
+<p class="revelar">Para entender por que ocupar importa tanto a esses dois, é preciso ver de onde eles vêm. Eles chegaram à arte por rotas que quase não se tocam.</p>
+
+<p class="revelar">Caroles nasceu e cresceu em Petrolina, mas a Petrolina dela não é a dos cartões-postais. A memória se espalha pelos conjuntos habitacionais, Cohab 6, Cohab 4, e pela Cohab Massangano, onde a família construiu morada. A orla, as vitrines e o discurso de cidade pujante do agronegócio ficam longe desse mapa. O que ela guarda são as ruas, as casas, os vizinhos.</p>
+
+<p class="revelar">Na família, ninguém havia chegado ao ensino superior. A universidade não aparecia como destino evidente, e a arte menos ainda. O primeiro contato com o desenho como prática veio na pandemia de covid-19. Caroles trabalhava, e aos poucos, com o que sobrava do salário, ia comprando material: tintas, aquarelas, papéis de gramatura alta. Aprendia sozinha, testando técnicas, descobrindo o que dava certo. Um dia encontrou no YouTube um curso gratuito de desenho, e algo na maneira como o professor repassava o que sabia mudou seus planos. Aprender, a partir dali, já não bastava. Queria ensinar.</p>
+
+<p class="revelar">A licenciatura em Artes Visuais nasceu desse encontro entre criar e partilhar. A arte deixou de ser apenas o que ela queria aprender e virou também o que poderia oferecer. É difícil exagerar a importância dessa mudança para entender o Caatingayro: o coletivo é, antes de qualquer coisa, a continuação de um gesto que começou com um vídeo e um caderno.</p>
+
+<p class="revelar">Juazeiro entrou na vida dela de forma lateral. Antes da faculdade, a cidade baiana era visita a parentes, ida ao comércio do centro. Quando o ingresso na universidade se aproximou, a curiosidade virou exploração. Caroles começou a percorrer as ruas, descobrir caminhos, sair dos trajetos conhecidos. Chegou a morar lá. A cidade que era passagem virou permanência, e foi onde o coletivo nasceu, o que a leva a chamar Juazeiro de casa do Caatingayro. Não foi um abandono de Petrolina, que continua sendo a cidade dos afetos de infância. Foi, nas palavras do que ela descreve, uma ampliação dos lugares aos quais se pode pertencer.</p>
+
+<p class="revelar">A comparação das orlas é o momento em que isso aparece com mais clareza. A orla de Petrolina, marcada por grandes empreendimentos imobiliários e centros comerciais, parece-lhe distante da experiência de quem vive nos bairros periféricos. A ocupação das margens por edifícios e espaços de alto padrão, somada à poluição do rio, muda a maneira como ela enxerga aquele trecho da cidade. Em Juazeiro, é outra coisa: a grama, os espaços abertos, a circulação de gente. Ali, ocupar não exige muito. Basta chegar, achar um canto, dividir o tempo.</p>
+
+<div class="caatingayro-barquinhos revelar" role="img" aria-label="Barquinhos separando os trechos da reportagem"></div>
+
+<p class="revelar">Yanglit conhece Juazeiro de outra forma: nasceu lá. Passou a infância entre mudanças de endereço, ruas familiares, visitas a parentes espalhados pela cidade. Frequentou bairros como Piranga e João XXIII, e foi aprendendo os caminhos de quem faz da cidade uma extensão da casa. Para ele, Juazeiro nunca foi lugar para descobrir, e sim o chão de onde partiam as experiências.</p>
+
+<p class="revelar">Com a arte foi diferente. Recém-saído do ensino médio, tinha interesse, mas não sabia que caminhos existiam. Foi uma prima quem contou da Licenciatura em Artes Visuais da Univasf. A descoberta o empolgou, com uma ressalva: o nome do curso trazia a possibilidade de virar professor. Tímido naquela época, a ideia de voltar à escola do outro lado, diante de uma turma, parecia assustadora. A curiosidade falou mais alto. Ao conhecer as disciplinas e a variedade de experiências que a graduação oferecia, começou a se imaginar naquele lugar.</p>
+
+<p class="revelar">A universidade abriu portas que ele não esperava. O desenho foi se desdobrando em outras linguagens, até que o audiovisual apareceu como campo de criação: roteiro, direção, produção. A formação que começou como aproximação com as artes visuais o levou a caminhos que ele não sabia que queria percorrer. Um deles terminaria numa sala em Petrolina, com gente sentada no chão.</p>
+
+<p class="revelar">Petrolina, para ele, era um território quase desconhecido. As lembranças se resumiam a idas ao shopping de táxi, um percurso que pouco revelava sobre a vida da cidade. A mudança veio aos poucos: a mãe passou a trabalhar do outro lado, a rotina universitária o levou à Univasf e ao Sesc Petrolina. Descobriu ruas, lugares, referências. Hoje caminha por lá com naturalidade.</p>
+
+<p class="revelar">As diferenças entre as duas cidades, no entanto, permanecem no olhar dele. Quando fala das orlas, descreve em Juazeiro uma relação espontânea entre as pessoas e o rio. Há quem se sente na grama, quem converse, quem entre na água, quem fique olhando o movimento.</p>
+
+<blockquote class="margem-citacao revelar">“Eu chego em Juazeiro vindo de Petrolina e já tem o tempo todo gente na orla tomando banho, tem um povo ali sentado... É uma coisa mais tipo: qualquer momento eu posso descer ali e sentar.”</blockquote>
+
+<p class="revelar">Talvez essa familiaridade com os espaços de convivência ajude a entender o que Yanglit leva para o Caatingayro. Reunir pessoas, ocupar a cidade e transformar lugares cotidianos em espaços de criação passa por reconhecer o território como algo que se vive coletivamente.</p>
+
+<div class="caatingayro-barquinhos revelar" role="img" aria-label="Barquinhos separando os trechos da reportagem"></div>
+
+<figure class="caatingayro-figura revelar"><img src="./imagens/Crisálida.png" alt="Em Crisálida"></figure>
+
+<p class="revelar">Em Crisálida, o trabalho dos dois se juntou. O curta-metragem acompanha Diana, uma mulher atravessada pelo automatismo e pelo cansaço de uma rotina sufocante. Dividida entre as obrigações cotidianas e o isolamento, ela encontra na imensidão do Rio São Francisco e no encontro enigmático com uma sereia uma possibilidade de escapar da realidade imediata. A fantasia conduz a personagem a um processo de transformação, no qual romper o próprio casulo se torna um caminho para descobrir a coragem de voar.</p>
+
+<p class="revelar">Antes de chegar à Casa Cores, o filme passou por outro lugar. Teve pré-estreia em duas sessões especiais numa escola pública do bairro Quidé, em Juazeiro.</p>
+
+<p class="revelar">Levar um curta independente para dentro de uma escola da periferia tem um significado que vai além da logística. Amplia os lugares onde a produção circula e aproxima crianças e jovens de uma possibilidade que o currículo e a vizinhança nem sempre oferecem: a de que fazer cinema é algo que gente como eles pode fazer. A arte, nesse arranjo, deixa de pertencer a um grupo restrito e de depender de uma trajetória previamente reconhecida para começar, que foi a queixa original do coletivo.</p>
+
+<p class="revelar">A circulação por escolas públicas e centros de acolhimento faz parte de um esforço mais amplo. Oficinas, feirinhas e exibições audiovisuais são as ferramentas, e o objetivo é sempre aproximar a produção artística de quem raramente a encontra.</p>
+
+<div class="caatingayro-barquinhos revelar" role="img" aria-label="Barquinhos separando os trechos da reportagem"></div>
+
+<p class="revelar">Há uma dimensão desse trabalho que não aparece nas listas de atividades. Durante uma das feiras em que o coletivo montou sua banca, uma criança trans se aproximou, observou as bandeiras e encontrou nos integrantes uma possibilidade de identificação. Caroles recorda o episódio, também mencionado por Yanglit como um dos momentos que dão sentido à existência de espaços como aquele.</p>
+
+<p class="revelar">O que a cena revela é algo que raramente entra nos registros de uma atividade cultural: o que acontece entre as pessoas quando encontram um ambiente em que se sentem reconhecidas. A arte, aqui, não está apenas no trabalho exposto, no desenho feito ou no filme exibido. Está na possibilidade de criar vínculos e construir espaços de confiança, onde pessoas LGBTQIAPN+ podem encontrar referências, conversar e experimentar formas de existir sem precisar se esconder.</p>
+
+</article>
+
+<section class="caatingayro-galeria revelar" aria-label="Galeria de imagens do Coletivo Caatingayro"><h2>GALERIA — CAATINGAYRO</h2>
+
+<div class="caatingayro-galeria-janela"><div class="caatingayro-galeria-trilho">
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/CapaCaatingayro.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/A ideia de coletivo.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/O sucesso de público.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/Na Praça da Catedral.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/Crisálida.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/CapaCaatingayro.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/A ideia de coletivo.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/O sucesso de público.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/Na Praça da Catedral.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+<figure class="caatingayro-galeria-item"><img src="./imagens/Crisálida.png" alt="Registro do Coletivo Caatingayro" loading="lazy"></figure>
+
+</div></div></section>
+
+<section class="caatingayro-audio-reserva revelar" aria-label="Entrevista com o Coletivo Caatingayro"><h3>Podcast — Entrevista com Caroles e Yanglit</h3><p>Espaço reservado para o áudio da entrevista. O reprodutor será incluído quando o link estiver disponível.</p></section>
+
+<div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
+
+<div class="respiro-rodape"></div>
 
 </section>
 
