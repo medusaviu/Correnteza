@@ -2994,6 +2994,44 @@ nav button.ativo::after {
 
  
 
+ 
+
+/* GALERIA NÚCLEO BIRUTA — FOTOS EM MOVIMENTO AUTOMÁTICO */
+
+.biruta-galeria {width:100vw;max-width:none;margin:70px 0 90px calc(50% - 50vw);padding:0;overflow:hidden;}
+
+.biruta-galeria h3 {max-width:1100px;margin:0 auto 25px;padding:0 24px;}
+
+.biruta-galeria-janela {width:100vw;overflow:hidden;}
+
+.biruta-galeria-trilho {display:flex;gap:0;width:max-content;animation:birutaDeslizar 46s linear infinite;will-change:transform;}
+
+.biruta-galeria-item {flex:0 0 44vw;width:44vw;height:clamp(260px,35vw,520px);overflow:hidden;}
+
+.biruta-galeria-item img {width:100%;height:100%;object-fit:cover;display:block;}
+
+.biruta-galeria-janela:hover .biruta-galeria-trilho {animation-play-state:paused;}
+
+@keyframes birutaDeslizar {from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@media(max-width:700px) {
+
+  .biruta-galeria-item {flex-basis:85vw;width:85vw;height:310px;}
+
+  .biruta-galeria-trilho {animation-duration:55s;}
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+  .biruta-galeria-janela {overflow-x:auto;}
+
+  .biruta-galeria-trilho {animation:none;}
+
+}
+
+ 
+
 </style>
 
  
@@ -4628,17 +4666,45 @@ nav button.ativo::after {
 
 <div class="biruta-video revelar"><h3>Leituras dramatizadas 2024 — Fernando de Souza</h3><iframe src="https://www.youtube-nocookie.com/embed/Bwyzng45_a8" title="Leituras dramatizadas 2024 — Fernando de Souza" loading="lazy" allowfullscreen></iframe></div>
 
-<section class="biruta-galeria revelar"><h3>Galeria — NBT</h3><div class="biruta-galeria-grid">
+<section class="biruta-galeria revelar" aria-label="Galeria de fotos do Núcleo Biruta">
 
-<img src="./imagens/CAPABIRUTA.PNG.png" alt="Atividades do Núcleo Biruta">
+  <h3>Galeria — NBT</h3>
 
-<img src="./imagens/FERNANDO.PNG.png" alt="Fernando de Souza">
+  <div class="biruta-galeria-janela">
 
-<img src="./imagens/Cineteatro Massangano.png" alt="Cineteatro Massangano">
+    <div class="biruta-galeria-trilho">
 
-</div></section>
+    <figure class="biruta-galeria-item"><img src="./imagens/DSC00055NBT.JPG.jpeg" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
 
-<div class="respiro-rodape"></div></section>
+    <figure class="biruta-galeria-item"><img src="./imagens/FOTO 1 NBT.JPG" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
+
+    <figure class="biruta-galeria-item"><img src="./imagens/Mostra Biruta 5 anos - 2013.JPG.jpeg" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
+
+    <figure class="biruta-galeria-item"><img src="./imagens/FERNANDO.PNG.png" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
+
+    <figure class="biruta-galeria-item"><img src="./imagens/CAPABIRUTA.PNG.png" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy"></figure>
+
+    <figure class="biruta-galeria-item"><img src="./imagens/DSC00055NBT.JPG.jpeg" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
+
+    <figure class="biruta-galeria-item"><img src="./imagens/FOTO 1 NBT.JPG" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
+
+    <figure class="biruta-galeria-item"><img src="./imagens/Mostra Biruta 5 anos - 2013.JPG.jpeg" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
+
+    <figure class="biruta-galeria-item"><img src="./imagens/FERNANDO.PNG.png" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
+
+    <figure class="biruta-galeria-item"><img src="./imagens/CAPABIRUTA.PNG.png" alt="Registro fotográfico do Núcleo Biruta de Teatro" loading="lazy" aria-hidden="true"></figure>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
+
+ 
+
+  <div class="respiro-rodape"></div></section>
 
  
 
@@ -4699,6 +4765,10 @@ nav button.ativo::after {
  
 
   </div>
+
+ 
+
+  <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
 
  
 
@@ -4770,6 +4840,10 @@ nav button.ativo::after {
 
  
 
+  <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
+
+ 
+
   <div class="respiro-rodape"></div>
 
  
@@ -4835,6 +4909,10 @@ nav button.ativo::after {
  
 
   </div>
+
+ 
+
+  <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
 
  
 
@@ -4959,6 +5037,10 @@ nav button.ativo::after {
  
 
   </div>
+
+ 
+
+  <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
 
  
 
@@ -6457,3 +6539,4 @@ atualizarSom();
  
 
 </html>
+
