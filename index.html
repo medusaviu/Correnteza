@@ -2514,6 +2514,50 @@ nav button.ativo::after {
 
 #nucleo-biruta .biruta-artigo a.livro-link:hover {color:#fff;}
 
+/* COLETIVO ABDIAS — reportagem visual baseada no PDF */
+
+.abdias-capa {width:100%;margin:0 auto 50px;}
+
+.abdias-capa img {display:block;width:100%;max-height:470px;object-fit:cover;object-position:center;}
+
+.abdias-cabecalho {max-width:1040px;margin:0 auto;padding:22px 24px 55px;text-align:center;}
+
+.abdias-cabecalho h1 {font-family:"Cubao",Impact,sans-serif;font-size:clamp(35px,5.2vw,75px);font-weight:400;line-height:1.05;}
+
+.abdias-artigo {width:calc(100% - 48px);max-width:850px;margin:0 auto;display:flow-root;}
+
+.abdias-artigo p {font-family:"Neue Montreal",Arial,sans-serif;font-size:clamp(17px,1.6vw,20px);line-height:1.65;margin:0 0 28px;}
+
+.abdias-figura {float:right;width:min(40%,300px);margin:8px 0 24px 25px;}
+
+.abdias-figura.esquerda {float:left;margin:8px 25px 24px 0;}
+
+.abdias-figura img {width:100%;height:auto;object-fit:contain;}
+
+.abdias-separador {clear:both;width:100vw;position:relative;left:50%;margin:58px 0 65px -50vw;height:88px;background:url("./imagens/barquinho.png.png") center / auto 88px repeat-x;}
+
+.abdias-galeria {clear:both;width:100vw;position:relative;left:50%;margin:40px 0 65px -50vw;overflow:hidden;}
+
+.abdias-galeria h2 {text-align:center;font-family:"Morisawa",Georgia,serif;font-size:clamp(28px,3.8vw,46px);font-weight:400;padding:0 24px;margin-bottom:25px;}
+
+.abdias-galeria figure {margin:0 auto;width:min(100%,1200px);}
+
+.abdias-galeria img {width:100%;height:auto;max-height:610px;object-fit:contain;}
+
+.abdias-galeria figcaption {text-align:center;color:#bbb;font-family:"Gordita",sans-serif;font-size:12px;padding:12px 20px;}
+
+@media(max-width:700px){
+
+.abdias-capa {margin-bottom:28px;}
+
+.abdias-cabecalho {padding-bottom:32px;}
+
+.abdias-figura,.abdias-figura.esquerda {float:right;width:48%;margin:8px 0 14px 12px;}
+
+.abdias-separador {height:66px;background-size:auto 66px;}
+
+}
+
 </style>
 
 </head>
@@ -3678,35 +3722,117 @@ nav button.ativo::after {
 
 <section class="pagina" id="coletivo-abdias">
 
-  <div class="pagina-abertura">
+  <figure class="abdias-capa revelar">
 
-    <h1 class="pagina-titulo">
+    <img src="./imagens/CAPAABDIAS.PNG.png" alt="Coletivo Abdias de Teatro">
 
-      COLETIVO ABDIAS
+  </figure>
 
-    </h1>
+  <div class="abdias-cabecalho revelar">
 
-    <p class="pagina-descricao">
-
-      Arte, memória e experiências coletivas.
-
-    </p>
+    <h1>Coletivo Abdias: o teatro negro de Juazeiro e a disputa por contar o Sertão</h1>
 
   </div>
 
-  <div class="conteudo">
+  <article class="abdias-artigo">
 
-    <div class="texto">
+    <p class="revelar">Odilon Neto tem duas rotinas que não se cruzam no calendário e se encontram na cabeça dele. Em uma, há plantões de enfermeiro em hospital. Na outra, há ensaios. Mora no Itaberaba, bairro da periferia de Juazeiro, na Bahia, e como muitos artistas independentes do interior faz teatro quando o emprego deixa: encaixa horário, deslocamento e compromisso até sobrar uma sala e um grupo de pessoas disponíveis ao mesmo tempo.</p>
 
-      <p>
+    <p class="revelar">O que ele faz nessa sala, diz, é elaborar experiências, investigar a própria identidade e construir outras possibilidades de representação. A frase é abstrata. O que a torna concreta é a história de um coletivo que não tem sede, que ensaia em casas e associações de moradores e que fez sua última grande mostra sem dinheiro público.</p>
 
-        Espaço reservado para o conteúdo do Coletivo Abdias.
+    <div class="abdias-separador revelar" role="img" aria-label="Faixa de barquinhos"></div>
 
-      </p>
+    <p class="revelar">A relação de Odilon com o teatro começou no ensino médio, numa escola estadual de Juazeiro que tinha oficinas de teatro no turno da noite. Ele não conseguiu se matricular. Ficava por perto, acompanhava ensaios, conversava com os estudantes.</p>
 
-    </div>
+    <p class="revelar">O interesse ficou guardado até 2017. Naquele ano, ele viu nas redes sociais uma convocatória do ator e diretor Marcos Velásquez para uma oficina de iniciação teatral, promovida por um coletivo de teatro negro. Inscreveu-se. Podia ter sido só uma experiência de formação e virou o ponto de partida de uma trajetória que, segundo ele, continua em construção.</p>
 
-  </div>
+    <p class="revelar">Pelas lembranças de Odilon, o Coletivo Abdias surgiu em 2017, a partir da articulação de Marcos Velásquez, Márcio Sales, Edmilson e Carlos Araripe, o Carlinhos. A oficina deu origem a uma mostra aberta ao público e depois a um núcleo permanente de pesquisa e criação.</p>
+
+    <p class="revelar">A proposta ia além de ensinar técnicas de interpretação. O grupo queria um espaço em que questões raciais, identitárias e sociais fossem discutidas pela linguagem teatral. Uma das primeiras experimentações partia de uma inversão histórica: encenava a venda de pessoas brancas escravizadas. A provocação incomodou parte da plateia e abriu discussões sobre racismo estrutural, representação e relações de poder</p>
+
+    <figure class="abdias-figura revelar"><img src="./imagens/Antonias.png" alt="Antonias, espetáculo do Coletivo Abdias"></figure>
+
+    <p class="revelar">Entre 2018 e 2019 veio Antonias, espetáculo sobre histórias de pessoas LGBTQIAPN+ de Juazeiro. A montagem ampliou o campo de pesquisa do grupo, que passou a tratar também de violência, sexualidade e dissidência de gênero. O objetivo não era só denunciar. Havia a intenção de construir outras imagens de pessoas negras, periféricas e LGBTQIAPN+, recusando as que as reduzem à subalternidade, à caricatura ou à condição permanente de vítimas.</p>
+
+    <div class="abdias-separador revelar" role="img" aria-label="Faixa de barquinhos"></div>
+
+    <figure class="abdias-figura esquerda revelar"><img src="./imagens/Abdias do Nascimento.png" alt="Abdias do Nascimento"></figure>
+
+    <p class="revelar">O nome do coletivo é uma escolha política. Vem de Abdias do Nascimento (1914–2011), intelectual, dramaturgo e ativista central na história do movimento negro brasileiro. Em 1944, no Rio de Janeiro, Abdias fundou o Teatro Experimental do Negro (TEN), para reivindicar a presença de artistas negros nos palcos e criar uma dramaturgia comprometida com as experiências e as histórias dessa população.</p>
+
+    <p class="revelar">A criação do TEN teve, entre outros motivos, uma cena vivida por ele em Lima, no Peru: uma montagem de O Imperador Jones, de Eugene O’Neill, em que um ator branco interpretava o protagonista negro com a pele escurecida por maquiagem.</p>
+
+    <p class="revelar">O TEN não se limitava a ocupar o palco. Reunia formação artística, alfabetização e valorização da população negra. Escolher esse nome, décadas depois e em Juazeiro, é se colocar nessa linhagem: fazer do teatro um lugar de autoria, reconhecimento e enfrentamento das representações racistas. Também é, no caso do Abdias de Juazeiro, uma forma de arte- educação, já que o grupo nasceu de uma oficina e continua ensinando enquanto cria.</p>
+
+    <div class="abdias-separador revelar" role="img" aria-label="Faixa de barquinhos"></div>
+
+    <p class="revelar">Para Odilon, o teatro mudou o modo como ele entende a própria história. O momento mais marcante veio quando integrou o núcleo de teatro do Sesc de Petrolina, numa pesquisa cênica sobre ancestralidade e memória familiar.</p>
+
+    <p class="revelar">Ele tinha perdido a mãe pouco antes. O processo de criação se aproximou do luto e da necessidade de revisitar a história da família. A pesquisa o levou a olhar para as experiências da mãe, das avós e de outras mulheres que vieram antes. A memória familiar deixou de ser só lembrança íntima e entrou na construção de uma experiência cênica.</p>
+
+    <p class="revelar">Depois, num núcleo de dramaturgia do Sesc orientado por Dione Carlos, aprofundou o interesse pela escrita. Dali tirou a ideia de que a dramaturgia não nasce de um olhar neutro: quem escreve carrega as marcas da história, das relações e do território em que vive.</p>
+
+    <p class="revelar">É o princípio que o Abdias aplica na sala de ensaio. Na criação coletiva e na pesquisa de dramaturgias autorais, as experiências dos integrantes entram na construção da cena. Antes de chegar ao público, a obra passa pelo compartilhamento de memórias, pelas divergências, pelas maneiras diferentes de ler o mundo.</p>
+
+    <p class="revelar">Entre as referências que alimentam essa pesquisa, Odilon cita Jailson Lima, ligado às ações formativas do Sesc, e Cristiane Crispim, pelas pesquisas sobre corpo, memória e território. Com Cristiane ele conta que aprendeu a usar as vivencias do seu proprio corpo, com Jailson ele aprendeu sobre o corpo negro no mundo.</p>
+
+    <div class="abdias-separador revelar" role="img" aria-label="Faixa de barquinhos"></div>
+
+    <p class="revelar">A história do Abdias é também a história de uma busca por lugar. Sem sede própria, o grupo foi se instalando onde dava. A mudança de Marcos Velásquez para o Rio de Janeiro e a pandemia de covid-19 interromperam os encontros. Odilon se afastou por um período para concluir a graduação em Enfermagem.</p>
+
+    <figure class="abdias-figura revelar"><img src="./imagens/II MOSTRA ABDIAS.png" alt="II Mostra Abdias de Teatro"></figure>
+
+    <p class="revelar">Entre 2020 e 2021, ele retomou a articulação com os integrantes que ficaram na cidade. Os ensaios passaram para casas de participantes e espaços comunitários, na tentativa de manter o grupo vivo sem estrutura. Um dos pontos de acolhimento foi a Associação de Moradores do bairro Alagadiço, em Juazeiro. Em dezembro de 2022, o espaço recebeu a II Mostra Abdias de Teatro, que reuniu artistas do Vale do São Francisco. A programação incluiu Experimentando: A Criação da Mulher, de Ana Paula Ribeiro; É da Carne das Mulheres que Nascem os Homens, de Ana Vicente; Bandeira e Gullar: Em Performance, de Carlos Araripe; e À Deriva, de Ernandio Telles e Angelo Gonçalves.</p>
+
+    <p class="revelar">A mostra foi feita sem financiamento público direto, sustentada pela colaboração voluntária de artistas e de moradores do Alagadiço. A escolha da associação de bairro como palco aproximava a programação de outros públicos e tirava o teatro dos lugares tradicionalmente associados à circulação artística.</p>
+
+  </article>
+
+  <section class="abdias-galeria revelar" aria-label="Galeria da II Mostra Abdias">
+
+    <h2>GALERIA — II MOSTRA ABDIAS</h2>
+
+    <figure><img src="./imagens/II MOSTRA ABDIAS.png" alt="Registro da II Mostra Abdias de Teatro"><figcaption>II Mostra Abdias de Teatro</figcaption></figure>
+
+  </section>
+
+  <article class="abdias-artigo">
+
+    <div class="abdias-separador revelar" role="img" aria-label="Faixa de barquinhos"></div>
+
+    <p class="revelar">A descentralização, porém, resolve um problema e cria outro. Para Odilon, conquistar plateia fora dos circuitos culturais conhecidos continua difícil. As atividades de formação costumam mobilizar moradores do entorno, que vão assistir a familiares, vizinhos e participantes das oficinas. Os espetáculos com discussão política enfrentam outro obstáculo: nem sempre encontram público disposto a acompanhar propostas que pedem uma relação mais lenta e reflexiva com a cena.</p>
+
+    <p class="revelar">O desafio, nas palavras dele, é construir dramaturgias críticas sem perder o diálogo com a realidade de quem assiste. Não se trata de abandonar a política para ganhar público, e sim de achar formas de aproximar o que o grupo discute do cotidiano das pessoas.</p>
+
+    <p class="revelar">É um dilema conhecido de quem faz arte-educação fora do centro. A oficina enche porque cada aluno traz alguém. O espetáculo que mexe com o poder esvazia porque a plateia veio por afeto, não por tema. O Abdias parece saber disso e escolhe, por ora, continuar nos dois lados.</p>
+
+    <div class="abdias-separador revelar" role="img" aria-label="Faixa de barquinhos"></div>
+
+    <p class="revelar">Hoje a coordenação do coletivo está concentrada num núcleo pequeno: Odilon Neto; Carlos Araripe, que mora em Sobradinho (BA); Ana Paula Ribeiro; Hernandes; e Rafael Neres. A distância entre as cidades, os empregos formais, os estudos e os compromissos interferem direto na organização.</p>
+
+    <p class="revelar">A intenção de oferecer oficinas regulares, inclusive em ciclos bienais, nem sempre sai do planejamento. Manter um calendário depende da disponibilidade de cada um e das condições materiais para executar as ações.</p>
+
+    <p class="revelar">Nesse cenário, a política pública de cultura pesa. Segundo Odilon, o Abdias recebeu o reconhecimento de Ponto de Cultura do Ministério da Cultura, certificação que fortalece o grupo institucionalmente e o vincula à Política Nacional de Cultura Viva.</p>
+
+    <p class="revelar">Em 2026, o grupo inscreveu o projeto Núcleo de Teatro Negro: Formação, Pesquisa e Criação no Sertão do São Francisco num edital estadual de fomento às artes da Bahia, na modalidade de cotas raciais. O projeto ficou na lista de suplentes do resultado oficial. A inscrição era uma tentativa de ampliar as condições de formação e pesquisa, e a suplência mostra a distância entre propor e conseguir recurso.</p>
+
+    <p class="revelar">Para coletivos independentes, dinheiro não é só montar espetáculo. Garante ensaio, pagamento de quem trabalha, material, oficinas e circulação. Sem ele, a continuidade depende do trabalho voluntário e da capacidade de articulação dos próprios artistas.</p>
+
+    <div class="abdias-separador revelar" role="img" aria-label="Faixa de barquinhos"></div>
+
+    <p class="revelar">A disputa por representação que atravessa o Abdias tem a ver com a maneira como o Nordeste e o Sertão foram representados ao longo do tempo. Em A Invenção do Nordeste, o historiador Durval Muniz de Albuquerque Júnior analisa como certas imagens foram construídas e repetidas até virarem referência sobre a região: seca, atraso, pobreza, paisagem rural parada.</p>
+
+    <p class="revelar">Essas imagens não dão conta do território. Nas cidades do Vale do São Francisco, o cotidiano também é feito de universidades, deslocamento entre estados, bairros periféricos, relações urbanas e manifestações artísticas que raramente aparecem nas imagens mais difundidas do Sertão.</p>
+
+    <p class="revelar">Ao construir dramaturgias a partir da experiência de pessoas negras e periféricas, o grupo reivindica presença nos palcos e questiona quem tem o direito de representar o território e quais histórias contam como parte de sua identidade.</p>
+
+    <figure class="abdias-figura revelar"><img src="./imagens/Essa perspectiva.png" alt="Coletivo Abdias em ação cultural"></figure>
+
+    <p class="revelar">Essa perspectiva orientou a participação do coletivo no II Circuito de Arte Suburbana, em outubro de 2026. O projeto levou o espetáculo de teatro de bonecos Chico, Maricota e Zé das Marmotas, dirigido por Rafael Neres, a cinco escolas e instituições de ensino infantil de Juazeiro e a uma unidade escolar de Petrolina. A peça trata da falta de água potável e de saneamento básico em comunidades ribeirinhas.</p>
+
+    <p class="revelar">O teatro do Abdias disputa o acesso à cultura e disputa a autoria das narrativas sobre o Vale. Quando corpos negros e periféricos ocupam a cena para contar a própria história, o Sertão deixa de ser paisagem ou cenário de representações feitas de fora. Vira lugar de criação, de memória e de elaboração de futuros.</p>
+
+  </article>
 
   <div class="barquinhos-final" role="img" aria-label="Faixa de barquinhos"></div>
 
